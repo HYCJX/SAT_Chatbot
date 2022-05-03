@@ -40,9 +40,6 @@ def finetune_roberta(
     output_dir: str,
     warmup_ratio: float,
     weight_decay: float,
-    # speaker_mode: str,
-    # num_past_utterances: int,
-    # num_future_utterances: int,
 ):
 
     args = TrainingArguments(
@@ -91,14 +88,29 @@ def finetune_roberta(
 finetune_roberta(
     NUM_CLASSES,
     None,
-    Meld_Dataset("train"),
-    Meld_Dataset("val"),
-    Meld_Dataset("test"),
+    Meld_Dataset("train", model_checkpoint="roberta-large", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
+    Meld_Dataset("val", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("test", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    16,
+    1e-6,
+    "roberta-large",
+    15,
+    "1000UpperLarge_outputs",
+    0.2,
+    0.01,
+)
+
+finetune_roberta(
+    NUM_CLASSES,
+    None,
+    Meld_Dataset("train", model_checkpoint="roberta-base", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
+    Meld_Dataset("val", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("test", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
     16,
     1e-6,
     "roberta-base",
     15,
-    "outputs",
+    "1000UpperBase_outputs",
     0.2,
     0.01,
 )
