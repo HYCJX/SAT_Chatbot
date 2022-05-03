@@ -156,20 +156,14 @@ class Meld_Dataset(Dataset):
                     if i is not None and i >= 0:
                         indexes.insert(0, i)
                         offset += 1
-                        if (
-                            sum([num_tokens[idx_] for idx_ in indexes])
-                            > max_model_input_size
-                        ):
+                        if (sum([num_tokens[idx_] for idx_ in indexes]) > max_model_input_size):
                             del indexes[0]
                             offset -= 1
                             num_truncated += 1
                             break
                     if j is not None and j < len(ues):
                         indexes.append(j)
-                        if (
-                            sum([num_tokens[idx_] for idx_ in indexes])
-                            > max_model_input_size
-                        ):
+                        if (sum([num_tokens[idx_] for idx_ in indexes]) > max_model_input_size):
                             del indexes[-1]
                             num_truncated += 1
                             break
