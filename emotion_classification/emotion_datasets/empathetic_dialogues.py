@@ -1,9 +1,11 @@
 import torch
 
 from datasets import load_dataset
-from typing import List, Tuple
 from tokenizers import Tokenizer
 from torch.utils.data import Dataset
+from typing import List, Tuple
+
+NUM_CLASSES = 32
 
 def get_emotionid_dict() -> Tuple[dict, dict]:
     """

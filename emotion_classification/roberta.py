@@ -3,20 +3,17 @@ import logging
 import numpy as np
 import os
 
-from datasets import Dataset
 from sklearn.metrics import f1_score
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+from torch.utils.data import Dataset
+from transformers import AutoModelForSequenceClassification, DataCollator, Trainer, TrainingArguments
 
-from dataset import EmpatheticDialoguesDataset, get_data_collator
-
+from emotion_datasets.meld_dataset import Meld_Dataset, NUM_CLASSES
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
-
-NUM_CLASSES = 32
 
 def compute_metrics(eval_predictions) -> dict:
     """
@@ -31,6 +28,8 @@ def compute_metrics(eval_predictions) -> dict:
     return {"f1_weighted": f1_weighted, "f1_micro": f1_micro, "f1_macro": f1_macro}
 
 def finetune_roberta(
+    num_classes: int,
+    data_collator: DataCollator,
     dataset_train: Dataset,
     dataset_valid: Dataset,
     dataset_test: Dataset,
@@ -63,9 +62,7 @@ def finetune_roberta(
         weight_decay=weight_decay,
     )
 
-    tokenizer = AutoTokenizer.from_pretrained(model_checkpoint, use_fast=True)
-    data_collator = get_data_collator(tokenizer)
-    model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=NUM_CLASSES)
+    model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=num_classes)
     trainer = Trainer(
         model=model,
         args=args,
@@ -91,9 +88,11 @@ def finetune_roberta(
     logging.info(f"Test results: {test_results.metrics}")
 
 finetune_roberta(
-    EmpatheticDialoguesDataset("train"),
-    EmpatheticDialoguesDataset("validation"),
-    EmpatheticDialoguesDataset("test"),
+    NUM_CLASSES,
+    None,
+    Meld_Dataset("train"),
+    Meld_Dataset("val"),
+    Meld_Dataset("test"),
     16,
     1e-6,
     "roberta-base",
