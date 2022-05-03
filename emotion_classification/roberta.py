@@ -5,7 +5,7 @@ import os
 
 from sklearn.metrics import f1_score
 from torch.utils.data import Dataset
-from transformers import AutoModelForSequenceClassification, DataCollator, Trainer, TrainingArguments
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 
 from emotion_datasets.meld_dataset import Meld_Dataset, NUM_CLASSES
 
@@ -69,6 +69,7 @@ def finetune_roberta(
         train_dataset=dataset_train,
         eval_dataset=dataset_valid,
         data_collator=data_collator,
+        tokenizer=AutoTokenizer.from_pretrained(model_checkpoint, use_fast=True),
         compute_metrics=compute_metrics,
     )
     logging.info(f"Training RoBERTa model ...")
