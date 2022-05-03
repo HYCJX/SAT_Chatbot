@@ -95,7 +95,7 @@ finetune_roberta(
     1e-5,
     "roberta-base",
     15,
-    "1000UpperBase_outputs",
+    "1000UpperBase1e-5_outputs",
     0.2,
     0.01,
 )
@@ -110,7 +110,7 @@ finetune_roberta(
     1e-5,
     "roberta-large",
     15,
-    "1000UpperLarge_outputs",
+    "1000UpperLarge1e-5_outputs",
     0.2,
     0.01,
 )
