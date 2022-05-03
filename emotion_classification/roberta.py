@@ -88,21 +88,6 @@ def finetune_roberta(
 finetune_roberta(
     NUM_CLASSES,
     None,
-    Meld_Dataset("train", model_checkpoint="roberta-large", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
-    Meld_Dataset("val", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
-    Meld_Dataset("test", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
-    16,
-    1e-6,
-    "roberta-large",
-    15,
-    "1000UpperLarge_outputs",
-    0.2,
-    0.01,
-)
-
-finetune_roberta(
-    NUM_CLASSES,
-    None,
     Meld_Dataset("train", model_checkpoint="roberta-base", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
     Meld_Dataset("val", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
     Meld_Dataset("test", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
@@ -111,6 +96,21 @@ finetune_roberta(
     "roberta-base",
     15,
     "1000UpperBase_outputs",
+    0.2,
+    0.01,
+)
+
+finetune_roberta(
+    NUM_CLASSES,
+    None,
+    Meld_Dataset("train", model_checkpoint="roberta-large", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
+    Meld_Dataset("val", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("test", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    4,
+    1e-6,
+    "roberta-large",
+    15,
+    "1000UpperLarge_outputs",
     0.2,
     0.01,
 )
