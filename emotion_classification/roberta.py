@@ -15,6 +15,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
+
 def compute_metrics(eval_predictions) -> dict:
     """
     Return f1_weighted, f1_micro, and f1_macro scores.
@@ -26,6 +27,7 @@ def compute_metrics(eval_predictions) -> dict:
     f1_macro = f1_score(label_ids, preds, average="macro")
 
     return {"f1_weighted": f1_weighted, "f1_micro": f1_micro, "f1_macro": f1_macro}
+
 
 def finetune_roberta(
     num_classes: int,
@@ -59,14 +61,16 @@ def finetune_roberta(
         weight_decay=weight_decay,
     )
 
-    model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=num_classes)
+    model = AutoModelForSequenceClassification.from_pretrained(
+        model_checkpoint, num_labels=num_classes)
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=dataset_train,
         eval_dataset=dataset_valid,
         data_collator=data_collator,
-        tokenizer=AutoTokenizer.from_pretrained(model_checkpoint, use_fast=True),
+        tokenizer=AutoTokenizer.from_pretrained(
+            model_checkpoint, use_fast=True),
         compute_metrics=compute_metrics,
     )
     logging.info(f"Training RoBERTa model ...")
@@ -78,19 +82,22 @@ def finetune_roberta(
         json.dump(val_results, stream, indent=4)
     logging.info(f"Evaluation results: {val_results}")
 
-    
     logging.info(f"Testing ...")
     test_results = trainer.predict(dataset_test)
     with open(os.path.join(output_dir, "test-results.json"), "w") as stream:
         json.dump(test_results.metrics, stream, indent=4)
     logging.info(f"Test results: {test_results.metrics}")
 
+
 finetune_roberta(
     NUM_CLASSES,
     None,
-    Meld_Dataset("train", model_checkpoint="roberta-base", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
-    Meld_Dataset("val", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
-    Meld_Dataset("test", model_checkpoint="roberta-base", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("train", model_checkpoint="roberta-base",
+                 num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
+    Meld_Dataset("val", model_checkpoint="roberta-base",
+                 num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("test", model_checkpoint="roberta-base",
+                 num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
     16,
     1e-5,
     "roberta-base",
@@ -103,9 +110,12 @@ finetune_roberta(
 finetune_roberta(
     NUM_CLASSES,
     None,
-    Meld_Dataset("train", model_checkpoint="roberta-large", num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
-    Meld_Dataset("val", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
-    Meld_Dataset("test", model_checkpoint="roberta-large", num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("train", model_checkpoint="roberta-large",
+                 num_future_utterances=1000, num_past_utterances=1000, speaker_mode="upper"),
+    Meld_Dataset("val", model_checkpoint="roberta-large",
+                 num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
+    Meld_Dataset("test", model_checkpoint="roberta-large",
+                 num_future_utterances=0, num_past_utterances=0, speaker_mode=None),
     4,
     1e-5,
     "roberta-large",

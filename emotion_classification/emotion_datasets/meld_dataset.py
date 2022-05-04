@@ -18,13 +18,14 @@ logging.basicConfig(
 
 DATASET = "MELD"
 NUM_CLASSES = 7
-ROOT_DIR="multimodal-datasets/"
-SEED=0
+ROOT_DIR = "multimodal-datasets/"
+SEED = 0
+
 
 def set_seed(seed: int) -> None:
     """
     Set random seed to a fixed value.
-    Set everything to be deterministic
+    Set everything to be deterministic.
     """
     random.seed(seed)
     os.environ["PYTHONHASHSEED"] = str(seed)
@@ -117,7 +118,8 @@ class Meld_Dataset(Dataset):
         }
         logging.debug(f"Arguments given: {args}")
 
-        tokenizer = AutoTokenizer.from_pretrained(self.model_checkpoint, use_fast=True)
+        tokenizer = AutoTokenizer.from_pretrained(
+            self.model_checkpoint, use_fast=True)
         max_model_input_size = tokenizer.max_model_input_sizes[self.model_checkpoint]
         num_truncated = 0
 
@@ -128,7 +130,8 @@ class Meld_Dataset(Dataset):
                 for uttid in self.utterance_ordered[diaid]
             ]
 
-            num_tokens = [len(tokenizer(ue["Utterance"])["input_ids"]) for ue in ues]
+            num_tokens = [len(tokenizer(ue["Utterance"])["input_ids"])
+                          for ue in ues]
 
             for idx, ue in enumerate(ues):
                 if ue["Emotion"] not in list(self.emotion2id.keys()):
@@ -179,7 +182,8 @@ class Meld_Dataset(Dataset):
                         final_utterance = "</s></s>" + utterances[-1]
                     else:
                         final_utterance = (
-                            " ".join(utterances[:-1]) + "</s></s>" + utterances[-1]
+                            " ".join(utterances[:-1]) +
+                            "</s></s>" + utterances[-1]
                         )
 
                 elif num_past_utterances == 0 and num_future_utterances > 0:
@@ -187,19 +191,21 @@ class Meld_Dataset(Dataset):
                         final_utterance = utterances[0] + "</s></s>"
                     else:
                         final_utterance = (
-                            utterances[0] + "</s></s>" + " ".join(utterances[1:])
+                            utterances[0] + "</s></s>" +
+                            " ".join(utterances[1:])
                         )
 
                 elif num_past_utterances > 0 and num_future_utterances > 0:
                     if len(utterances) == 1:
-                        final_utterance = "</s></s>" + utterances[0] + "</s></s>"
+                        final_utterance = "</s></s>" + \
+                            utterances[0] + "</s></s>"
                     else:
                         final_utterance = (
                             " ".join(utterances[:offset])
                             + "</s></s>"
                             + utterances[offset]
                             + "</s></s>"
-                            + " ".join(utterances[offset + 1 :])
+                            + " ".join(utterances[offset + 1:])
                         )
                 else:
                     raise ValueError
@@ -218,7 +224,7 @@ class Meld_Dataset(Dataset):
 
         logging.info(f"Number of truncated utterances: {num_truncated}")
         return inputs
-    
+
     def _load_utterance_speaker_emotion(self, uttid, speaker_mode=None) -> dict:
         """
         Load an speaker-name prepended utterance and emotion label
@@ -231,14 +237,14 @@ class Meld_Dataset(Dataset):
         utterance = text["Utterance"].strip()
         emotion = text["Emotion"]
         speaker = text["Speaker"]
-       
+
         if speaker_mode is not None and speaker_mode.lower() == "upper":
             utterance = speaker.upper() + ": " + utterance
         elif speaker_mode is not None and speaker_mode.lower() == "title":
             utterance = speaker.title() + ": " + utterance
 
         return {"Utterance": utterance, "Emotion": emotion}
-    
+
     def __len__(self):
         return len(self.inputs_)
 
