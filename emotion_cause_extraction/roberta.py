@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 from datasets import Dataset, load_metric
-from transformers import AutoModelForTokenClassification, AutoTokenizer, Trainer, TrainingArguments
+from transformers import AutoModelForTokenClassification, AutoTokenizer, DataCollatorForTokenClassification, Trainer, TrainingArguments
 
 from emotion_cause_datasets.emocause import EmoCauseDataset
 
@@ -59,12 +59,14 @@ def finetune_roberta(
     model = AutoModelForTokenClassification.from_pretrained("roberta-base",
                                                             id2label=id2label,
                                                             label2id=label2id)
+    tokenizer = AutoTokenizer.from_pretrained("roberta-base", use_fast=True)
     trainer = Trainer(
         model=model,
         args=args,
         train_dataset=dataset_train,
         eval_dataset=dataset_valid,
-        tokenizer=AutoTokenizer.from_pretrained("roberta-base", use_fast=True),
+        tokenizer=tokenizer,
+        data_collator=DataCollatorForTokenClassification(tokenizer),
         compute_metrics=compute_metrics,
     )
     logging.info(f"Training RoBERTa model ...")
