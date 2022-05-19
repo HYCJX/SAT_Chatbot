@@ -72,7 +72,7 @@ class EmoCauseDataset(Dataset):
             input = {
                 "input_ids": tokenized_input["input_ids"],
                 "attention_mask": tokenized_input["attention_mask"],
-                "label": labels,
+                "labels": labels,
             }
             inputs.append(input)
         logging.info("Completed...")
