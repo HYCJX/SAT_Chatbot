@@ -14,18 +14,24 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-id2label = {
-    "0": "O",
-    "1": "I"
-}
+label_names = ["O", "I"]
+id2label = {str(i): label for i, label in enumerate(label_names)}
 label2id = {v: k for k, v in id2label.items()}
 
 
 def compute_metrics(eval_predictions) -> dict:
     logits, labels = eval_predictions
     predictions = np.argmax(logits, axis=-1)
+    io_predictions = []
+    io_labels = []
+    for prediction, label in zip(predictions, labels):
+        for predicted_idx, label_idx in zip(prediction, label):
+            if label_idx == -100:
+                continue
+            io_predictions.append(label_names[predicted_idx])
+            io_labels.append(label_names[label_idx])
     metric = load_metric("seqeval")
-    return metric.compute(predictions=[predictions], references=[labels])
+    return metric.compute(predictions=[io_predictions], references=[io_labels])
 
 
 def finetune_roberta(
