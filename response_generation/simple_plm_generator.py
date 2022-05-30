@@ -49,6 +49,7 @@ class Trainer():
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
                  num_epochs: Optional[int] = 10,
+                 top_p: Optional[float] = 0.9
                  ):
         """
         Arguments:
@@ -65,7 +66,7 @@ class Trainer():
                 warmup_ratio: Warm-up hyperparameter of the scheduler.
                 batch_size: Batch size of the trainer.
                 num_epochs: Number of epochs to train the transformer.
-
+                top_p: Nucleus sampling.
 
         Class fields:
             self.output_dir: Output directory.
@@ -91,6 +92,8 @@ class Trainer():
                 self.warmup_ratio: Warm-up hyperparameter of the scheduler.
                 self.batch_size: Batch size.
                 self.num_epochs: Number of epochs to train the transformer.
+                self.top_p: Nucleus sampling
+
         """
         # Set Output Directory:
         if not os.path.exists(output_dir):
@@ -99,6 +102,9 @@ class Trainer():
 
         # Set Mode:
         self.mode = mode
+
+        # Set Top p:
+        self.top_p = top_p
 
         # Set Up Device:
         use_cuda = torch.cuda.is_available()
@@ -410,7 +416,7 @@ class Trainer():
 
             sorted_probs, sorted_idxs = torch.sort(output, descending=True)
             cumsum_probs = torch.cumsum(sorted_probs, dim=-1)  # (1, V)
-            idx_remove = cumsum_probs > self.args.top_p
+            idx_remove = cumsum_probs > self.top_p
             idx_remove[:, 1:] = idx_remove[:, :-1].clone()
             idx_remove[:, 0] = False
             sorted_probs[idx_remove] = 0.0
@@ -419,7 +425,7 @@ class Trainer():
                                       keepdim=True)  # (1, V)
 
             probs = torch.zeros(output.shape,
-                                device=self.args.device).scatter_(-1, sorted_idxs, sorted_probs)  # (1, V)
+                                device=self.device).scatter_(-1, sorted_idxs, sorted_probs)  # (1, V)
             idx = torch.multinomial(probs, 1)  # (1, 1)
 
             idx_item = idx.squeeze(-1).squeeze(-1).item()
