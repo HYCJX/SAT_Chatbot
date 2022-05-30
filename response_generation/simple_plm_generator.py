@@ -135,62 +135,63 @@ class Trainer():
             new_num_tokens = orig_num_tokens + num_added_tokens
             self.model.resize_token_embeddings(new_num_tokens=new_num_tokens)
 
-        # Set Maximum Length:
+        # Set Maximum Length & Maximum History:
         self.max_length = min(max_length, self.model.config.n_ctx)
-
-        # Load Optimizer:
-        logging.info("Loading the optimizer...")
-        self.learning_rate = learning_rate
-        self.optimizer = torch.optim.AdamW(
-            self.model.parameters(),
-            lr=learning_rate
-        )
-
-        # Load Train & Validation Datasets:
-        logging.info("Loading train & valid data...")
         self.max_history = max_history
-        train_set = EMDialogResponseGenerationDataset(
-            "train",
-            self.tokenizer,
-            max_history=self.max_history,
-            max_length=self.max_length
 
-        )
-        valid_set = EMDialogResponseGenerationDataset(
-            "validation",
-            self.tokenizer,
-            max_history=self.max_history,
-            max_length=self.max_length
-        )
-        vocab = self.tokenizer.get_vocab()
-        eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
-        self.data_collator = PadCollate(eos_id)
-        self.batch_size = batch_size
-        self.train_loader = DataLoader(train_set,
-                                       collate_fn=self.data_collator,
-                                       shuffle=True,
-                                       batch_size=self.batch_size,
-                                       pin_memory=True)
-        self.valid_loader = DataLoader(valid_set,
-                                       collate_fn=self.data_collator,
-                                       batch_size=self.batch_size,
-                                       pin_memory=True)
+        if self.mode == "train":
+            # Load Optimizer:
+            logging.info("Loading the optimizer...")
+            self.learning_rate = learning_rate
+            self.optimizer = torch.optim.AdamW(
+                self.model.parameters(),
+                lr=learning_rate
+            )
 
-        # Scheduler:
-        num_batches = len(self.train_loader)
-        self.warmup_ratio = warmup_ratio
-        self.num_epochs = num_epochs
-        total_train_steps = self.num_epochs * num_batches
-        warmup_steps = int(self.warmup_ratio * total_train_steps)
-        self.scheduler = get_polynomial_decay_schedule_with_warmup(
-            self.optimizer,
-            num_warmup_steps=warmup_steps,
-            num_training_steps=total_train_steps,
-            power=2
-        )
+            # Load Train & Validation Datasets:
+            logging.info("Loading train & valid data...")
+            train_set = EMDialogResponseGenerationDataset(
+                "train",
+                self.tokenizer,
+                max_history=self.max_history,
+                max_length=self.max_length
 
-        # Summary Writer:
-        self.writer = SummaryWriter()
+            )
+            valid_set = EMDialogResponseGenerationDataset(
+                "validation",
+                self.tokenizer,
+                max_history=self.max_history,
+                max_length=self.max_length
+            )
+            vocab = self.tokenizer.get_vocab()
+            eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
+            self.data_collator = PadCollate(eos_id)
+            self.batch_size = batch_size
+            self.train_loader = DataLoader(train_set,
+                                           collate_fn=self.data_collator,
+                                           shuffle=True,
+                                           batch_size=self.batch_size,
+                                           pin_memory=True)
+            self.valid_loader = DataLoader(valid_set,
+                                           collate_fn=self.data_collator,
+                                           batch_size=self.batch_size,
+                                           pin_memory=True)
+
+            # Scheduler:
+            num_batches = len(self.train_loader)
+            self.warmup_ratio = warmup_ratio
+            self.num_epochs = num_epochs
+            total_train_steps = self.num_epochs * num_batches
+            warmup_steps = int(self.warmup_ratio * total_train_steps)
+            self.scheduler = get_polynomial_decay_schedule_with_warmup(
+                self.optimizer,
+                num_warmup_steps=warmup_steps,
+                num_training_steps=total_train_steps,
+                power=2
+            )
+
+            # Summary Writer:
+            self.writer = SummaryWriter()
 
         # Set Up Training or Inferring States:
         self.best_loss = sys.float_info.max
@@ -388,6 +389,7 @@ class Trainer():
                 token_type_ids = torch.LongTensor(
                     token_type_ids).unsqueeze(0).to(self.device)
 
+                logging.info("Sampling...")
                 output_ids = self.nucleus_sampling(input_ids,
                                                    token_type_ids,
                                                    input_len)
@@ -397,6 +399,7 @@ class Trainer():
                 #     output_hidden_states=True, output_scores=True, return_dict_in_generate=True,
                 # ).sequences
                 # output_ids = output_ids[0].tolist()[input_len:]
+                logging.info("Decoding...")
                 res = self.tokenizer.decode(
                     output_ids, skip_special_tokens=True
                 )
@@ -408,7 +411,7 @@ class Trainer():
 
     def nucleus_sampling(self, input_ids, token_type_ids, input_len):
         output_ids = []
-        for pos in range(input_len, self.max_length):
+        for pos in tqdm(range(input_len, self.max_length)):
             output = self.model(
                 input_ids=input_ids, token_type_ids=token_type_ids
             )[0][:, pos-1]  # (1, V)
@@ -503,9 +506,11 @@ if __name__ == '__main__':
     # args.ckpt_dir = f"{args.ckpt_dir}/{args.model_type}"
 
     # if args.mode == 'train':
-    trainer = Trainer(output_dir="output")
+    trainer = Trainer(output_dir="output",
+                      mode="infer",
+                      checkpoint_path="best_ckpt_epoch=6_valid_loss=2.62367.ckpt")
 
-    trainer.train()
+    trainer.infer()
 
     # elif args.mode == 'infer':
     #     assert args.ckpt_name is not None, "Please specify the trained model checkpoint."
