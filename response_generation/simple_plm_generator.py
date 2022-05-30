@@ -10,6 +10,7 @@ import torch
 
 from itertools import chain
 from pathlib import Path
+from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
@@ -92,6 +93,8 @@ class Trainer():
                 self.num_epochs: Number of epochs to train the transformer.
         """
         # Set Output Directory:
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
         self.output_dir = output_dir
 
         # Set Mode:
@@ -244,6 +247,7 @@ class Trainer():
                 loss, logits = outputs[0], outputs[1]
                 self.optimizer.zero_grad()
                 loss.backward()
+                clip_grad_norm_(self.model.parameters(), 1)
                 self.optimizer.step()
                 self.scheduler.step()
                 train_losses.append(loss.detach())
