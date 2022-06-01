@@ -139,6 +139,7 @@ class Trainer():
         self.max_length = min(max_length, self.model.config.n_ctx)
         self.max_history = max_history
 
+        # Settings related to "train" mode only:
         if self.mode == "train":
             # Load Optimizer:
             logging.info("Loading the optimizer...")
@@ -150,19 +151,14 @@ class Trainer():
 
             # Load Train & Validation Datasets:
             logging.info("Loading train & valid data...")
-            train_set = EMDialogResponseGenerationDataset(
-                "train",
-                self.tokenizer,
-                max_history=self.max_history,
-                max_length=self.max_length
-
-            )
-            valid_set = EMDialogResponseGenerationDataset(
-                "validation",
-                self.tokenizer,
-                max_history=self.max_history,
-                max_length=self.max_length
-            )
+            train_set = EMDialogResponseGenerationDataset("train",
+                                                          self.tokenizer,
+                                                          max_history=self.max_history,
+                                                          max_length=self.max_length)
+            valid_set = EMDialogResponseGenerationDataset("validation",
+                                                          self.tokenizer,
+                                                          max_history=self.max_history,
+                                                          max_length=self.max_length)
             vocab = self.tokenizer.get_vocab()
             eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
             self.data_collator = PadCollate(eos_id)
@@ -183,12 +179,10 @@ class Trainer():
             self.num_epochs = num_epochs
             total_train_steps = self.num_epochs * num_batches
             warmup_steps = int(self.warmup_ratio * total_train_steps)
-            self.scheduler = get_polynomial_decay_schedule_with_warmup(
-                self.optimizer,
-                num_warmup_steps=warmup_steps,
-                num_training_steps=total_train_steps,
-                power=2
-            )
+            self.scheduler = get_polynomial_decay_schedule_with_warmup(self.optimizer,
+                                                                       num_warmup_steps=warmup_steps,
+                                                                       num_training_steps=total_train_steps,
+                                                                       power=2)
 
             # Summary Writer:
             self.writer = SummaryWriter()
@@ -246,11 +240,9 @@ class Trainer():
                 input_ids = input_ids.to(self.device)
                 token_type_ids = token_type_ids.to(self.device)
                 labels = labels.to(self.device)
-                outputs = self.model(
-                    input_ids=input_ids,
-                    token_type_ids=token_type_ids,
-                    labels=labels
-                )
+                outputs = self.model(input_ids=input_ids,
+                                     token_type_ids=token_type_ids,
+                                     labels=labels)
                 loss, logits = outputs[0], outputs[1]
                 self.optimizer.zero_grad()
                 loss.backward()
@@ -282,8 +274,8 @@ class Trainer():
                     'loss': self.best_loss,
                     'epoch': self.last_epoch
                 }
-                torch.save(
-                    state_dict, f"{self.output_dir}/best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
+                torch.save(state_dict,
+                           f"{self.output_dir}/best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
                 logging.info(
                     "*"*10 + "Current best checkpoint is saved." + "*"*10
                 )
@@ -296,14 +288,18 @@ class Trainer():
             )
             self.writer.add_scalar("Loss/valid", valid_loss, epoch)
             self.writer.add_scalar("PPL/valid", valid_ppl, epoch)
-            self.writer.add_scalars("Losses", {
-                'train': train_loss,
-                'valid': valid_loss,
-            }, epoch)
-            self.writer.add_scalars("PPLs", {
-                'train': train_ppl,
-                'valid': valid_ppl,
-            }, epoch)
+            self.writer.add_scalars("Losses",
+                                    {
+                                        'train': train_loss,
+                                        'valid': valid_loss,
+                                    },
+                                    epoch)
+            self.writer.add_scalars("PPLs",
+                                    {
+                                        'train': train_ppl,
+                                        'valid': valid_ppl,
+                                    },
+                                    epoch)
         logging.info("Training finished!")
 
     def validation(self):
@@ -326,20 +322,18 @@ class Trainer():
                 valid_losses.append(loss.detach())
                 ppl = torch.exp(loss.detach())
                 valid_ppls.append(ppl)
-
             valid_losses = [loss.item() for loss in valid_losses]
             valid_ppls = [
                 ppl.item() if not math.isinf(ppl.item()) else 1e+8 for ppl in valid_ppls
             ]
             valid_loss = np.mean(valid_losses)
             valid_ppl = np.mean(valid_ppls)
-            # if math.isnan(valid_ppl):
-            #     valid_ppl = 1e+8
         return valid_loss, valid_ppl
 
     def infer(self):
-        logging.info("Let's start!")
-        logging.info(
+        logging.info("Start inferring...")
+        print("Let's start!")
+        print(
             "If you want to quit the conversation, please type \"Abort!\"."
         )
         self.model.eval()
@@ -348,20 +342,18 @@ class Trainer():
                 SPECIAL_TOKEN_NAMES
             )
             input_history = []
-
             while True:
                 utterance = input("You: ")
                 if utterance == "Abort!":
                     print("Bot: Good bye.")
                     break
 
+                # Construct Inputs:
                 input_ids = [speaker1_id] + self.tokenizer.encode(utterance)
                 input_history.append(input_ids)
-
                 if len(input_history) >= self.max_history:
                     num_exceeded = len(input_history) - self.max_history + 1
                     input_history = input_history[num_exceeded:]
-
                 input_ids = [bos_id] + \
                     list(chain.from_iterable(input_history)) + \
                     [speaker2_id]
@@ -383,27 +375,22 @@ class Trainer():
                 if len(input_ids) != len(token_type_ids):
                     logging.error("Mismatching input ids and token type ids.")
                 input_len = len(input_ids)
-
                 input_ids = torch.LongTensor(
                     input_ids).unsqueeze(0).to(self.device)
                 token_type_ids = torch.LongTensor(
                     token_type_ids).unsqueeze(0).to(self.device)
 
+                # Sampling:
                 logging.info("Sampling...")
                 output_ids = self.nucleus_sampling(input_ids,
                                                    token_type_ids,
                                                    input_len)
-                # output_ids = self.model.generate(
-                #     input_ids=input_ids, token_type_ids=token_type_ids, pad_token_id=self.args.eos_id,
-                #     do_sample=True, top_p=self.args.top_p, max_length=self.args.max_len,
-                #     output_hidden_states=True, output_scores=True, return_dict_in_generate=True,
-                # ).sequences
-                # output_ids = output_ids[0].tolist()[input_len:]
+
+                # Decoding:
                 logging.info("Decoding...")
                 res = self.tokenizer.decode(
                     output_ids, skip_special_tokens=True
                 )
-
                 print(f"Bot: {res}")
                 input_history.append(
                     [speaker2_id] + self.tokenizer.encode(res)
@@ -416,7 +403,6 @@ class Trainer():
                 input_ids=input_ids, token_type_ids=token_type_ids
             )[0][:, pos-1]  # (1, V)
             output = F.softmax(output, dim=-1)  # (1, V)
-
             sorted_probs, sorted_idxs = torch.sort(output, descending=True)
             cumsum_probs = torch.cumsum(sorted_probs, dim=-1)  # (1, V)
             idx_remove = cumsum_probs > self.top_p
@@ -426,94 +412,27 @@ class Trainer():
             sorted_probs /= torch.sum(sorted_probs,
                                       dim=-1,
                                       keepdim=True)  # (1, V)
-
             probs = torch.zeros(output.shape,
                                 device=self.device).scatter_(-1, sorted_idxs, sorted_probs)  # (1, V)
             idx = torch.multinomial(probs, 1)  # (1, 1)
-
             idx_item = idx.squeeze(-1).squeeze(-1).item()
             output_ids.append(idx_item)
-
             bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
                 SPECIAL_TOKEN_NAMES
             )
             if idx_item == eos_id:
                 break
-
             input_ids = torch.cat((input_ids, idx), dim=-1)
             next_type_id = torch.LongTensor(
                 [[speaker2_id]]
             ).to(self.device)
             token_type_ids = torch.cat((token_type_ids, next_type_id), dim=-1)
             assert input_ids.shape == token_type_ids.shape
-
         return output_ids
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('--seed', type=int, default=0, help="The random seed.")
-    # parser.add_argument('--mode', type=str, required=True,
-    #                     help="The running mode: train or inference?")
-    # parser.add_argument('--data_dir', type=str, default="data",
-    #                     help="The name of the parent directory where data files are stored.")
-    # parser.add_argument('--train_prefix', type=str, default="train",
-    #                     help="The prefix of the train data files' name.")
-    # parser.add_argument('--valid_prefix', type=str, default="validation",
-    #                     help="The prefix of the validation data files' name.")
-    # parser.add_argument('--model_type', type=str,
-    #                     default="gpt2", help="The model type of GPT-2.")
-    # parser.add_argument('--bos_token', type=str,
-    #                     default="<bos>", help="The BOS token.")
-    # parser.add_argument('--sp1_token', type=str,
-    #                     default="<sp1>", help="The speaker1 token.")
-    # parser.add_argument('--sp2_token', type=str,
-    #                     default="<sp2>", help="The speaker2 token.")
-    # parser.add_argument('--gpu', type=str, default="0",
-    #                     help="The index of GPU to use.")
-    # parser.add_argument('--lr', type=float, default=2e-5,
-    #                     help="The learning rate.")
-    # parser.add_argument('--warmup_ratio', type=float, default=0.1,
-    #                     help="The ratio of warmup steps to the total training steps.")
-    # parser.add_argument('--batch_size', type=int,
-    #                     default=8, help="The batch size.")
-    # parser.add_argument('--num_workers', type=int, default=0,
-    #                     help="The number of workers for data loading.")
-    # parser.add_argument('--num_epochs', type=int, default=10,
-    #                     help="The number of total epochs.")
-    # parser.add_argument('--max_len', type=int, default=1024,
-    #                     help="The maximum length of input sequence.")
-    # parser.add_argument('--max_turns', type=int, default=5,
-    #                     help="The maximum number of dialogue histories to include.")
-    # parser.add_argument('--top_p', type=float, default=0.9,
-    #                     help="The top-p value for nucleus sampling decoding.")
-    # parser.add_argument('--ckpt_dir', type=str, default="saved_models",
-    #                     help="The directory name for saved checkpoints.")
-    # parser.add_argument('--ckpt_name', type=str, required=False,
-    #                     help="The name of the trained checkpoint. (without extension)")
-    # parser.add_argument('--end_command', type=str, default="Abort!",
-    #                     help="The command to stop the conversation when inferencing.")
-
-    # args = parser.parse_args()
-
-    # assert args.mode in ["train", "infer"]
-    # assert args.model_type in [
-    #     "gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl",
-    #     "microsoft/DialoGPT-small", "microsoft/DialoGPT-medium", "microsoft/DialoGPT-large"
-    # ]
-
-    # args.data_dir = f"{args.data_dir}/{args.model_type}"
-    # args.ckpt_dir = f"{args.ckpt_dir}/{args.model_type}"
-
-    # if args.mode == 'train':
     trainer = Trainer(output_dir="output",
                       mode="infer",
                       checkpoint_path="best_ckpt_epoch=6_valid_loss=2.62367.ckpt")
-
     trainer.infer()
-
-    # elif args.mode == 'infer':
-    #     assert args.ckpt_name is not None, "Please specify the trained model checkpoint."
-
-    #     manager = Trainer(**args)
-    #     manager.infer()
