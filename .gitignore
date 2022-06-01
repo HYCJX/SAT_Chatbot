@@ -1,6 +1,9 @@
+# Project related:
 .vscode/
 logs/
 .DS_Store
+*.ckpt
+runs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
