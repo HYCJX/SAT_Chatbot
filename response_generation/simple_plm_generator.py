@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, get_polynomial_decay_schedule_with_warmup
-from typing import Optional
+from typing import Optional, Tuple
 
 from dataset import EMDialogResponseGenerationDataset
 from dataset import PadCollate
@@ -226,7 +226,7 @@ class Trainer():
         # Settings Completed:
         logging.info("Setting finished.")
 
-    def train(self):
+    def train(self) -> None:
         logging.info("Training starts.")
         start_epoch = self.last_epoch + 1
         for epoch in range(start_epoch, start_epoch + self.num_epochs):
@@ -302,7 +302,7 @@ class Trainer():
                                     epoch)
         logging.info("Training finished!")
 
-    def validation(self):
+    def validation(self) -> Tuple[list, list]:
         logging.info("Validation processing...")
         self.model.eval()
         valid_losses = []
@@ -330,7 +330,7 @@ class Trainer():
             valid_ppl = np.mean(valid_ppls)
         return valid_loss, valid_ppl
 
-    def infer(self):
+    def infer(self) -> None:
         logging.info("Start inferring...")
         print("Let's start!")
         print(
@@ -396,7 +396,10 @@ class Trainer():
                     [speaker2_id] + self.tokenizer.encode(res)
                 )
 
-    def nucleus_sampling(self, input_ids, token_type_ids, input_len):
+    def nucleus_sampling(self,
+                         input_ids: list,
+                         token_type_ids: list,
+                         input_len: int) -> list:
         output_ids = []
         for pos in tqdm(range(input_len, self.max_length)):
             output = self.model(
