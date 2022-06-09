@@ -93,7 +93,6 @@ class Trainer():
                 self.batch_size: Batch size.
                 self.num_epochs: Number of epochs to train the transformer.
                 self.top_p: Nucleus sampling
-
         """
         # Set Output Directory:
         if not os.path.exists(output_dir):
