@@ -78,12 +78,12 @@ class SentimentModelTrainer():
             )
             trainer.train()
             evaluation_metrics = trainer.evaluate()
-            return evaluation_metrics["MSE"]
+            return evaluation_metrics["eval_MSE"]
 
         logging.info(f"Fintuning RoBERTa model ...")
         study = optuna.create_study(study_name='hyper-parameter-search',
                                     direction='minimize')
-        study.optimize(func=objective, n_trials=1, show_progress_bar=True)
+        study.optimize(func=objective, n_trials=25)
         logging.info(study.best_value)
         logging.info(study.best_params)
         logging.info(study.best_trial)
