@@ -21,11 +21,12 @@ from dataset import EMDialogResponseGenerationDataset
 from dataset import PadCollate
 
 
-logging.basicConfig(filename='response_generation.log',
-                    filemode='w',
+logging.basicConfig(filename="response_generation.log",
+                    filemode="w",
                     level=logging.DEBUG,
-                    format='%(name)s - %(levelname)s - %(message)s')
-logging.info('This will get logged to a file')
+                    format="%(name)s - %(levelname)s - %(message)s",
+                    datefmt="%Y-%m-%d %H:%M:%S")
+logging.info("This will get logged to a file")
 
 SPECIAL_TOKENS = {
     "bos_token": "<bos>",
@@ -194,18 +195,18 @@ class Trainer():
                 logging.info("Loading the trained checkpoint model...")
                 checkpoint = torch.load(
                     checkpoint_path, map_location=self.device)
-                self.model.load_state_dict(checkpoint['model_state_dict'])
+                self.model.load_state_dict(checkpoint["model_state_dict"])
 
-                if self.mode == 'train':
+                if self.mode == "train":
                     logging.info(
                         f"The training restarts with the specified checkpoint: {checkpoint_path}.ckpt."
                     )
                     self.optimizer.load_state_dict(
-                        checkpoint['optim_state_dict'])
+                        checkpoint["optim_state_dict"])
                     self.scheduler.load_state_dict(
-                        checkpoint['sched_state_dict'])
-                    self.best_loss = checkpoint['loss']
-                    self.last_epoch = checkpoint['epoch']
+                        checkpoint["sched_state_dict"])
+                    self.best_loss = checkpoint["loss"]
+                    self.last_epoch = checkpoint["epoch"]
                 else:
                     logging.info(
                         "The inference will start with the specified checkpoint."
@@ -214,7 +215,7 @@ class Trainer():
                 logging.error(
                     f"Cannot fine the specified checkpoint {checkpoint_path}."
                 )
-                if self.mode == 'train':
+                if self.mode == "train":
                     logging.error(
                         "Training will start with the initialized model."
                     )
@@ -267,11 +268,11 @@ class Trainer():
             if valid_loss < self.best_loss:
                 self.best_loss = valid_loss
                 state_dict = {
-                    'model_state_dict': self.model.state_dict(),
-                    'optim_state_dict': self.optimizer.state_dict(),
-                    'sched_state_dict': self.scheduler.state_dict(),
-                    'loss': self.best_loss,
-                    'epoch': self.last_epoch
+                    "model_state_dict": self.model.state_dict(),
+                    "optim_state_dict": self.optimizer.state_dict(),
+                    "sched_state_dict": self.scheduler.state_dict(),
+                    "loss": self.best_loss,
+                    "epoch": self.last_epoch
                 }
                 torch.save(state_dict,
                            f"{self.output_dir}/best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
@@ -289,14 +290,14 @@ class Trainer():
             self.writer.add_scalar("PPL/valid", valid_ppl, epoch)
             self.writer.add_scalars("Losses",
                                     {
-                                        'train': train_loss,
-                                        'valid': valid_loss,
+                                        "train": train_loss,
+                                        "valid": valid_loss,
                                     },
                                     epoch)
             self.writer.add_scalars("PPLs",
                                     {
-                                        'train': train_ppl,
-                                        'valid': valid_ppl,
+                                        "train": train_ppl,
+                                        "valid": valid_ppl,
                                     },
                                     epoch)
         logging.info("Training finished!")
@@ -433,8 +434,7 @@ class Trainer():
         return output_ids
 
 
-if __name__ == '__main__':
-    trainer = Trainer(output_dir="output",
-                      mode="infer",
-                      checkpoint_path="best_ckpt_epoch=6_valid_loss=2.62367.ckpt")
-    trainer.infer()
+if __name__ == "__main__":
+    trainer = Trainer(output_dir="response_generation_output",
+                      mode="train")
+    trainer.train()

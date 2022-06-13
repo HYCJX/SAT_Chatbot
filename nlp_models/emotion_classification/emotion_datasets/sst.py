@@ -7,11 +7,11 @@ from torch.utils.data import Dataset
 from typing import List, Optional
 
 logging.basicConfig(
-    filename='sentiment_analysis.log',
-    filemode='w',
+    filename="sentiment_analysis.log",
+    filemode="w",
     level=logging.DEBUG,
     format="%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 
 

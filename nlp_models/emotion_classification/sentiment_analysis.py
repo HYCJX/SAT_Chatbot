@@ -12,11 +12,11 @@ from typing import Optional
 from emotion_datasets.sst import DataCollator, StanfordSentimentTreebank
 
 logging.basicConfig(
-    filename='sentiment_analysis.log',
-    filemode='w',
+    filename="sentiment_analysis.log",
+    filemode="w",
     level=logging.DEBUG,
-    format='%(name)s - %(levelname)s - %(message)s',
-    datefmt="%Y-%m-%d %H:%M:%S",
+    format="%(name)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 
 
