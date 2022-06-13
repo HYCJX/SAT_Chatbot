@@ -19,7 +19,7 @@ class StanfordSentimentTreebank(Dataset):
     def __init__(self,
                  split: str) -> None:
         logging.info("Loading SST dataset.")
-        self.dataset = load_dataset("sst")[split].select([*range(0, 1000, 1)])
+        self.dataset = load_dataset("sst")[split]
 
     def __len__(self):
         return len(self.dataset)

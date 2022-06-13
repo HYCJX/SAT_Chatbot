@@ -66,10 +66,11 @@ class SentimentModelTrainer():
                 per_device_train_batch_size=16,
                 per_device_eval_batch_size=32,
             )
+            dataset_finetune = self.dataset_train.select([*range(0, 1000, 1)])
             trainer = Trainer(
                 model=self.model,
                 args=training_args,
-                train_dataset=self.dataset_train,
+                train_dataset=dataset_finetune,
                 eval_dataset=self.dataset_valid,
                 data_collator=self.data_collator,
                 compute_metrics=compute_metrics,
