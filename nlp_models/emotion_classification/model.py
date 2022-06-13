@@ -78,7 +78,7 @@ class SentimentModelTrainer():
             evaluation_metrics = trainer.evaluate()
             return evaluation_metrics["eval_MSE"]
 
-        logging.info(f"Fintuning RoBERTa model ...")
+        logging.info(f"Fintuning {self.model_checkpoint} model ...")
         study = optuna.create_study(study_name='hyper-parameter-search',
                                     direction='minimize')
         study.optimize(func=objective, n_trials=25)
@@ -106,7 +106,7 @@ class SentimentModelTrainer():
             data_collator=self.data_collator,
             compute_metrics=compute_metrics,
         )
-        logging.info(f"Training RoBERTa model ...")
+        logging.info(f"Training {self.model_checkpoint} model ...")
         trainer.train()
         logging.info(f"Evaluating ...")
         val_results = trainer.evaluate()
