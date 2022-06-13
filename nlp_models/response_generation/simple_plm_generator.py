@@ -23,7 +23,7 @@ from dataset import PadCollate
 
 logging.basicConfig(filename="response_generation.log",
                     filemode="w",
-                    level=logging.DEBUG,
+                    level=logging.INFO,
                     format="%(name)s - %(levelname)s - %(message)s",
                     datefmt="%Y-%m-%d %H:%M:%S")
 logging.info("This will get logged to a file")

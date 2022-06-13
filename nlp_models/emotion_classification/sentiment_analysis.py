@@ -14,7 +14,7 @@ from emotion_datasets.sst import DataCollator, StanfordSentimentTreebank
 logging.basicConfig(
     filename="sentiment_analysis.log",
     filemode="w",
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(name)s - %(levelname)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
