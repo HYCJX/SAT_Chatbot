@@ -2,6 +2,7 @@ import json
 import logging
 import optuna
 import os
+import torch
 
 from sklearn.metrics import mean_squared_error
 from torch.utils.data import Dataset
@@ -27,18 +28,15 @@ def compute_metrics(evaluation_predictions) -> dict:
 
 class SentimentModelTrainer():
     def __init__(self,
-                 model_type: str,
                  model_checkpoint: str,
                  dataset_train: Dataset,
                  dataset_valid: Dataset,
                  dataset_test: Dataset,
                  output_dir: Optional[str] = "sentiment_analysis_outputs") -> None:
+        self.model_checkpoint = model_checkpoint
         self.model = None
-        if model_type == "roberta":
-            self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
-                                                                            num_labels=1)
-        else:
-            logging.error(f"Model type {model_type} is invalid.")
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
+                                                                        num_labels=1)
         self.tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,
                                                        use_fast=True)
         self.data_collator = DataCollator(self.tokenizer)
@@ -53,7 +51,7 @@ class SentimentModelTrainer():
             training_args = TrainingArguments(
                 num_train_epochs=trial.suggest_int('num_train_epochs',
                                                    low=2,
-                                                   high=7),
+                                                   high=10),
                 learning_rate=trial.suggest_loguniform("learning_rate",
                                                        low=1e-5,
                                                        high=1e-3),
@@ -112,26 +110,40 @@ class SentimentModelTrainer():
         trainer.train()
         logging.info(f"Evaluating ...")
         val_results = trainer.evaluate()
-        with open(os.path.join(self.output_dir, "val-results.json"), "w") as stream:
+        checkpoint_name = self.model_checkpoint.replace("/", "")
+        with open(os.path.join(self.output_dir, f"{checkpoint_name}_val-results.json"), "w") as stream:
             json.dump(val_results, stream, indent=4)
         logging.info(f"Evaluation results: {val_results}")
         logging.info(f"Testing ...")
         test_results = trainer.predict(self.dataset_test)
-        with open(os.path.join(self.output_dir, "test-results.json"), "w") as stream:
+        with open(os.path.join(self.output_dir, f"{checkpoint_name}_test-results.json"), "w") as stream:
             json.dump(test_results.metrics, stream, indent=4)
         logging.info(f"Test results: {test_results.metrics}")
+        self.model.save_pretrained(
+            f"{self.output_dir}/{checkpoint_name}.ckpt"
+        )
+        logging.info(
+            "*"*10 + "Current best checkpoint is saved." + "*"*10
+        )
 
 
-sentiment_model_trainer = SentimentModelTrainer("roberta",
-                                                "roberta-base",
-                                                StanfordSentimentTreebank(
-                                                    "train"
-                                                ),
-                                                StanfordSentimentTreebank(
-                                                    "validation"
-                                                ),
-                                                StanfordSentimentTreebank(
-                                                    "test"
-                                                ))
-sentiment_model_trainer.tune_hyperparameters()
-sentiment_model_trainer.train()
+if __name__ == "__main__":
+    model_list = ["albert-base-v2",
+                  "roberta-base",
+                  "facebook/muppet-roberta-base",
+                  "xlnet-base-cased",
+                  "roberta-large",
+                  "facebook/muppet-roberta-large"]
+    for model in model_list:
+        sentiment_model_trainer = SentimentModelTrainer(model,
+                                                        StanfordSentimentTreebank(
+                                                            "train"
+                                                        ),
+                                                        StanfordSentimentTreebank(
+                                                            "validation"
+                                                        ),
+                                                        StanfordSentimentTreebank(
+                                                            "test"
+                                                        ))
+        sentiment_model_trainer.tune_hyperparameters()
+        sentiment_model_trainer.train()

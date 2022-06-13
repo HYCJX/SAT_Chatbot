@@ -44,6 +44,3 @@ class DataCollator:
                                 truncation=True,
                                 max_length=self.max_len)
         return dict(labels=torch.tensor(labels), input_ids=tokens["input_ids"], attention_mask=tokens["attention_mask"])
-
-
-StanfordSentimentTreebank("train")
