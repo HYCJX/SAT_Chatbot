@@ -17,7 +17,7 @@ from tqdm import tqdm
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, get_polynomial_decay_schedule_with_warmup
 from typing import Optional, Tuple
 
-from dataset import EMDialogResponseGenerationDataset
+from dataset import ResponseGenerationDataset
 from dataset import PadCollate
 
 
@@ -41,6 +41,7 @@ class Trainer():
     def __init__(self,
                  output_dir: str,
                  mode: Optional[str] = "train",
+                 dataset_name="empathetic_dialogues",
                  model_type: Optional[str] = "gpt2",
                  checkpoint_path: Optional[str] = None,
                  seed: Optional[float] = 0,
@@ -151,14 +152,17 @@ class Trainer():
 
             # Load Train & Validation Datasets:
             logging.info("Loading train & valid data...")
-            train_set = EMDialogResponseGenerationDataset("train",
-                                                          self.tokenizer,
-                                                          max_history=self.max_history,
-                                                          max_length=self.max_length)
-            valid_set = EMDialogResponseGenerationDataset("validation",
-                                                          self.tokenizer,
-                                                          max_history=self.max_history,
-                                                          max_length=self.max_length)
+            self.dataset_name = dataset_name
+            train_set = ResponseGenerationDataset(dataset_name,
+                                                  "train",
+                                                  self.tokenizer,
+                                                  max_history=self.max_history,
+                                                  max_length=self.max_length)
+            valid_set = ResponseGenerationDataset(dataset_name,
+                                                  "validation",
+                                                  self.tokenizer,
+                                                  max_history=self.max_history,
+                                                  max_length=self.max_length)
             vocab = self.tokenizer.get_vocab()
             eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
             self.data_collator = PadCollate(eos_id)
@@ -275,12 +279,12 @@ class Trainer():
                     "epoch": self.last_epoch
                 }
                 torch.save(state_dict,
-                           f"{self.output_dir}/best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
+                           f"{self.output_dir}/{self.dataset_name}_best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
                 logging.info(
                     "*"*10 + "Current best checkpoint is saved." + "*"*10
                 )
                 logging.info(
-                    f"{self.output_dir}/best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt"
+                    f"{self.output_dir}/{self.dataset_name}_best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt"
                 )
             logging.info(f"Best valid loss: {self.best_loss}")
             logging.info(
@@ -435,6 +439,7 @@ class Trainer():
 
 
 if __name__ == "__main__":
-    trainer = Trainer(output_dir="response_generation_output",
+    trainer = Trainer(output_dir="response_generation_outputs",
+                      dataset_name="daily_dialog",
                       mode="train")
     trainer.train()

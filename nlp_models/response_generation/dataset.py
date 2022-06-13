@@ -14,6 +14,7 @@ from transformers import GPT2Tokenizer
 
 SPACE = 'Ġ'
 END_MARKS = ['.', ',', '?', '!', '...']
+PRE_QUOTE = '’'
 QUOTES = ['"', '\'']
 ABBREVIATIONS = ['s', 'd', 't', 'm', 're', 'll', 've',
                  'S', 'D', 'T', 'M', 'Re', 'Ll', 'Ve']
@@ -23,8 +24,9 @@ COMMA_SYMBOL = "_comma_"
 SPECIAL_TOKENS_NAMES = ["<bos>", "<eos>", "<speaker1>", "<speaker2>"]
 
 
-class EMDialogResponseGenerationDataset(Dataset):
+class ResponseGenerationDataset(Dataset):
     def __init__(self,
+                 dataset_name: str,
                  split: str,
                  tokenizer: Tokenizer,
                  max_history: Optional[int] = 5,
@@ -33,7 +35,15 @@ class EMDialogResponseGenerationDataset(Dataset):
         self.token_type_ids = []  # (N, L)
         self.labels = []  # (N, L)
         logging.info(f"Processing {split} data...")
-        dialogue_ids = load_empathetic_dialogues(split, tokenizer)
+        dialogue_ids = []
+        if dataset_name == "empathetic_dialogues":
+            dialogue_ids = load_empathetic_dialogues(split, tokenizer)
+        elif dataset_name == "daily_dialog":
+            dialogue_ids = load_daily_dialog(split, tokenizer)
+        elif dataset_name == "blended":
+            dialogue_ids = load_blended(split, tokenizer)
+        else:
+            logging.error(f"Dataset with name {dataset_name} is invalid.")
         bos_id, eos_id, speaker1_id, speaker2_id = tokenizer.convert_tokens_to_ids(
             SPECIAL_TOKENS_NAMES
         )
@@ -44,7 +54,6 @@ class EMDialogResponseGenerationDataset(Dataset):
                     history.append([speaker1_id] + utterance)
                 else:
                     history.append([speaker2_id] + utterance)
-
             for h in range(len(history)):
                 if history[h][0] == speaker2_id:
                     start = max(0, h - max_history + 1)
@@ -112,16 +121,13 @@ class PadCollate():
         return input_ids, token_type_ids, labels
 
 
-def load_empathetic_dialogues(split: str, tokenizer: Tokenizer) -> list:
-    dataset = load_dataset("empathetic_dialogues")
+def load_empathetic_dialogues(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[bool] = True) -> list:
+    dataset_all = load_dataset("empathetic_dialogues")
     if not (split == "train" or split == "validation" or split == "test"):
         logging.error(
-            f"Split {split} is invalid while loading empathetic dialogues.")
-    raw_data = dataset[split]
-    return collect_utterances(raw_data, tokenizer)
-
-
-def collect_utterances(dataset: dict, tokenizer: Tokenizer, process_tokens: Optional[bool] = True) -> list:
+            f"Split {split} is invalid while loading empathetic dialogues."
+        )
+    dataset = dataset_all[split]
     # Extract fields:
     utterances = dataset["utterance"]
     conv_ids = dataset["conv_id"]
@@ -134,7 +140,7 @@ def collect_utterances(dataset: dict, tokenizer: Tokenizer, process_tokens: Opti
         speaker_idx = speaker_ids[i]
         utterance_modified = utterance.strip().replace(COMMA_SYMBOL, ",")
         token_list = tokenizer.tokenize(utterance_modified)
-        if process_tokens:
+        if use_process_tokens:
             token_list = process_token_list(token_list)
         text = tokenizer.convert_tokens_to_string(token_list)
         if EXCLUDE_SYMBOL in utterance:
@@ -147,15 +153,78 @@ def collect_utterances(dataset: dict, tokenizer: Tokenizer, process_tokens: Opti
             current_speaker_idx = speaker_idx
         else:
             conv_dict[conv_id][-1] += f" {text}"
-    dialogue_ids = []
-    for i, (conv_id, utter_list) in enumerate(conv_dict.items()):
+    dialogues = []
+    for _, (_, utter_list) in enumerate(conv_dict.items()):
+        dialogues.append(utter_list)
+    return dialogues_to_ids(dialogues, tokenizer)
+
+
+def load_daily_dialog(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[bool] = True) -> list:
+    dataset = load_dataset("daily_dialog")
+    if not (split == "train" or split == "validation" or split == "test"):
+        logging.error(
+            f"Split {split} is invalid while loading empathetic dialogues."
+        )
+    dialogues = dataset[split]["dialog"]
+    for i, dialogue in enumerate(tqdm(dialogues)):
+        new_dialogue = []
+        for utter in dialogue:
+            token_list = tokenizer.tokenize(
+                utter.strip().replace(PRE_QUOTE, QUOTES[1]))
+            if use_process_tokens:
+                token_list = process_token_list(token_list)
+            text = tokenizer.convert_tokens_to_string(token_list)
+            new_dialogue.append(text)
+        dialogues[i] = new_dialogue
+    return dialogues_to_ids(dialogues, tokenizer)
+
+
+def load_blended(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[bool] = True) -> list:
+    dataset_all = load_dataset("blended_skill_talk")
+    if not (split == "train" or split == "validation" or split == "test"):
+        logging.error(
+            f"Split {split} is invalid while loading empathetic dialogues."
+        )
+    dataset = dataset_all[split]
+    previous_utterance = dataset["previous_utterance"]
+    free_messages = dataset["free_messages"]
+    guided_messages = dataset["guided_messages"]
+    dialogues = []
+    for i, free_message in enumerate(tqdm(free_messages)):
+        free_message_list = [utter.strip()
+                             for utter
+                             in free_message
+                             if len(utter.strip()) > 0]
+        guided_message_list = [utter.strip()
+                               for utter
+                               in guided_messages[i]
+                               if len(utter.strip()) > 0]
+        dialogue = previous_utterance[i]
+        for j in range(len(free_message_list)):
+            token_list = tokenizer.tokenize(free_message_list[j])
+            if use_process_tokens:
+                token_list = process_token_list(token_list)
+            text = tokenizer.convert_tokens_to_string(token_list)
+            dialogue.append(text)
+            if j < len(guided_message_list):
+                token_list = process_token_list(
+                    tokenizer.tokenize(guided_message_list[j]))
+                text = tokenizer.convert_tokens_to_string(token_list)
+                dialogue.append(text)
+        dialogues.append(dialogue)
+    return dialogues_to_ids(dialogues, tokenizer)
+
+
+def dialogues_to_ids(dialogues: list,  tokenizer: Tokenizer) -> list:
+    dialogues_ids = []
+    for utter_list in dialogues:
         ids = []
         for utterance in utter_list:
             tokens = tokenizer.tokenize(utterance)
             token_ids = tokenizer.convert_tokens_to_ids(tokens)
             ids.append(token_ids)
-        dialogue_ids.append(ids)
-    return dialogue_ids
+        dialogues_ids.append(ids)
+    return dialogues_ids
 
 
 def process_token_list(token_list: List[str]) -> List[str]:
