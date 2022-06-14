@@ -2,7 +2,6 @@ import json
 import logging
 import optuna
 import os
-import torch
 
 from sklearn.metrics import mean_squared_error
 from torch.utils.data import Dataset
