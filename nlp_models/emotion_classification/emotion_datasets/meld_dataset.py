@@ -77,7 +77,7 @@ class Meld_Dataset(Dataset):
         self._string2tokens()
 
     def get_finetune_subset(self) -> Dataset:
-        return Subset(self, [*range(0, 1, 1)])
+        return Subset(self, [*range(0, 1000, 1)])
 
     def _load_emotions(self):
         with open(os.path.join(ROOT_DIR, DATASET, "emotions.json"), "r") as stream:

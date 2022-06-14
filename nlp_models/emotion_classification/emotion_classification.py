@@ -16,7 +16,7 @@ logging.basicConfig(
     filemode="w",
     level=logging.INFO,
     format="%(name)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 
 
@@ -96,7 +96,7 @@ class EmotionClassifierTrainer():
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
         study = optuna.create_study(study_name="hyper-parameter-search",
                                     direction="minimize")
-        study.optimize(func=objective, n_trials=1)
+        study.optimize(func=objective, n_trials=50)
         logging.info(study.best_value)
         logging.info(study.best_params)
         logging.info(study.best_trial)
