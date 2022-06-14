@@ -26,7 +26,7 @@ SPECIAL_TOKENS_NAMES = ["<bos>", "<eos>", "<speaker1>", "<speaker2>"]
 
 class ResponseGenerationDataset(Dataset):
     def __init__(self,
-                 dataset_name: str,
+                 dataset_names: str,
                  split: str,
                  tokenizer: Tokenizer,
                  max_history: Optional[int] = 5,
@@ -36,14 +36,16 @@ class ResponseGenerationDataset(Dataset):
         self.labels = []  # (N, L)
         logging.info(f"Processing {split} data...")
         dialogue_ids = []
-        if dataset_name == "empathetic_dialogues":
-            dialogue_ids = load_empathetic_dialogues(split, tokenizer)
-        elif dataset_name == "daily_dialog":
-            dialogue_ids = load_daily_dialog(split, tokenizer)
-        elif dataset_name == "blended":
-            dialogue_ids = load_blended(split, tokenizer)
-        else:
-            logging.error(f"Dataset with name {dataset_name} is invalid.")
+        for dataset_name in dataset_names:
+            if dataset_name == "empathetic_dialogues":
+                dialogue_ids.extend(
+                    load_empathetic_dialogues(split, tokenizer))
+            elif dataset_name == "daily_dialog":
+                dialogue_ids.extend(load_daily_dialog(split, tokenizer))
+            elif dataset_name == "blended":
+                dialogue_ids.extend(load_blended(split, tokenizer))
+            else:
+                logging.error(f"Dataset with name {dataset_name} is invalid.")
         bos_id, eos_id, speaker1_id, speaker2_id = tokenizer.convert_tokens_to_ids(
             SPECIAL_TOKENS_NAMES
         )

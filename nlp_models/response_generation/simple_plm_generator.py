@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, get_polynomial_decay_schedule_with_warmup
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 from dataset import ResponseGenerationDataset
 from dataset import PadCollate
@@ -39,19 +39,19 @@ SPECIAL_TOKEN_NAMES = ["<bos>", "<eos>", "<speaker1>", "<speaker2>"]
 
 class Trainer():
     def __init__(self,
-                 output_dir: str,
+                 output_dir: Optional[str] = None,
                  mode: Optional[str] = "train",
-                 dataset_name="empathetic_dialogues",
+                 dataset_names: List[str] = ["empathetic_dialogues"],
                  model_type: Optional[str] = "gpt2",
                  checkpoint_path: Optional[str] = None,
                  seed: Optional[float] = 0,
-                 max_length: Optional[int] = 1024,
+                 max_length: Optional[int] = 512,
                  max_history: Optional[int] = 5,
                  learning_rate: Optional[float] = 1e-5,
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
-                 num_epochs: Optional[int] = 10
-                 ):
+                 num_epochs: Optional[int] = 10,
+                 top_p: Optional[float] = 0.80):
         """
         Arguments:
             output_dir: Output directory.
@@ -67,6 +67,7 @@ class Trainer():
                 warmup_ratio: Warm-up hyperparameter of the scheduler.
                 batch_size: Batch size of the trainer.
                 num_epochs: Number of epochs to train the transformer.
+                top_p: Nucleus sampling parameter.
 
         Class fields:
             self.output_dir: Output directory.
@@ -92,12 +93,8 @@ class Trainer():
                 self.warmup_ratio: Warm-up hyperparameter of the scheduler.
                 self.batch_size: Batch size.
                 self.num_epochs: Number of epochs to train the transformer.
+                self.top_p: Nucleus sampling parameter.
         """
-        # Set Output Directory:
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-        self.output_dir = output_dir
-
         # Set Mode:
         self.mode = mode
 
@@ -105,16 +102,6 @@ class Trainer():
         use_cuda = torch.cuda.is_available()
         self.device = torch.device("cuda" if use_cuda else "cpu")
         logging.info(f"Using {self.device}")
-
-        # Fix Seed for Random Generations:
-        if use_cuda:
-            torch.backends.cudnn.deterministic = True
-        torch.manual_seed(seed)
-        np.random.seed(seed)
-        torch.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
-        random.seed(seed)
-        self.seed = seed
 
         # Tokenizer & Vocabulary:
         logging.info("Loading the tokenizer...")
@@ -124,7 +111,10 @@ class Trainer():
 
         # Load Model:
         logging.info("Loading the model...")
-        self.model = GPT2LMHeadModel.from_pretrained(model_type)
+        if not checkpoint_path:
+            self.model = GPT2LMHeadModel.from_pretrained(model_type)
+        else:
+            self.model = GPT2LMHeadModel.from_pretrained(checkpoint_path)
         self.model = self.model.to(self.device)
         if num_added_tokens > 0:
             new_num_tokens = orig_num_tokens + num_added_tokens
@@ -134,58 +124,79 @@ class Trainer():
         self.max_length = min(max_length, self.model.config.n_ctx)
         self.max_history = max_history
 
-        # Load Optimizer:
-        logging.info("Loading the optimizer...")
-        self.learning_rate = learning_rate
-        self.optimizer = torch.optim.AdamW(
-            self.model.parameters(),
-            lr=learning_rate
-        )
+        if self.mode == "train":
+            # Fix Seed for Random Generations:
+            if use_cuda:
+                torch.backends.cudnn.deterministic = True
+            torch.manual_seed(seed)
+            np.random.seed(seed)
+            torch.manual_seed(seed)
+            torch.cuda.manual_seed_all(seed)
+            random.seed(seed)
+            self.seed = seed
 
-        # Load Train & Validation Datasets:
-        logging.info("Loading train & valid data...")
-        self.dataset_name = dataset_name
-        train_set = ResponseGenerationDataset(dataset_name,
-                                              "train",
-                                              self.tokenizer,
-                                              max_history=self.max_history,
-                                              max_length=self.max_length)
-        valid_set = ResponseGenerationDataset(dataset_name,
-                                              "validation",
-                                              self.tokenizer,
-                                              max_history=self.max_history,
-                                              max_length=self.max_length)
-        vocab = self.tokenizer.get_vocab()
-        eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
-        self.data_collator = PadCollate(eos_id)
-        self.batch_size = batch_size
-        self.train_loader = DataLoader(train_set,
-                                       collate_fn=self.data_collator,
-                                       shuffle=True,
-                                       batch_size=self.batch_size,
-                                       pin_memory=True)
-        self.valid_loader = DataLoader(valid_set,
-                                       collate_fn=self.data_collator,
-                                       batch_size=self.batch_size,
-                                       pin_memory=True)
+            # Set Output Directory:
+            if not output_dir:
+                logging.error("Output directory is not specified.")
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+            self.output_dir = output_dir
 
-        # Scheduler:
-        num_batches = len(self.train_loader)
-        self.warmup_ratio = warmup_ratio
-        self.num_epochs = num_epochs
-        total_train_steps = self.num_epochs * num_batches
-        warmup_steps = int(self.warmup_ratio * total_train_steps)
-        self.scheduler = get_polynomial_decay_schedule_with_warmup(self.optimizer,
-                                                                   num_warmup_steps=warmup_steps,
-                                                                   num_training_steps=total_train_steps,
-                                                                   power=2)
+            # Load Optimizer:
+            logging.info("Loading the optimizer...")
+            self.learning_rate = learning_rate
+            self.optimizer = torch.optim.AdamW(
+                self.model.parameters(),
+                lr=learning_rate
+            )
 
-        # Summary Writer:
-        self.writer = SummaryWriter()
+            # Load Train & Validation Datasets:
+            logging.info("Loading train & valid data...")
+            self.dataset_names = dataset_names
+            train_set = ResponseGenerationDataset(dataset_names,
+                                                  "train",
+                                                  self.tokenizer,
+                                                  max_history=self.max_history,
+                                                  max_length=self.max_length)
+            valid_set = ResponseGenerationDataset(dataset_names,
+                                                  "validation",
+                                                  self.tokenizer,
+                                                  max_history=self.max_history,
+                                                  max_length=self.max_length)
+            vocab = self.tokenizer.get_vocab()
+            eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
+            self.data_collator = PadCollate(eos_id)
+            self.batch_size = batch_size
+            self.train_loader = DataLoader(train_set,
+                                           collate_fn=self.data_collator,
+                                           shuffle=True,
+                                           batch_size=self.batch_size,
+                                           pin_memory=True)
+            self.valid_loader = DataLoader(valid_set,
+                                           collate_fn=self.data_collator,
+                                           batch_size=self.batch_size,
+                                           pin_memory=True)
 
-        # Set Up Training or Inferring States:
-        self.best_loss = sys.float_info.max
-        self.last_epoch = 0
+            # Scheduler:
+            num_batches = len(self.train_loader)
+            self.warmup_ratio = warmup_ratio
+            self.num_epochs = num_epochs
+            total_train_steps = self.num_epochs * num_batches
+            warmup_steps = int(self.warmup_ratio * total_train_steps)
+            self.scheduler = get_polynomial_decay_schedule_with_warmup(self.optimizer,
+                                                                       num_warmup_steps=warmup_steps,
+                                                                       num_training_steps=total_train_steps,
+                                                                       power=2)
+
+            # Summary Writer:
+            self.writer = SummaryWriter()
+
+            # Set Up Training or Inferring States:
+            self.best_loss = sys.float_info.max
+            self.last_epoch = 0
+
+        # Set Top p:
+        self.top_p = top_p
 
         # Settings Completed:
         logging.info("Setting finished.")
@@ -231,13 +242,6 @@ class Trainer():
             valid_loss, valid_ppl = self.validation()
             if valid_loss < self.best_loss:
                 self.best_loss = valid_loss
-                state_dict = {
-                    "model_state_dict": self.model.state_dict(),
-                    "optim_state_dict": self.optimizer.state_dict(),
-                    "sched_state_dict": self.scheduler.state_dict(),
-                    "loss": self.best_loss,
-                    "epoch": self.last_epoch
-                }
                 self.model.save_pretrained(
                     f"{self.output_dir}/{self.dataset_name}_epoch={epoch}"
                 )
@@ -292,9 +296,111 @@ class Trainer():
             valid_ppl = np.mean(valid_ppls)
         return valid_loss, valid_ppl
 
+    def infer(self) -> None:
+        logging.info("Start inferring...")
+        print("Let's start!")
+        print(
+            "If you want to quit the conversation, please type \"Abort!\"."
+        )
+        self.model.eval()
+        with torch.no_grad():
+            bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
+                SPECIAL_TOKEN_NAMES
+            )
+            input_history = []
+            while True:
+                utterance = input("You: ")
+                if utterance == "Abort!":
+                    print("Bot: Good bye.")
+                    break
+
+                # Construct Inputs:
+                input_ids = [speaker1_id] + self.tokenizer.encode(utterance)
+                input_history.append(input_ids)
+                if len(input_history) >= self.max_history:
+                    num_exceeded = len(input_history) - self.max_history + 1
+                    input_history = input_history[num_exceeded:]
+                input_ids = [bos_id] + \
+                    list(chain.from_iterable(input_history)) + \
+                    [speaker2_id]
+                start_sp_id = input_history[0][0]
+                next_sp_id = speaker1_id if start_sp_id == speaker2_id else speaker2_id
+                if start_sp_id == next_sp_id:
+                    logging.error("Repeated speaker id in inference.")
+                token_type_ids = [
+                    [start_sp_id] * len(history)
+                    if h % 2 == 0
+                    else [next_sp_id] * len(history)
+                    for h, history in enumerate(input_history)
+                ]
+                if len(token_type_ids) != len(input_history):
+                    logging.error("Mismatching input ids and token type ids.")
+                token_type_ids = [start_sp_id] + \
+                    list(chain.from_iterable(token_type_ids)) + \
+                    [speaker2_id]
+                if len(input_ids) != len(token_type_ids):
+                    logging.error("Mismatching input ids and token type ids.")
+                input_len = len(input_ids)
+                input_ids = torch.LongTensor(
+                    input_ids).unsqueeze(0).to(self.device)
+                token_type_ids = torch.LongTensor(
+                    token_type_ids).unsqueeze(0).to(self.device)
+
+                # Sampling:
+                logging.info("Sampling...")
+                output_ids = self.nucleus_sampling(input_ids,
+                                                   token_type_ids,
+                                                   input_len)
+
+                # Decoding:
+                logging.info("Decoding...")
+                res = self.tokenizer.decode(
+                    output_ids, skip_special_tokens=True
+                )
+                print(f"Bot: {res}")
+                input_history.append(
+                    [speaker2_id] + self.tokenizer.encode(res)
+                )
+
+    def nucleus_sampling(self,
+                         input_ids: list,
+                         token_type_ids: list,
+                         input_len: int) -> list:
+        output_ids = []
+        for pos in tqdm(range(input_len, self.max_length)):
+            output = self.model(
+                input_ids=input_ids, token_type_ids=token_type_ids
+            )[0][:, pos-1]  # (1, V)
+            output = F.softmax(output, dim=-1)  # (1, V)
+            sorted_probs, sorted_idxs = torch.sort(output, descending=True)
+            cumsum_probs = torch.cumsum(sorted_probs, dim=-1)  # (1, V)
+            idx_remove = cumsum_probs > self.top_p
+            idx_remove[:, 1:] = idx_remove[:, :-1].clone()
+            idx_remove[:, 0] = False
+            sorted_probs[idx_remove] = 0.0
+            sorted_probs /= torch.sum(sorted_probs,
+                                      dim=-1,
+                                      keepdim=True)  # (1, V)
+            probs = torch.zeros(output.shape,
+                                device=self.device).scatter_(-1, sorted_idxs, sorted_probs)  # (1, V)
+            idx = torch.multinomial(probs, 1)  # (1, 1)
+            idx_item = idx.squeeze(-1).squeeze(-1).item()
+            output_ids.append(idx_item)
+            bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
+                SPECIAL_TOKEN_NAMES
+            )
+            if idx_item == eos_id:
+                break
+            input_ids = torch.cat((input_ids, idx), dim=-1)
+            next_type_id = torch.LongTensor(
+                [[speaker2_id]]
+            ).to(self.device)
+            token_type_ids = torch.cat((token_type_ids, next_type_id), dim=-1)
+            assert input_ids.shape == token_type_ids.shape
+        return output_ids
+
 
 if __name__ == "__main__":
-    trainer = Trainer(output_dir="response_generation_outputs",
-                      dataset_name="daily_dialog",
+    trainer = Trainer(output_dir="a",
                       mode="train")
     trainer.train()
