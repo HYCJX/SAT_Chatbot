@@ -1,4 +1,3 @@
-import argparse
 import logging
 import math
 import torch.nn.functional as F
@@ -243,7 +242,7 @@ class Trainer():
             if valid_loss < self.best_loss:
                 self.best_loss = valid_loss
                 self.model.save_pretrained(
-                    f"{self.output_dir}/{self.dataset_name}_epoch={epoch}"
+                    f"{self.output_dir}/{self.dataset_names}_epoch={epoch}"
                 )
                 logging.info(
                     "*"*10 + "Current best checkpoint is saved." + "*"*10
