@@ -4,6 +4,7 @@ logs/
 .DS_Store
 *.ckpt
 runs/
+results/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

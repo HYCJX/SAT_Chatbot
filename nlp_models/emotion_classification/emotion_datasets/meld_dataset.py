@@ -5,12 +5,14 @@ import os
 import random
 import torch
 
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, Subset
 from tqdm import tqdm
 from transformers import AutoTokenizer
 from typing import Tuple
 
 logging.basicConfig(
+    filename="emotion_classification.log",
+    filemode="w",
     level=logging.INFO,
     format="%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
@@ -37,7 +39,9 @@ def set_seed(seed: int) -> None:
 
 
 def get_emotion2id() -> Tuple[dict, dict]:
-    """Get a dict that converts string class to numbers."""
+    """
+    Get a dict that converts string class to numbers.
+    """
     emotions = [
         "neutral",
         "joy",
@@ -67,16 +71,19 @@ class Meld_Dataset(Dataset):
         self.num_future_utterances = num_future_utterances
         self.num_past_utterances = num_past_utterances
         self.speaker_mode = speaker_mode
-
+        # Load Dataset:
         self._load_emotions()
         self._load_utterance_ordered()
         self._string2tokens()
+
+    def get_finetune_subset(self) -> Dataset:
+        return Subset(self, [*range(0, 1, 1)])
 
     def _load_emotions(self):
         with open(os.path.join(ROOT_DIR, DATASET, "emotions.json"), "r") as stream:
             self.emotions = json.load(stream)[self.data_split]
 
-    def _load_utterance_ordered(self):
+    def _load_utterance_ordered(self) -> None:
         """
         Load the ids of the utterances in order.
         """
@@ -84,17 +91,14 @@ class Meld_Dataset(Dataset):
         with open(path, "r") as stream:
             self.utterance_ordered = json.load(stream)[self.data_split]
 
-    def _string2tokens(self):
+    def _string2tokens(self) -> None:
         """
         Convert string to (BPE) tokens.
         """
         logging.info(f"Converting utterances into (BPE) tokens ...")
-
         diaids = sorted(list(self.utterance_ordered.keys()))
-
         set_seed(SEED)
         random.shuffle(diaids)
-
         logging.info(f"Creating input utterances ... ")
         self.inputs_ = self._create_input(
             diaids,
@@ -103,50 +107,42 @@ class Meld_Dataset(Dataset):
             speaker_mode=self.speaker_mode,
         )
 
-    def _create_input(
-        self,
-        diaids,
-        num_future_utterances=0,
-        num_past_utterances=0,
-        speaker_mode=None,
-    ):
+    def _create_input(self,
+                      diaids,
+                      num_future_utterances=0,
+                      num_past_utterances=0,
+                      speaker_mode=None) -> list:
         args = {
             "diaids": diaids,
             "num_future_utterances": num_future_utterances,
             "num_past_utterances": num_past_utterances,
             "speaker_mode": speaker_mode,
         }
-        logging.debug(f"Arguments given: {args}")
-
+        logging.info(f"Arguments given: {args}")
         tokenizer = AutoTokenizer.from_pretrained(
             self.model_checkpoint, use_fast=True)
         max_model_input_size = tokenizer.max_model_input_sizes[self.model_checkpoint]
         num_truncated = 0
-
+        # Create Inputs:
         inputs = []
         for diaid in tqdm(diaids):
             ues = [
                 self._load_utterance_speaker_emotion(uttid, speaker_mode)
                 for uttid in self.utterance_ordered[diaid]
             ]
-
             num_tokens = [len(tokenizer(ue["Utterance"])["input_ids"])
                           for ue in ues]
-
             for idx, ue in enumerate(ues):
                 if ue["Emotion"] not in list(self.emotion2id.keys()):
                     continue
-
                 label = self.emotion2id[ue["Emotion"]]
-
                 indexes = [idx]
-                indexes_past = [
-                    i for i in range(idx - 1, idx - num_past_utterances - 1, -1)
-                ]
-                indexes_future = [
-                    i for i in range(idx + 1, idx + num_future_utterances + 1, 1)
-                ]
-
+                indexes_past = [i
+                                for i
+                                in range(idx - 1, idx - num_past_utterances - 1, -1)]
+                indexes_future = [i
+                                  for i
+                                  in range(idx + 1, idx + num_future_utterances + 1, 1)]
                 offset = 0
                 if len(indexes_past) < len(indexes_future):
                     for _ in range(len(indexes_future) - len(indexes_past)):
@@ -154,7 +150,6 @@ class Meld_Dataset(Dataset):
                 elif len(indexes_past) > len(indexes_future):
                     for _ in range(len(indexes_past) - len(indexes_future)):
                         indexes_future.append(None)
-
                 for i, j in zip(indexes_past, indexes_future):
                     if i is not None and i >= 0:
                         indexes.insert(0, i)
@@ -170,13 +165,10 @@ class Meld_Dataset(Dataset):
                             del indexes[-1]
                             num_truncated += 1
                             break
-
                 utterances = [ues[idx_]["Utterance"] for idx_ in indexes]
-
                 if num_past_utterances == 0 and num_future_utterances == 0:
                     assert len(utterances) == 1
                     final_utterance = utterances[0]
-
                 elif num_past_utterances > 0 and num_future_utterances == 0:
                     if len(utterances) == 1:
                         final_utterance = "</s></s>" + utterances[-1]
@@ -185,7 +177,6 @@ class Meld_Dataset(Dataset):
                             " ".join(utterances[:-1]) +
                             "</s></s>" + utterances[-1]
                         )
-
                 elif num_past_utterances == 0 and num_future_utterances > 0:
                     if len(utterances) == 1:
                         final_utterance = utterances[0] + "</s></s>"
@@ -194,7 +185,6 @@ class Meld_Dataset(Dataset):
                             utterances[0] + "</s></s>" +
                             " ".join(utterances[1:])
                         )
-
                 elif num_past_utterances > 0 and num_future_utterances > 0:
                     if len(utterances) == 1:
                         final_utterance = "</s></s>" + \
@@ -209,19 +199,15 @@ class Meld_Dataset(Dataset):
                         )
                 else:
                     raise ValueError
-
                 input_ids_attention_mask = tokenizer(final_utterance)
                 input_ids = input_ids_attention_mask["input_ids"]
                 attention_mask = input_ids_attention_mask["attention_mask"]
-
                 input_ = {
                     "input_ids": input_ids,
                     "attention_mask": attention_mask,
                     "label": label,
                 }
-
                 inputs.append(input_)
-
         logging.info(f"Number of truncated utterances: {num_truncated}")
         return inputs
 
@@ -237,7 +223,7 @@ class Meld_Dataset(Dataset):
         utterance = text["Utterance"].strip()
         emotion = text["Emotion"]
         speaker = text["Speaker"]
-
+        # Prepend Speaker:
         if speaker_mode is not None and speaker_mode.lower() == "upper":
             utterance = speaker.upper() + ": " + utterance
         elif speaker_mode is not None and speaker_mode.lower() == "title":

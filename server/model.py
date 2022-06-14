@@ -9,7 +9,7 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from typing import List, Optional
 
 
-logging.basicConfig(filename="response_generation.log",
+logging.basicConfig(filename="server_model.log",
                     filemode="w",
                     level=logging.INFO,
                     format="%(name)s - %(levelname)s - %(message)s",
