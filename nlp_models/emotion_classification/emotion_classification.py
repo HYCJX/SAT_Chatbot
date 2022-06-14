@@ -175,6 +175,7 @@ if __name__ == "__main__":
                                         speaker_mode=None)
             emotion_classifier_trainer = EmotionClassifierTrainer(model,
                                                                   NUM_CLASSES,
+                                                                  use_data_augmentation,
                                                                   dataset_train,
                                                                   dataset_valid,
                                                                   dataset_test,
