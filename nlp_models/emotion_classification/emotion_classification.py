@@ -169,7 +169,7 @@ if __name__ == "__main__":
                                          num_past_utterances=0,
                                          speaker_mode=None)
             dataset_test = Meld_Dataset("test",
-                                        model_checkpoint="roberta-base",
+                                        model_checkpoint=model,
                                         num_future_utterances=0,
                                         num_past_utterances=0,
                                         speaker_mode=None)
