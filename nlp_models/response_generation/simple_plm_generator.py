@@ -50,8 +50,7 @@ class Trainer():
                  learning_rate: Optional[float] = 1e-5,
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
-                 num_epochs: Optional[int] = 10,
-                 top_p: Optional[float] = 0.9
+                 num_epochs: Optional[int] = 10
                  ):
         """
         Arguments:
@@ -68,7 +67,6 @@ class Trainer():
                 warmup_ratio: Warm-up hyperparameter of the scheduler.
                 batch_size: Batch size of the trainer.
                 num_epochs: Number of epochs to train the transformer.
-                top_p: Nucleus sampling.
 
         Class fields:
             self.output_dir: Output directory.
@@ -94,7 +92,6 @@ class Trainer():
                 self.warmup_ratio: Warm-up hyperparameter of the scheduler.
                 self.batch_size: Batch size.
                 self.num_epochs: Number of epochs to train the transformer.
-                self.top_p: Nucleus sampling
         """
         # Set Output Directory:
         if not os.path.exists(output_dir):
@@ -103,9 +100,6 @@ class Trainer():
 
         # Set Mode:
         self.mode = mode
-
-        # Set Top p:
-        self.top_p = top_p
 
         # Set Up Device:
         use_cuda = torch.cuda.is_available()
@@ -140,92 +134,58 @@ class Trainer():
         self.max_length = min(max_length, self.model.config.n_ctx)
         self.max_history = max_history
 
-        # Settings related to "train" mode only:
-        if self.mode == "train":
-            # Load Optimizer:
-            logging.info("Loading the optimizer...")
-            self.learning_rate = learning_rate
-            self.optimizer = torch.optim.AdamW(
-                self.model.parameters(),
-                lr=learning_rate
-            )
+        # Load Optimizer:
+        logging.info("Loading the optimizer...")
+        self.learning_rate = learning_rate
+        self.optimizer = torch.optim.AdamW(
+            self.model.parameters(),
+            lr=learning_rate
+        )
 
-            # Load Train & Validation Datasets:
-            logging.info("Loading train & valid data...")
-            self.dataset_name = dataset_name
-            train_set = ResponseGenerationDataset(dataset_name,
-                                                  "train",
-                                                  self.tokenizer,
-                                                  max_history=self.max_history,
-                                                  max_length=self.max_length)
-            valid_set = ResponseGenerationDataset(dataset_name,
-                                                  "validation",
-                                                  self.tokenizer,
-                                                  max_history=self.max_history,
-                                                  max_length=self.max_length)
-            vocab = self.tokenizer.get_vocab()
-            eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
-            self.data_collator = PadCollate(eos_id)
-            self.batch_size = batch_size
-            self.train_loader = DataLoader(train_set,
-                                           collate_fn=self.data_collator,
-                                           shuffle=True,
-                                           batch_size=self.batch_size,
-                                           pin_memory=True)
-            self.valid_loader = DataLoader(valid_set,
-                                           collate_fn=self.data_collator,
-                                           batch_size=self.batch_size,
-                                           pin_memory=True)
+        # Load Train & Validation Datasets:
+        logging.info("Loading train & valid data...")
+        self.dataset_name = dataset_name
+        train_set = ResponseGenerationDataset(dataset_name,
+                                              "train",
+                                              self.tokenizer,
+                                              max_history=self.max_history,
+                                              max_length=self.max_length)
+        valid_set = ResponseGenerationDataset(dataset_name,
+                                              "validation",
+                                              self.tokenizer,
+                                              max_history=self.max_history,
+                                              max_length=self.max_length)
+        vocab = self.tokenizer.get_vocab()
+        eos_id = vocab[SPECIAL_TOKENS["eos_token"]]
+        self.data_collator = PadCollate(eos_id)
+        self.batch_size = batch_size
+        self.train_loader = DataLoader(train_set,
+                                       collate_fn=self.data_collator,
+                                       shuffle=True,
+                                       batch_size=self.batch_size,
+                                       pin_memory=True)
+        self.valid_loader = DataLoader(valid_set,
+                                       collate_fn=self.data_collator,
+                                       batch_size=self.batch_size,
+                                       pin_memory=True)
 
-            # Scheduler:
-            num_batches = len(self.train_loader)
-            self.warmup_ratio = warmup_ratio
-            self.num_epochs = num_epochs
-            total_train_steps = self.num_epochs * num_batches
-            warmup_steps = int(self.warmup_ratio * total_train_steps)
-            self.scheduler = get_polynomial_decay_schedule_with_warmup(self.optimizer,
-                                                                       num_warmup_steps=warmup_steps,
-                                                                       num_training_steps=total_train_steps,
-                                                                       power=2)
+        # Scheduler:
+        num_batches = len(self.train_loader)
+        self.warmup_ratio = warmup_ratio
+        self.num_epochs = num_epochs
+        total_train_steps = self.num_epochs * num_batches
+        warmup_steps = int(self.warmup_ratio * total_train_steps)
+        self.scheduler = get_polynomial_decay_schedule_with_warmup(self.optimizer,
+                                                                   num_warmup_steps=warmup_steps,
+                                                                   num_training_steps=total_train_steps,
+                                                                   power=2)
 
-            # Summary Writer:
-            self.writer = SummaryWriter()
+        # Summary Writer:
+        self.writer = SummaryWriter()
 
         # Set Up Training or Inferring States:
         self.best_loss = sys.float_info.max
         self.last_epoch = 0
-        if checkpoint_path is not None:
-            if os.path.exists(checkpoint_path):
-                logging.info("Loading the trained checkpoint model...")
-                checkpoint = torch.load(
-                    checkpoint_path, map_location=self.device)
-                self.model.load_state_dict(checkpoint["model_state_dict"])
-
-                if self.mode == "train":
-                    logging.info(
-                        f"The training restarts with the specified checkpoint: {checkpoint_path}.ckpt."
-                    )
-                    self.optimizer.load_state_dict(
-                        checkpoint["optim_state_dict"])
-                    self.scheduler.load_state_dict(
-                        checkpoint["sched_state_dict"])
-                    self.best_loss = checkpoint["loss"]
-                    self.last_epoch = checkpoint["epoch"]
-                else:
-                    logging.info(
-                        "The inference will start with the specified checkpoint."
-                    )
-            else:
-                logging.error(
-                    f"Cannot fine the specified checkpoint {checkpoint_path}."
-                )
-                if self.mode == "train":
-                    logging.error(
-                        "Training will start with the initialized model."
-                    )
-                else:
-                    logging.error("Cannot inference.")
-                    exit()
 
         # Settings Completed:
         logging.info("Setting finished.")
@@ -278,13 +238,11 @@ class Trainer():
                     "loss": self.best_loss,
                     "epoch": self.last_epoch
                 }
-                torch.save(state_dict,
-                           f"{self.output_dir}/{self.dataset_name}_best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt")
-                logging.info(
-                    "*"*10 + "Current best checkpoint is saved." + "*"*10
+                self.model.save_pretrained(
+                    f"{self.output_dir}/{self.dataset_name}_epoch={epoch}"
                 )
                 logging.info(
-                    f"{self.output_dir}/{self.dataset_name}_best_ckpt_epoch={epoch}_valid_loss={round(self.best_loss, 5)}.ckpt"
+                    "*"*10 + "Current best checkpoint is saved." + "*"*10
                 )
             logging.info(f"Best valid loss: {self.best_loss}")
             logging.info(
@@ -333,109 +291,6 @@ class Trainer():
             valid_loss = np.mean(valid_losses)
             valid_ppl = np.mean(valid_ppls)
         return valid_loss, valid_ppl
-
-    def infer(self) -> None:
-        logging.info("Start inferring...")
-        print("Let's start!")
-        print(
-            "If you want to quit the conversation, please type \"Abort!\"."
-        )
-        self.model.eval()
-        with torch.no_grad():
-            bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
-                SPECIAL_TOKEN_NAMES
-            )
-            input_history = []
-            while True:
-                utterance = input("You: ")
-                if utterance == "Abort!":
-                    print("Bot: Good bye.")
-                    break
-
-                # Construct Inputs:
-                input_ids = [speaker1_id] + self.tokenizer.encode(utterance)
-                input_history.append(input_ids)
-                if len(input_history) >= self.max_history:
-                    num_exceeded = len(input_history) - self.max_history + 1
-                    input_history = input_history[num_exceeded:]
-                input_ids = [bos_id] + \
-                    list(chain.from_iterable(input_history)) + \
-                    [speaker2_id]
-                start_sp_id = input_history[0][0]
-                next_sp_id = speaker1_id if start_sp_id == speaker2_id else speaker2_id
-                if start_sp_id == next_sp_id:
-                    logging.error("Repeated speaker id in inference.")
-                token_type_ids = [
-                    [start_sp_id] * len(history)
-                    if h % 2 == 0
-                    else [next_sp_id] * len(history)
-                    for h, history in enumerate(input_history)
-                ]
-                if len(token_type_ids) != len(input_history):
-                    logging.error("Mismatching input ids and token type ids.")
-                token_type_ids = [start_sp_id] + \
-                    list(chain.from_iterable(token_type_ids)) + \
-                    [speaker2_id]
-                if len(input_ids) != len(token_type_ids):
-                    logging.error("Mismatching input ids and token type ids.")
-                input_len = len(input_ids)
-                input_ids = torch.LongTensor(
-                    input_ids).unsqueeze(0).to(self.device)
-                token_type_ids = torch.LongTensor(
-                    token_type_ids).unsqueeze(0).to(self.device)
-
-                # Sampling:
-                logging.info("Sampling...")
-                output_ids = self.nucleus_sampling(input_ids,
-                                                   token_type_ids,
-                                                   input_len)
-
-                # Decoding:
-                logging.info("Decoding...")
-                res = self.tokenizer.decode(
-                    output_ids, skip_special_tokens=True
-                )
-                print(f"Bot: {res}")
-                input_history.append(
-                    [speaker2_id] + self.tokenizer.encode(res)
-                )
-
-    def nucleus_sampling(self,
-                         input_ids: list,
-                         token_type_ids: list,
-                         input_len: int) -> list:
-        output_ids = []
-        for pos in tqdm(range(input_len, self.max_length)):
-            output = self.model(
-                input_ids=input_ids, token_type_ids=token_type_ids
-            )[0][:, pos-1]  # (1, V)
-            output = F.softmax(output, dim=-1)  # (1, V)
-            sorted_probs, sorted_idxs = torch.sort(output, descending=True)
-            cumsum_probs = torch.cumsum(sorted_probs, dim=-1)  # (1, V)
-            idx_remove = cumsum_probs > self.top_p
-            idx_remove[:, 1:] = idx_remove[:, :-1].clone()
-            idx_remove[:, 0] = False
-            sorted_probs[idx_remove] = 0.0
-            sorted_probs /= torch.sum(sorted_probs,
-                                      dim=-1,
-                                      keepdim=True)  # (1, V)
-            probs = torch.zeros(output.shape,
-                                device=self.device).scatter_(-1, sorted_idxs, sorted_probs)  # (1, V)
-            idx = torch.multinomial(probs, 1)  # (1, 1)
-            idx_item = idx.squeeze(-1).squeeze(-1).item()
-            output_ids.append(idx_item)
-            bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
-                SPECIAL_TOKEN_NAMES
-            )
-            if idx_item == eos_id:
-                break
-            input_ids = torch.cat((input_ids, idx), dim=-1)
-            next_type_id = torch.LongTensor(
-                [[speaker2_id]]
-            ).to(self.device)
-            token_type_ids = torch.cat((token_type_ids, next_type_id), dim=-1)
-            assert input_ids.shape == token_type_ids.shape
-        return output_ids
 
 
 if __name__ == "__main__":

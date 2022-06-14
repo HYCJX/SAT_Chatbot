@@ -49,7 +49,7 @@ class SentimentModelTrainer():
     def tune_hyperparameters(self):
         def objective(trial: optuna.Trial):
             training_args = TrainingArguments(
-                num_train_epochs=trial.suggest_int('num_train_epochs',
+                num_train_epochs=trial.suggest_int("num_train_epochs",
                                                    low=2,
                                                    high=10),
                 learning_rate=trial.suggest_loguniform("learning_rate",
@@ -58,7 +58,7 @@ class SentimentModelTrainer():
                 warmup_ratio=trial.suggest_loguniform("warmup_ratio",
                                                       low=0.01,
                                                       high=0.1),
-                weight_decay=trial.suggest_loguniform('weight_decay',
+                weight_decay=trial.suggest_loguniform("weight_decay",
                                                       0.001,
                                                       0.1),
                 max_grad_norm=1.0,
@@ -80,8 +80,8 @@ class SentimentModelTrainer():
             return evaluation_metrics["eval_MSE"]
 
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
-        study = optuna.create_study(study_name='hyper-parameter-search',
-                                    direction='minimize')
+        study = optuna.create_study(study_name="hyper-parameter-search",
+                                    direction="minimize")
         study.optimize(func=objective, n_trials=25)
         logging.info(study.best_value)
         logging.info(study.best_params)
@@ -121,7 +121,7 @@ class SentimentModelTrainer():
             json.dump(test_results.metrics, stream, indent=4)
         logging.info(f"Test results: {test_results.metrics}")
         self.model.save_pretrained(
-            f"{self.output_dir}/{checkpoint_name}.ckpt"
+            f"{self.output_dir}/{checkpoint_name}"
         )
         logging.info(
             "*"*10 + "Current best checkpoint is saved." + "*"*10
