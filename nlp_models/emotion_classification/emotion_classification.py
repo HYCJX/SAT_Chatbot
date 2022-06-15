@@ -153,7 +153,7 @@ if __name__ == "__main__":
                                           num_future_utterances=1000,
                                           num_past_utterances=1000,
                                           speaker_mode="upper",
-                                          hp_up_to=100)
+                                          hp_up_to=150)
                 dataset_train = Meld_Dataset("train",
                                              model_checkpoint=model,
                                              num_future_utterances=1000,
