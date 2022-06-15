@@ -95,7 +95,7 @@ class EmotionClassifierTrainer():
 
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
         study = optuna.create_study(study_name="hyper-parameter-search",
-                                    direction="minimize")
+                                    direction="maximize")
         study.optimize(func=objective, n_trials=50)
         logging.info(study.best_value)
         logging.info(study.best_params)
