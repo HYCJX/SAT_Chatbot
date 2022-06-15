@@ -25,7 +25,6 @@ logging.basicConfig(filename="response_generation.log",
                     level=logging.INFO,
                     format="%(name)s - %(levelname)s - %(message)s",
                     datefmt="%Y-%m-%d %H:%M:%S")
-logging.info("This will get logged to a file")
 
 SPECIAL_TOKENS = {
     "bos_token": "<bos>",
@@ -74,7 +73,7 @@ class Trainer():
             self.device: Device for training (cpu or cuda).
             self.seed: Seed.
             self.tokenizer: Transformer's tokenizer.
-            self.model: Transformer Model.
+            self.model: Transformer model.
             self.max_length: Maximum length of transformer inputs.
             self.max_history: Maximum number of turns of conversations used as history.
             self.best_loss: Current best loss to start with.

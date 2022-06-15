@@ -5,6 +5,7 @@ import optuna
 import os
 
 from sklearn.metrics import f1_score
+from sqlalchemy import true
 from torch.utils.data import Dataset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional
@@ -64,7 +65,7 @@ class EmotionClassifierTrainer():
         def objective(trial: optuna.Trial):
             training_args = TrainingArguments(
                 num_train_epochs=trial.suggest_int("num_train_epochs",
-                                                   low=10,
+                                                   low=5,
                                                    high=15),
                 learning_rate=trial.suggest_loguniform("learning_rate",
                                                        low=5e-7,
@@ -89,11 +90,11 @@ class EmotionClassifierTrainer():
             )
             trainer.train()
             evaluation_metrics = trainer.evaluate()
-            return evaluation_metrics["eval_loss"]
+            return evaluation_metrics["eval_f1_weighted"]
 
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
         study = optuna.create_study(study_name="hyper-parameter-search",
-                                    direction="minimize")
+                                    direction="maximize")
         study.optimize(func=objective, n_trials=25)
         logging.info(study.best_value)
         logging.info(study.best_params)
@@ -102,14 +103,20 @@ class EmotionClassifierTrainer():
 
     def train(self):
         training_args = TrainingArguments(
-            num_train_epochs=self.best_params["num_train_epochs"],
+            num_train_epochs=15,
             learning_rate=self.best_params["learning_rate"],
             warmup_ratio=self.best_params["warmup_ratio"],
             weight_decay=0.01,
             max_grad_norm=1.0,
             output_dir=self.output_dir,
             per_device_train_batch_size=16,
-            per_device_eval_batch_size=32
+            per_device_eval_batch_size=32,
+            evaluation_strategy="epoch",
+            logging_strategy="epoch",
+            save_strategy="epoch",
+            metric_for_best_model="eval_f1_weighted",
+            greater_is_better=True,
+            load_best_model_at_end=True,
         )
         trainer = Trainer(
             model=self.model,
@@ -133,7 +140,7 @@ class EmotionClassifierTrainer():
         with open(os.path.join(self.output_dir, f"{checkpoint_name}_{self.is_using_augmentation}_test-results.json"), "w") as stream:
             json.dump(test_results.metrics, stream, indent=4)
         logging.info(f"Test results: {test_results.metrics}")
-        self.model.save_pretrained(
+        trainer.save_model(
             f"{self.output_dir}/{checkpoint_name}_{self.is_using_augmentation}"
         )
         logging.info(
