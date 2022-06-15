@@ -62,31 +62,28 @@ class EmotionClassifierTrainer():
 
     def tune_hyperparameters(self):
         def objective(trial: optuna.Trial):
-            training_args = TrainingArguments(
-                num_train_epochs=trial.suggest_int("num_train_epochs",
-                                                   low=5,
-                                                   high=15),
-                learning_rate=trial.suggest_loguniform("learning_rate",
-                                                       low=5e-7,
-                                                       high=5e-4),
-                warmup_ratio=trial.suggest_uniform("warmup_ratio",
-                                                   low=0.1,
-                                                   high=0.3),
-                weight_decay=0.01,
-                max_grad_norm=1.0,
-                output_dir=self.output_dir,
-                per_device_eval_batch_size=(self.batch_size * 2),
-                per_device_train_batch_size=self.batch_size,
-            )
-            trainer = Trainer(
-                model=self.model,
-                args=training_args,
-                train_dataset=self.dataset_hp,
-                eval_dataset=self.dataset_valid,
-                tokenizer=self.tokenizer,
-                data_collator=self.data_collator,
-                compute_metrics=compute_metrics,
-            )
+            training_args = TrainingArguments(num_train_epochs=trial.suggest_int("num_train_epochs",
+                                                                                 low=5,
+                                                                                 high=15),
+                                              learning_rate=trial.suggest_loguniform("learning_rate",
+                                                                                     low=5e-7,
+                                                                                     high=5e-4),
+                                              warmup_ratio=trial.suggest_uniform("warmup_ratio",
+                                                                                 low=0.1,
+                                                                                 high=0.3),
+                                              weight_decay=0.01,
+                                              max_grad_norm=1.0,
+                                              output_dir=self.output_dir,
+                                              per_device_eval_batch_size=(
+                                                  self.batch_size * 2),
+                                              per_device_train_batch_size=self.batch_size)
+            trainer = Trainer(model=self.model,
+                              args=training_args,
+                              train_dataset=self.dataset_hp,
+                              eval_dataset=self.dataset_valid,
+                              tokenizer=self.tokenizer,
+                              data_collator=self.data_collator,
+                              compute_metrics=compute_metrics)
             trainer.train()
             evaluation_metrics = trainer.evaluate()
             return evaluation_metrics["eval_f1_weighted"]
@@ -101,31 +98,27 @@ class EmotionClassifierTrainer():
         self.best_params = study.best_params
 
     def train(self):
-        training_args = TrainingArguments(
-            num_train_epochs=15,
-            learning_rate=self.best_params["learning_rate"],
-            warmup_ratio=self.best_params["warmup_ratio"],
-            weight_decay=0.01,
-            max_grad_norm=1.0,
-            output_dir=self.output_dir,
-            per_device_train_batch_size=16,
-            per_device_eval_batch_size=32,
-            evaluation_strategy="epoch",
-            logging_strategy="epoch",
-            save_strategy="epoch",
-            metric_for_best_model="eval_f1_weighted",
-            greater_is_better=True,
-            load_best_model_at_end=True,
-        )
-        trainer = Trainer(
-            model=self.model,
-            args=training_args,
-            train_dataset=self.dataset_train,
-            eval_dataset=self.dataset_valid,
-            tokenizer=self.tokenizer,
-            data_collator=self.data_collator,
-            compute_metrics=compute_metrics,
-        )
+        training_args = TrainingArguments(num_train_epochs=15,
+                                          learning_rate=self.best_params["learning_rate"],
+                                          warmup_ratio=self.best_params["warmup_ratio"],
+                                          weight_decay=0.01,
+                                          max_grad_norm=1.0,
+                                          output_dir=self.output_dir,
+                                          per_device_train_batch_size=16,
+                                          per_device_eval_batch_size=32,
+                                          evaluation_strategy="epoch",
+                                          logging_strategy="epoch",
+                                          save_strategy="epoch",
+                                          metric_for_best_model="eval_f1_weighted",
+                                          greater_is_better=True,
+                                          load_best_model_at_end=True)
+        trainer = Trainer(model=self.model,
+                          args=training_args,
+                          train_dataset=self.dataset_train,
+                          eval_dataset=self.dataset_valid,
+                          tokenizer=self.tokenizer,
+                          data_collator=self.data_collator,
+                          compute_metrics=compute_metrics)
         logging.info(f"Training {self.model_checkpoint} model ...")
         trainer.train()
         logging.info(f"Evaluating ...")

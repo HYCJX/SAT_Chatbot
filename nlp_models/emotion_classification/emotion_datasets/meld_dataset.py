@@ -5,7 +5,7 @@ import os
 import random
 import torch
 
-from torch.utils.data import Dataset, Subset
+from torch.utils.data import Dataset
 from tqdm import tqdm
 from transformers import AutoTokenizer
 from typing import Optional, Tuple

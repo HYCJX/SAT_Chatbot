@@ -6,10 +6,10 @@ import os
 
 from sklearn.metrics import mean_squared_error, f1_score
 from torch.utils.data import Dataset, Subset
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trainer, TrainingArguments
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional
 
-from emotion_datasets.sst import DataCollator, StanfordSentimentTreebank
+from emotion_datasets.sst import SSTDataCollator, SST2DataCollator, StanfordSentimentTreebank, StanfordSentimentTreebankV2
 
 logging.basicConfig(
     filename="sentiment_analysis.log",
@@ -38,6 +38,7 @@ def compute_classification_metrics(evaluation_predictions) -> dict:
 class SentimentModelTrainer():
     def __init__(self,
                  model_checkpoint: str,
+                 num_labels: int,
                  dataset_train: Dataset,
                  dataset_valid: Dataset,
                  dataset_test: Dataset,
@@ -45,18 +46,16 @@ class SentimentModelTrainer():
                  output_dir: Optional[str] = "sentiment_analysis_outputs") -> None:
         self.model_checkpoint = model_checkpoint
         self.is_classification = is_classification
-        self.model = None
-        if not self.is_classification:
-            self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
-                                                                            num_labels=1)
-        else:
-            self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
-                                                                            num_labels=3)
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
+                                                                        num_labels=num_labels)
         self.tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,
                                                        use_fast=True)
-        self.data_collator = DataCollator(self.tokenizer,
-                                          is_classification=self.is_classification)
-        self.best_params = {}
+        self.data_collator = SST2DataCollator(self.tokenizer)
+        self.best_params = {
+            "learning_rate": 1e-5,
+            "warmup_ratio": 0.2,
+            "weight_decay": 0.01
+        }
         self.dataset_train = dataset_train
         self.dataset_valid = dataset_valid
         self.dataset_test = dataset_test
@@ -64,15 +63,13 @@ class SentimentModelTrainer():
 
     def tune_hyperparameters(self):
         def objective(trial: optuna.Trial):
-            training_args = TrainingArguments(num_train_epochs=trial.suggest_int("num_train_epochs",
-                                                                                 low=2,
-                                                                                 high=10),
-                                              learning_rate=trial.suggest_loguniform("learning_rate",
-                                                                                     low=1e-5,
-                                                                                     high=1e-3),
-                                              warmup_ratio=trial.suggest_loguniform("warmup_ratio",
-                                                                                    low=0.01,
-                                                                                    high=0.1),
+            training_args = TrainingArguments(num_train_epochs=10,
+                                              learning_rate=trial.suggest_uniform("learning_rate",
+                                                                                  low=1e-5,
+                                                                                  high=5e-5),
+                                              warmup_ratio=trial.suggest_uniform("warmup_ratio",
+                                                                                 low=0.1,
+                                                                                 high=0.3),
                                               weight_decay=trial.suggest_loguniform("weight_decay",
                                                                                     0.001,
                                                                                     0.1),
@@ -115,7 +112,7 @@ class SentimentModelTrainer():
         self.best_params = study.best_params
 
     def train(self):
-        training_args = TrainingArguments(num_train_epochs=self.best_params["num_train_epochs"],
+        training_args = TrainingArguments(num_train_epochs=10,
                                           learning_rate=self.best_params["learning_rate"],
                                           warmup_ratio=self.best_params["warmup_ratio"],
                                           weight_decay=self.best_params["weight_decay"],
@@ -123,7 +120,12 @@ class SentimentModelTrainer():
                                           output_dir=self.output_dir,
                                           per_device_train_batch_size=16,
                                           per_device_eval_batch_size=32,
-                                          )
+                                          evaluation_strategy="epoch",
+                                          logging_strategy="epoch",
+                                          save_strategy="epoch",
+                                          metric_for_best_model="eval_f1_weighted",
+                                          greater_is_better=True,
+                                          load_best_model_at_end=True)
         if not self.is_classification:
             trainer = Trainer(model=self.model,
                               args=training_args,
@@ -151,7 +153,7 @@ class SentimentModelTrainer():
         with open(os.path.join(self.output_dir, f"{checkpoint_name}_test-results.json"), "w") as stream:
             json.dump(test_results.metrics, stream, indent=4)
         logging.info(f"Test results: {test_results.metrics}")
-        self.model.save_pretrained(
+        trainer.save_model(
             f"{self.output_dir}/{checkpoint_name}"
         )
         logging.info(
@@ -166,16 +168,16 @@ if __name__ == "__main__":
                   "xlnet-base-cased",
                   "roberta-large"]
     for model in model_list:
-        sentiment_model_trainer = SentimentModelTrainer(model,
-                                                        StanfordSentimentTreebank(
+        sentiment_model_trainer = SentimentModelTrainer(model_checkpoint=model,
+                                                        num_labels=2,
+                                                        dataset_train=StanfordSentimentTreebankV2(
                                                             "train"
                                                         ),
-                                                        StanfordSentimentTreebank(
+                                                        dataset_valid=StanfordSentimentTreebankV2(
                                                             "validation"
                                                         ),
-                                                        StanfordSentimentTreebank(
+                                                        dataset_test=StanfordSentimentTreebankV2(
                                                             "test"
                                                         ),
                                                         is_classification=True)
-        sentiment_model_trainer.tune_hyperparameters()
         sentiment_model_trainer.train()
