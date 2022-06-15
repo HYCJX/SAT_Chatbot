@@ -63,17 +63,15 @@ class EmotionClassifierTrainer():
         def objective(trial: optuna.Trial):
             training_args = TrainingArguments(
                 num_train_epochs=trial.suggest_int("num_train_epochs",
-                                                   low=5,
+                                                   low=10,
                                                    high=15),
                 learning_rate=trial.suggest_loguniform("learning_rate",
-                                                       low=1e-6,
-                                                       high=1e-3),
-                warmup_ratio=trial.suggest_loguniform("warmup_ratio",
-                                                      low=0.01,
-                                                      high=0.5),
-                weight_decay=trial.suggest_loguniform("weight_decay",
-                                                      0.001,
-                                                      0.1),
+                                                       low=5e-7,
+                                                       high=5e-4),
+                warmup_ratio=trial.suggest_uniform("warmup_ratio",
+                                                   low=0.1,
+                                                   high=0.3),
+                weight_decay=0.01,
                 max_grad_norm=1.0,
                 output_dir=self.output_dir,
                 per_device_eval_batch_size=(self.batch_size * 2),
@@ -91,12 +89,12 @@ class EmotionClassifierTrainer():
             )
             trainer.train()
             evaluation_metrics = trainer.evaluate()
-            return evaluation_metrics["eval_f1_weighted"]
+            return evaluation_metrics["eval_loss"]
 
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
         study = optuna.create_study(study_name="hyper-parameter-search",
-                                    direction="maximize")
-        study.optimize(func=objective, n_trials=50)
+                                    direction="minimize")
+        study.optimize(func=objective, n_trials=25)
         logging.info(study.best_value)
         logging.info(study.best_params)
         logging.info(study.best_trial)
@@ -107,7 +105,7 @@ class EmotionClassifierTrainer():
             num_train_epochs=self.best_params["num_train_epochs"],
             learning_rate=self.best_params["learning_rate"],
             warmup_ratio=self.best_params["warmup_ratio"],
-            weight_decay=self.best_params["weight_decay"],
+            weight_decay=0.01,
             max_grad_norm=1.0,
             output_dir=self.output_dir,
             per_device_train_batch_size=16,
@@ -144,11 +142,9 @@ class EmotionClassifierTrainer():
 
 
 if __name__ == "__main__":
-    model_list = ["albert-base-v2",
-                  "roberta-base",
+    model_list = ["roberta-base",
                   "facebook/muppet-roberta-base",
-                  "xlnet-base-cased",
-                  "roberta-large"]
+                  "xlnet-base-cased"]
     for model in model_list:
         for use_data_augmentation in [False, True]:
             if use_data_augmentation:
