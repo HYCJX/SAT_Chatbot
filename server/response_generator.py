@@ -190,5 +190,5 @@ class ResponseGenerator():
 
 if __name__ == "__main__":
     r = ResponseGenerator(
-        "response_generation_outputs/daily_dialog_epoch=7")
+        "results/response_generation_outputs/Baseline/empathetic_dialogues_epoch=6")
     r.infer()

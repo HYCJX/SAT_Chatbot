@@ -29,7 +29,6 @@ def compute_metrics(eval_predictions) -> dict:
     f1_weighted = f1_score(label_ids, preds, average="weighted")
     f1_micro = f1_score(label_ids, preds, average="micro")
     f1_macro = f1_score(label_ids, preds, average="macro")
-
     return {"f1_weighted": f1_weighted, "f1_micro": f1_micro, "f1_macro": f1_macro}
 
 
@@ -38,6 +37,7 @@ class EmotionClassifierTrainer():
                  model_checkpoint: str,
                  num_labels: int,
                  is_using_augmentation: bool,
+                 dataset_hp: Dataset,
                  dataset_train: Dataset,
                  dataset_valid: Dataset,
                  dataset_test: Dataset,
@@ -52,6 +52,7 @@ class EmotionClassifierTrainer():
                                                        use_fast=True)
         self.best_params = {}
         self.is_using_augmentation = is_using_augmentation
+        self.dataset_hp = dataset_hp
         self.dataset_train = dataset_train
         self.dataset_valid = dataset_valid
         self.dataset_test = dataset_test
@@ -77,11 +78,10 @@ class EmotionClassifierTrainer():
                 per_device_eval_batch_size=(self.batch_size * 2),
                 per_device_train_batch_size=self.batch_size,
             )
-            dataset_finetune = self.dataset_train.get_finetune_subset()
             trainer = Trainer(
                 model=self.model,
                 args=training_args,
-                train_dataset=dataset_finetune,
+                train_dataset=self.dataset_hp,
                 eval_dataset=self.dataset_valid,
                 tokenizer=self.tokenizer,
                 data_collator=self.data_collator,
@@ -148,12 +148,24 @@ if __name__ == "__main__":
     for model in model_list:
         for use_data_augmentation in [False, True]:
             if use_data_augmentation:
+                dataset_hp = Meld_Dataset("train",
+                                          model_checkpoint=model,
+                                          num_future_utterances=1000,
+                                          num_past_utterances=1000,
+                                          speaker_mode="upper",
+                                          hp_up_to=100)
                 dataset_train = Meld_Dataset("train",
                                              model_checkpoint=model,
                                              num_future_utterances=1000,
                                              num_past_utterances=1000,
                                              speaker_mode="upper")
             else:
+                dataset_hp = Meld_Dataset("train",
+                                          model_checkpoint=model,
+                                          num_future_utterances=0,
+                                          num_past_utterances=0,
+                                          speaker_mode=None,
+                                          hp_up_to=150)
                 dataset_train = Meld_Dataset("train",
                                              model_checkpoint=model,
                                              num_future_utterances=0,
@@ -169,12 +181,13 @@ if __name__ == "__main__":
                                         num_future_utterances=0,
                                         num_past_utterances=0,
                                         speaker_mode=None)
-            emotion_classifier_trainer = EmotionClassifierTrainer(model,
-                                                                  NUM_CLASSES,
-                                                                  use_data_augmentation,
-                                                                  dataset_train,
-                                                                  dataset_valid,
-                                                                  dataset_test,
+            emotion_classifier_trainer = EmotionClassifierTrainer(model_checkpoint=model,
+                                                                  num_labels=NUM_CLASSES,
+                                                                  is_using_augmentation=use_data_augmentation,
+                                                                  dataset_hp=dataset_hp,
+                                                                  dataset_train=dataset_train,
+                                                                  dataset_valid=dataset_valid,
+                                                                  dataset_test=dataset_test,
                                                                   output_dir="emotion_classification_outputs")
             emotion_classifier_trainer.tune_hyperparameters()
             emotion_classifier_trainer.train()

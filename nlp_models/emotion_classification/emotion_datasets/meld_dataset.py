@@ -8,7 +8,7 @@ import torch
 from torch.utils.data import Dataset, Subset
 from tqdm import tqdm
 from transformers import AutoTokenizer
-from typing import Tuple
+from typing import Optional, Tuple
 
 logging.basicConfig(
     filename="emotion_classification.log",
@@ -57,27 +57,24 @@ def get_emotion2id() -> Tuple[dict, dict]:
 
 
 class Meld_Dataset(Dataset):
-    def __init__(
-        self,
-        data_split,
-        model_checkpoint="roberta-base",
-        num_future_utterances=0,
-        num_past_utterances=0,
-        speaker_mode=None,
-    ):
+    def __init__(self,
+                 data_split: str,
+                 model_checkpoint: Optional[str] = "roberta-base",
+                 num_future_utterances: Optional[int] = 0,
+                 num_past_utterances: Optional[int] = 0,
+                 speaker_mode: Optional[str] = None,
+                 hp_up_to: Optional[int] = None):
         self.data_split = data_split
         self.model_checkpoint = model_checkpoint
         self.emotion2id, self.id2emotion = get_emotion2id()
         self.num_future_utterances = num_future_utterances
         self.num_past_utterances = num_past_utterances
         self.speaker_mode = speaker_mode
+        self.hp_up_to = hp_up_to
         # Load Dataset:
         self._load_emotions()
         self._load_utterance_ordered()
         self._string2tokens()
-
-    def get_finetune_subset(self) -> Dataset:
-        return Subset(self, [*range(0, 1000, 1)])
 
     def _load_emotions(self):
         with open(os.path.join(ROOT_DIR, DATASET, "emotions.json"), "r") as stream:
@@ -99,6 +96,9 @@ class Meld_Dataset(Dataset):
         diaids = sorted(list(self.utterance_ordered.keys()))
         set_seed(SEED)
         random.shuffle(diaids)
+        if self.hp_up_to is not None:
+            logging.info(f"Using only the first {self.hp_up_to} dialogues ...")
+            diaids = diaids[: self.hp_up_to]
         logging.info(f"Creating input utterances ... ")
         self.inputs_ = self._create_input(
             diaids,
@@ -108,10 +108,10 @@ class Meld_Dataset(Dataset):
         )
 
     def _create_input(self,
-                      diaids,
-                      num_future_utterances=0,
-                      num_past_utterances=0,
-                      speaker_mode=None) -> list:
+                      diaids: list,
+                      num_future_utterances: Optional[int] = 0,
+                      num_past_utterances: Optional[int] = 0,
+                      speaker_mode: Optional[str] = None) -> list:
         args = {
             "diaids": diaids,
             "num_future_utterances": num_future_utterances,
@@ -228,7 +228,6 @@ class Meld_Dataset(Dataset):
             utterance = speaker.upper() + ": " + utterance
         elif speaker_mode is not None and speaker_mode.lower() == "title":
             utterance = speaker.title() + ": " + utterance
-
         return {"Utterance": utterance, "Emotion": emotion}
 
     def __len__(self):
