@@ -1,3 +1,4 @@
+from cProfile import label
 import logging
 import torch
 
@@ -31,13 +32,25 @@ class StanfordSentimentTreebank(Dataset):
 class DataCollator:
     def __init__(self,
                  tokenizer: Tokenizer,
-                 max_len: Optional[int] = 128) -> None:
+                 max_len: Optional[int] = 128,
+                 is_classification: Optional[bool] = False) -> None:
         self.tokenizer = tokenizer
         self.max_len = max_len
+        self.is_classification = is_classification
 
     def __call__(self, examples: List[dict]) -> dict:
         sentences = [example["sentence"] for example in examples]
-        labels = [example["label"] for example in examples]
+        if not self.is_classification:
+            labels = [example["label"] for example in examples]
+        else:
+            labels = []
+            for example in examples:
+                if example["label"] > 0.6:
+                    labels.append(0)
+                elif example["label"] < 0.4:
+                    labels.append(2)
+                else:
+                    labels.append(1)
         tokens = self.tokenizer(sentences,
                                 return_tensors="pt",
                                 padding=True,

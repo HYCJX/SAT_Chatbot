@@ -46,7 +46,6 @@ class EmotionClassifierTrainer():
                  batch_size: Optional[int] = 16,
                  output_dir: Optional[str] = "emotion_classifier_outputs") -> None:
         self.model_checkpoint = model_checkpoint
-        self.model = None
         self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
                                                                         num_labels=num_labels)
         self.tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,

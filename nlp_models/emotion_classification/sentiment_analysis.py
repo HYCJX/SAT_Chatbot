@@ -1,10 +1,11 @@
 import json
 import logging
+import numpy as np
 import optuna
 import os
 
-from sklearn.metrics import mean_squared_error
-from torch.utils.data import Dataset
+from sklearn.metrics import mean_squared_error, f1_score
+from torch.utils.data import Dataset, Subset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trainer, TrainingArguments
 from typing import Optional
 
@@ -25,20 +26,36 @@ def compute_metrics(evaluation_predictions) -> dict:
     return {"MSE": mse}
 
 
+def compute_classification_metrics(evaluation_predictions) -> dict:
+    predictions, labels = evaluation_predictions
+    preds = np.argmax(predictions, axis=1)
+    f1_weighted = f1_score(labels, preds, average="weighted")
+    f1_micro = f1_score(labels, preds, average="micro")
+    f1_macro = f1_score(labels, preds, average="macro")
+    return {"f1_weighted": f1_weighted, "f1_micro": f1_micro, "f1_macro": f1_macro}
+
+
 class SentimentModelTrainer():
     def __init__(self,
                  model_checkpoint: str,
                  dataset_train: Dataset,
                  dataset_valid: Dataset,
                  dataset_test: Dataset,
+                 is_classification: Optional[bool] = False,
                  output_dir: Optional[str] = "sentiment_analysis_outputs") -> None:
         self.model_checkpoint = model_checkpoint
+        self.is_classification = is_classification
         self.model = None
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
-                                                                        num_labels=1)
+        if not self.is_classification:
+            self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
+                                                                            num_labels=1)
+        else:
+            self.model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
+                                                                            num_labels=3)
         self.tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,
                                                        use_fast=True)
-        self.data_collator = DataCollator(self.tokenizer)
+        self.data_collator = DataCollator(self.tokenizer,
+                                          is_classification=self.is_classification)
         self.best_params = {}
         self.dataset_train = dataset_train
         self.dataset_valid = dataset_valid
@@ -47,40 +64,50 @@ class SentimentModelTrainer():
 
     def tune_hyperparameters(self):
         def objective(trial: optuna.Trial):
-            training_args = TrainingArguments(
-                num_train_epochs=trial.suggest_int("num_train_epochs",
-                                                   low=2,
-                                                   high=10),
-                learning_rate=trial.suggest_loguniform("learning_rate",
-                                                       low=1e-5,
-                                                       high=1e-3),
-                warmup_ratio=trial.suggest_loguniform("warmup_ratio",
-                                                      low=0.01,
-                                                      high=0.1),
-                weight_decay=trial.suggest_loguniform("weight_decay",
-                                                      0.001,
-                                                      0.1),
-                max_grad_norm=1.0,
-                output_dir=self.output_dir,
-                per_device_train_batch_size=16,
-                per_device_eval_batch_size=32,
-            )
-            dataset_finetune = self.dataset_train.select([*range(0, 1000, 1)])
-            trainer = Trainer(
-                model=self.model,
-                args=training_args,
-                train_dataset=dataset_finetune,
-                eval_dataset=self.dataset_valid,
-                data_collator=self.data_collator,
-                compute_metrics=compute_metrics,
-            )
+            training_args = TrainingArguments(num_train_epochs=trial.suggest_int("num_train_epochs",
+                                                                                 low=2,
+                                                                                 high=10),
+                                              learning_rate=trial.suggest_loguniform("learning_rate",
+                                                                                     low=1e-5,
+                                                                                     high=1e-3),
+                                              warmup_ratio=trial.suggest_loguniform("warmup_ratio",
+                                                                                    low=0.01,
+                                                                                    high=0.1),
+                                              weight_decay=trial.suggest_loguniform("weight_decay",
+                                                                                    0.001,
+                                                                                    0.1),
+                                              max_grad_norm=1.0,
+                                              output_dir=self.output_dir,
+                                              per_device_train_batch_size=16,
+                                              per_device_eval_batch_size=32,
+                                              )
+            dataset_finetune = Subset(self.dataset_train,
+                                      [*range(0, 1000, 1)])
+            if not self.is_classification:
+                trainer = Trainer(model=self.model,
+                                  args=training_args,
+                                  train_dataset=dataset_finetune,
+                                  eval_dataset=self.dataset_valid,
+                                  data_collator=self.data_collator,
+                                  compute_metrics=compute_metrics)
+            else:
+                trainer = Trainer(model=self.model,
+                                  args=training_args,
+                                  train_dataset=dataset_finetune,
+                                  eval_dataset=self.dataset_valid,
+                                  data_collator=self.data_collator,
+                                  compute_metrics=compute_classification_metrics)
             trainer.train()
             evaluation_metrics = trainer.evaluate()
-            return evaluation_metrics["eval_MSE"]
+            if not self.is_classification:
+                return evaluation_metrics["eval_MSE"]
+            else:
+                return evaluation_metrics["eval_f1_weighted"]
 
         logging.info(f"Fintuning {self.model_checkpoint} model ...")
+        direction = "maximize" if self.is_classification else "minimize"
         study = optuna.create_study(study_name="hyper-parameter-search",
-                                    direction="minimize")
+                                    direction=direction)
         study.optimize(func=objective, n_trials=25)
         logging.info(study.best_value)
         logging.info(study.best_params)
@@ -88,24 +115,29 @@ class SentimentModelTrainer():
         self.best_params = study.best_params
 
     def train(self):
-        training_args = TrainingArguments(
-            num_train_epochs=self.best_params["num_train_epochs"],
-            learning_rate=self.best_params["learning_rate"],
-            warmup_ratio=self.best_params["warmup_ratio"],
-            weight_decay=self.best_params["weight_decay"],
-            max_grad_norm=1.0,
-            output_dir=self.output_dir,
-            per_device_train_batch_size=16,
-            per_device_eval_batch_size=32,
-        )
-        trainer = Trainer(
-            model=self.model,
-            args=training_args,
-            train_dataset=self.dataset_train,
-            eval_dataset=self.dataset_valid,
-            data_collator=self.data_collator,
-            compute_metrics=compute_metrics,
-        )
+        training_args = TrainingArguments(num_train_epochs=self.best_params["num_train_epochs"],
+                                          learning_rate=self.best_params["learning_rate"],
+                                          warmup_ratio=self.best_params["warmup_ratio"],
+                                          weight_decay=self.best_params["weight_decay"],
+                                          max_grad_norm=1.0,
+                                          output_dir=self.output_dir,
+                                          per_device_train_batch_size=16,
+                                          per_device_eval_batch_size=32,
+                                          )
+        if not self.is_classification:
+            trainer = Trainer(model=self.model,
+                              args=training_args,
+                              train_dataset=self.dataset_train,
+                              eval_dataset=self.dataset_valid,
+                              data_collator=self.data_collator,
+                              compute_metrics=compute_metrics)
+        else:
+            trainer = Trainer(model=self.model,
+                              args=training_args,
+                              train_dataset=self.dataset_train,
+                              eval_dataset=self.dataset_valid,
+                              data_collator=self.data_collator,
+                              compute_metrics=compute_classification_metrics)
         logging.info(f"Training {self.model_checkpoint} model ...")
         trainer.train()
         logging.info(f"Evaluating ...")
@@ -132,8 +164,7 @@ if __name__ == "__main__":
                   "roberta-base",
                   "facebook/muppet-roberta-base",
                   "xlnet-base-cased",
-                  "roberta-large",
-                  "facebook/muppet-roberta-large"]
+                  "roberta-large"]
     for model in model_list:
         sentiment_model_trainer = SentimentModelTrainer(model,
                                                         StanfordSentimentTreebank(
@@ -144,6 +175,7 @@ if __name__ == "__main__":
                                                         ),
                                                         StanfordSentimentTreebank(
                                                             "test"
-                                                        ))
+                                                        ),
+                                                        is_classification=True)
         sentiment_model_trainer.tune_hyperparameters()
         sentiment_model_trainer.train()
