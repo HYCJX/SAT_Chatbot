@@ -1,5 +1,5 @@
 import logging
-from tkinter import dialog
+import pandas as pd
 import torch
 
 from datasets import load_dataset
@@ -9,8 +9,6 @@ from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import Dataset
 from tqdm import tqdm
 from typing import List, Optional
-
-from transformers import GPT2Tokenizer
 
 SPACE = 'Ġ'
 END_MARKS = ['.', ',', '?', '!', '...']
@@ -44,6 +42,8 @@ class ResponseGenerationDataset(Dataset):
                 dialogue_ids.extend(load_daily_dialog(split, tokenizer))
             elif dataset_name == "blended":
                 dialogue_ids.extend(load_blended(split, tokenizer))
+            elif dataset_name == "anno_mi":
+                dialogue_ids.extend(load_annomi(split, tokenizer))
             else:
                 logging.error(f"Dataset with name {dataset_name} is invalid.")
         bos_id, eos_id, speaker1_id, speaker2_id = tokenizer.convert_tokens_to_ids(
@@ -214,6 +214,31 @@ def load_blended(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[
                 text = tokenizer.convert_tokens_to_string(token_list)
                 dialogue.append(text)
         dialogues.append(dialogue)
+    return dialogues_to_ids(dialogues, tokenizer)
+
+
+def load_annomi(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[bool] = True) -> list:
+    df = pd.read_csv("nlp_models/response_generation/anno_mi.csv")
+    current_transcript_id = 0
+    current_dialogue = [""]
+    dialogues = []
+    for _, row in df.iterrows():
+        if row["mi_quality"] == "high":
+            if current_transcript_id != row["transcript_id"]:
+                current_transcript_id = row["transcript_id"]
+                dialogues.append(current_dialogue.copy())
+                current_dialogue = [""]
+            utterance = row["utterance_text"]
+            token_list = tokenizer.tokenize(utterance.strip())
+            if use_process_tokens:
+                token_list = process_token_list(token_list)
+            text = tokenizer.convert_tokens_to_string(token_list)
+            current_dialogue.append(text)
+    if split == "train":
+        dialogues = dialogues[:90]
+    elif split == "validation":
+        dialogues = dialogues[90:]
+    print(dialogues[0])
     return dialogues_to_ids(dialogues, tokenizer)
 
 

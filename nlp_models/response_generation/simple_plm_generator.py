@@ -399,6 +399,7 @@ class Trainer():
 
 
 if __name__ == "__main__":
-    trainer = Trainer(output_dir="a",
-                      mode="train")
+    trainer = Trainer(output_dir="response_generation_outputs",
+                      mode="train",
+                      dataset_names=["anno_mi"])
     trainer.train()
