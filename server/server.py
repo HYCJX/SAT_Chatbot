@@ -46,7 +46,6 @@ async def handle_user_response(userResponse: UserResponse):
     user_utterance = userResponse.utterance
     response = chatbot.process_and_respond(user_utterance)
     bot_response = BotResponse(message=response)
-    print(bot_response)
     return bot_response
 
 

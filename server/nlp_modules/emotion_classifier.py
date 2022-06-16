@@ -78,16 +78,22 @@ class SentimentClassifer():
         self.score_list = []
         self.logger.info("Sentiment classifier initialised.")
 
-    def classify_utterance(self, utterance: str) -> Tuple[str, float]:
+    def classify_utterance(self, utterance: str) -> None:
         result = self.pipe(utterance)
-        self.label_list.append(result["label"])
-        self.score_list.append(result["score"])
+        score_pos = result[0][0]["score"]
+        score_neg = result[0][0]["score"]
+        if score_pos > score_neg:
+            self.label_list.append("positive")
+        else:
+            self.label_list.append("negative")
+        self.score_list.append((score_pos, score_neg))
         self.logger.info(f"Sentiment analysis results: {result}.")
-        return result["label"], result["score"]
+        self.logger.info(f"Current label list: {self.label_list}.")
+        self.logger.info(f"Current score list: {self.score_list}.")
 
 
 if __name__ == "__main__":
     s = SentimentClassifer(model_type="facebook/muppet-roberta-base",
                            model_checkpoint="results/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
-    utterances = ["I haven't been home for a long time."]
+    utterances = "I haven't been home for a long time."
     print(s.classify_utterance(utterances))

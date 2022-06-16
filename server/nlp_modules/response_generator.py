@@ -22,7 +22,7 @@ class ResponseGenerator():
                  model_path: str,
                  max_length: Optional[int] = 512,
                  max_history: Optional[int] = 5,
-                 top_p: Optional[float] = 0.80) -> None:
+                 top_p: Optional[float] = 0.85) -> None:
         """
         Arguments:
             model: Transformer model.
