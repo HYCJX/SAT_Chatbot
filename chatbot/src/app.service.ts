@@ -1,16 +1,18 @@
-interface UserResponse {
-  utterance: string;
-}
+import axios from 'axios';
 
-class AppService {
-  public async postUserResponse(userResponse: UserResponse) {
-    const response = await fetch(`/api/user`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userResponse }),
-    });
-    return await response.json();
-  }
-}
+import { UserResponse } from './types';
+
+const http = axios.create({
+  baseURL: 'http://localhost:8000/',
+  headers: {
+    'Content-type': 'application/json',
+  },
+});
+
+const postUserResponse = (userResponse: UserResponse) => {
+  return http.post<UserResponse>(`/user_response`, userResponse);
+};
+
+const AppService = { postUserResponse };
 
 export default AppService;

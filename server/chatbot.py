@@ -1,16 +1,33 @@
-class SATChatBot():
-    def __init__(self):
-        # Emotion Classification Models; the Name Implicates the Number of Emotions Recognisable:
-        self.emotion_model_3 = None
-        self.emotion_model_7 = None
-        self.emotion_model_32 = None
-        # Emotion Cause Extraction Models; Span or Classification:
-        self.emocause_model_cl = None
-        self.emocause_model_span = None
-        # Response Generation Models:
-        self.resGen_model = None
-        self.resGen_model_emo = None
-        self.resGen_model_all = None
+from typing import Optional
 
-    def analyse_user_utterance(self):
-        return ""
+from nlp_modules.emotion_classifier import EmotionClassifier, SentimentClassifer
+from nlp_modules.response_generator import ResponseGenerator
+
+
+EMOTION_CAUSES = {}
+
+
+class SATChatBot():
+    def __init__(self,
+
+                 sentiment_classifier: SentimentClassifer,
+                 response_generator: ResponseGenerator,
+                 emotion_classifier: Optional[EmotionClassifier] = None) -> None:
+        # NLP Modules:
+        self.emotion_classifier = emotion_classifier
+        self.sentiment_classifier = sentiment_classifier
+        self.response_generator = response_generator
+        # States:
+        self.emotion_history = []
+        self.sentiment_history = []
+        self.emotion_cause_dictionary = dict.fromkeys(EMOTION_CAUSES, False)
+
+    def process_and_respond(self, utterance: str) -> str:
+        # current_emotion = self.emotion_classifier.classify_utterance(utterance)
+        # self.emotion_history.append(current_emotion)
+        current_sentiment = self.sentiment_classifier.classify_utterance(
+            utterance
+        )
+        self.sentiment_history.append(current_sentiment)
+        response = self.response_generator.infer(utterance)
+        return response

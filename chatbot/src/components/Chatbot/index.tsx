@@ -2,27 +2,32 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
+import AppService from '../../app.service';
+import { BotResponse, UserResponse } from '../../types';
 import Chats from '../Chats';
 import './Chatbot.scss';
-
-interface ResponseBotObject {
-  message: string;
-  options?: string[];
-}
 
 const Chatbot: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [step, setStep] = useState<number>(0);
   const [editingUserResponse, setEditingUserResponse] = useState<string>('');
-  const [botResponse, setBotResponse] = useState<ResponseBotObject>({ message: '' });
-  const [submittedUserResponse, setSubmittedSendUserResponse] = useState<string>('');
+  const [botResponse, setBotResponse] = useState<BotResponse>({ message: '' });
+  const [submittedUserResponse, setSubmittedUserResponse] = useState<string>('');
 
-  // setting next step when there's response and option click
+  // Set Next Step (for Response and Option Click):
   const setNextStep = (response: string) => {
     setStep((step) => step + 1);
-    setSubmittedSendUserResponse(response);
-    let res = { message: '' };
-    setBotResponse(res);
+    setSubmittedUserResponse(response);
+    let userResponse: UserResponse = {
+      utterance: response,
+    };
+    AppService.postUserResponse(userResponse)
+      .then((response: any) => {
+        setBotResponse(response.data);
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      });
     setEditingUserResponse('');
   };
 

@@ -2,14 +2,12 @@ import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 
+import { BotResponse } from '../../types';
 import './Chats.scss';
 
 interface ChatsProps {
   userResponse: string;
-  botResponse: {
-    message: string;
-    options?: string[];
-  };
+  botResponse: BotResponse;
   optionClick: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -24,26 +22,26 @@ const Chats: React.FC<ChatsProps> = ({ userResponse, botResponse, optionClick }:
   const scrollRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  // Stack Up Messages:
   useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([{ message: 'Hi', sender: 'bot' }]);
-    } else {
-      let tempArray = [...messages];
-      tempArray.push({ message: userResponse, sender: 'user' });
-      setMessages(tempArray);
-
-      setTimeout(() => {
-        let temp2 = [...tempArray];
-        temp2.push({ message: botResponse.message, options: botResponse.options, sender: 'bot' });
-        setMessages(temp2);
-      }, 1000);
-    }
+    let tempArray = [...messages];
+    tempArray.push({ message: userResponse, sender: 'user' });
+    setMessages(tempArray);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [botResponse, userResponse]);
+  }, [userResponse]);
+
+  useEffect(() => {
+    let tempArray = [...messages];
+    console.log(botResponse);
+    tempArray.push({ message: botResponse.message, options: botResponse.options, sender: 'bot' });
+    setMessages(tempArray);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [botResponse]);
 
   // Enable Autoscroll After Each Message:
   useEffect(() => {
+    if (messages.length === 0) {
+      setMessages([{ message: 'Hi', sender: 'bot' }]);
+    }
     if (scrollRef && scrollRef.current && bodyRef && bodyRef.current) {
       bodyRef.current.scrollTo({
         top: scrollRef.current.offsetTop,
