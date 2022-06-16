@@ -54,6 +54,7 @@ def get_emotionid_dict() -> Tuple[dict, dict]:
 
 class EmpatheticDialoguesDataset(Dataset):
     def __init__(self, split):
+        super().__init__()
         self.raw_dataset = load_dataset("empathetic_dialogues")[split]
 
     def __len__(self):

@@ -63,6 +63,7 @@ class SentimentClassifer():
                  model_type: str,
                  model_checkpoint: str) -> None:
         self.logger = getLogger(f"Sentiment Classifier")
+        self.logger.info("Setting up the sentiment classifier...")
         tokenizer = AutoTokenizer.from_pretrained(model_type,
                                                   use_fast=True)
         label2id, id2label = get_sentiment2id()
@@ -73,9 +74,16 @@ class SentimentClassifer():
         self.pipe = TextClassificationPipeline(tokenizer=tokenizer,
                                                model=model,
                                                return_all_scores=True)
+        self.label_list = []
+        self.score_list = []
+        self.logger.info("Sentiment classifier initialised.")
 
-    def classify_utterance(self, utterance: str) -> float:
-        return self.pipe(utterance)
+    def classify_utterance(self, utterance: str) -> Tuple[str, float]:
+        result = self.pipe(utterance)
+        self.label_list.append(result["label"])
+        self.score_list.append(result["score"])
+        self.logger.info(f"Sentiment analysis results: {result}.")
+        return result["label"], result["score"]
 
 
 if __name__ == "__main__":

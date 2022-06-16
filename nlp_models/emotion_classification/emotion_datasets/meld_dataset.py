@@ -64,6 +64,7 @@ class Meld_Dataset(Dataset):
                  num_past_utterances: Optional[int] = 0,
                  speaker_mode: Optional[str] = None,
                  hp_up_to: Optional[int] = None):
+        super().__init__()
         self.data_split = data_split
         self.model_checkpoint = model_checkpoint
         self.emotion2id, self.id2emotion = get_emotion2id()

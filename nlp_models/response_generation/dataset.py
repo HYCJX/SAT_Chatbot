@@ -29,6 +29,7 @@ class ResponseGenerationDataset(Dataset):
                  tokenizer: Tokenizer,
                  max_history: Optional[int] = 5,
                  max_length: Optional[int] = 1024):
+        super().__init__()
         self.input_ids = []  # (N, L)
         self.token_type_ids = []  # (N, L)
         self.labels = []  # (N, L)

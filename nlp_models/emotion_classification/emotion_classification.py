@@ -5,7 +5,6 @@ import optuna
 import os
 
 from sklearn.metrics import f1_score
-from sqlalchemy import true
 from torch.utils.data import Dataset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional

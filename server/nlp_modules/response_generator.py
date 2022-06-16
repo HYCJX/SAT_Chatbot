@@ -43,7 +43,7 @@ class ResponseGenerator():
         """
         # Set up logger:
         self.logger = getLogger(f"Response Generator {model_path}")
-
+        self.logger.info("Setting up the response generator...")
         # Set Up Device:
         use_cuda = torch.cuda.is_available()
         self.device = torch.device("cuda" if use_cuda else "cpu")
@@ -68,7 +68,7 @@ class ResponseGenerator():
         # Set Top p:
         self.top_p = top_p
         # Settings Completed:
-        self.logger.info("Setting finished.")
+        self.logger.info("Response generator initialised.")
 
     def infer(self, utterance: str) -> str:
         self.logger.info("Generating response...")
@@ -120,6 +120,7 @@ class ResponseGenerator():
             self.input_history.append(
                 [speaker2_id] + self.tokenizer.encode(result)
             )
+            self.logger.info(f"Generated result: {result}.")
             return result
 
     def nucleus_sampling(self,

@@ -49,7 +49,7 @@ class Trainer():
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
                  num_epochs: Optional[int] = 10,
-                 top_p: Optional[float] = 0.80):
+                 top_p: Optional[float] = 0.85):
         """
         Arguments:
             output_dir: Output directory.
@@ -400,6 +400,6 @@ class Trainer():
 
 if __name__ == "__main__":
     trainer = Trainer(output_dir="response_generation_outputs",
-                      mode="train",
-                      dataset_names=["anno_mi"])
-    trainer.train()
+                      mode="infer",
+                      checkpoint_path="results/response_generation_outputs/annoMI/annoMI_epoch=5")
+    trainer.infer()

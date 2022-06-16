@@ -19,6 +19,7 @@ logging.basicConfig(
 class StanfordSentimentTreebank(Dataset):
     def __init__(self,
                  split: str) -> None:
+        super().__init__()
         logging.info("Loading SST dataset.")
         self.dataset = load_dataset("sst")[split]
 
@@ -62,6 +63,7 @@ class SSTDataCollator:
 class StanfordSentimentTreebankV2(Dataset):
     def __init__(self,
                  split: str) -> None:
+        super().__init__()
         logging.info("Loading SSTv2 dataset.")
         self.dataset = load_dataset("gpt3mix/sst2")[split]
 
