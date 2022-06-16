@@ -239,7 +239,6 @@ def load_annomi(split: str, tokenizer: Tokenizer, use_process_tokens: Optional[b
         dialogues = dialogues[:90]
     elif split == "validation":
         dialogues = dialogues[90:]
-    print(dialogues[0])
     return dialogues_to_ids(dialogues, tokenizer)
 
 

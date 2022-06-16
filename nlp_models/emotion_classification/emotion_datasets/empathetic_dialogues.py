@@ -64,7 +64,7 @@ class EmpatheticDialoguesDataset(Dataset):
         return self.raw_dataset[index]
 
 
-class DataCollator:
+class EMDataCollator:
     def __init__(self, tokenizer, max_len=128):
         self.tokenizer = tokenizer
         self.max_len = max_len
@@ -80,7 +80,3 @@ class DataCollator:
                                 truncation=True,
                                 max_length=self.max_len)
         return dict(labels=torch.tensor(labels), input_ids=tokens["input_ids"], attention_mask=tokens["attention_mask"])
-
-
-def get_data_collator(tokenizer: Tokenizer):
-    return DataCollator(tokenizer)

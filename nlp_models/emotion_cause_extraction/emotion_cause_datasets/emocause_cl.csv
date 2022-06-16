@@ -1,4 +1,4 @@
-Situation,Emotion,Annotation,,
+Situation,Emotion,Annotation,cl1,cl2
 "I felt betrayed when my girlfriend kissed another guy at a party. She was drunk, true. But still.",__disappointed__,"[['girlfriend', 5], ['kissed', 6], ['another', 7], ['guy', 8]]",romantic relationship,loss
 I found letters that my wife wrote me when we first dating. They gave me all of the feels.,__sentimental__,"[['letters', 2], ['wife', 5], ['wrote', 6], ['first', 10], ['dating', 11]]",spouse,reminisce
 I have a job interview next week that I have been getting ready for.,__prepared__,"[['job', 3], ['interview', 4], ['getting', 11], ['ready', 12]]",,
