@@ -40,7 +40,7 @@ const Chats: React.FC<ChatsProps> = ({ userResponse, botResponse, optionClick }:
   // Enable Autoscroll After Each Message:
   useEffect(() => {
     if (messages.length === 0) {
-      setMessages([{ message: 'Hi', sender: 'bot' }]);
+      setMessages([{ message: 'Hi, do you have any concerns?', sender: 'bot' }]);
     }
     if (scrollRef && scrollRef.current && bodyRef && bodyRef.current) {
       bodyRef.current.scrollTo({

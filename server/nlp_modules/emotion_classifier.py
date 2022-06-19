@@ -43,6 +43,7 @@ class EmotionClassifier():
                  model_type: str,
                  model_checkpoint: str) -> None:
         self.logger = getLogger(f"Emotion Classifier")
+        self.logger.info("Setting up the emotion classifier...")
         tokenizer = AutoTokenizer.from_pretrained(model_type,
                                                   use_fast=True)
         label2id, id2label = get_emotion2id()
@@ -53,9 +54,12 @@ class EmotionClassifier():
         self.pipe = TextClassificationPipeline(tokenizer=tokenizer,
                                                model=model,
                                                return_all_scores=True)
+        self.logger.info("The emotion classifier is initialised.")
 
-    def classify_utterance(self, utterance: str) -> int:
-        return self.pipe(utterance)
+    def classify_utterance(self, utterance: str) -> list:
+        result = self.pipe(utterance)
+        self.logger.info(f"Emotion classification results: {result}.")
+        return result
 
 
 class SentimentClassifer():
@@ -74,26 +78,16 @@ class SentimentClassifer():
         self.pipe = TextClassificationPipeline(tokenizer=tokenizer,
                                                model=model,
                                                return_all_scores=True)
-        self.label_list = []
-        self.score_list = []
-        self.logger.info("Sentiment classifier initialised.")
+        self.logger.info("The sentiment classifier is initialised.")
 
-    def classify_utterance(self, utterance: str) -> None:
+    def classify_utterance(self, utterance: str) -> list:
         result = self.pipe(utterance)
-        score_pos = result[0][0]["score"]
-        score_neg = result[0][0]["score"]
-        if score_pos > score_neg:
-            self.label_list.append("positive")
-        else:
-            self.label_list.append("negative")
-        self.score_list.append((score_pos, score_neg))
         self.logger.info(f"Sentiment analysis results: {result}.")
-        self.logger.info(f"Current label list: {self.label_list}.")
-        self.logger.info(f"Current score list: {self.score_list}.")
+        return result
 
 
 if __name__ == "__main__":
     s = SentimentClassifer(model_type="facebook/muppet-roberta-base",
-                           model_checkpoint="results/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
+                           model_checkpoint="results/emotion_classification_outputs/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
     utterances = "I haven't been home for a long time."
     print(s.classify_utterance(utterances))

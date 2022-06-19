@@ -122,17 +122,17 @@ class Trainer():
         self.max_length = min(max_length, self.model.config.n_ctx)
         self.max_history = max_history
 
-        if self.mode == "train":
-            # Fix Seed for Random Generations:
-            if use_cuda:
-                torch.backends.cudnn.deterministic = True
-            torch.manual_seed(seed)
-            np.random.seed(seed)
-            torch.manual_seed(seed)
-            torch.cuda.manual_seed_all(seed)
-            random.seed(seed)
-            self.seed = seed
+        # Fix Seed for Random Generations:
+        if use_cuda:
+            torch.backends.cudnn.deterministic = True
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        random.seed(seed)
+        self.seed = seed
 
+        if self.mode == "train":
             # Set Output Directory:
             if not output_dir:
                 logging.error("Output directory is not specified.")
@@ -401,5 +401,12 @@ class Trainer():
 if __name__ == "__main__":
     trainer = Trainer(output_dir="response_generation_outputs",
                       mode="infer",
-                      checkpoint_path="results/response_generation_outputs/annoMI/annoMI_epoch=5")
+                      checkpoint_path="results/response_generation_outputs/baseline/daily_dialog_epoch=7")
     trainer.infer()
+
+# seed = 0
+# results/response_generation_outputs/baseline/daily_dialog_epoch=7
+# results/response_generation_outputs/baseline/empathetic_dialogues_epoch=6
+# results/response_generation_outputs/mix_daily_em/mix_daily_em_epoch=6
+# results/response_generation_outputs/daily_on_em_on_annoMi/tri_epoch=5
+# results/response_generation_outputs/daily_on_mix_annoMI_em/daily_on_mix_annoMI_em_epoch=6
