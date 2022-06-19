@@ -46,21 +46,21 @@ class EmocauseClDataset(Dataset):
         train = df.sample(frac=0.8, random_state=0)
         test = df.drop(train.index)
         valid = test.sample(frac=0.5, random_state=0)
-        test = test.dropv(valid.index)
+        test = test.drop(valid.index)
         if split == "train":
-            self.dataset = train
+            self.dataset = train.values
         elif split == "valid":
-            self.dataset = valid
+            self.dataset = valid.values
         elif split == "test":
-            self.dataset = test
+            self.dataset = test.values
         else:
             logging.error(f"Split {split} is invalid.")
 
     def __len__(self):
-        return self.dataset.size
+        return len(self.dataset)
 
     def __getitem__(self, index):
-        return self.dataset.iloc[index]
+        return self.dataset[index]
 
 
 class EmocauseDataCollator:
@@ -69,11 +69,16 @@ class EmocauseDataCollator:
         self.max_len = max_len
 
     def __call__(self, examples: List[dict]):
-        utterances = [example["Utterance"] for example in examples]
-        labels = [EMOCAUSE2ID(example["Cause"]) for example in examples]
+        utterances = [example[0] for example in examples]
+        labels = [EMOCAUSE2ID[example[2]] for example in examples]
         tokens = self.tokenizer(utterances,
                                 return_tensors="pt",
                                 padding=True,
                                 truncation=True,
                                 max_length=self.max_len)
         return dict(labels=torch.tensor(labels), input_ids=tokens["input_ids"], attention_mask=tokens["attention_mask"])
+
+
+if __name__ == "__main__":
+    e = EmocauseClDataset("train")
+    print(e.__getitem__(0)[2])

@@ -9,8 +9,8 @@ from sklearn.metrics import f1_score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional
 
-from emotion_cause_extraction.emotion_cause_datasets.emocause_cl import NUM_LABELS
-from nlp_models.emotion_cause_extraction.emotion_cause_datasets.emocause_cl import EmocauseClDataset, EmocauseDataCollator
+from emotion_cause_datasets.emocause_cl import NUM_LABELS
+from emotion_cause_datasets.emocause_cl import EmocauseClDataset, EmocauseDataCollator
 
 logging.basicConfig(
     filename="emotion_classification.log",
@@ -40,7 +40,6 @@ class EmocauseRecognitionTrainer():
                  dataset_train: Dataset,
                  dataset_valid: Dataset,
                  dataset_test: Dataset,
-                 data_collator: Optional[DataCollator] = None,
                  batch_size: Optional[int] = 64,
                  output_dir: Optional[str] = "emocause_classifier_outputs") -> None:
         self.model_type = model_type
@@ -56,7 +55,7 @@ class EmocauseRecognitionTrainer():
         self.dataset_train = dataset_train
         self.dataset_valid = dataset_valid
         self.dataset_test = dataset_test
-        self.data_collator = data_collator
+        self.data_collator = EmocauseDataCollator(self.tokenizer)
         self.batch_size = batch_size
         self.output_dir = output_dir
 
@@ -145,5 +144,5 @@ if __name__ == "__main__":
                                          dataset_valid=EmocauseClDataset(
                                              "valid"),
                                          dataset_test=EmocauseClDataset(
-                                             "test"),
-                                         data_collator=EmocauseDataCollator())
+                                             "test"))
+    trainer.train()
