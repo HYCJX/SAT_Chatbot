@@ -1,3 +1,6 @@
 [submodule "multimodal-datasets"]
 	path = multimodal-datasets
 	url = https://github.com/tae898/multimodal-datasets.git
+[submodule "TEXTOIR"]
+	path = TEXTOIR
+	url = https://github.com/thuiar/TEXTOIR.git
