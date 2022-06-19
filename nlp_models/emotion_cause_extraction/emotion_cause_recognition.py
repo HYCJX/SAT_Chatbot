@@ -9,6 +9,9 @@ from sklearn.metrics import f1_score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional
 
+from emotion_cause_extraction.emotion_cause_datasets.emocause_cl import NUM_LABELS
+from nlp_models.emotion_cause_extraction.emotion_cause_datasets.emocause_cl import EmocauseClDataset, EmocauseDataCollator
+
 logging.basicConfig(
     filename="emotion_classification.log",
     filemode="w",
@@ -39,7 +42,7 @@ class EmocauseRecognitionTrainer():
                  dataset_test: Dataset,
                  data_collator: Optional[DataCollator] = None,
                  batch_size: Optional[int] = 64,
-                 output_dir: Optional[str] = "emotion_classifier_outputs") -> None:
+                 output_dir: Optional[str] = "emocause_classifier_outputs") -> None:
         self.model_type = model_type
         self.tokenizer = AutoTokenizer.from_pretrained(model_type,
                                                        use_fast=True)
@@ -132,3 +135,15 @@ class EmocauseRecognitionTrainer():
         logging.info(
             "*"*10 + "Current best checkpoint is saved." + "*"*10
         )
+
+
+if __name__ == "__main__":
+    trainer = EmocauseRecognitionTrainer(model_type="roberta-base",
+                                         num_labels=NUM_LABELS,
+                                         dataset_train=EmocauseClDataset(
+                                             "train"),
+                                         dataset_valid=EmocauseClDataset(
+                                             "valid"),
+                                         dataset_test=EmocauseClDataset(
+                                             "test"),
+                                         data_collator=EmocauseDataCollator())

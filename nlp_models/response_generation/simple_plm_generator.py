@@ -49,7 +49,7 @@ class Trainer():
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
                  num_epochs: Optional[int] = 10,
-                 top_p: Optional[float] = 0.85):
+                 top_p: Optional[float] = 0.9):
         """
         Arguments:
             output_dir: Output directory.
