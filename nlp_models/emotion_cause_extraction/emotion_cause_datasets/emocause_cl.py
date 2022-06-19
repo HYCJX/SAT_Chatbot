@@ -21,7 +21,7 @@ EMOTION_CAUSES = [
     "irritated",
     "jealousy",
     "loneliness",
-    "missed expectation",
+    "missed_expectation",
     "owe",
     "pet_loss",
     "societal_relationship",

@@ -505,40 +505,40 @@ I was upset when my family kept leaving me on vacation,__annoyed__,loneliness
 i miss watching chiller theatre with my family on fridays,__nostalgic__,loneliness
 I miss my family,__sad__,loneliness
 I recently said goodbye to a good friend for a while. I love her!,__sad__,loneliness
-I had given my two older daughters a small math assignment to do in my absensents. When I returned home they were playing video games and the work had not been done.,__angry__,missed expectation
-"My best friend was going to travel from Wisconsin to see my this summer, but she ended up not being able to come.",__disappointed__,missed expectation
-"I had planned a trip to Florida to see some old friends and go canoeing on the river. At the last minute (a day before) the people riding with me had to cancel, and I was forced to cancel the trip.",__disappointed__,missed expectation
-"A friend was supposed to come an visit me this Summer, but he got a job up North and had to cancel. I had so been looking forward to his visit.",__disappointed__,missed expectation
-"I knew a friend once, I always though that he would become somebody good, but I was wrong.",__disappointed__,missed expectation
-"I had planned a bicycle tour with a friend of mine. At the last minute, he was unable to come on the trip with me. I ended up only doing about half the trip and flying home.",__lonely__,missed expectation
-I was planning on going to a concert last night but I didn't go because I ended up not wanting to go by myself. I feel like I'm going to regret not going.,__anxious__,missed expectation
-I was excited to go to a concert tonight but couldn't get myself to go by myself at the last minute and so I bailed. I'll probably regret it.,__anxious__,missed expectation
-My Mother had called to set up a time to meet for lunch. When the time came she couldn't make it because of health problems.,__sad__,missed expectation
-I am sad that my parents didn't attend my birthday,__sad__,missed expectation
-"I had planned to take my daughters shopping a couple of weeks ago. We were all very excited about it, but the plans fell through. I was able to take them shopping later so that made me feel a little better.",__disappointed__,missed expectation
-"I found out that my son got a B in one of his classes at the end of last year. I thought I had a truly exemplary, world-changing student on my hands. Now I know he's just...above average.",__disappointed__,missed expectation
-"I havent seen my niece much lately. My sister wanted me to babysit, and I was excited to actually get to see her. But she had to cancel.",__disappointed__,missed expectation
-I worked really hard with my daughter last year to learn her multiplication facts. I gave her a quiz last week and she failed.,__disappointed__,missed expectation
-"My son failed a really important test. Now he might not be able to graduate, and I'm really disappointed in him.",__disappointed__,missed expectation
-"I feel so bad that I have to work so much and can't play with my grandchild as much as she would like me too. She would play 24 hours a day if she could, but there is always so many other responsibilities to take care of.",__guilty__,missed expectation
-My son was caught cheating on a test. I really thought we raised him better than to do such things.,__disappointed__,missed expectation
-My birthday was last week. I never heard from my brother or sister to wish me happy birthday. I guess I expected to much and they let me down,__disappointed__,missed expectation
-My sister lives in Utah. We had planned for her to come visit but her work would not allow her to take the time off.,__disappointed__,missed expectation
-"My older brother always makes promises he can't keep. Recently, he said he was going to bring me out to sushi for my birthday, but he always postpones it.",__disappointed__,missed expectation
-I felt bad because I told my sister in law I would help her with her books. After this last one I told her I had too much going on and couldn't do it no more.,__guilty__,missed expectation
-I wanted to try this new pizza and it was terrible!,__disappointed__,missed expectation
-One time there was a movie I wanted to see that had really good reviews. I went to see it and it was not very good at all,__disappointed__,missed expectation
-"I recently ordered something online, and expected it to arrive last week. It's still not here!",__disappointed__,missed expectation
-"it was really hard for me when i heard i didnt get accepted in my dream college, but i moved on and got into another one that was not as good",__devastated__,missed expectation
-"I studied really hard for a physics exam and still didn't get a B, which I need for my major.",__disappointed__,missed expectation
-"While in college, I was in the running for a scholarship. Despite being fully qualified to receive it and meeting the criteria, it was given to someone else. I really wanted that scholarship.",__jealous__,missed expectation
-"I decided to go back to school this year. I'm was pretty hesitant at first, but now I'm excited about learning more!",__apprehensive__,missed expectation
-"I studied really hard for a physics exam and still didn't get a B, which I need for my major.",__disappointed__,missed expectation
-I was to see a house to hopefully rent. It was very nice and just perfect for me. The day before I was supposed to see it the property management lady called to say the owners had already rented it out. I felt so down - how could they do that?,__disappointed__,missed expectation
-"I was trying to buy a piece of property that had came up on the market, but someone put in a offer quicker than I did and it was sold already.",__disappointed__,missed expectation
-I'm in the middle of shopping for a house. One of the houses I really like was just taken off the market.,__disappointed__,missed expectation
-"My cousin recently sent me a video she'd taken with her phone, It was a tour of my home village. What I saw horrified me and made me sick - they've built all manner of hideous buildings in really prominent places!",__disgusted__,missed expectation
-I was annoyed when family missed my birthday,__annoyed__,missed expectation
+I had given my two older daughters a small math assignment to do in my absensents. When I returned home they were playing video games and the work had not been done.,__angry__,missed_expectation
+"My best friend was going to travel from Wisconsin to see my this summer, but she ended up not being able to come.",__disappointed__,missed_expectation
+"I had planned a trip to Florida to see some old friends and go canoeing on the river. At the last minute (a day before) the people riding with me had to cancel, and I was forced to cancel the trip.",__disappointed__,missed_expectation
+"A friend was supposed to come an visit me this Summer, but he got a job up North and had to cancel. I had so been looking forward to his visit.",__disappointed__,missed_expectation
+"I knew a friend once, I always though that he would become somebody good, but I was wrong.",__disappointed__,missed_expectation
+"I had planned a bicycle tour with a friend of mine. At the last minute, he was unable to come on the trip with me. I ended up only doing about half the trip and flying home.",__lonely__,missed_expectation
+I was planning on going to a concert last night but I didn't go because I ended up not wanting to go by myself. I feel like I'm going to regret not going.,__anxious__,missed_expectation
+I was excited to go to a concert tonight but couldn't get myself to go by myself at the last minute and so I bailed. I'll probably regret it.,__anxious__,missed_expectation
+My Mother had called to set up a time to meet for lunch. When the time came she couldn't make it because of health problems.,__sad__,missed_expectation
+I am sad that my parents didn't attend my birthday,__sad__,missed_expectation
+"I had planned to take my daughters shopping a couple of weeks ago. We were all very excited about it, but the plans fell through. I was able to take them shopping later so that made me feel a little better.",__disappointed__,missed_expectation
+"I found out that my son got a B in one of his classes at the end of last year. I thought I had a truly exemplary, world-changing student on my hands. Now I know he's just...above average.",__disappointed__,missed_expectation
+"I havent seen my niece much lately. My sister wanted me to babysit, and I was excited to actually get to see her. But she had to cancel.",__disappointed__,missed_expectation
+I worked really hard with my daughter last year to learn her multiplication facts. I gave her a quiz last week and she failed.,__disappointed__,missed_expectation
+"My son failed a really important test. Now he might not be able to graduate, and I'm really disappointed in him.",__disappointed__,missed_expectation
+"I feel so bad that I have to work so much and can't play with my grandchild as much as she would like me too. She would play 24 hours a day if she could, but there is always so many other responsibilities to take care of.",__guilty__,missed_expectation
+My son was caught cheating on a test. I really thought we raised him better than to do such things.,__disappointed__,missed_expectation
+My birthday was last week. I never heard from my brother or sister to wish me happy birthday. I guess I expected to much and they let me down,__disappointed__,missed_expectation
+My sister lives in Utah. We had planned for her to come visit but her work would not allow her to take the time off.,__disappointed__,missed_expectation
+"My older brother always makes promises he can't keep. Recently, he said he was going to bring me out to sushi for my birthday, but he always postpones it.",__disappointed__,missed_expectation
+I felt bad because I told my sister in law I would help her with her books. After this last one I told her I had too much going on and couldn't do it no more.,__guilty__,missed_expectation
+I wanted to try this new pizza and it was terrible!,__disappointed__,missed_expectation
+One time there was a movie I wanted to see that had really good reviews. I went to see it and it was not very good at all,__disappointed__,missed_expectation
+"I recently ordered something online, and expected it to arrive last week. It's still not here!",__disappointed__,missed_expectation
+"it was really hard for me when i heard i didnt get accepted in my dream college, but i moved on and got into another one that was not as good",__devastated__,missed_expectation
+"I studied really hard for a physics exam and still didn't get a B, which I need for my major.",__disappointed__,missed_expectation
+"While in college, I was in the running for a scholarship. Despite being fully qualified to receive it and meeting the criteria, it was given to someone else. I really wanted that scholarship.",__jealous__,missed_expectation
+"I decided to go back to school this year. I'm was pretty hesitant at first, but now I'm excited about learning more!",__apprehensive__,missed_expectation
+"I studied really hard for a physics exam and still didn't get a B, which I need for my major.",__disappointed__,missed_expectation
+I was to see a house to hopefully rent. It was very nice and just perfect for me. The day before I was supposed to see it the property management lady called to say the owners had already rented it out. I felt so down - how could they do that?,__disappointed__,missed_expectation
+"I was trying to buy a piece of property that had came up on the market, but someone put in a offer quicker than I did and it was sold already.",__disappointed__,missed_expectation
+I'm in the middle of shopping for a house. One of the houses I really like was just taken off the market.,__disappointed__,missed_expectation
+"My cousin recently sent me a video she'd taken with her phone, It was a tour of my home village. What I saw horrified me and made me sick - they've built all manner of hideous buildings in really prominent places!",__disgusted__,missed_expectation
+I was annoyed when family missed my birthday,__annoyed__,missed_expectation
 "Once, I was turned down for a job that I really wanted and I felt I would be a good fit at. It was really downing.",__disappointed__,missed_expectation
 I missed a chance to get a new job the other week. I really wish I had put my resume in sooner.,__ashamed__,missed_expectation
 "I got turned down for a job I really wanted. I'd worked extremely hard to put myself in a position to have a decent chance of getting it, and I thought I interviewed really well. But when I found out someone else got the job I was extremely disappointed and demoralized.",__devastated__,missed_expectation
