@@ -1,0 +1,136 @@
+,text,label
+19,please tell me your date of birth,how_old_are_you
+54,"what are you, a bot or human",are_you_a_bot
+55,what's your bday,how_old_are_you
+154,i'd like to know how old you are,how_old_are_you
+182,i'd like to know when you were born,how_old_are_you
+186,how many birthdays have you had,how_old_are_you
+222,"no, that's not it",no
+260,yeah that's what i want,yes
+272,i know that the statement is true,yes
+274,it might go either way,maybe
+288,"nope, that's false",no
+290,i say no to that question,no
+318,you got that wrong,no
+324,can we please,yes
+382,i'm really not sure,maybe
+401,can you tell me if your a bot,are_you_a_bot
+417,i have no clue,maybe
+418,could you be human,are_you_a_bot
+438,"yeah, that's how it is",yes
+473,later,goodbye
+486,what's your hobbies,what_are_your_hobbies
+491,would it be accurate to call you a bot,are_you_a_bot
+546,what do you do when you're not working,what_are_your_hobbies
+550,"no, that is fake",no
+565,is this human or a robot,are_you_a_bot
+569,i think that's true,yes
+573,tell your hobbies,what_are_your_hobbies
+593,thats right,yes
+631,what do you do for fun,what_are_your_hobbies
+655,it is good to see you,greeting
+677,see you later,goodbye
+709,i think it could be both,maybe
+723,do you have a name i can use,what_is_your_name
+735,good seeing you,goodbye
+746,hi how is everything,greeting
+747,peace out!,goodbye
+748,are you feeling okay,greeting
+770,what is your birthday again,how_old_are_you
+772,i don't know how to answer to that,maybe
+774,"how old are you, again",how_old_are_you
+777,are there activities that you enjoy doing in your free time,what_are_your_hobbies
+804,"ai, what can i call you",what_is_your_name
+816,that statement was correct,yes
+825,it was good chatting,goodbye
+853,ahoy hoy,greeting
+862,what should you be called,what_is_your_name
+865,what sort of things do you enjoy,what_are_your_hobbies
+876,would you tell me your age,how_old_are_you
+893,what age is the ai,how_old_are_you
+896,"ai, how are you feeling",greeting
+906,that’s actually wrong,no
+926,good evening,greeting
+940,what types of things do you like to do in your spare time,what_are_your_hobbies
+949,i know that is true,yes
+964,both maybe,maybe
+990,that isn't correct,no
+1002,what name do you prefer,what_is_your_name
+1005,hi ai,greeting
+1036,is there a particular name i should call you,what_is_your_name
+1046,what's the name you like to be called,what_is_your_name
+1063,are you sure i don’t think that’s correct,no
+1093,i'd say no,no
+1096,can you tell me what kind of life form you are,are_you_a_bot
+1103,"affirmative, go ahead",yes
+1119,see you later alligator,goodbye
+1157,"um, i'm not actually sure",maybe
+1173,im not sure,maybe
+1185,how are you,greeting
+1206,what name should i use for you,what_is_your_name
+1208,i really don't have a clue,maybe
+1217,is there a name that you preferred to be called by,what_is_your_name
+1240,what are you interested in,what_are_your_hobbies
+1250,so are you a real person,are_you_a_bot
+1275,are you a live person or a computer,are_you_a_bot
+1288,what do you want me to refer to you as,what_is_your_name
+1290,this is a true statement,yes
+1297,tell me how are you,greeting
+1309,bye bye then,goodbye
+1311,"good talk, see you later",goodbye
+1364,how have you been doing,greeting
+1376,are you ai or a real person please,are_you_a_bot
+1378,can you describe your hobbies to me,what_are_your_hobbies
+1384,thanks bye bye!,goodbye
+1402,i have no knowledge of that,maybe
+1403,what name should i use to call for you,what_is_your_name
+1422,what would your age be,how_old_are_you
+1427,are you considered a bot,are_you_a_bot
+1478,"hey, how's it going",greeting
+1485,absolutely,yes
+1492,do you have any past-times,what_are_your_hobbies
+1494,"good morning, ai",greeting
+1581,yes sir,yes
+1598,"might be true, might be false",maybe
+1604,"it was lovely to speak with you, bye bye",goodbye
+1645,hi what's up,greeting
+1653,that isn't the right answer,no
+1659,can you tell me the ai's name,what_is_your_name
+1673,do you mind if i ask your name,what_is_your_name
+1711,that can't be true,no
+1721,do ai have hobbies and if so what are yours,what_are_your_hobbies
+1724,who gave you your name,what_is_your_name
+1728,do that,yes
+1744,tell me how old youare,how_old_are_you
+1769,"ai, how old are you",how_old_are_you
+1792,i need your name,what_is_your_name
+1796,tell me now if you are a bot,are_you_a_bot
+1801,thanks for talking,goodbye
+1814,are you an ai or can you prove you're human,are_you_a_bot
+1816,nay,no
+1824,when is your birthday,how_old_are_you
+1840,do you have a nickname,what_is_your_name
+1841,later gater,goodbye
+1855,cant say,maybe
+1865,maybe either,maybe
+1903,"what do you do when you're not working, for fun",what_are_your_hobbies
+1927,i am not sure,maybe
+1961,it's definitely a maybe for that,maybe
+2031,it is true,yes
+2035,no thank you,no
+2054,in what year were you born,how_old_are_you
+2096,what do you do for hobbies,what_are_your_hobbies
+2104,"howdy, what's new",greeting
+2106,no that isn't right,no
+2114,later!,goodbye
+2124,what kind of hobbies are you interested in,what_are_your_hobbies
+2136,so are you human,are_you_a_bot
+2142,the information is wrong,no
+2151,you sound like a bot,are_you_a_bot
+2152,it was nice to converse with you,goodbye
+2159,i need to know how you are doing today,greeting
+2187,is there anything you like to do in your free time,what_are_your_hobbies
+2196,please tell me if you are a bot,are_you_a_bot
+2209,good bye then,goodbye
+2233,where's your place of birth,how_old_are_you
+2249,yes that is right,yes

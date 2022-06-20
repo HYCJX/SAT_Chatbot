@@ -6,28 +6,7 @@ from torch.utils.data import Dataset
 from typing import List
 
 EMOTION_CAUSES = [
-    "abuse",
-    "assessment_pressure",
-    "break-up",
-    "change_in_life",
-    "disloyalty",
-    "embarrassed",
-    "family_death",
-    "family_health",
-    "financial_pressure",
-    "friend_death",
-    "health",
-    "injustice",
-    "irritated",
-    "jealousy",
-    "loneliness",
-    "missed_expectation",
-    "owe",
-    "pet_loss",
-    "societal_relationship",
-    "stress",
-    "trauma",
-    "work_pressure"
+    'greeting', 'disloyalty', 'injustice', 'what_are_your_hobbies', 'jealousy', 'no', 'pet_loss', 'owe', 'goodbye', 'break-up', 'assessment_pressure', 'loneliness', 'yes', 'abuse', 'trauma', 'what_is_your_name', 'how_old_are_you', 'family_health', 'maybe', 'are_you_a_bot', 'financial_pressure', 'health', 'family_death', 'work_pressure', 'others'
 ]
 EMOCAUSE2ID = {emotion: idx for idx, emotion in enumerate(EMOTION_CAUSES)}
 ID2EMOCAUSE = {val: key for key, val in EMOCAUSE2ID.items()}
@@ -39,22 +18,22 @@ class EmocauseClDataset(Dataset):
     def __init__(self,
                  split: str) -> None:
         super().__init__()
-        df = pd.read_csv(
-            "nlp_models/emotion_cause_extraction/emotion_cause_datasets/emocause_cl.csv"
-        )
-        # random state is a seed value
-        train = df.sample(frac=0.8, random_state=0)
-        test = df.drop(train.index)
-        valid = test.sample(frac=0.5, random_state=0)
-        test = test.drop(valid.index)
-        if split == "train":
-            self.dataset = train.values
-        elif split == "valid":
-            self.dataset = valid.values
-        elif split == "test":
-            self.dataset = test.values
-        else:
-            logging.error(f"Split {split} is invalid.")
+        self.dataset = pd.read_csv(
+            f"{split}.csv"
+        ).values
+        # # random state is a seed value
+        # train = df.sample(frac=0.8, random_state=0)
+        # test = df.drop(train.index)
+        # valid = test.sample(frac=0.5, random_state=0)
+        # test = test.drop(valid.index)
+        # if split == "train":
+        #     self.dataset = train.values
+        # elif split == "valid":
+        #     self.dataset = valid.values
+        # elif split == "test":
+        #     self.dataset = test.values
+        # else:
+        #     logging.error(f"Split {split} is invalid.")
 
     def __len__(self):
         return len(self.dataset)
@@ -69,8 +48,8 @@ class EmocauseDataCollator:
         self.max_len = max_len
 
     def __call__(self, examples: List[dict]):
-        utterances = [example[0] for example in examples]
-        labels = [EMOCAUSE2ID[example[2]] for example in examples]
+        utterances = [example[2] for example in examples]
+        labels = [EMOCAUSE2ID[example[3]] for example in examples]
         tokens = self.tokenizer(utterances,
                                 return_tensors="pt",
                                 padding=True,

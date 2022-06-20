@@ -1,0 +1,236 @@
+,Unnamed: 0,text,label
+0,75.0,i say negative,no
+1,99.0,what kind of hobbies does the ai have,what_are_your_hobbies
+2,119.0,are you a bot or a person,are_you_a_bot
+3,133.0,that's not true,no
+4,177.0,are you a real human,are_you_a_bot
+5,192.0,how should i refer to you,what_is_your_name
+6,193.0,"no, that is invalid",no
+7,204.0,"are you ai, or a person",are_you_a_bot
+8,224.0,how's it going right now,greeting
+9,248.0,what do you do after work,what_are_your_hobbies
+10,287.0,yep,yes
+11,319.0,i couldn't say either could be possible,maybe
+12,327.0,if you have hobbies tell me some of them,what_are_your_hobbies
+13,336.0,ill see you around,goodbye
+14,353.0,it was enjoyable to chat with you,goodbye
+15,365.0,that is not true,no
+16,381.0,were you born in the 80s,how_old_are_you
+17,402.0,it might be either,maybe
+18,403.0,hiya,greeting
+19,410.0,what can i address you,what_is_your_name
+20,426.0,tell me your name,what_is_your_name
+21,464.0,unsure,maybe
+22,471.0,why hello,greeting
+23,523.0,might,maybe
+24,541.0,i want your name,what_is_your_name
+25,553.0,i can't decide,maybe
+26,606.0,ok,yes
+27,633.0,what is the year that were you born,how_old_are_you
+28,663.0,see ya!,goodbye
+29,690.0,"ai, how long have you been alive",how_old_are_you
+30,711.0,i have to go but it was nice talking again!,goodbye
+31,714.0,that would be great,yes
+32,741.0,let me know when you were born,how_old_are_you
+33,780.0,what are ai's hobbies,what_are_your_hobbies
+34,814.0,i don't know the answer,maybe
+35,818.0,nope,no
+36,823.0,we'll talk later ai,goodbye
+37,836.0,i'd like to know what to call you,what_is_your_name
+38,857.0,give me your name,what_is_your_name
+39,878.0,that i don't know,maybe
+40,890.0,agreed,yes
+41,902.0,well hi there,greeting
+42,911.0,are you actually a person,are_you_a_bot
+43,914.0,i need to know if you are a bot,are_you_a_bot
+44,934.0,"that's all, bye",goodbye
+45,951.0,what you just said is false,no
+46,977.0,"yo, hows it going",greeting
+47,1006.0,that is true,yes
+48,1021.0,and your name is,what_is_your_name
+49,1024.0,whens your birthday,how_old_are_you
+50,1030.0,"correct, it is affirmative",yes
+51,1054.0,facts,yes
+52,1056.0,what sort of hobbies are you into,what_are_your_hobbies
+53,1058.0,"yes, that is it",yes
+54,1060.0,tell me about yourself,what_is_your_name
+55,1073.0,please specify if you are human or computer,are_you_a_bot
+56,1083.0,are you a computer or a real person,are_you_a_bot
+57,1091.0,that's not right it's false,no
+58,1103.0,are you a computer generated voice,are_you_a_bot
+59,1113.0,that is actually false,no
+60,1136.0,great,yes
+61,1168.0,"i had a pleasure talking to you, see you later",goodbye
+62,1174.0,it was cool talking with you,goodbye
+63,1189.0,"ai, what is your given name",what_is_your_name
+64,1205.0,can't say,maybe
+65,1210.0,it was great to talk to you,goodbye
+66,1216.0,that would be a no,no
+67,1254.0,see ya,goodbye
+68,1260.0,is this a bot,are_you_a_bot
+69,1262.0,"how long have you been around, ai",how_old_are_you
+70,1346.0,any hobbies you like to do,what_are_your_hobbies
+71,1364.0,not a clue,maybe
+72,1390.0,"ai, what's your name",what_is_your_name
+73,1426.0,perhaps,maybe
+74,1432.0,"no, definitely not",no
+75,1449.0,are you a bot or a real person,are_you_a_bot
+76,1453.0,"great chat, talk to you later",goodbye
+77,1475.0,what are your hobbies exactly,what_are_your_hobbies
+78,1484.0,sure thing,yes
+79,1490.0,i want to know how you are doing,greeting
+80,1496.0,would you consider yourself to be a bot,are_you_a_bot
+81,1534.0,let me know how you are doing,greeting
+82,1541.0,possibly,maybe
+83,1542.0,have you been good,greeting
+84,1547.0,do you have a birth date,how_old_are_you
+85,1569.0,what is you name,what_is_your_name
+86,1584.0,so what do you do at free time,what_are_your_hobbies
+87,1591.0,would you like to introduce yourself,what_is_your_name
+88,1601.0,what kinds of things do you do for hobbies,what_are_your_hobbies
+89,1636.0,"goodbye, ai assistant",goodbye
+90,1656.0,what should i refer to you as,what_is_your_name
+91,1706.0,no idea,maybe
+92,1710.0,are you a human being or a computer,are_you_a_bot
+93,1722.0,what sorts of things do you do for fun,what_are_your_hobbies
+94,1724.0,i know it could be either one,maybe
+95,1732.0,what can i call you,what_is_your_name
+96,1733.0,would you tell me how old you are,how_old_are_you
+97,1753.0,how are you this fine day,greeting
+98,1760.0,"please, no",no
+99,1784.0,yes please,yes
+100,1799.0,how long have you been here,how_old_are_you
+101,1800.0,i like to paint in my free time-do you have any hobbies like that,what_are_your_hobbies
+102,1808.0,i am unable to say,maybe
+103,1810.0,"nice talk, talk to you later",goodbye
+104,1812.0,farewell,goodbye
+105,1854.0,tell me how you've been,greeting
+106,1861.0,it is no,no
+107,1873.0,what hobbies do you have alexa,what_are_your_hobbies
+108,1874.0,are you a person,are_you_a_bot
+109,1891.0,what do you do in your down time,what_are_your_hobbies
+110,1929.0,will you tell me how the ai is doing,greeting
+111,1931.0,could you tell me how old you are,how_old_are_you
+112,1938.0,how ya doin,greeting
+113,1942.0,how many years old are you,how_old_are_you
+114,1976.0,"yes, that is actually true",yes
+115,1988.0,how is it going,greeting
+116,1990.0,talk to you later!,goodbye
+117,1997.0,whats your name by the way,what_is_your_name
+118,2024.0,hello,greeting
+119,2036.0,how've you been,greeting
+120,2063.0,it is definitely affirmative,yes
+121,2079.0,i believe what you just said is true,yes
+122,2085.0,i want to know if you are a real person or an ai,are_you_a_bot
+123,2090.0,how many years have you been living,how_old_are_you
+124,2091.0,are you an automated assistance,are_you_a_bot
+125,2098.0,no way,no
+126,2123.0,"well, i guess maybe",maybe
+127,2140.0,are you 16 years old,how_old_are_you
+128,2151.0,"yes, that's affirmative",yes
+129,2155.0,"no, you are wrong",no
+130,2169.0,how old are you today,how_old_are_you
+131,2176.0,what sorts of things do you do to have a good time,what_are_your_hobbies
+132,2177.0,that's inaccurate,no
+133,2181.0,how long have you been around,how_old_are_you
+134,2224.0,what hobbies do you like,what_are_your_hobbies
+135,,"My husband usually gets a large bonus each year around this time, but there's no guarantee. It's hard waiting, and not knowing!",financial_pressure
+136,,Found out my wife was dating someone else a year before we got married while we were dating. It's not a good day today.,disloyalty
+137,,"I had a friend's boyfriend that hit on me, even though I am also married, and he was with my good friend for 5 years! He makes me sick!",disloyalty
+138,,Ex partner was being dishonest.,disloyalty
+139,,"After being married to my first wife for 8 years, I found out she was having an affair behind my back. It was not a very good time for me.",disloyalty
+140,,Once I had an interview for a job. I didn't feel prepared for it at all.,assessment_pressure
+141,,I had a job interview.,assessment_pressure
+142,,School starts a week from today and I am getting fairly nervous!,assessment_pressure
+143,,School is starting up soon and I'm worried I may not be able to keep up with all of the homework.,assessment_pressure
+144,,Going to the dentist always worries me.,health
+145,,Having a toothache is irritating,health
+146,,"I feel so bad about myself, ate too many sweets. I'm suppose to be on a diet.",health
+147,,I was very worried the they told me I needed heart surgery.,health
+148,,I have been doing very well on my diet and last night I decided to eat a whole large pizza by myself!,health
+149,,A co-worker stole my lunch I believe. I ended up having to skip a meal.,injustice
+150,,Sometimes people ask me to do a lot when I am already doing a lot. It's like they don't care that I have stuff to do.,injustice
+151,,I'm accused of a crime at work I didn't do.,injustice
+152,,My father was diagnosed with stage 4 brain cancer. It only took a few months for him to pass away because of it.,family_death
+153,,"When my sister passed away several years ago, I had such a hard time with the loss. I felt very much separate from others in dealing with my grief.",family_death
+154,,I have this knife that I carry everyday. My dad gave it to me before he died.,family_death
+155,,My father passed away when I was 33 years old.,family_death
+156,,I miss my family,loneliness
+157,,"I spent all weekend by myself, wish I was closer to my family.",loneliness
+158,,Two years ago my wife and I got divorced. It's been very strange in this big house all by myself.,loneliness
+159,,"I was looking at old pictures of my friends and I. I sometimes wish I could go back to those days, at least for a while.",loneliness
+160,,I work from home and sometimes it makes me a bit sad to know that I'm here alone.,loneliness
+161,,"My wife has been out of the country for school for a month and a half. She gets back in a couple weeks, but it's starting to get tough being alone with just the dogs.",loneliness
+162,,my daughter went on vacation with her friends and the house feels really alone without her,loneliness
+163,,I felt upset when I forgot to ask my friend to dinner.,owe
+164,,I finished all the ice cream when I was told to leave some for others. I was just so hungry! ,owe
+165,,One time I was playing basketball and I accidentally slapped a girl in the face. I felt so bad about it.,owe
+166,,I was so embarrassed when i threw up in public one day. I was feeling really sick and i couldnt help it.,owe
+167,,"My wife has been out of the country for 2 months for school, and she was having a really bad day one day. I felt terrible that I couldn't help her.",owe
+168,,I felt bad about sleeping in today.,owe
+169,,I lost the book that my friend let me borrow. I feel so embarrassed.,owe
+170,,I played poker against a friend who wasn't really good. I won and took over $100 from him. I felt bad about it the next day.,owe
+171,,"i was really sad when my girlfriend broke up with me, it was devastating but i managed to overcome it",break-up
+172,,"I broke up with my girlfriend last week and it was really hard, we where together for 2 years.",break-up
+173,,"Walking home alone from school one day, three young adults jumped in front of me and yelled in my twelve-year old face. I cried the rest of the way back.",abuse
+174,,Ex blames me for all things bad.,abuse
+175,,"I was listening to old school rap in my car. The windows were down, and the car next to me started making fun of me.",abuse
+176,,"I couldn't believe when I woke up the other day and was about to go to work, I saw that someone had broken in to my car. I was so mad. I had heard there had been some problems with car break-ins but I didn't think it would happen to me because we live in a nice neighborhood.",abuse
+177,,"When I was in middle school there was this boy that sat in front of me in 8th, he was always trying to get me to kiss him before class started.",abuse
+178,,I was so angry when i found out my dogwalker used to torchur my dog. I was so mad that i fired her then and there.,abuse
+179,,I was on my way to work when I witnessed a child hit by a vehicle.,trauma
+180,,"When I visited one of my friends' home recently , I encountered with their dog. It's a male rottweiler and it was so furious and tried to attack me and I got struck suddenly and felt lot of fear.",trauma
+181,,Close friend has an unlimited stream of money from her parents. Always wishing I was able to do the stuff she does and not work.,jealousy
+182,,I was one of three people in the running for a promotion at my job. I ended up not getting the job and a person with less experience got it.,jealousy
+183,,My friend had encouraged me to apply for teaching jobs. I went on several and didn't get hired. She went on one and got hired right away.,jealousy
+184,,"My brother got a really high-paying job and now travels all over the world. He sends pictures and talks endlessly about everything he buys, everywhere he goes, and how much money he makes. It makes me feel insecure and like a failure.",jealousy
+185,,A friend of mine bought a new car. It was a model I had my eye on for some time.,jealousy
+186,,One of my friends recently bought a house. I really wish I could afford a house.,jealousy
+187,,A coworker mad me very mad one day. She slammed a large order of work on my desk and basically demanded that I do it! She has no right to do that.,work_pressure
+188,,I have this one co worker who is so lazy and it just makes me so irritate because I have to do extra work.,work_pressure
+189,,My mother in law was recently placed in hospice and is not expected to live much longer.,family_health
+190,,My little grandson was admitted to the hospital a few days ago. He is still having testing and it's so hard to wait around to get the test results back to find out what is wrong.,family_health
+191,,My family was on a road trip earlier this week and had to stop at a gas station to use the bathroom. The bathroom looked clean but the 2 roaches said it wasn't.,others
+192,,One time there was a movie I wanted to see that had really good reviews. I went to see it and it was not very good at all.,others
+193,,I was walking around my office and someone spilled coffee on me. It was a new dress shirt as well.,others
+194,,I wanted to try this new pizza and it was terrible!,others
+195,,I was excited to go to a concert tonight but couldn't get myself to go by myself at the last minute and so I bailed. I'll probably regret it.,others
+196,,"On my way back from a funeral, my friends and I almost got into a deadly car crash. The driver was falling asleep on the road and drove on the wrong lane directly towards us.",others
+197,,"My cell phone played a video out loud, which I had never watched, and it had profanity. This happened while I was checking out at the store yesterday.",others
+198,,"I havent seen my niece much lately. My sister wanted me to babysit, and I was excited to actually get to see her. But she had to cancel.",others
+199,,My friend is so nosy.,others
+200,,"The last time we went to the fair, I tripped over a big cord and fell! There were so many people around that saw me fall!",others
+201,,I was at the grocery store the other day and I wasn't paying attention because I was looking at my phone. I hit a display and knocked everything over. I was hoping no one was around and wouldn't notice but there were a few people staring directly at me and my face was bright red.,others
+202,,I was playing a board game with some friends and I ended up spilling my drink all over the table by accident.,others
+203,,I crashed my car today into a lamppost.,others
+204,,I just got notice that my mortgage payment has gone up this year and i'm so mad about it.,others
+205,,"This morning, my dog knocked down a box of cereal and it all dumped unto the floor. As I tried to clean it up, she was trying to eat it, so she almost knocked me down. I was not very happy with her.",others
+206,,I had a doctors appointment today and I had to wait over an hour of my appointment time before I saw the doctor.,others
+207,,I was walking down the sidewalk of a busy street and caught my foot on a root and went face first into a big flower bed.,others
+208,,"I'm an introvert, so being faced with a new situation and new people puts me on edge.",others
+209,,"A friend was supposed to come an visit me this Summer, but he got a job up North and had to cancel. I had so been looking forward to his visit.",others
+210,,I missed a chance to get a new job the other week. I really wish I had put my resume in sooner.,others
+211,,I'm very annoyed because my friend didn't give me my money back.,others
+212,,I was really lookingforward to trying this new resturant that opened up down the road. They were terrible! I was so upset.,others
+213,,I worked really hard with my daughter last year to learn her multiplication facts. I gave her a quiz last week and she failed.,others
+214,,I had given my two older daughters a small math assignment to do in my absensents. When I returned home they were playing video games and the work had not been done.,others
+215,,"I'm moving into a new apartment soon and am really excited about it. But at the same time, I'm hoping and praying my neighbors will be nice and quiet. The current upstairs ones are not!",others
+216,,When I found out my job wasn't cracked up to what I thought it was.,others
+217,,"i hate when my kids leave their clothes all over the floor, i punish their video games but they still manage to leave their clothes on the floor",others
+218,,My dog kept barking and waking me up.,others
+219,,We moved into a very old house that was built 200 years ago. Every creek and crack is spooky.,others
+220,,"I had planned to take my daughters shopping a couple of weeks ago. We were all very excited about it, but the plans fell through. I was able to take them shopping later so that made me feel a little better.",others
+221,,"I took my car to my mechanic, who I thought I could trust. He quoted me $1000 in parts and labor. I took it to another mechanic and he fixed it on the spot for $100.",others
+222,,I came home yesterday to dog poop everywhere!,others
+223,,"I am always more cautious when driving at night, and when it's raining.",others
+224,,Someone called my house last night at 2 in the morning and woke me up. It was a wrong number but they didn't believe me when I told them I didn't know a Bret.,others
+225,,My dog chewed my favorite pair of shoes last week I was so irate with her.,others
+226,,I am so upset! My phone was on top of my car and it fell off and shattered.,others
+227,,We have a doberman for over 8 years. He passed away last spring. It was a hard time for our family.,pet_loss
+228,,One morning my mother came to pick my daughter up for school and told me she saw my daughter's cat dead outside.,pet_loss
+229,,"When I was a kid, my granpa bought me a dog. The dog was supposed to be a hunting dog, and he didn't want to keep it because I had made it into a pet. He ended up giving it away.",pet_loss
+230,,"We had purchased and raised several chickens. One evening, I forgot to put them back in their coop. Something killed all of them.",pet_loss
+231,,I felt really alone when my dog passed away last month. He was always by my side all the time.,pet_loss
+232,,One time my dog got run over by a car. He had been playing outside with my brother and his friends.,pet_loss
+233,,Memories of my dog always break my heart. She passed away last month.,pet_loss
+234,,My roommate's cat passed away last week. There is a heavy air over the household.,pet_loss

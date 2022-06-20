@@ -3,14 +3,18 @@ import logging
 import numpy as np
 import optuna
 import os
+import torch
+import torch.nn.functional as F
+
 
 from torch.utils.data import Dataset
-from sklearn.metrics import f1_score
+from sklearn.metrics import confusion_matrix, f1_score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
 from typing import Optional
 
 from emotion_cause_datasets.emocause_cl import NUM_LABELS
 from emotion_cause_datasets.emocause_cl import EmocauseClDataset, EmocauseDataCollator
+from emotion_cause_datasets.emocause_cl import ID2EMOCAUSE
 
 logging.basicConfig(
     filename="emotion_classification.log",
@@ -134,6 +138,48 @@ class EmocauseRecognitionTrainer():
         logging.info(
             "*"*10 + "Current best checkpoint is saved." + "*"*10
         )
+
+    def test(self):
+        y_preds = []
+        y_trues = []
+        for index, val_text in enumerate(self.dataset_valid):
+            u = val_text[0]
+            tokenized_val_text = self.tokenizer([u],
+                                                truncation=True,
+                                                padding=True,
+                                                return_tensors='pt')
+            logits = self.model(
+                input_ids=tokenized_val_text["input_ids"], attention_mask=tokenized_val_text["attention_mask"]).logits
+            prediction = F.softmax(logits, dim=1)
+            y_pred = torch.argmax(prediction).numpy()
+
+            y_true = val_text[2]
+            y_preds.append(ID2EMOCAUSE[int(y_pred)])
+            y_trues.append(y_true)
+        print(y_preds)
+        print(y_trues)
+        print(confusion_matrix(y_trues, y_preds, labels=["abuse",
+                                                         "assessment_pressure",
+                                                         "break-up",
+                                                         "change_in_life",
+                                                         "disloyalty",
+                                                         "embarrassed",
+                                                         "family_death",
+                                                         "family_health",
+                                                         "financial_pressure",
+                                                         "friend_death",
+                                                         "health",
+                                                         "injustice",
+                                                         "irritated",
+                                                         "jealousy",
+                                                         "loneliness",
+                                                         "missed_expectation",
+                                                         "owe",
+                                                         "pet_loss",
+                                                         "societal_relationship",
+                                                         "stress",
+                                                         "trauma",
+                                                         "work_pressure"]))
 
 
 if __name__ == "__main__":
