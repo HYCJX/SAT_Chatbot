@@ -7,14 +7,14 @@ import pandas as pd
 # df.to_csv("c.csv")
 
 df2 = pd.read_csv("test2.csv")
-df2 = df2[["Utterance", "Cause"]]
+df2 = df2[df2["label"] != "others"]
 dfa = pd.read_csv("a.csv")
 dfb = pd.read_csv("b.csv")
 dfc = pd.read_csv("c.csv")
-labels = set(df2["Cause"])
+labels = set(df2["label"])
 print(labels)
 for l in labels:
-    df_l = df2[df2["Cause"] == l]
+    df_l = df2[df2["label"] == l]
     from sklearn.model_selection import train_test_split
 
     train, test = train_test_split(df_l, test_size=0.2)
@@ -22,12 +22,9 @@ for l in labels:
     print(train.size)
 
     valid, t = train_test_split(test, test_size=0.5)
-    dfa = pd.concat([dfa, train.rename(
-        columns={'Cause': 'label', "Utterance": "text"})], ignore_index=True)
-    dfb = pd.concat([dfb, valid.rename(
-        columns={'Cause': 'label', "Utterance": "text"})], ignore_index=True)
-    dfc = pd.concat([dfc, t.rename(
-        columns={'Cause': 'label', "Utterance": "text"})], ignore_index=True)
+    dfa = pd.concat([dfa, train], ignore_index=True)
+    dfb = pd.concat([dfb, valid], ignore_index=True)
+    dfc = pd.concat([dfc, t], ignore_index=True)
 dfa.to_csv("train.csv")
 dfb.to_csv("valid.csv")
 dfc.to_csv("test.csv")

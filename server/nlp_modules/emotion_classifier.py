@@ -89,5 +89,5 @@ class SentimentClassifer():
 if __name__ == "__main__":
     s = SentimentClassifer(model_type="facebook/muppet-roberta-base",
                            model_checkpoint="results/emotion_classification_outputs/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
-    utterances = "I haven't been home for a long time."
+    utterances = "My wife cheated on me."
     print(s.classify_utterance(utterances))
