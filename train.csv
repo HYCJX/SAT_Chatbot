@@ -4,1537 +4,948 @@
 2,6.0,"yes, that's right",yes
 3,13.0,that is incorrect,no
 4,22.0,i vote yes,yes
-5,33.0,can i ask your name,what_is_your_name
-6,34.0,it could be either,maybe
-7,51.0,what name do you go by,what_is_your_name
-8,54.0,"thanks, bye",goodbye
-9,61.0,how is everything with you,greeting
-10,69.0,what are your favorite hobbies to take part in,what_are_your_hobbies
-11,86.0,how do you say your name,what_is_your_name
-12,92.0,how are you named,what_is_your_name
-13,117.0,are you a person that's real,are_you_a_bot
-14,134.0,please tell me the name i should use when talking to you,what_is_your_name
-15,147.0,whats your name,what_is_your_name
-16,153.0,what are some things you like doing,what_are_your_hobbies
-17,164.0,it is time to say goodbye,goodbye
-18,168.0,it is very much false,no
-19,172.0,what's your age alexa,how_old_are_you
-20,184.0,that's definitely false,no
-21,190.0,how old is al,how_old_are_you
-22,213.0,"talk to you soon, bye!",goodbye
-23,222.0,i want to talk to you about your hobbies,what_are_your_hobbies
-24,241.0,that appears true,yes
-25,268.0,either of them could be i'm not sure,maybe
-26,304.0,"maybe one, maybe the other",maybe
-27,314.0,what do you do on off days,what_are_your_hobbies
-28,347.0,signing off,goodbye
-29,364.0,what do you go by,what_is_your_name
-30,384.0,"hello, how are things",greeting
-31,389.0,what things do you like to do,what_are_your_hobbies
-32,394.0,you are wrong,no
-33,397.0,"great talk, thanks",goodbye
-34,403.0,could you tell me if you're a real person,are_you_a_bot
-35,406.0,what's your age right now,how_old_are_you
-36,423.0,nice to speak with you,goodbye
-37,433.0,hello siri,greeting
-38,461.0,your a bot aren't you,are_you_a_bot
-39,468.0,that’s not correct,no
-40,472.0,this was a nice conversation,goodbye
-41,476.0,can i call you by any name,what_is_your_name
-42,489.0,"um, i'm not quite sure",maybe
-43,492.0,"thank you for chatting with me, bye",goodbye
-44,500.0,false,no
-45,523.0,thank you goodbye,goodbye
-46,535.0,is is very much true,yes
-47,541.0,i couldn't say,maybe
-48,562.0,what are some of your hobbies,what_are_your_hobbies
-49,570.0,tell me about your hobbies,what_are_your_hobbies
-50,589.0,it was nice to talk it out with you,goodbye
-51,591.0,"i don't like that, no",no
-52,598.0,what are some of the hobbies you enjoy doing,what_are_your_hobbies
-53,610.0,"ai, what is your name",what_is_your_name
-54,621.0,are you doing okay,greeting
-55,629.0,accepted,yes
-56,633.0,absolutely correct,yes
-57,648.0,good bye,goodbye
-58,651.0,yes you are correct,yes
-59,670.0,that's true,yes
-60,674.0,how old,how_old_are_you
-61,735.0,your birthday please,how_old_are_you
-62,737.0,it could be one or the other,maybe
-63,755.0,is your voice from a human or is it synthesized,are_you_a_bot
-64,765.0,"hey, ai",greeting
-65,798.0,what you age on your last birthday,how_old_are_you
-66,811.0,not that one,no
-67,819.0,hola!,greeting
-68,826.0,tell me your full name,what_is_your_name
-69,844.0,"hello, how are you doing",greeting
-70,848.0,what's the name i should use to talk to you,what_is_your_name
-71,856.0,"yup, that's true",yes
-72,863.0,i can't say,maybe
-73,871.0,thats a negative,no
-74,886.0,ai how are you doing on this fine day,greeting
-75,897.0,hey hey!,greeting
-76,919.0,"true, most definitely",yes
-77,923.0,what can i refer to you by,what_is_your_name
-78,934.0,i don't know the answer to that,maybe
-79,937.0,exactly right,yes
-80,960.0,how old are you as of today,how_old_are_you
-81,987.0,what you just said is wrong,no
-82,989.0,what's should i call you by,what_is_your_name
-83,1006.0,"syonara, ai device!",goodbye
-84,1015.0,"a pleasure as always to speak with you, bye",goodbye
-85,1048.0,i am not able to say,maybe
-86,1066.0,"this was a nice chat, goodbye",goodbye
-87,1104.0,what kinds of activities to you participate in during your free time,what_are_your_hobbies
-88,1132.0,are you involved in hobbies,what_are_your_hobbies
-89,1142.0,am i talking with a real person,are_you_a_bot
-90,1158.0,what would you like me to call you,what_is_your_name
-91,1163.0,"what do they call you, ai",what_is_your_name
-92,1186.0,what name should i use when i call you,what_is_your_name
-93,1221.0,i wanna know your hobbies,what_are_your_hobbies
-94,1232.0,"no, don't do that",no
-95,1239.0,peace,goodbye
-96,1244.0,what are your interests,what_are_your_hobbies
-97,1248.0,how's everything,greeting
-98,1251.0,hey how old are you,how_old_are_you
-99,1262.0,am i speaking with someone real,are_you_a_bot
-100,1263.0,how many years are you,how_old_are_you
-101,1266.0,i dont know,maybe
-102,1280.0,"no, that information is wrong",no
-103,1290.0,are you computer or human,are_you_a_bot
-104,1303.0,are you a member or the human race or are you a computer program,are_you_a_bot
-105,1312.0,what name do you want me to use,what_is_your_name
-106,1377.0,who do i have the pleasure of speaking with,what_is_your_name
-107,1407.0,tell me when you were born,how_old_are_you
-108,1440.0,are you a human being or a robot,are_you_a_bot
-109,1444.0,it might be either one,maybe
-110,1483.0,how is the ai doing,greeting
-111,1523.0,how's ife treating you,greeting
-112,1542.0,you're how old,how_old_are_you
-113,1545.0,"hi, ai",greeting
-114,1548.0,how old are you,how_old_are_you
-115,1562.0,it's either of them,maybe
-116,1565.0,how are things going,greeting
-117,1583.0,what is your name by chance,what_is_your_name
-118,1584.0,confirmed,yes
-119,1590.0,not that,no
-120,1604.0,is it true your a real person,are_you_a_bot
-121,1618.0,what are you hobbies,what_are_your_hobbies
-122,1620.0,how young are you,how_old_are_you
-123,1637.0,i am afraid that that is not the case,no
-124,1684.0,"that is not true, it's false",no
-125,1697.0,"what name do you go by, ai",what_is_your_name
-126,1717.0,tell me how you are doing,greeting
-127,1725.0,"hi, how are you",greeting
-128,1739.0,do you mind if i ask how old you are,how_old_are_you
-129,1750.0,what kind of things do you do when you have free time,what_are_your_hobbies
-130,1778.0,what kind of hobbies do you like to do,what_are_your_hobbies
-131,1786.0,i want to know if you have hobbies,what_are_your_hobbies
-132,1857.0,do you know exactly when you were born,how_old_are_you
-133,1859.0,not sure to be honest,maybe
-134,1874.0,oh yes,yes
-135,1887.0,what is your full name,what_is_your_name
-136,1903.0,it's true,yes
-137,1941.0,how long have you been functional,how_old_are_you
-138,1951.0,you are how old,how_old_are_you
-139,1953.0,sayonara,goodbye
-140,1979.0,what do you call yourself,what_is_your_name
-141,1991.0,"no, that is my response",no
-142,2026.0,can you tell me if you are a real live person,are_you_a_bot
-143,2045.0,either i am not sure,maybe
-144,2051.0,do you know whether you are a human or whether you're a computer,are_you_a_bot
-145,2076.0,"hello, how is it going",greeting
-146,2115.0,false for sure,no
-147,2116.0,are you an actual live person,are_you_a_bot
-148,2121.0,i have no knowledge about it,maybe
-149,2135.0,it seems not,no
-150,2175.0,that is the wrong answer,no
-151,2206.0,so what sort of hobbies are you into,what_are_your_hobbies
-152,2212.0,what do you like being called,what_is_your_name
-153,2221.0,how are you this day,greeting
-154,2249.0,undecided,maybe
-155,2287.0,are you ai,are_you_a_bot
-156,2309.0,that checks out,yes
-157,2331.0,i would like to know some of your hobbies,what_are_your_hobbies
-158,2389.0,bye bye!,goodbye
-159,2399.0,"later, thanks for chatting",goodbye
-160,2412.0,that would be true,yes
-161,2416.0,"yes, that's what i want",yes
-162,2426.0,are you a robot,are_you_a_bot
-163,2433.0,"no, that is wrong",no
-164,2451.0,wassup,greeting
-165,2463.0,it's nice to see you,greeting
-166,2472.0,are you a live human being,are_you_a_bot
-167,2486.0,i think your a bot,are_you_a_bot
-168,2502.0,could be,maybe
-169,2506.0,i'm unaware of that,maybe
-170,2525.0,no that's wrong,no
-171,2532.0,that would be false,no
-172,2546.0,what do you like to do in your free time,what_are_your_hobbies
-173,2573.0,what should i call you,what_is_your_name
-174,2583.0,the answer is yes,yes
-175,2591.0,when were you created,how_old_are_you
-176,2599.0,do you have a name that i can call you,what_is_your_name
-177,2602.0,i'm uncertain,maybe
-178,2617.0,how do i activate you,what_is_your_name
-179,2628.0,i'm unsure,maybe
-180,2638.0,maybe,maybe
-181,2656.0,what's your age siri,how_old_are_you
-182,2668.0,i would like to know what hobbies you enjoy,what_are_your_hobbies
-183,2719.0,could you be a person,are_you_a_bot
-184,2731.0,"how old are you, ai",how_old_are_you
-185,2820.0,i can't say for certain either way,maybe
-186,2828.0,"when referring to you, what name should i use",what_is_your_name
-187,2848.0,invalid,no
-188,2850.0,how old will you be,how_old_are_you
-189,2893.0,are you an ai or person,are_you_a_bot
-190,2901.0,may i have your name,what_is_your_name
-191,2922.0,"maybe, maybe not",maybe
-192,2934.0,see ya later,goodbye
-193,2941.0,tell me your age,how_old_are_you
-194,2966.0,i'm drawing a blank,maybe
-195,2973.0,"hmm, either",maybe
-196,2980.0,absolutely not,no
-197,2995.0,what sorts of activities do you enjoy,what_are_your_hobbies
-198,3010.0,hey,greeting
-199,3019.0,"are you a computer, or are you a real person",are_you_a_bot
-200,3023.0,how are things,greeting
-201,3032.0,"what are you’re hobbies, ai",what_are_your_hobbies
-202,3033.0,are you a person or artificial intelligence,are_you_a_bot
-203,3036.0,tell me your age please,how_old_are_you
-204,3073.0,"yep, that's true",yes
-205,3085.0,what age are you,how_old_are_you
-206,3094.0,good speaking to you,goodbye
-207,3096.0,tell me if you are human,are_you_a_bot
-208,3104.0,hi! are you doing okay,greeting
-209,3109.0,your date of birth,how_old_are_you
-210,3115.0,this was a nice chat,goodbye
-211,3130.0,could you let me know how old you are,how_old_are_you
-212,3162.0,i don't really know,maybe
-213,3170.0,have a good one,goodbye
-214,3196.0,that's completely false,no
-215,3210.0,i'm not sure what the answer is,maybe
-216,3267.0,what hobbies do you like to partake in,what_are_your_hobbies
-217,3284.0,"i do not think that is true, so i would say it is a false statement",no
-218,3313.0,sorry no idea,maybe
-219,3332.0,"how are you doing today, ai",greeting
-220,3368.0,how old are you exactly,how_old_are_you
-221,3386.0,hey what's up,greeting
-222,3391.0,hiya!,greeting
-223,3407.0,are you really a person or an ai,are_you_a_bot
-224,3409.0,what do you do with your free time,what_are_your_hobbies
-225,3411.0,"hey there, how are you today",greeting
-226,3449.0,i have to get going,goodbye
-227,3460.0,that answer's above my pay scale,maybe
-228,3467.0,that's not what i want!,no
-229,3484.0,i'll have to think about it,maybe
-230,3545.0,how is your day,greeting
-231,3585.0,the answer is false,no
-232,3615.0,i would prefer not,no
-233,3633.0,how are things going for you,greeting
-234,3641.0,what do you do for fun alexa,what_are_your_hobbies
-235,3643.0,may i ask your age,how_old_are_you
-236,3646.0,"this was fun, see you around bye",goodbye
-237,3649.0,that's not right,no
-238,3657.0,are your real or artificial,are_you_a_bot
-239,3660.0,see you around,goodbye
-240,3667.0,tell me what your name is,what_is_your_name
-241,3670.0,do you go by any nicknames,what_is_your_name
-242,3686.0,i was wondering what age you are,how_old_are_you
-243,3697.0,what name do you want me to call you,what_is_your_name
-244,3712.0,i do not know the answer to that,maybe
-245,3737.0,that would be awesome,yes
-246,3793.0,that's not correct,no
-247,3795.0,"yes, this is true",yes
-248,3796.0,"ai, how are you doing",greeting
-249,3802.0,am i talking to an actual person,are_you_a_bot
-250,3840.0,i am wanting to know how old you are,how_old_are_you
-251,3844.0,let me know how old you are,how_old_are_you
-252,3882.0,that is affirmative,yes
-253,3913.0,not at all,no
-254,3925.0,"that is true, yes",yes
-255,3942.0,i'm unsure of the proper answer,maybe
-256,3944.0,"how are you doing, ai",greeting
-257,3986.0,what is your date of birth,how_old_are_you
-258,3987.0,"maybe yes, maybe no",maybe
-259,4011.0,i need to know how old you are,how_old_are_you
-260,4030.0,can you tell me when you were born,how_old_are_you
-261,4050.0,are you secretly real,are_you_a_bot
-262,4059.0,how's it hanging,greeting
-263,4080.0,i need to know your age,how_old_are_you
-264,4093.0,when were you made,how_old_are_you
-265,4125.0,hola,greeting
-266,4149.0,i'm not completely certain,maybe
-267,4151.0,what are some things you like to do,what_are_your_hobbies
-268,4152.0,"no, that is not correct",no
-269,4190.0,how ya been,greeting
-270,4201.0,how many days old are you,how_old_are_you
-271,4240.0,what are you,are_you_a_bot
-272,4243.0,it could be that one or the other one,maybe
-273,4289.0,"yes, i'd really like that alot",yes
-274,4313.0,either or should work,maybe
-275,4323.0,are you really real,are_you_a_bot
-276,4328.0,"yes, that is accurate",yes
-277,4402.0,that seems true,yes
-278,4408.0,good day,greeting
-279,4424.0,do you know when you were born,how_old_are_you
-280,4439.0,yes,yes
-281,4468.0,hello how's it going,greeting
-282,4570.0,that's wrong,no
-283,4587.0,"sorry, i do not know",maybe
-284,4596.0,i would say that the statement is definitely false,no
-285,4630.0,does the ai have a name,what_is_your_name
-286,4638.0,what do you do to occupy your free time,what_are_your_hobbies
-287,4710.0,i'd like your name,what_is_your_name
-288,4715.0,"why, hello bandit",greeting
-289,4728.0,yup,yes
-290,4736.0,what do you do for fun in your free time,what_are_your_hobbies
-291,4738.0,what do i call you,what_is_your_name
-292,4768.0,it's indeed true,yes
-293,4786.0,i would like to know if you are an artificial intelligence being,are_you_a_bot
-294,4802.0,regards,goodbye
-295,4818.0,maybe it does,maybe
-296,4941.0,that’s incorrect,no
-297,4948.0,"no, that's incorrect",no
-298,4986.0,buhbye,goodbye
-299,5037.0,can you tell me how you're doing today,greeting
-300,5046.0,how are things treating you,greeting
-301,5065.0,i don't have the answer,maybe
-302,5092.0,how old were you on your most recent birthday,how_old_are_you
-303,5107.0,how is it going my friend,greeting
-304,5152.0,how old are you again,how_old_are_you
-305,5155.0,can you tell me what you are called,what_is_your_name
-306,5175.0,that is overwhelmingly false,no
-307,5209.0,the statement is true,yes
-308,5215.0,"i am not a bot, are you",are_you_a_bot
-309,5255.0,what year were you born,how_old_are_you
-310,5283.0,i am needing to know what some of your hobbies are,what_are_your_hobbies
-311,5314.0,i'm not sure,maybe
-312,5323.0,i'm afraid i don't know how to answer that,maybe
-313,5328.0,can you tell me your age,how_old_are_you
-314,5342.0,i'd like to hear about your hobbies,what_are_your_hobbies
-315,5381.0,what sorts of things are you into,what_are_your_hobbies
-316,5399.0,"thanks for chatting, later",goodbye
-317,5403.0,can i have your name,what_is_your_name
-318,5418.0,what do people call you,what_is_your_name
-319,5423.0,"that would be ""no",no
-320,5426.0,what types of hobbies do you enjoy,what_are_your_hobbies
-321,5435.0,do you think you are a bot,are_you_a_bot
-322,5445.0,heller,greeting
-323,5473.0,that will be all have a nice day!,goodbye
-324,5481.0,i can't answer yes or no right now,maybe
-325,5524.0,adios,goodbye
-326,5564.0,that is erroneous,no
-327,5571.0,are you a real life person,are_you_a_bot
-328,5575.0,how old are you alexa,how_old_are_you
-329,5576.0,"yes, please",yes
-330,5595.0,do you have any hobbies to speak of,what_are_your_hobbies
-331,5596.0,prove that you're a person,are_you_a_bot
-332,5611.0,what types of activities do you enjoy,what_are_your_hobbies
-333,5627.0,"i enjoyed our talk, goodbye",goodbye
-334,5687.0,what are your favorite things to do,what_are_your_hobbies
-335,5692.0,what is your age,how_old_are_you
-336,5710.0,i am not confident on that,maybe
-337,5711.0,yeap,yes
-338,5746.0,share some of your hobbies with me,what_are_your_hobbies
-339,5748.0,i will know later,maybe
-340,5766.0,aloha,greeting
-341,5774.0,i don't know anything about that,maybe
-342,5778.0,which hobbies do you like,what_are_your_hobbies
-343,5816.0,could you tell me your name,what_is_your_name
-344,5851.0,what name should i use to address you,what_is_your_name
-345,5857.0,i do not think that is proper,no
-346,5858.0,ya,yes
-347,5877.0,that is most definitely false,no
-348,5895.0,what your numerical digit to display as your age,how_old_are_you
-349,5896.0,i don't have that information,maybe
-350,5903.0,of course,yes
-351,5923.0,it was nice to get in touch,goodbye
-352,5939.0,are you a real person or a computer,are_you_a_bot
-353,5946.0,what is the exact date of your birth,how_old_are_you
-354,5948.0,please share your hobbies with me,what_are_your_hobbies
-355,5949.0,"no, that is a falsehood",no
-356,5966.0,it's possible that it could be either,maybe
-357,6002.0,the answer is definitely no,no
-358,6005.0,what may i call you,what_is_your_name
-359,6042.0,i think it could be either one,maybe
-360,6046.0,how would you like to be referred to,what_is_your_name
-361,6102.0,are you a real person or software,are_you_a_bot
-362,6111.0,tell me your birthday,how_old_are_you
-363,6116.0,what is your current age,how_old_are_you
-364,6127.0,what do they call you,what_is_your_name
-365,6140.0,hey there,greeting
-366,6221.0,it was pleasant conversing with you,goodbye
-367,6225.0,what is the date of your birth,how_old_are_you
-368,6257.0,hell nah,no
-369,6258.0,nope not it,no
-370,6271.0,how old will you be next year,how_old_are_you
-371,6285.0,the answer to that is a resounding yes,yes
-372,6336.0,"it was a pleasure talking to you, goodbye now",goodbye
-373,6370.0,how should i address you,what_is_your_name
-374,6376.0,it was pleasant having a conversation with you,goodbye
-375,6418.0,hey there!,greeting
-376,6461.0,"no, that is inaccurate",no
-377,6486.0,uh huh,yes
-378,6504.0,what's up,greeting
-379,6523.0,you could tell me if you were real,are_you_a_bot
-380,6537.0,"hey, what's up",greeting
-381,6551.0,what do you engage in during your free time,what_are_your_hobbies
-382,6554.0,please tell me your name,what_is_your_name
-383,6572.0,what's your birth date,how_old_are_you
-384,6603.0,until next time!,goodbye
-385,6629.0,"i don't believe that is possible, it is false",no
-386,6639.0,what would you like to be called,what_is_your_name
-387,6663.0,is there anything real about you,are_you_a_bot
-388,6679.0,my response to that is yes,yes
-389,6693.0,tata for now,goodbye
-390,6697.0,i'm telling you this is a true statement,yes
-391,6712.0,both could be,maybe
-392,6756.0,ai goodbye,goodbye
-393,6765.0,"goodbye, helpful ai device!",goodbye
-394,6770.0,"no, that can't be right",no
-395,6791.0,"yeah, that's right",yes
-396,6819.0,it could be possible,maybe
-397,6822.0,"i enjoyed our talk, bye",goodbye
-398,6835.0,goodbye for now ai,goodbye
-399,6886.0,at free time what do you do,what_are_your_hobbies
-400,6899.0,not happening,no
-401,6907.0,no!,no
-402,6926.0,hi,greeting
-403,6937.0,not sure,maybe
-404,6979.0,i have no earthly idea at all,maybe
-405,6981.0,am i talking with real person or ai,are_you_a_bot
-406,7019.0,"correct, that's true",yes
-407,7029.0,thanks for talking to me,goodbye
-408,7031.0,what hobbies pique your interest,what_are_your_hobbies
-409,7041.0,how is everything going,greeting
-410,7043.0,that's correct,yes
-411,7045.0,lemme know when you were born,how_old_are_you
-412,7048.0,do you enjoy any hobbies,what_are_your_hobbies
-413,7059.0,what hobbies do you enjoy in your free time,what_are_your_hobbies
-414,7062.0,no way!,no
-415,7098.0,i want you to know it's a true statement,yes
-416,7100.0,this was a great conversation,goodbye
-417,7105.0,"yes, that happens to be correct",yes
-418,7116.0,i can't answer that,maybe
-419,7143.0,it was nice chatting with you,goodbye
-420,7147.0,that is wrong,no
-421,7207.0,i am thinking it is either,maybe
-422,7222.0,what do you do in your spare time,what_are_your_hobbies
-423,7228.0,"one or the other, or both",maybe
-424,7260.0,what name should i refer to you as,what_is_your_name
-425,7269.0,i'm out of here,goodbye
-426,7272.0,i need to know your name,what_is_your_name
-427,7279.0,are you actually a bot,are_you_a_bot
-428,7281.0,what things do you enjoy doing,what_are_your_hobbies
-429,7287.0,lets talk about your hobbies,what_are_your_hobbies
-430,7305.0,it was nice to chat,goodbye
-431,7310.0,that is false,no
-432,7316.0,always nice to talk to you,goodbye
-433,7329.0,can you tell me your name,what_is_your_name
-434,7336.0,what is your name,what_is_your_name
-435,7343.0,would you tell me your name,what_is_your_name
-436,7350.0,roger that,yes
-437,7395.0,are you a computer,are_you_a_bot
-438,7398.0,what things do you do for fun,what_are_your_hobbies
-439,7422.0,it was enjoyable talking with you,goodbye
-440,7429.0,i gotta say no,no
-441,7479.0,"hi there, how are things",greeting
-442,7490.0,for how long have you existed,how_old_are_you
-443,7498.0,do you have any hobbies,what_are_your_hobbies
-444,7499.0,that makes sense as well,yes
-445,7507.0,i can't tell,maybe
-446,7542.0,"ai, what do people call you",what_is_your_name
-447,7587.0,no don't do that!,no
-448,7590.0,how do i know that you're a person,are_you_a_bot
-449,7609.0,what's your name if i may ask,what_is_your_name
-450,7614.0,give me your name so i can use you,what_is_your_name
-451,7616.0,i think it is false,no
-452,7636.0,tell me what to call you,what_is_your_name
-453,7640.0,absolutely!,yes
-454,7651.0,that's right,yes
-455,7697.0,please let's do it,yes
-456,7712.0,i don't know for sure,maybe
-457,7735.0,"how are you classified, as a human or a computer",are_you_a_bot
-458,7756.0,goodbye,goodbye
-459,7764.0,can you tell me how old you are,how_old_are_you
-460,7771.0,"hello, friend",greeting
-461,7782.0,it's good to see you,greeting
-462,7791.0,how long ago were you born,how_old_are_you
-463,7792.0,"hello, anyone there",greeting
-464,7825.0,not quite sure how to respond,maybe
-465,7832.0,are you a real person or a bot,are_you_a_bot
-466,7842.0,what do you enjoy doing in your off time,what_are_your_hobbies
-467,7862.0,it was great chatting with you,goodbye
-468,7875.0,do you have a preference regarding what i should call you,what_is_your_name
-469,7952.0,i'm glad i got to talk to you,goodbye
-470,8016.0,please introduce yourself,what_is_your_name
-471,8020.0,what is your creation date,how_old_are_you
-472,8021.0,how do you like to spend your free time,what_are_your_hobbies
-473,8027.0,when did you come to exist,how_old_are_you
-474,8032.0,i would have to say yes as my answer,yes
-475,8065.0,i have to go ai goodbye,goodbye
-476,8076.0,what is your birthday,how_old_are_you
-477,8113.0,that's a definite yes,yes
-478,8114.0,tell me if you are a person or ai,are_you_a_bot
-479,8116.0,bonjour,greeting
-480,8122.0,what hobbies do you like doing,what_are_your_hobbies
-481,8135.0,hey how's it going,greeting
-482,8136.0,all right,yes
-483,8153.0,"ai, do you like your name",what_is_your_name
-484,8165.0,whats your age,how_old_are_you
-485,8223.0,are you a live being,are_you_a_bot
-486,8235.0,yes that's correct,yes
-487,8242.0,not right now,no
-488,8244.0,tell me your date of birth,how_old_are_you
-489,8246.0,you are a bot aren't you,are_you_a_bot
-490,8275.0,what's your full name,what_is_your_name
-491,8291.0,how've you been feeling,greeting
-492,8303.0,what's your favorite hobby,what_are_your_hobbies
-493,8307.0,it was great talking to you,goodbye
-494,8327.0,maybe it is,maybe
-495,8357.0,no thanks,no
-496,8383.0,see you in a while,goodbye
-497,8389.0,you are not wrong about that,yes
-498,8413.0,what other hobbies do you enjoy,what_are_your_hobbies
-499,8423.0,how is everything going for you,greeting
-500,8446.0,"hi, how are you today",greeting
-501,8447.0,do you have anything you enjoy to do,what_are_your_hobbies
-502,8451.0,"yes, that is a fact",yes
-503,8510.0,are you okay right now,greeting
-504,8514.0,i want to know your age,how_old_are_you
-505,8535.0,not true,no
-506,8572.0,i am curious to know if you are a bot,are_you_a_bot
-507,8585.0,"no, that's not right",no
-508,8604.0,give me examples of what some of your hobbies are,what_are_your_hobbies
-509,8605.0,what do you like to do when you're not working,what_are_your_hobbies
-510,8626.0,what do you like to be called,what_is_your_name
-511,8631.0,i am needing to know your name,what_is_your_name
-512,8640.0,bye,goodbye
-513,8641.0,would most people say you are a computer or a human,are_you_a_bot
-514,8663.0,hows are ya,greeting
-515,8681.0,are you a real person or a robot,are_you_a_bot
-516,8682.0,hello there ai,greeting
-517,8689.0,do you know your name,what_is_your_name
-518,8704.0,negative,no
-519,8721.0,that's a yes,yes
-520,8722.0,what do you want me to call you,what_is_your_name
-521,8729.0,i want to know if your a bot,are_you_a_bot
-522,8744.0,how is the weather today,maybe
-523,8769.0,are you doing ok,greeting
-524,8775.0,what's up with you,greeting
-525,8806.0,glad we got to talk,goodbye
-526,8856.0,should i regard you as a human or as a computer,are_you_a_bot
-527,8863.0,what sorts of hobbies do you enjoy,what_are_your_hobbies
-528,8869.0,would you say you are a bot,are_you_a_bot
-529,8895.0,goodbye to you,goodbye
-530,8896.0,i think not,no
-531,8906.0,talk later,goodbye
-532,8916.0,"hello, what's up",greeting
-533,8941.0,it was nice to speak with you,goodbye
-534,8973.0,"it was great to see you again, see ya later!",goodbye
-535,8989.0,hi how are you,greeting
-536,9037.0,may i know if you are a real person or an ai,are_you_a_bot
-537,9060.0,maybe is my answer,maybe
-538,9061.0,naw,no
-539,9068.0,tell me what some of your hobbies are,what_are_your_hobbies
-540,9090.0,"yes, that's accurate",yes
-541,9150.0,"thanks for your help, goodbye!",goodbye
-542,9154.0,"yes, that is true for sure",yes
-543,9168.0,what are your hobbies siri,what_are_your_hobbies
-544,9199.0,what is the age of the ai,how_old_are_you
-545,9202.0,do you know you are not human,are_you_a_bot
-546,9203.0,what did your friends call you,what_is_your_name
-547,9229.0,do you know if you are a robot,are_you_a_bot
-548,9238.0,that's a negative,no
-549,9279.0,"yep, that's right",yes
-550,9290.0,are you good,greeting
-551,9318.0,its a for sure true,yes
-552,9334.0,"yes, that is right",yes
-553,9342.0,i have no idea,maybe
-554,9430.0,what kinds of hobbies do you have,what_are_your_hobbies
-555,9452.0,can you tell me some of your hobbies,what_are_your_hobbies
-556,9478.0,what is your given name,what_is_your_name
-557,9482.0,nice to see you,goodbye
-558,9483.0,either or,maybe
-559,9501.0,please tell me if you are an ai,are_you_a_bot
-560,9503.0,how many years do you have,how_old_are_you
-561,9518.0,are you a human,are_you_a_bot
-562,9520.0,that's incorrect,no
-563,9556.0,what exactly is your name,what_is_your_name
-564,9559.0,affirmitive,yes
-565,9588.0,inform me what you do for fun in your free time,what_are_your_hobbies
-566,9629.0,no that isn't the case,no
-567,9647.0,"hello, how are you",greeting
-568,9653.0,are you alive,are_you_a_bot
-569,9662.0,see you later!,goodbye
-570,9674.0,i wish to know your hobbies,what_are_your_hobbies
-571,9675.0,what is your names,what_is_your_name
-572,9703.0,"ai, how many months old are you",how_old_are_you
-573,9704.0,see you again soon,goodbye
-574,9710.0,hell if i know,maybe
-575,9712.0,what day were you born,how_old_are_you
-576,9727.0,what name do you want to be called,what_is_your_name
-577,9731.0,which one i don't know either i guess,maybe
-578,9761.0,how many years ago was al born,how_old_are_you
-579,9799.0,how's it going with you,greeting
-580,9800.0,that is correct,yes
-581,9802.0,would you tell me how the ai is doing,greeting
-582,9874.0,what activities do you enjoy,what_are_your_hobbies
-583,9877.0,can you tell me your hobbies,what_are_your_hobbies
-584,9878.0,tell me what you do in your free time,what_are_your_hobbies
-585,9885.0,tell me all about your hobbies,what_are_your_hobbies
-586,9887.0,so are you a bot,are_you_a_bot
-587,9892.0,i would like to know when you were born,how_old_are_you
-588,9906.0,i just don't know,maybe
-589,9908.0,i'm torn on how to answer,maybe
-590,9940.0,what name do you answer to,what_is_your_name
-591,9945.0,i can't give you an answer to that,maybe
-592,9954.0,"sorry, that is not true",no
-593,9958.0,are you real or a computer,are_you_a_bot
-594,9960.0,"agreed, that's valid",yes
-595,9966.0,what sort of hobbies do you enjoy,what_are_your_hobbies
-596,10006.0,i don't have any idea,maybe
-597,10011.0,positive,yes
-598,10019.0,what are the things you like to do for fun,what_are_your_hobbies
-599,10021.0,i'm pretty sure it could be either,maybe
-600,10056.0,either one might be,maybe
-601,10066.0,how to you spend your free time,what_are_your_hobbies
-602,10070.0,i'd like to know your name,what_is_your_name
-603,10077.0,are you an actual person,are_you_a_bot
-604,10082.0,do you consider yourself an artificial intelligence being,are_you_a_bot
-605,10094.0,bye for now,goodbye
-606,10102.0,that turns out to be false,no
-607,10113.0,bye-bye,goodbye
-608,10133.0,that is totally true,yes
-609,10146.0,very true,yes
-610,10162.0,"yes, you got it",yes
-611,10181.0,that is a fact,yes
-612,10194.0,hey what's up,greeting
-613,10235.0,tell me what you do for fun,what_are_your_hobbies
-614,10267.0,"um, i'm not totally sure",maybe
-615,10316.0,what is your age again,how_old_are_you
-616,10338.0,i agree with the truth of what you just said,yes
-617,10347.0,just wanted to say hi,greeting
-618,10352.0,i meant no,no
-619,10402.0,no that is wrong,no
-620,10403.0,i enjoyed speaking with you,goodbye
-621,10456.0,how do you spend your spare time,what_are_your_hobbies
-622,10463.0,i can confirm it is affirmative,yes
-623,10486.0,good night,goodbye
-624,10553.0,what year were you born in,how_old_are_you
-625,10556.0,okay,yes
-626,10560.0,yo,greeting
-627,10585.0,that is not the case,no
-628,10608.0,ai how are you doing today,greeting
-629,10619.0,would you tell me about your hobbies,what_are_your_hobbies
-630,10629.0,how long have you been alive,how_old_are_you
-631,10637.0,whats up,greeting
-632,10650.0,don't have any idea,maybe
-633,10651.0,i don't have a clue,maybe
-634,10663.0,definitely,yes
-635,10687.0,"i am glad we got to talk again, see you soon",goodbye
-636,10693.0,what are you called,what_is_your_name
-637,10705.0,"i enjoyed talking to you, bye",goodbye
-638,10733.0,that is so false,no
-639,10741.0,how old are you turning,how_old_are_you
-640,10748.0,i enjoyed talking to you,goodbye
-641,10749.0,what you do at the free time,what_are_your_hobbies
-642,10814.0,the answer is no,no
-643,10822.0,are you a machine,are_you_a_bot
-644,10828.0,it depends,maybe
-645,10830.0,i gotta know your hobbies,what_are_your_hobbies
-646,10839.0,when did you originate,how_old_are_you
-647,10840.0,that is not false,yes
-648,10850.0,i would like to know if you are a robot,are_you_a_bot
-649,10869.0,"hello, are you doing alright",greeting
-650,10883.0,that'd be a no,no
-651,10885.0,no good,no
-652,10899.0,i do not have that information,maybe
-653,10901.0,fairwell,goodbye
-654,10916.0,there is no way in heck that is true,no
-655,10927.0,what name was given to you,what_is_your_name
-656,10942.0,what do you prefer to be called,what_is_your_name
-657,10952.0,indeed,yes
-658,10953.0,true is my response,yes
-659,10959.0,how is my ai doing,greeting
-660,10966.0,"yes, that's correct",yes
-661,10989.0,"yes, that's confirmed",yes
-662,10994.0,that would be yes,yes
-663,11012.0,yes i am,yes
-664,11013.0,"thank you for the chat, goodbye",goodbye
-665,11033.0,greetings to you,greeting
-666,11059.0,"yes, that is factual",yes
-667,11060.0,let me know if you are a human or a computer,are_you_a_bot
-668,11081.0,i want to know how old you are,how_old_are_you
-669,11086.0,i'm not actually sure,maybe
-670,11087.0,it was lovely to speak with you,goodbye
-671,11099.0,what do you enjoy doing in your leisure time,what_are_your_hobbies
-672,11112.0,let me know if you are a human or are a computer,are_you_a_bot
-673,11124.0,"yes, that is correct",yes
-674,11127.0,nice to see you again,goodbye
-675,11135.0,who am i speaking with,what_is_your_name
-676,11142.0,it was very good to talk to you,goodbye
-677,11143.0,confirm,yes
-678,11165.0,do you have a way you like to be referred to,what_is_your_name
-679,11169.0,"no, that is not right at all",no
-680,11191.0,it is false,no
-681,11199.0,uh-huh,yes
-682,11214.0,shit if i know,maybe
-683,11218.0,bye now,goodbye
-684,11274.0,i don't think so,no
-685,11280.0,i'm saying goodbye now,goodbye
-686,11296.0,i'd like to know your hobbies,what_are_your_hobbies
-687,11299.0,that's incorrect!,no
-688,11336.0,i need to know whether you are a human or are a computer,are_you_a_bot
-689,11353.0,couldn't tell you,maybe
-690,11366.0,any hobbies,what_are_your_hobbies
-691,11383.0,salutations!,greeting
-692,11418.0,would you tell me the hobbies the ai has,what_are_your_hobbies
-693,11465.0,yes is my answer,yes
-694,11498.0,how many years have you been operating,how_old_are_you
-695,11534.0,nice seeing you bye,goodbye
-696,11558.0,cya later,goodbye
-697,11582.0,maybe is what i am going to answer,maybe
-698,11591.0,what's your age,how_old_are_you
-699,11610.0,that's a yes from me,yes
-700,11613.0,what kind of things to you like to outside of work,what_are_your_hobbies
-701,11617.0,i had fun speaking with you,goodbye
-702,11626.0,are you okay,greeting
-703,11628.0,how old will you be this year,how_old_are_you
-704,11629.0,are you a person in real life or programmed ai,are_you_a_bot
-705,11711.0,definitely not,no
-706,11716.0,how old is the ai,how_old_are_you
-707,11721.0,"great talk, take it easy",goodbye
-708,11759.0,i really don't know,maybe
-709,11775.0,it was really nice to be able to chat with you,goodbye
-710,11777.0,what do you like doing in your free time,what_are_your_hobbies
-711,11786.0,what's happening,greeting
-712,11789.0,"that's all i need, i'm going now",goodbye
-713,11800.0,you are how old now,how_old_are_you
-714,11816.0,tootles,goodbye
-715,11825.0,no is the answer,no
-716,11832.0,"hello there, good morning",greeting
-717,11844.0,i'm outta here!,goodbye
-718,11867.0,that is not correct,no
-719,11872.0,what do you like to do when you have spare time,what_are_your_hobbies
-720,11884.0,are you a human or ai computer based,are_you_a_bot
-721,11887.0,what do you feel like doing,greeting
-722,11890.0,what do you prefer being called,what_is_your_name
-723,11896.0,i disagree that is false,no
-724,11918.0,provide me with the knowledge of whether you are a human or are a computer,are_you_a_bot
-725,11920.0,"what is your age, ai",how_old_are_you
-726,11942.0,that's a negatory,no
-727,11954.0,talk to you later,goodbye
-728,11956.0,how's life,greeting
-729,11967.0,it was great to speak with you,goodbye
-730,11980.0,both would work,maybe
-731,11983.0,what kinds of hobbies do you enjoy,what_are_your_hobbies
-732,12015.0,yes you are right,yes
-733,12025.0,either one would work,maybe
-734,12033.0,i think it's true,yes
-735,12036.0,your name is,what_is_your_name
-736,12038.0,what sort of things do you or work on for fun when you have extra time,what_are_your_hobbies
-737,12039.0,what would your name be,what_is_your_name
-738,12054.0,"yeah that's right, so true",yes
-739,12060.0,i didn't get your name,what_is_your_name
-740,12066.0,what do you like to do besides work,what_are_your_hobbies
-741,12072.0,tell me what name to use to refer to you,what_is_your_name
-742,12094.0,"oh hell no, that'd be terrible!",no
-743,12106.0,"hey, what's new",greeting
-744,12107.0,"when referring to you, what name do you want me to use",what_is_your_name
-745,12111.0,adios ai,goodbye
-746,12113.0,good to see you,greeting
-747,12137.0,nope that's not it,no
-748,12149.0,"hey, how are you",greeting
-749,12152.0,are you human,are_you_a_bot
-750,12169.0,possibly either one,maybe
-751,12171.0,it could go either way,maybe
-752,12184.0,how real are you,are_you_a_bot
-753,12196.0,am i talking to a real person,are_you_a_bot
-754,12201.0,see you soon,goodbye
-755,12204.0,that is a yes,yes
-756,12254.0,and what would your name be,what_is_your_name
-757,12289.0,"am i speaking with ai or a real, live person",are_you_a_bot
-758,12290.0,can you tell me the age of the ai,how_old_are_you
-759,12324.0,do you know how old you are,how_old_are_you
-760,12330.0,yes that's it,yes
-761,12353.0,are you an actual human,are_you_a_bot
-762,12356.0,can you act and think like a real person,are_you_a_bot
-763,12366.0,i want to know your name,what_is_your_name
-764,12399.0,do you have an age,how_old_are_you
-765,12448.0,that's definitely true,yes
-766,12453.0,is this a computer right now or a human being,are_you_a_bot
-767,12464.0,what date were you created on,how_old_are_you
-768,12466.0,"hello, may i get your name",what_is_your_name
-769,12469.0,i agree,yes
-770,12505.0,what kinds of activities do you enjoy,what_are_your_hobbies
-771,12517.0,"incorrect, it is certainly a false statement",no
-772,12568.0,what keeps you busy in your free time,what_are_your_hobbies
-773,12587.0,"are you an actual person, or ai",are_you_a_bot
-774,12597.0,what makes you happy in your free time,what_are_your_hobbies
-775,12604.0,tell me if you are a human or are a computer,are_you_a_bot
-776,12627.0,hi there,greeting
-777,12629.0,what is the ai's name,what_is_your_name
-778,12636.0,can i ask your age,how_old_are_you
-779,12691.0,what do you find fun,what_are_your_hobbies
-780,12705.0,what kind of hobbies do you have,what_are_your_hobbies
-781,12726.0,that's the truth,yes
-782,12752.0,would you give me examples of what some of your hobbies are,what_are_your_hobbies
-783,12768.0,are you doing alright,greeting
-784,12778.0,i am saying no,no
-785,12783.0,negatory,no
-786,12787.0,how're you doing,greeting
-787,12794.0,on what day and date of what year were you born,how_old_are_you
-788,12797.0,i've got to run now,goodbye
-789,12800.0,"um, i'm not sure",maybe
-790,12803.0,i dont have an answer for that,maybe
-791,12806.0,my answer would be maybe,maybe
-792,12822.0,that's false,no
-793,12831.0,that's a hard no from me,no
-794,12842.0,am i speaking with a real person,are_you_a_bot
-795,12843.0,please tell me your hobbies,what_are_your_hobbies
-796,12895.0,i need to go now,goodbye
-797,12912.0,perhaps either of them,maybe
-798,12919.0,that could maybe be it,maybe
-799,12921.0,is this a person talking to me or a computer,are_you_a_bot
-800,12923.0,how old were you on your last birthday,how_old_are_you
-801,12925.0,how old are you in 2019,how_old_are_you
-802,12928.0,hey how's life,greeting
-803,12934.0,how is life treating you,greeting
-804,12980.0,what name should i use when talking with you,what_is_your_name
-805,12995.0,what's your first name,what_is_your_name
-806,13004.0,i need you to talk to me about your hobbies,what_are_your_hobbies
-807,13035.0,i'm not sure which it is,maybe
-808,13066.0,would you call yourself a human or a computer,are_you_a_bot
-809,13076.0,hey there fellow,greeting
-810,13078.0,are you really a human,are_you_a_bot
-811,13083.0,where did you grow up,how_old_are_you
-812,13087.0,i will say yes as my response,yes
-813,13089.0,what name would you like me to call you,what_is_your_name
-814,13109.0,tell me your hobbies,what_are_your_hobbies
-815,13126.0,what are your favorite activities,what_are_your_hobbies
-816,13156.0,what do you do as a hobby,what_are_your_hobbies
-817,13166.0,adios!,goodbye
-818,13227.0,how old are you exactly at the moment,how_old_are_you
-819,13230.0,farewell!,goodbye
-820,13242.0,"no idea, sorry",maybe
-821,13255.0,your age please,how_old_are_you
-822,13282.0,i believe that to be false,no
-823,13296.0,well hello,greeting
-824,13309.0,what are your hobbies in life,what_are_your_hobbies
-825,13335.0,no that isn't correct,no
-826,13357.0,who knows,maybe
-827,13392.0,what's your designation,what_is_your_name
-828,13419.0,when's your birthday,how_old_are_you
-829,13422.0,"have a good day, bye",goodbye
-830,13430.0,i have to say goodbye,goodbye
-831,13438.0,what name do you like to go by,what_is_your_name
-832,13446.0,what's going on,greeting
-833,13473.0,nada,no
-834,13486.0,are you real or an ai,are_you_a_bot
-835,13503.0,is there a way to tell if you are real or an ai,are_you_a_bot
-836,13504.0,goodnight,goodbye
-837,13536.0,no that is not right,no
-838,13547.0,how do i know if you are a real person,are_you_a_bot
-839,13559.0,how many years on the earth,how_old_are_you
-840,13608.0,what do you enjoy doing while not working,what_are_your_hobbies
-841,13636.0,i don't have an answer for that,maybe
-842,13667.0,tell me how old you are,how_old_are_you
-843,13694.0,hello there,greeting
-844,13703.0,good bye my friend,goodbye
-845,13712.0,what do you answer to,what_is_your_name
-846,13728.0,i can't make up my mind,maybe
-847,13751.0,please tell me your age,how_old_are_you
-848,13783.0,i'd love to hear when you were born,how_old_are_you
-849,13788.0,you're right,yes
-850,13796.0,what do you do in your free time,what_are_your_hobbies
-851,13800.0,that is right,yes
-852,13814.0,can you tell me how old the ai is,how_old_are_you
-853,13832.0,that isn't right,no
-854,13833.0,what's your date of birth,how_old_are_you
-855,13841.0,"hi there, how are you doing",greeting
-856,13865.0,what kind of activities do you enjoy,what_are_your_hobbies
-857,13913.0,could you tell me when you were born,how_old_are_you
-858,13934.0,not really,no
-859,13943.0,how are things for you,greeting
-860,13947.0,really dont know,maybe
-861,13970.0,that's a possibility,maybe
-862,13985.0,i am needing to know when you were born,how_old_are_you
-863,13996.0,what's your age again,how_old_are_you
-864,14011.0,my answer to your question is yes,yes
-865,14028.0,i'd like to know how you are doing,greeting
-866,14047.0,goodbye!,goodbye
-867,14048.0,what should i use when i refer to you,what_is_your_name
-868,14066.0,how old are you siri,how_old_are_you
-869,14068.0,are you a human or a bot,are_you_a_bot
-870,14078.0,i'll talk to you later ai,goodbye
-871,14080.0,are you well,greeting
-872,14106.0,how you are,greeting
-873,14117.0,are you human or a bot,are_you_a_bot
-874,14140.0,i don't know the anwser,maybe
-875,14148.0,"hey, how do i call your attention",what_is_your_name
-876,14199.0,might you have any hobbies,what_are_your_hobbies
-877,14200.0,catch you later,goodbye
-878,14236.0,so how is everything,greeting
-879,14247.0,what are you feeling today,greeting
-880,14255.0,i want to know the name that was given by the person who made you,what_is_your_name
-881,14311.0,what recreational activities do you enjoy,what_are_your_hobbies
-882,14312.0,im not certain,maybe
-883,14318.0,are you real or not,are_you_a_bot
-884,14331.0,are you an ai or a real person,are_you_a_bot
-885,14367.0,when was your birth,how_old_are_you
-886,14402.0,yes you are,yes
-887,14431.0,would you say that you are human or copmuter,are_you_a_bot
-888,14438.0,i do not believe that that is correct,no
-889,14449.0,do you identify as a human or computer,are_you_a_bot
-890,14466.0,provide the name i should use to refer to you,what_is_your_name
-891,14496.0,are you doing well,greeting
-892,14497.0,i wanna know your name,what_is_your_name
-893,14535.0,are you a real person or artificial intelligence,are_you_a_bot
-894,14543.0,what are the ai's hobbies,what_are_your_hobbies
-895,14546.0,i must say goodbye,goodbye
-896,14554.0,bye!,goodbye
-897,14581.0,"not sure, maybe",maybe
-898,14589.0,what name should i call you,what_is_your_name
-899,14608.0,it may be either one,maybe
-900,14609.0,"no, that is not right",no
-901,14615.0,how are you today,greeting
-902,14661.0,i'm not sure of that,maybe
-903,14673.0,that is not factual,no
-904,14677.0,i think that's false,no
-905,14747.0,later gator!,goodbye
-906,14760.0,how are you doing,greeting
-907,14780.0,should i call you something in particular,what_is_your_name
-908,14784.0,how old did you just turn,how_old_are_you
-909,14820.0,how old are you now,how_old_are_you
-910,14821.0,what's the name you were given,what_is_your_name
-911,14824.0,"what age were you on your last birthday, ai",how_old_are_you
-912,14862.0,that is untrue,no
-913,14875.0,"ai, what should i call you",what_is_your_name
-914,14887.0,the statement is false,no
-915,14898.0,do you consider yourself a bot,are_you_a_bot
-916,14912.0,it was really awesome to talk to you,goodbye
-917,14913.0,are you really an actual human being,are_you_a_bot
-918,14914.0,are you a real human being,are_you_a_bot
-919,14935.0,how can i get your attention,what_is_your_name
-920,14938.0,can you tell me what hobbies the ai has,what_are_your_hobbies
-921,14944.0,it was good to talk to you today,goodbye
-922,14980.0,can you tell me if you're human or if you're a computer,are_you_a_bot
-923,14990.0,how old would you be,how_old_are_you
-924,15087.0,can you specify if you are a human or a computer,are_you_a_bot
-925,15147.0,do you have hobbies,what_are_your_hobbies
-926,15148.0,how do you describe yourself: as a computer or a human,are_you_a_bot
-927,15159.0,can you tell me about your hobbies,what_are_your_hobbies
-928,15160.0,i am really not sure,maybe
-929,15237.0,what hobbies do you like to do,what_are_your_hobbies
-930,15249.0,have a good day,goodbye
-931,15314.0,tell me if you are a real person or an ai,are_you_a_bot
-932,15330.0,how many years have you been on,how_old_are_you
-933,15349.0,that might be the case,maybe
-934,15391.0,i think maybe,maybe
-935,15433.0,what is al's age,how_old_are_you
-936,15457.0,can i have your name please,what_is_your_name
-937,15460.0,no that isn't it,no
-938,15467.0,that will be true,yes
-939,15482.0,that's totally wrong!,no
-940,15514.0,who are you known as,what_is_your_name
-941,15524.0,"nice talking again, bye",goodbye
-942,15532.0,i think you are a bot,are_you_a_bot
-943,15542.0,the answer to that is affirmative,yes
-944,15558.0,affirmative,yes
-945,15587.0,what hobbies do you do,what_are_your_hobbies
-946,15603.0,whats your age range,how_old_are_you
-947,15642.0,i am not to sure about that,maybe
-948,15729.0,catch you around,goodbye
-949,15737.0,what did they name you,what_is_your_name
-950,15742.0,are you real or fake,are_you_a_bot
-951,15760.0,does the ai have hobbies,what_are_your_hobbies
-952,15761.0,not sure if that's a yes or a no,maybe
-953,15802.0,is everything ok today,greeting
-954,15815.0,your name please,what_is_your_name
-955,15820.0,that is a completely false statement,no
-956,15821.0,"no, that's wrong",no
-957,15845.0,peace out,goodbye
-958,15853.0,you are correct,yes
-959,15860.0,are you real or automated,are_you_a_bot
-960,15888.0,"hmmm, either could be a choice",maybe
-961,15892.0,10-4,yes
-962,15896.0,how many years has al been on earth,how_old_are_you
-963,15914.0,take it easy!,goodbye
-964,15919.0,true,yes
-965,15938.0,how old are you ai,how_old_are_you
-966,15946.0,hi there alexa,greeting
-967,15950.0,are you young or old,how_old_are_you
-968,15962.0,i haven't a clue,maybe
-969,15991.0,am i talking to a person or a bot,are_you_a_bot
-970,16007.0,whats up with you,greeting
-971,16039.0,it was a pleasure talking to you,goodbye
-972,16056.0,let's talk about your hobbies,what_are_your_hobbies
-973,16069.0,what are your hobbies,what_are_your_hobbies
-974,16115.0,how would you like me to call you,what_is_your_name
-975,16120.0,i would like to know your name,what_is_your_name
-976,16135.0,i need to know if you are a real person or an ai,are_you_a_bot
-977,16169.0,what you just said is true,yes
-978,16202.0,yes that is correct,yes
-979,16241.0,are things going well for you,greeting
-980,16249.0,would you be classified as a bot,are_you_a_bot
-981,16266.0,no clue,maybe
-982,16275.0,what is the name i should use to refer to you,what_is_your_name
-983,16280.0,what's your name,what_is_your_name
-984,16304.0,heyo,greeting
-985,16319.0,do you have a name i should call you by,what_is_your_name
-986,16324.0,i have to say affirmative on that one,yes
-987,16373.0,are you older than me,how_old_are_you
-988,16387.0,"ai, how long have you been working",how_old_are_you
-989,16395.0,i do not know,maybe
-990,16432.0,"yes, that is true",yes
-991,16456.0,ok good chatting goodbye,goodbye
-992,16460.0,am i talking to a real live person,are_you_a_bot
-993,16477.0,can you me what they call you,what_is_your_name
-994,16515.0,are you a real person or an ai,are_you_a_bot
-995,16533.0,what is your birth date,how_old_are_you
-996,16570.0,what was your name again,what_is_your_name
-997,16586.0,hey how's it hanging,greeting
-998,16641.0,do you have a name,what_is_your_name
-999,16642.0,idk,maybe
-1000,16666.0,what do you like to do for fun,what_are_your_hobbies
-1001,16678.0,what do you do in your spare time siri,what_are_your_hobbies
-1002,16715.0,what are some things that you enjoy,what_are_your_hobbies
-1003,16732.0,are you a real person or automated,are_you_a_bot
-1004,16737.0,"what do i call you, ai",what_is_your_name
-1005,16740.0,it was nice to catch up with you,goodbye
-1006,16746.0,are you real or are you an ai,are_you_a_bot
-1007,16752.0,would you tell me if you are a human or are a computer,are_you_a_bot
-1008,16783.0,state your name,what_is_your_name
-1009,16799.0,hello there!,greeting
-1010,16800.0,how goes it,greeting
-1011,16805.0,what do you like to do during your leisure time,what_are_your_hobbies
-1012,16814.0,"wake up, ai",greeting
-1013,16829.0,"it could be either, i think",maybe
-1014,16857.0,tell me if you are a human or a computer,are_you_a_bot
-1015,16864.0,what is your preferred name,what_is_your_name
-1016,16898.0,you must tell me your name,what_is_your_name
-1017,16917.0,"enjoy your day, goodbye",goodbye
-1018,16927.0,"what birthday are you celebrating this year, ai",how_old_are_you
-1019,16928.0,how have you been,greeting
-1020,16934.0,i'll pass,no
-1021,16970.0,"hello, ai",greeting
-1022,16974.0,what do you like to do in your spare time,what_are_your_hobbies
-1023,16981.0,i haven't the foggiest,maybe
-1024,16989.0,yeah,yes
-1025,16999.0,until next time,goodbye
-1026,17017.0,how do you feel,greeting
-1027,17034.0,"clear something up, are you a robot",are_you_a_bot
-1028,17117.0,"that's not right, so no",no
-1029,17154.0,i'm not sure which one because it could be either of them,maybe
-1030,17167.0,it is a true,yes
-1031,17201.0,"yes, ai, that is correct",yes
-1032,17203.0,what are your favorite hobbies,what_are_your_hobbies
-1033,17211.0,are an an ai,are_you_a_bot
-1034,17232.0,are you a human or an ai,are_you_a_bot
-1035,17242.0,are you real,are_you_a_bot
-1036,17259.0,are you a bot right now,are_you_a_bot
-1037,17273.0,is everything ok with you,greeting
-1038,17281.0,"hello, how's your day",greeting
-1039,17306.0,sure,yes
-1040,17319.0,what kinds of things are you into,what_are_your_hobbies
-1041,17320.0,can you tell me your birthday,how_old_are_you
-1042,17355.0,what's your birthday,how_old_are_you
-1043,17358.0,negative for sure,no
-1044,17361.0,how are things with you,greeting
-1045,17423.0,are you a person or robot,are_you_a_bot
-1046,17424.0,i believe that's true,yes
-1047,17438.0,i’m leaving-goodbye!,goodbye
-1048,17440.0,correct,yes
-1049,17490.0,how many years have you been alive,how_old_are_you
-1050,17498.0,what name would you like me to use,what_is_your_name
-1051,17501.0,yes i do like that,yes
-1052,17510.0,you got it,yes
-1053,17512.0,i dunno,maybe
-1054,17528.0,i’ll be leaving now,goodbye
-1055,17529.0,i would have to say the answer to that is no,no
-1056,17532.0,"when you have free time, what do you do",what_are_your_hobbies
-1057,17536.0,that has to be false,no
-1058,17555.0,don't know,maybe
-1059,17567.0,that would be correct,yes
-1060,17581.0,it's a no,no
-1061,17594.0,what hobbies do you have,what_are_your_hobbies
-1062,17598.0,"see you later, alligator",goodbye
-1063,17631.0,approved,yes
-1064,17639.0,it was great to have this conversation with you,goodbye
-1065,17650.0,i must say no,no
-1066,17670.0,"no, that is incorrect",no
-1067,17673.0,i'm unsure of the answer,maybe
-1068,17678.0,i'm sure it could be either,maybe
-1069,17689.0,that is not right,no
-1070,17712.0,so are you real,are_you_a_bot
-1071,17717.0,could you be a real person,are_you_a_bot
-1072,17827.0,"yes, that's it",yes
-1073,17840.0,what's your name anyway,what_is_your_name
-1074,17863.0,ill pass,no
-1075,17888.0,do people call you by a certain name what is it,what_is_your_name
-1076,17915.0,is everything going okay,greeting
-1077,17937.0,how would you like me to refer to you,what_is_your_name
-1078,17951.0,i do not know that,maybe
-1079,17989.0,how long have you been alive for,how_old_are_you
-1080,,My wife went out of the country for school for 2 months at the beginning of the summer. Dropping her off at the airport was really hard.,loneliness
-1081,,I have felt lonely recently because I never go out and have no friends.,loneliness
-1082,,I was looking back through pictures online of me and my friends years ago. It made me kind of wish I could be back then for a little while.,loneliness
-1083,,I was going to go to the movies with a bunch of friends. But they all bailed on me and now I have to go alone.,loneliness
-1084,,my daughter went on vacation with her friends and the house feels really alone without her,loneliness
-1085,,My wife has been out of the country for 2 months for school. It's been a little tough being alone at home ever night.,loneliness
-1086,,I recently moved from California to North Carolina. It was ok while my friend (who drove me across the country) was here. But after he left I realized I knew absolutely nobody. It was not a good feeling.,loneliness
-1087,,I work from home and sometimes it makes me a bit sad to know that I'm here alone.,loneliness
-1088,,I used to feel lonely a lot as a teenager,loneliness
-1089,,I recently got together with some old college buddies and we just spend a weekend sitting around talking about the good ole times.,loneliness
-1090,,A friend of mine is moving away. It's a shame because we were close for a few years.,loneliness
-1091,,I am kind of glad the summer is coming to a end my kids was gone all summer I missed them and I was very isolated when they was away.,loneliness
-1092,,"I've been married a long time, but my husband has to travel for business so I feel a little bit by myself sometimes.",loneliness
-1093,,Me and my friend used to play nintendo all day long.,loneliness
-1094,,I recently moved to a new city. I left behind some good friends.,loneliness
-1095,,I was upset when my family kept leaving me on vacation,loneliness
-1096,,My friends went to dinner without me. I thought they'd call for sure.,loneliness
-1097,,I'm very socially awkward.,loneliness
-1098,,I was all alone when my family left for the weekend.,loneliness
-1099,,"I was feeling a bit apprehensive lately, since my children are going back to school. One to college, the other to high school. They grow up so fast!",loneliness
-1100,,My roommate has been gone all week. I don't have anything to do without him here.,loneliness
-1101,,My roommate is gone for the week. I can't stand being alone in the apartment.,loneliness
-1102,,My best friend is moving to another town and i dont know when i will get to see her again.,loneliness
-1103,,I started thinking about the last time I hung out with a group of friends before moving away.,loneliness
-1104,,Two years ago my wife and I got divorced. It's been very strange in this big house all by myself.,loneliness
-1105,,My husband works long hours. I hate being by myself specially at night.,loneliness
-1106,,My wife has been out of the country for 2 months.,loneliness
-1107,,"when my wife left me a year ago i went a little stir crazy. it was so silent in the house, i had to get out and make new friends.",loneliness
-1108,,I recently said goodbye to a good friend for a while. I love her!,loneliness
-1109,,One time I moved to a new city and didn't know anyone. I had to go out alone to do things,loneliness
-1110,,"After moving to Dallas from a small town I felt I would like it, but after a few weeks of not knowing anyone I got home sick.",loneliness
-1111,,This new trailer for Spyro Remastered really has me thinking about the times I used to play the original. The old friend I played it with I don't keep in touch with anymore.,loneliness
-1112,,"I had a rough day, my husband has been out of town and the weather has been bad.",loneliness
-1113,,"My youngest child started high school this year. It made me think back to when she was just started kindergarten, and how time flies!",loneliness
-1114,,My wife has been out of the country for a couple months for school. Dropping her off at the airport was really tough.,loneliness
-1115,,"Half of my family didn't show up for my kids 6th birthday, it was upsetting to say the least. She was looking forward to seeing them.",loneliness
-1116,,"My husband used to work out of town in a different state Sunday through Thursday. Even though my kids were with me and we kept to our usual routine, I still missed him very badly when he was gone. Every Sunday after he left, I would cry.",loneliness
-1117,,Besides my cats being with me I am always alone at home all the kids are grown and moved out.,loneliness
-1118,,My wife went out of town for a girls weekend and I sat at home with the dog for 3 days by myself.,loneliness
-1119,,"I hate being alone so much, my husband works a lot of hours. He also works over an hour away that makes it rough.",loneliness
-1120,,"My wife has been out of the country for school for a month and a half. She gets back in a couple weeks, but it's starting to get tough being alone with just the dogs.",loneliness
-1121,,Recently I've been feeling that I don't need a company to feel wholesome.,loneliness
-1122,,When I was younger my mom would always have to go on a week long training for work every year and I would always miss her so much.,loneliness
-1123,,I miss my family,loneliness
-1124,,"I was looking at old pictures of my friends and I. I sometimes wish I could go back to those days, at least for a while.",loneliness
-1125,,I am sad that my friends don't visit me.,loneliness
-1126,,Today was the first day of school for my kids. It's been so quiet here.,loneliness
-1127,,i miss watching chiller theatre with my family on fridays,loneliness
-1128,,I was sad the other day because I found out a friend is moving. It's not that far and I didnt see her a lot anyway but still.,loneliness
-1129,,I was pulling into the gas station and this kid felt the need to not only almost hit me but also call me extremely awful names.,abuse
-1130,,I get so annoyed and angry when I hear of people being mean to animals. These helpless animals have no clue why people are so mean either.,abuse
-1131,,"Someone ran into my car while I was grocery shopping. I came out to a huge dent in my car, I was so mad.",abuse
-1132,,"When I was in middle school there was this boy that sat in front of me in 8th, he was always trying to get me to kiss him before class started.",abuse
-1133,,A guy pulled a REALY big knife out on my husband at a gas station once.,abuse
-1134,,"Once, I came home from a night out and my room was ransacked. My roommate was an alcoholic, and he had even thrown some of my belongings in the bathtub. Of course, he didn't remember doing it either.",abuse
-1135,,I came outside this morning and found my car had been broken into. I was very upset and frusterated,abuse
-1136,,This guy at school follows me around.,abuse
-1137,,They arrested 9 people at a nearby farm for animal cruelty and they are already out on bond!,abuse
-1138,,When people try to control me,abuse
-1139,,"I went to the zoo last month, I haven't been since I was a kid. I went to a zoo that was supposed to be one of the top zoos, however I couldn't help but feel bad for the animals the whole time.",abuse
-1140,,Someone side sideswiped my car last night while I was sleeping and I wasn't aware until I woke up. It was not a good thing to wake up to.,abuse
-1141,,Someone ran over my mailbox this morning. They left it totally demolished.,abuse
-1142,,Somebody stole a package from my front yard yesterday.,abuse
-1143,,I was appalled at the way my friend approached me last night.,abuse
-1144,,I found a rabbit that had been shot by someone in my yard.,abuse
-1145,,I woke up this morning with car damage that happened while I was sleeping.,abuse
-1146,,I am disgusted because of my friends pulling pranks on me.,abuse
-1147,,"I was listening to old school rap in my car. The windows were down, and the car next to me started making fun of me.",abuse
-1148,,I get so mad when I watch shows about animal shelters and see how many people abuse animals.,abuse
-1149,,"Last week, someone during the night drove off the road and destroyed a large section of my fence. It is going to be expensive to have it replaced.",abuse
-1150,,A guy cut in front of some people in a line at a store and I confronted him. He flipped me off and we exchanged very heated words. The confrontation almost got physically but finally he left.,abuse
-1151,,The police officer tried to harass me.,abuse
-1152,,"I saw a kid beat up a dog the other day, I felt angry.",abuse
-1153,,"It was my birthday and My friend sent me a birthday card with a gift card in a mail... i never got it, somebody stole it!",abuse
-1154,,"Walking home alone from school one day, three young adults jumped in front of me and yelled in my twelve-year old face. I cried the rest of the way back.",abuse
-1155,,it was really hard to hear that there was a shooting in a gas station near me and there was 3 vitims i was really devastated,abuse
-1156,,"It really makes me sad to think there are people who treat animals like trash, animal cruelty is a really serious matter.",abuse
-1157,,Someone stole my credit card information. They have been charging up my card like crazy. I'm scared about my identity.,abuse
-1158,,"One time someone came to my door with a gun. He came to the house asking for money but I didn't have any, so he took some items from the house",abuse
-1159,,My husband's brother stole $500 from us let's talk about someone being beyond mad more like furious.,abuse
-1160,,I found out someone stole my identity. They completely cleared out my bank account and maxed out my credit cards. I am so mad.,abuse
-1161,,I am so scared to live in my neighborhood. There is people that come around shooting their guns.,abuse
-1162,,"Last week, they arrested 9 people for animal cruelty at a nearby farm and the place was littered with dead and sick and dying animals that they weren't taking care of.",abuse
-1163,,One time someone came to my door with a gun. He robbed my house,abuse
-1164,,People who steal make me crazy. I watched some people come into my driveway and try to take my spare gas can!,abuse
-1165,,"Yesterday, at the grocery store I saw a lady spanking her child. The child only asked for a candy bar and was not being out of the norm for children.",abuse
-1166,,"Recently a man tried to break into our house. It was late at night, and he was kicking the door. My entire family was scared as we waited for the police to show up.",abuse
-1167,,Someone packed into my car the other day at the supermarket and put a big dent in it. I've only had the car for 10 days.,abuse
-1168,,Someone had pull a stick prank on me and slashed my car tires and bashed my windshield in at my apartment complex.,abuse
-1169,,One time someone came to my door with a gun. He wanted money but I didn't have any so he stole some items from the house,abuse
-1170,,"There was a guy at a place I worked at that was stalking me. He would write me creepy letters, come by to talk to me, and try to follow me home.",abuse
-1171,,"On my way to work, a goose stole my toupee. We just hired a new secretary, Christy, and I need my hairpiece in order to impress her. I am so furious with that goose, I could wring its neck.",abuse
-1172,,I went shopping at the mall the other day. I was really tired and sat down for a few minutes. I placed the bags beside me and looked away for a second and the next thing I knew the bags were gone. I am still so mad,abuse
-1173,,My mother in law was recently placed in hospice and is not expected to live much longer.,health
-1174,,Going to the dentist always worries me.,health
-1175,,I ate all of the candy we had in the house one night. I felt so bad afterwards but it was so great in the moment,health
-1176,,"i hate watching my parents smoke, it makes me really sad to think they could face cancer as a concequence",health
-1177,,I just ate a whole box of cookies.,health
-1178,,I just fell of my diet by eating a big bag of peanut M&Ms.,health
-1179,,My cousin had a heart cath and the surgeon sent for me to come to the operating room.,health
-1180,,My wife's cousin was sent to the hospital and was placed in a medically induced coma with something having to do with his lungs.,health
-1181,,I have been doing very well on my diet and last night I decided to eat a whole large pizza by myself!,health
-1182,,"My son had to have surgery to remove his tonsils last month. I know it's a routine procedure, but I could not sit down for the entire time and I was so relieved when they said everything went just fine.",health
-1183,,"I feel so bad about myself, ate too many sweets. I'm suppose to be on a diet.",health
-1184,,my dad is going to get his heart checked tomorrow. i am so nervous about it.,health
-1185,,I have many health problems that have prevented me from having children. I use to be so upset everytime I saw people with children but now I have learned to be content in my situtation,health
-1186,,My daughter called and said they were taking my newborn grandson to the doctor to have a chest xray because he was having some breathing trouble. I worried all day long until I got the phone call telling me everything was ok. They live far away so I tend to worry even more since I can't be there.,health
-1187,,My little grandson was admitted to the hospital a few days ago. He is still having testing and it's so hard to wait around to get the test results back to find out what is wrong.,health
-1188,,I have a dentist appointment tomorrow and it's starting to make me a bit nervous. I have to get a filling replaced.,health
-1189,,"I ate a whole cake by myself, I'm suppose to be on a diet. It's so hard!",health
-1190,,I was very worried the they told me I needed heart surgery.,health
-1191,,My eye is itchy and my eyelid is droopy.,health
-1192,,I am feeling so nervous about my dad going to check his heart tomorrow. I really hope no bad news comes off it.,health
-1193,,I am trying a new diet to treat my Lupus. I really am hoping it works b/c the next steps are some powerful meds that really make me nervous to take,health
-1194,,A couple years ago I got hospitalized and diagnosed with MS. The whole experience was terrible.,health
-1195,,I went to Aldi the other day and bought a bunch of German chocolate bars. I then sat and stuffed myself and now I feel really bad about it. No self-control!,health
-1196,,I felt very sad when I found out that my mother had lung cancer 6 months ago.,health
-1197,,I have a impacted wisdom tooth. I need to go to the dentist but I am apprehensive about it.,health
-1198,,I was sad to hear my mom is in the emergency room again.,health
-1199,,I felt bad when I cheated on my diet. I found out I gained 2 pounds this past week!,health
-1200,,About 6 years ago I was diagnosed with cancer.,health
-1201,,I went to the dentist for the first time in five years recently. I had a toothache and wanted to get it looked at,health
-1202,,I sat in the waiting room last weekend and waited and waited to find out how my dad's neck surgery turned out. This was one of those last ditch effort to keep his cervical vertebrae from having to be fused.,health
-1203,,I went to the dentist yesterday to have a cavity filled. I was extremely nervous about going after being told that it was close to my nerve.,health
-1204,,"I should be eating healthier and working out, but instead I've been doing the opposite.",health
-1205,,I ate way too much today! Was suppose to be on a diet. Ate a cupcake and pizza.,health
-1206,,I hadn't been to the dentist in years but one day I made an appointment. One of my teeth had been bothering me a lot,health
-1207,,I love Pirate peanut butter cookies. I'm really stressed today so I bought a box of those cookies and ate an entire sleeve of them. I feel pretty bad because I wrecked my dieting for at least two days.,health
-1208,,"I recently found out that I have been diagnosed HIV positive, and I'm at a complete loss for words. I don't even know how to go on anymore.",health
-1209,,My mom is having weight loss surgery. Im worried the risks are too dangerous.,health
-1210,,My son is in so much pain,health
-1211,,Sometimes at night I wake up and eat extremely unhealthy food. I put peanut butter and Nutella on chocolate chip cookies.,health
-1212,,"Imagine, I started working out two months ago, only to weigh myself and I have gained some weight.",health
-1213,,"I ate like a pig on my birthday, and while I enjoyed myself, I think I gained a few pounds from that day alone! I shouldn't have eaten so much and I regret it.",health
-1214,,"Shortly after my nephew was born, i received a call from my sister informing me that he had a genetic disease.",health
-1215,,I was very anxious when my son had his tonsils taken out.,health
-1216,,I ate the entire cake.,health
-1217,,Having a toothache is irritating,health
-1218,,When I interviewed for this job I had to wait for a couple weeks to hear back about it. It was kinda rough.,assessment
-1219,,I'm so angry at myself. I was in my performance review today and I passed wind in front of my boss.,assessment
-1220,,I am really nervous about my upcoming job interview. I am concerned I might screw it up.,assessment
-1221,,I felt really anxious about my job interview back in September.,assessment
-1222,,"When I interviewed for the job I have now, I didn't hear back from them with a solid response for a month. I kept having to check with them to make sure I hadn't been forgotten.",assessment
-1223,,Once I had an interview for a job. I didn't feel prepared for it at all.,assessment
-1224,,I've got a job interview set up for next week and I'm really nervous!,assessment
-1225,,One time I was so nervous to look at my grade for my final exam.,assessment
-1226,,I'm nervous about taking a test soon.,assessment
-1227,,I barely passed my finals,assessment
-1228,,School is starting up soon and I'm worried I may not be able to keep up with all of the homework.,assessment
-1229,,I am nervous for my college test.,assessment
-1230,,One time I had an in person interview for a job. I did not really feel prepared for it,assessment
-1231,,I'm nervous about taking a test soon.,assessment
-1232,,School starts a week from today and I am getting fairly nervous!,assessment
-1233,,"I had gone on an interview for a job I wanted. I was waiting to hear back, but it was taking a really long time for them to contact me.",assessment
-1234,,I have a job interview lined up for next week. i am feeling so nervous about it.,assessment
-1235,,I was waiting in the waiting room for my last job interview.,assessment
-1236,,I am worried about take my finals this week.,assessment
-1237,,After having 4 interviews none of the employers had called me after 1 week which stressed me out.,assessment
-1238,,"I have a big test on Monday. I am so nervous, I haven't been able to sleep at all.",assessment
-1239,,I had a job interview.,assessment
-1240,,I had an unprofessional job interview.,assessment
-1241,,I gotta go to this serious interview tomorrow.,assessment
-1242,,I had a video job interview.,assessment
-1243,,"Last summer when I took my drivers test, I was so nervous that I would fail.",assessment
-1244,,I think about my mother and I getting really sad. She has been dead for 15 years now.,death
-1245,,"My dog, Riley had to be put to sleep due to congestive heart failure. It was one of the hardest things I had to do.",death
-1246,,I was sad when my dog died.,death
-1247,,I miss my dog who died last year.,death
-1248,,My father passed away when I was 33 years old.,death
-1249,,I found out that my childhood cat passed away yesterday.,death
-1250,,"My dog is over at the vet for 4 days and it makes the house feel super lonly, I really am looking forward to my dog comming back.",death
-1251,,My father unexpected passed away around 2 1/2 years ago. We never thought he would be leaving us this soon and it was very traumatic to me.,death
-1252,,My border collie had to be put down due to a neurological disorder that could not be treated.,death
-1253,,"My father passed away in November, it's made me feel empty ever since.",death
-1254,,My sister's cat got sick and had to be put down last week. Feels bad. I'd known the cat for 14 years and was always her favourite person.,death
-1255,,I was feeling pretty reminiscent when we went on vacation. I starting thinking about the last vacation we had with my father before he passed away.,death
-1256,,I have this knife that I carry everyday. My dad gave it to me before he died.,death
-1257,,"I found my cat the other day. She had been missing for 3 days. I found her on the side of the road, guts in the gutter.",death
-1258,,We have a doberman for over 8 years. He passed away last spring. It was a hard time for our family.,death
-1259,,My father passed away 2 1/2 years ago. We didn't know he had a life-threatening illness and it really traumatized our family. The unexpected loss was so agonizing and painful for us.,death
-1260,,I'm upset that my neighbor's dog is sick.,death
-1261,,I felt so alone after my dog trevor passed away. he was always by my side over these years.,death
-1262,,"Today when I went into my roommate's office to fix the internet, I noticed the collar of his old cat that passed away. I miss her.",death
-1263,,I left the front door unlocked this morning and our dog got out. I can't believe I would be so careless.,death
-1264,,My mother died.,death
-1265,,Seeing a statue we made for a recently passed away pet made me really sad. It was such a fitting tribute to her life and the love we had for her.,death
-1266,,My dog just passed away two nights ago. She was 12 years old.,death
-1267,,I had to take my beloved dog to the humane society when I had to move back in with my mother after my terrible breakup with my ex. SHe said I absolutely couldnt have her at her house.,death
-1268,,I'm devastated by my mother's death.,death
-1269,,I always get down and blue whenever memories of my dad pops into my head. He passed away last year and i miss him so much.,death
-1270,,I was sad when my dad died,death
-1271,,"When I was going through my old photo albums this morning, I came across a picture of my mother and me. It reminded me of a much simpler time, before she abandoned the family and joined a nudist colony. Ah, she was the best. I miss her.",death
-1272,,"A friend of mine was in a car accident. Unfortunately, he did not make it.",death
-1273,,I found my cat dead on the side of the road. I was so hurt and distraught I couldn't even drive home.,death
-1274,,Our dog passed away after 8 years of having in the family.,death
-1275,,my brother would've turned 34 today,death
-1276,,Recently my grandma passed away. She lived far from us most of our lives but at the end she was sick so we moved her down here and I really had fun connecting with her as an adult again. It was a hard day when she died,death
-1277,,I've got a pet hamster that hasn't been doing well. I'm scared that he might not live much longer.,death
-1278,,"When my sister passed away several years ago, I had such a hard time with the loss. I felt very much separate from others in dealing with my grief.",death
-1279,,"My cat had to stay overnight at the vet recently. They had to keep her for x-rays, I was so worried.",death
-1280,,My dog is really sick. I don't know if he's going to make it.,death
-1281,,I always get sad thinking about my mom.. She passed away when i was 12.,death
-1282,,I felt really alone when my dog passed away last month. He was always by my side all the time.,death
-1283,,"My rabbit died last year, I miss her to this day.",death
-1284,,My goldfish died.,death
-1285,,"I took my cat to the vet because he wasn't acting normal, and we found out he was going to have to be put down.",death
-1286,,"Earlier this week, my cat Sam passed away. He was 17 years old. It's been odd not having him asleep at my feet while I work.",death
-1287,,My mom called me last week to let me know our childhood dog passed away.,death
-1288,,"My dog, who had been with me for 13 years, died a few years ago. It was so difficult to wrap him in a blanket, and bury him. I was heartbroken.",death
-1289,,My 32 year-old son died of a sudden heart attack. I was with him the day before.,death
-1290,,I am upset that I have to tell my young daughter her hamster died today.,death
-1291,,"My cat hasn't been feeling well this past week, I think there might be something really wrong.",death
-1292,,"One time when I was letting my cat outside, it ran out into the streets and got ran over.",death
-1293,,"When my grandparents died, I was extremely upset for a few months.",death
-1294,,I got a call in the middle of the night during college that one of my best friends had been in a fatal car crash.,death
-1295,,We are going on vacation next week and we can't bring our dog. I feel so bad that we have to board her in at a kennel. She's going to be so sad.,death
-1296,,My cat had to have surgery on her leg and I was so scared and worried for her.,death
-1297,,I miss my puppy. She passed away recently and it was really sudden and sad.,death
-1298,,"Years ago I found my beagle dead from kidney failure, he had not gone quietly.",death
-1299,,My girlfriend's cat has cancer and we cannot afford the operation.,death
-1300,,My aunt recently passed away after a long battle with Alzheimer's disease. I'm so sad at the loss.,death
-1301,,My pet has a tumor.,death
-1302,,"I passed by my grandma's old house today, she passed last year. It really brought me down.",death
-1303,,The little kitten I rescued last Friday passed away.,death
-1304,,I feel down and blue whenever thoughts about my brother pop into my head. We lost him 5 years ago,death
-1305,,My dad died of cancer in 2012.,death
-1306,,"Our cat had to many health problems, so we had to put him down.",death
-1307,,I got news that my grandfather passed away. Nobody saw it coming.,death
-1308,,"Last month I came home from work and noticed my cat wasn't feeling well, so I rushed her to the vet. I had to put her down.",death
-1309,,I went to the petstore with my dog and he had an accident in front of everyone. He had the saddest look on his face.,death
-1310,,"When I was a kid, my granpa bought me a dog. The dog was supposed to be a hunting dog, and he didn't want to keep it because I had made it into a pet. He ended up giving it away.",death
-1311,,"My grandmother recently passed. We were close, so it's been hard.",death
-1312,,"We had purchased and raised several chickens. One evening, I forgot to put them back in their coop. Something killed all of them.",death
-1313,,"I lost my dog in the divorce, everything else I lost were just things and money. But My dog was one of a kind.",death
-1314,,i was heartbroken when my dog died last month. He was always by my side as long as i remember.,death
-1315,,One morning my mother came to pick my daughter up for school and told me she saw my daughter's cat dead outside.,death
-1316,,My friend was housesitting for me and left my front door open when she checked the mail. My cat got out and was hit by a car.,death
-1317,,I lost my cousin last month. I feel so devastated.,death
-1318,,"My father went to the hospital for abdominal pain. They found a tumor, but the operation to remove it went well. He passed away suddenly a few days after.",death
-1319,,We just adopted a dog from the shelter and I think she is sick with Parvo. We are taking her to the vet tomorrow to see.,death
-1320,,"my father recently passed suddenly, i was devastated.",death
-1321,,"My husband's grandmother and I were very close. We hung out and talked every day. One Friday she called me and asked me to go to breakfast with her. While at breakfast, she told me that her and her husband were going on vacation. She was so excited. They left the next morning and I called and told her to have fun and be safe. She told me she would and that she loved, and I told her I loved her. Early the next morning, we found out that she had a heart attack and had died. I was heart broken.",death
-1322,,"I'm an emotional mess today, found out my dad passed away. Want to attend the funeral but tickets are expensive.",death
-1323,,After my granddad passed I kept his necklace it means so much to me even though I get emotional over it.,death
-1324,,My father was diagnosed with stage 4 brain cancer. It only took a few months for him to pass away because of it.,death
-1325,,"My cat seems to like my new girlfriend more than me, he sleeps with her on her side of the bed now.",death
-1326,,"I couldn't believe it when my dog died a few weeks ago. I honestly thought I was going to stay lonely forever. When my girlfriend asked me if I wanted to go look at dogs to cheer me up, I said no.",death
-1327,,My girlfriend had a 17 year old Chihuahua. He ran away from a friends farm and died after being struck by a car.,death
-1328,,"Late last summer, my dog went missing. I caleld everyone in the neighborhood to see if they had seen him. I spent hours looking for him and i checked all of the shelters for about a week. We eventually found his body. He had gotten trapped under a neighbor's house and could not get out.",death
-1329,,My dog just died in my arms.,death
-1330,,I recently remembered a sweet memory of my aunt who recently passed away. She would give hundreds of dollars of school supplies to kids in need each year.,death
-1331,,I learnt a few days ago my best friend passed away in a car accident. I am still in shock.,death
-1332,,I forgot to invite my friend to dinner with our other friends.,owe
-1333,,I forgot that I had made plans with my mother over the weekend. We had been planning it for a few days I feel awful.,owe
-1334,,"Well, last night I was so fed-up with the racket coming from the upstairs apartment, I put jazz music on quite loudly and went to bed. I really shouldn't have done that!",owe
-1335,,I had a dinner date with a old friend but I was so tired that I told her I had a emergency the last minute now I feel so guilt-ridden.,owe
-1336,,I am doing work instead of playing with my dog. I'm paying a little attention to him but I have a goal I want to get to before I pay more attention to him.,owe
-1337,,I let my sister drive my car to run to the store knowing she didnt have her license. She got stopped and got a ticket!,owe
-1338,,I feel bad for forgetting about my mom's birthday.,owe
-1339,,When I was a kid I used to steal candy from the local 7/11 with my brother. We never got caught from the store but my parents found all the wrappers.,owe
-1340,,I feel so bad I lied to my friend.,owe
-1341,,I felt upset when I forgot to ask my friend to dinner.,owe
-1342,,"Last time I got really drunk, I told my girlfriend that I thought her best friend was really attractive. I felt so embarrassed the next day, but she forgave me because she knows I'd never do anything wrong.",owe
-1343,,I felt upset about losing my friend's blu ray I borrowed.,owe
-1344,,I drank all the milk in the fridge and left nothing for anyone else. Next week I will buy extra milk for the house.,owe
-1345,,My sister was recently in town to visit my dad and i didn't go and see her. I avoided her.,owe
-1346,,"I once went into a shoe store and picked out a pair that I like. I walked out without paying, and left my worn out shoes in the box on the isle. I feel bad about it now.",owe
-1347,,I forgot to take some water bottles out from under my cart. I left with my groceries and ended up just taking the bottles and realized I didn't pay later.,owe
-1348,,I spilt red wine on my mom's red carpet and blamed it on the cat. ,owe
-1349,,I cheated on a test at school. I really feel like I should come clean about it to my professor.,owe
-1350,,I played poker against a friend who wasn't really good. I won and took over $100 from him. I felt bad about it the next day.,owe
-1351,,i'm ashamed of always deceiving my family,owe
-1352,,My wife is out of the country for school. She was having a really bad day the other day and I couldn't really do anything to help.,owe
-1353,,One time I skipped my friend's birthday party to watch TV.,owe
-1354,,My cat puked all over my roommates shoes. I feel so bad.,owe
-1355,,I stole my mum's money when I was 4 years old. I felt bad about it though.,owe
-1356,,"I forgot I had planned to pick up my brother from work the other day. He had to wait for me to get there, I felt like such a jerk.",owe
-1357,,"My husband is going through the process of quitting smoking and he also has drama going on with his parents that isn't his fault. There is nothing that I can do to make the situation better for him, so it makes me sad.",owe
-1358,,"I got upset at my oldest son because he shows such lack of motivation. While gettting on him might have been warranted, I feel bad for getting upset.",owe
-1359,,I told a friend I was too busy to have lunch. But that was a lie.,owe
-1360,,I lost the book that my friend let me borrow. I feel so embarrassed.,owe
-1361,,I felt bad when I cheated on my partner,owe
-1362,,The other day I got into an argument with my 19 year old son. I became so angry with his behavior that I called him names and said things i didnt mean. I still feel badly about it.,owe
-1363,,A couple years ago I forgot my grandmother's birthday. I felt so bad about it.,owe
-1364,,I feel guilty because I couldn't go to my friends party.,owe
-1365,,I felt bad about sleeping in today.,owe
-1366,,Once I overslept and was late picking up my child from school. I felt so horrible about that.,owe
-1367,,I did not invite my sister to a party she wanted to come to. She felt hurt.,owe
-1368,,"I ran into my neighbor's mailbox but didn't stop to leave a note. When I saw him replacing it, I felt so bad that I had to confess. He was angry that I did it, but glad that I came forward.",owe
-1369,,I was bowling and I accidentally used the person's ball next to me.,owe
-1370,,"I went out and came back late, so I lied to my mum, I really felt bad about it.",owe
-1371,,As a mom I sometimes treat myself to something tasty when I make it out alone. I snuck an ice cream cone the other day.,owe
-1372,,I needed lunch money for school because I had bought extra things during lunch. I wasn't supposed to do that. I stole money out of my dad's wallet to cover my negative account balance at school.,owe
-1373,,I snuck some candy out of my daughter's snack stash.,owe
-1374,,"Recently, I had an argument with a friend. I called her out on her behavior to her face, but my daughter overheard me discussing it with my husband and thought that I had talked behind my friend's back, so she thought that I was being two-faced and we had to have a whole conversation about it. I felt guilty even though I didn't do anything wrong.",owe
-1375,,I felt bad when I cut someone off in traffic this morning.,owe
-1376,,One time I was playing basketball and I accidentally slapped a girl in the face. I felt so bad about it.,owe
-1377,,"We were over at our friend's house for a dinner and I was in the kitchen helping her cook. I had melted butter in a baking dish to make dessert, and I poured cold milk into it like the recipe said to do. It ended up cracking the dish. I felt bad. I offered to buy her a new one.",owe
-1378,,I borrowed a book from a friend and left it outside. It got ruined by the rain.,owe
-1379,,I ate a lot of my kid's Halloween candy. I told her the candy was old and I had to throw it away.,owe
-1380,,I slacked off at the end of college semester and flunked the class I'm so much better then that I feel so regretful about not giving my all.,owe
-1381,,A friend left some candy out and I took some. I feel like paying him back for what I took.,owe
-1382,,"When i was a kid, my sister and i stole one of my moms checks from her checkbook and ordered a pizza. When she found out she was so mad! I felt terrible about it.",owe
-1383,,"My wife has been out of the country for 2 months for school, and she was having a really bad day one day. I felt terrible that I couldn't help her.",owe
-1384,,I lost my temper with my daughter the other day and was a bit ill with her. I felt so bad that I had raised my voice and hurt her feelings.,owe
-1385,,When i was a child a stole my mother's card details to pay for a subscription.,owe
-1386,,I lied to my mother about my results,owe
-1387,,"I didn't tell my friend when her boyfriend hit on me. I felt very bad and wrong for that, even though I turned him down, of course.",owe
-1388,,My girlfriend and I were watching a series on netflix. She wasn't home and I ended up watching a couple episodes ahead of where we were at.,owe
-1389,,I ate the last piece of pizza and didn't know my husband actually wanted it and I am feeling pretty bad.,owe
-1390,,"I felt pretty bad one time when I lied to my mother about where I was going. I don't like to be dishonest with her, so my conscience was feeling rough!",owe
-1391,,I finished all the ice cream when I was told to leave some for others. I was just so hungry! ,owe
-1392,,"My husband usually gets a large bonus each year around this time, but there's no guarantee. It's hard waiting, and not knowing!",financial_pressure
-1393,,I can't help feel stressed about money.,financial_pressure
-1394,,"I've got a lot of bills that are overdue, and can't afford to pay them yet. I'm really worried about my financial future right now.",financial_pressure
-1395,,I am highly upset that I'm the only one concerned with earning money for our bills.,financial_pressure
-1396,,My husband might loose his job. I'm not sure what we will do if he does. His company is downsizing.,financial_pressure
-1397,,After moving I went through a decently long period of unemployment. It was starting to get tough not having a good source of income to support myself.,financial_pressure
-1398,,"I lost my job a few years ago due to cut backs, they weren't making enough money. That job was everything to me.",financial_pressure
-1399,,My boss made me work overtime yesterday and I didn't even get paid for it!,work
-1400,,My friend and coworker hasnt been showing up to work. I try sticking up for him but its getting hard with him coming in once or twice a week.,work
-1401,,A coworker mad me very mad one day. She slammed a large order of work on my desk and basically demanded that I do it! She has no right to do that.,work
-1402,,A co-worker of mine was late with work materials. I hope I can get the project done in time,work
-1403,,"I have been working on a big proposal for weeks. Tomorrow, I have to give the presentation to the client and in-front of my team.",work
-1404,,I lost a really important document at work. I'm afraid to tell my boss about it.,work
-1405,,One time I was offered a job opportunity. I had to wait several days to hear if I got it.,work
-1406,,"Our marketing manager at work recently added a ton of new tasks to my workload that weren't part of my job when I was brought on. I'm a little irritated, like she's passing her work off on me.",work
-1407,,A co-worker of mine was late delivering materials for a project. I wish he'd care more,work
-1408,,There are problems with our system at work and no one will take responsibility or fix it.,work
-1409,,I have this one co worker who is so lazy and it just makes me so irritate because I have to do extra work.,work
-1410,,"I put in to get a promotion at work, and I should know something either way by tomorrow.",work
-1411,,"There's a woman at work that will not listen when you try to explain a work task to her and will end up making many mistakes, which causes the rest of us more work. It's very frustrating and aggravating!",work
-1412,,"When I applied for the job I have now, it took them almost a month to get back to me. I contacted them two or three times and they kept telling me they were working on it.",work
-1413,,"My boss has been a pain lately, he dosen't understand how long it takes to get certain tasks done. I am at my whitts end, thinking about quitting.",work
-1414,,End of semester one of my roommates left without cleaning out his share of the dorm room. Housing department fined me and the other two roommates 100$ each for his laziness.,injustice
-1415,,"When I was in college I was in a class with an older woman who was a returning student. She heard me talking about a paper idea I had, then presented it as her own, stealing my work.",injustice
-1416,,I lost my job because my company didn't pay rent at our location.,injustice
-1417,,A coworker took credit for a work I had done. I had to go to my manager to get it straightened out.,injustice
-1418,,"One of my coworkers took credit for a job I had done last month. They told our boss it was their idea, when they didn't even work on the project.",injustice
-1419,,I work for a company and we just found out the person who works in our accounting department has been stealing money from us for years. It is revolting.,injustice
-1420,,"When I got falsely accused of eating my roommate's ice cream last night, I was completely outraged! I don't even eat ice cream because I'm lactose intolerant, and she knows that!",injustice
-1421,,I worked so hard for the lead role in the play. I kinda got some type of frusteration from the person that got it since they didn't work hard like me.,injustice
-1422,,I'm accused of a crime at work I didn't do.,injustice
-1423,,"One of my coworkers has been arguing with his supervisor frequently. Despite this, he hasn't been fired and he's even gotten extra hours--which I don't think is right at all!",injustice
-1424,,I had a performance review at work where I was surprised by the presence of my least favorite person in the company. The account manager part of my position was effectively dissolved and I was forced to answer phones.,injustice
-1425,,One of my roommates left without cleaning his room and the school charged me and the other two roommates 100$.,injustice
-1426,,Someone hit my car and fled the scene. I wish I could find the person.,injustice
-1427,,Every day my boss is late to work. Today I was 1 minute late and got a write up.,injustice
-1428,,I think I might loose my job over something that wasn't my fault.,injustice
-1429,,My old roommate didn't clean out his room or the kitchen when he left. The university charged me and the other roommates 100$.,injustice
-1430,,I was so furious when my coworker badmouthed me to my boss. He said that i was stealing the office supplies just for the fun of it,injustice
-1431,,A co-worker stole my lunch I believe. I ended up having to skip a meal.,injustice
-1432,,"Last week at work, one of my coworkers took credit for a job that I had completed. I went straight to my manager to get it straightened out.",injustice
-1433,,An older woman in a class I took in college stole my ideas for a paper and presented them as her own.,injustice
-1434,,Sometimes people ask me to do a lot when I am already doing a lot. It's like they don't care that I have stuff to do.,injustice
-1435,,I envy my friend who is off work today.,jealousy
-1436,,"My friend always seems to get great jobs and then just phones in her work. It is annoying because I got laid off a while ago and it was so hard for me to find another job, but she just hops from job to job with seemingly no effort.",jealousy
-1437,,My friend and I both entered a drawing at the mall for a weekend vacation last month and she won. I have to admit it stings a little that she won and I didn't.,jealousy
-1438,,"My friend took early retirement recently and he and his wife are jetting all over the world, having a wonderful time. I wish I could do that!",jealousy
-1439,,I envy everyone outside right now enjoying the weather.,jealousy
-1440,,My little brother failed his french class and had to spend three weeks in summer school. It hurt my heart seeing him have to go to school while all his friends were having fun.,jealousy
-1441,,I am so envious of all those guys who have a sports car. I have always loved sports cars while growing up.,jealousy
-1442,,I'm envious of everyone who is outside enjoying the sun right now.,jealousy
-1443,,"I try my best not to be jealous, but I saw my girlfriend giggling with some other dude.",jealousy
-1444,,A friend of mine bought a scratch off ticket at the gas station and won $2000. I buy them all the time and only win a couple bucks here and there.,jealousy
-1445,,"I was jealous the other day when a friend got an item I wanted in a game. It may sound silly, but sometimes it's the little things.",jealousy
-1446,,"I got passed over for a promotion at my job last week, even though I had more experience than the other people that applied.",jealousy
-1447,,"My cousin has the perfect life, a loving boyfriend and two beautiful kids. I wish I had that.",jealousy
-1448,,"I hate getting last, I have always loved winning and there is nothing that makes me more angry than losing in something.",jealousy
-1449,,I always feel such envy when I see someone driving a red sports car. It has always been my dream to own one.,jealousy
-1450,,My cousin just had his mom cosign on my dream car! He doesn't even have a job,jealousy
-1451,,Sometimes I feel envious of those that have money than I do.,jealousy
-1452,,My neighbor bought a new car. Now I really want one myself.,jealousy
-1453,,My friend just recently moved to California--I have always wanted to live there,jealousy
-1454,,My sister recently got an iphone 8 from the at&t store. I wish I had one!!,jealousy
-1455,,"My younger brother always gets the best dates and beautiful girls to date, I hate it.",jealousy
-1456,,My next door neighbor just bought a Mercedes. I wish I can have one.,jealousy
-1457,,"When I saw them together, I felt really jealous of him and that he had my girl.",jealousy
-1458,,"My boyfriend has a female friend who he sometimes chooses to hang out with over me. We had a date planned last week, but he cancelled it to go to the movies with her. It's so frustrating.",jealousy
-1459,,My friend bought the car I always wanted.,jealousy
-1460,,I was one of three people in the running for a promotion at my job. I ended up not getting the job and a person with less experience got it.,jealousy
-1461,,I was pretty envious when my best friend went on a 14 day cruise to Europe.,jealousy
-1462,,My parents bought my brother a brand new iPhone.,jealousy
-1463,,Close friend has an unlimited stream of money from her parents. Always wishing I was able to do the stuff she does and not work.,jealousy
-1464,,Brother probably getting a better car than me,jealousy
-1465,,"My neighbor bought a new Tesla, it's beautiful. I get a little mad every time I see it in the parking lot, especially as I'm riding past it on my beat up bicycle.",jealousy
-1466,,My friend bought a house in a very cheap market town and 6 months later a very walthy company opened an enormous regional HQ there. His house has doubled in price and he has paid off all his debt and now is very well off. I'm pleased for him but envy a little luck,jealousy
-1467,,My brother got my dream vehicle as his first car,jealousy
-1468,,"My brother got a really high-paying job and now travels all over the world. He sends pictures and talks endlessly about everything he buys, everywhere he goes, and how much money he makes. It makes me feel insecure and like a failure.",jealousy
-1469,,I saw my neighbor bought the car I have always wanted. I wish I was in a a better financial position to buy one. ,jealousy
-1470,,My brother bought a new car. I feel that he just did it to make me feel inferior.,jealousy
-1471,,"When I was a kid, my friends brought their BeyBlades to school to play. My parents could not afford one and so in that time I felt bitter towards my friends.",jealousy
-1472,,I get jealous when I see my friends earning more money then myself.,jealousy
-1473,,One of my friends recently bought a house. I really wish I could afford a house.,jealousy
-1474,,My daughter does not share things with me. I found out that she was moving out from my other daughter,jealousy
-1475,,"When I was a kid I wanted to be popular, so I was envious of the popular kids.",jealousy
-1476,,I saw my crush talking to someone else.,jealousy
-1477,,A friend of mine bought a new car. It was a model I had my eye on for some time.,jealousy
-1478,,"My co-worker discovered the cure for type two diabetes before me, and I just can't believe it. It was supposed to be my Nobel Prize, not his.",jealousy
-1479,,My friend had encouraged me to apply for teaching jobs. I went on several and didn't get hired. She went on one and got hired right away.,jealousy
-1480,,A friend of mine has a lot of money and seems to get anything she wants anytime she wants without working.,jealousy
-1481,,My brother got a 4runner for this first car! I lowkey am pissed at him!,jealousy
-1482,,"When I was younger, my dad got into a motorcycle accident and it made me not want to drive.",trauma
-1483,,"When I visited one of my friends' home recently , I encountered with their dog. It's a male rottweiler and it was so furious and tried to attack me and I got struck suddenly and felt lot of fear.",trauma
-1484,,"We were at a wedding a few weeks ago and everyone was having a great time. My 3 year old niece was dancing to the music while eating a carrot and started to choke on the carrot. It was one of the scariest moments ever. She is ok though, someone was able to help her",trauma
-1485,,I was driving down the highway when I saw a car in an accident. It seems they hit a cow! Oh my!,trauma
-1486,,I was on my way to work when I witnessed a child hit by a vehicle.,trauma
-1487,,"I used to work a flooring job, one time we had to remove the floor where a man died, there was bodily fluids and it was gross.",trauma
-1488,,My friend got in a car crash a few days ago while I was in the car. It was definitely a scary experience.,trauma
-1489,,"One of the neighbors has a white husky dog. I was walking one day and it approached me and started growling, i thought it was going to bite me.",trauma
-1490,,When I was little I got chased by a large dog and now that I'm much older the feeling is still the same. ,trauma
-1491,,"I was driving on the highway in really thick rain, barely any visiblity. I had a bad feeling something bad was going to happen, and no more than 10 minutes I witness a car crash happen in front of me where a car flipped.",trauma
-1492,,I got in a car accident and now I have anxiety attacks every time I drive.,trauma
-1493,,"When I went into labor with my youngest child, while I was at the hospital, the baby's heartbeat dropped and they told me that had to take me for an emergency C-Section. It was one of the scariest days of my life. She is a happy and healthy three year old now.",trauma
-1494,,Driving down the highway during a hevay thunderstorm and a car crash happens in front of me where a car flips over.,trauma
-1495,,A now ex-friend of mine revealed a very private secret I told her in confidence not only to our mutual friends but the entire internet! I couldn't believe she did that to me.,partner
-1496,,When I found emails between my ex wife and the person she was sleeping with behind my back.,partner
-1497,,"When my ex girlfriend cheated on me, I was so angry.",partner
-1498,,"I recently found out that my girlfriend has been cheating on me with another woman. She promised me that she wasn't that type of girl. Needless to say, I'm quite upset about it.",partner
-1499,,my husband doesn't seem interested in me anymore. I think he may have eyes for someone else.,partner
-1500,,"I broke up with my boyfriend last week, and nothing is the same without him",partner
-1501,,"I felt betrayed when my girlfriend kissed another guy at a party. She was drunk, true. But still.",partner
-1502,,"i was really sad when my girlfriend broke up with me, it was devastating but i managed to overcome it",partner
-1503,,One day I found out that my boyfriend was texting his ex-girlfriend. I think he likes her more than he likes me,partner
-1504,,I am terrified that my wife is going to leave me.,partner
-1505,,"My ex and I broke up because he decided that he would no longer be willing to leave his job from overwork, like 70 plus hours a week.",partner
-1506,,"When my last ex ghosted me after things were going really well, I felt lost. I had no idea what I'd done wrong, so I was forced to assume that it was something to do with my personality. That didn't help matters.",partner
-1507,,My friends girlfriend kissed me at a party.,partner
-1508,,I felt very lonely when my partner decided to leave me for someone else.,partner
-1509,,"When I was very young, I was dating a guy for several months. He broke up with me and started seeing another girl in our class. I could not stand to see them together.",partner
-1510,,I was disgusted when my dad left me,partner
-1511,,"I had a friend's boyfriend that hit on me, even though I am also married, and he was with my good friend for 5 years! He makes me sick!",partner
-1512,,I cannot believe that my wife cheated on me!,partner
-1513,,My ex boyfriend of 4 years decided to start seeing someone else which made me so mad and hurt. He dropped me like I was nothing after 4 whole years of hell with him.,partner
-1514,,"Many years ago, my husband was acting a bit too 'chivalrous' to a friend of mine, which I felt was a bit too friendly. He said he was just being nice, but I felt like he found her attractive.",partner
-1515,,When my ex boyfriend of over 4 years suddenly just up and left me for another woman I didnt know what to do with myself. I was so used to doing everything with him all the time and it was really hard for me.,partner
-1516,,I just found out my husband is cheating on me. I am so disgusted not sure what to do next.,partner
-1517,,"I was going through my photos today and I saw a picture of me and my ex together. It just made me feel odd , I miss him.",partner
-1518,,"One time my husband was acting a bit to helpful to a woman we know. He said he was only trying to be nice, but I felt he was being too friendly. Maybe I overreacted.",partner
-1519,,I was unhappy when my girlfriend broke up with me.,partner
-1520,,I was surprised when my wife left me.,partner
-1521,,My girlfriend broke up with me recently. Things just didn't seem to work out,partner
-1522,,I caught my girlfriend kissing her ex at a party the other night. She seemed to really be in to it. I got pretty upset.,partner
-1523,,I was so angry when I found out that my girlfriend cheated on me... dont know how i can forgive her.,partner
-1524,,"My boyfriend kept claiming he wasn't drinking, but I found out he was lying about it. I found a bunch of empty liquor bottles in his room.",partner
-1525,,Found out my wife was dating someone else a year before we got married while we were dating. It's not a good day today.,partner
-1526,,I went on a date with my ex's best friend while we were dating.,partner
-1527,,"I was on a trip to a heavy metal festival in Las Vegas. While there, my girlfriend broke up with me, and we were still staying in the same room.",partner
-1528,,"I cheated on my ex girlfriend, and I felt bad about it ever since.",partner
-1529,,i was so angry when I found out my girlfriend kissed a friend of mine. I felt like punching the wall.,partner
-1530,,I was sad when my wife left me.,partner
-1531,,I miss being in high school. I still remember my old girlfriend fondly,partner
-1532,,"I found out my wife was having an affair with one of her co-workers, i had him over at our house and was kind to him.",partner
-1533,,My mother-in-law told a secret of mine that she promised she would never tell. It hurt me and I really had to work on trusting her with other things I tell her,partner
-1534,,"Today when I was home alone I was snuggling with a stuffed bunny my ex got me, because I missed him. I feel so pathetic.",partner
-1535,,I am not sure how to tell my husband how it makes me feel when he is flirting with other women.,partner
-1536,,my husband has been texting a woman he works with.,partner
-1537,,I noticed my girlfriend was talking to other guys. She was spending a lot of time on the phone texting them as well.,partner
-1538,,"After being married to my first wife for 8 years, I found out she was having an affair behind my back. It was not a very good time for me.",partner
+5,34.0,it could be either,maybe
+6,54.0,"thanks, bye",goodbye
+7,61.0,how is everything with you,greeting
+8,164.0,it is time to say goodbye,goodbye
+9,168.0,it is very much false,no
+10,184.0,that's definitely false,no
+11,213.0,"talk to you soon, bye!",goodbye
+12,241.0,that appears true,yes
+13,268.0,either of them could be i'm not sure,maybe
+14,304.0,"maybe one, maybe the other",maybe
+15,347.0,signing off,goodbye
+16,384.0,"hello, how are things",greeting
+17,394.0,you are wrong,no
+18,397.0,"great talk, thanks",goodbye
+19,423.0,nice to speak with you,goodbye
+20,433.0,hello siri,greeting
+21,468.0,that’s not correct,no
+22,472.0,this was a nice conversation,goodbye
+23,489.0,"um, i'm not quite sure",maybe
+24,492.0,"thank you for chatting with me, bye",goodbye
+25,500.0,false,no
+26,523.0,thank you goodbye,goodbye
+27,535.0,is is very much true,yes
+28,541.0,i couldn't say,maybe
+29,589.0,it was nice to talk it out with you,goodbye
+30,591.0,"i don't like that, no",no
+31,621.0,are you doing okay,greeting
+32,629.0,accepted,yes
+33,633.0,absolutely correct,yes
+34,648.0,good bye,goodbye
+35,651.0,yes you are correct,yes
+36,670.0,that's true,yes
+37,737.0,it could be one or the other,maybe
+38,765.0,"hey, ai",greeting
+39,811.0,not that one,no
+40,819.0,hola!,greeting
+41,844.0,"hello, how are you doing",greeting
+42,856.0,"yup, that's true",yes
+43,863.0,i can't say,maybe
+44,871.0,thats a negative,no
+45,886.0,ai how are you doing on this fine day,greeting
+46,897.0,hey hey!,greeting
+47,919.0,"true, most definitely",yes
+48,934.0,i don't know the answer to that,maybe
+49,937.0,exactly right,yes
+50,987.0,what you just said is wrong,no
+51,1006.0,"syonara, ai device!",goodbye
+52,1015.0,"a pleasure as always to speak with you, bye",goodbye
+53,1048.0,i am not able to say,maybe
+54,1066.0,"this was a nice chat, goodbye",goodbye
+55,1232.0,"no, don't do that",no
+56,1239.0,peace,goodbye
+57,1248.0,how's everything,greeting
+58,1266.0,i dont know,maybe
+59,1280.0,"no, that information is wrong",no
+60,1444.0,it might be either one,maybe
+61,1483.0,how is the ai doing,greeting
+62,1523.0,how's ife treating you,greeting
+63,1545.0,"hi, ai",greeting
+64,1562.0,it's either of them,maybe
+65,1565.0,how are things going,greeting
+66,1584.0,confirmed,yes
+67,1590.0,not that,no
+68,1637.0,i am afraid that that is not the case,no
+69,1684.0,"that is not true, it's false",no
+70,1717.0,tell me how you are doing,greeting
+71,1725.0,"hi, how are you",greeting
+72,1859.0,not sure to be honest,maybe
+73,1874.0,oh yes,yes
+74,1903.0,it's true,yes
+75,1953.0,sayonara,goodbye
+76,1991.0,"no, that is my response",no
+77,2045.0,either i am not sure,maybe
+78,2076.0,"hello, how is it going",greeting
+79,2115.0,false for sure,no
+80,2121.0,i have no knowledge about it,maybe
+81,2135.0,it seems not,no
+82,2175.0,that is the wrong answer,no
+83,2221.0,how are you this day,greeting
+84,2249.0,undecided,maybe
+85,2309.0,that checks out,yes
+86,2389.0,bye bye!,goodbye
+87,2399.0,"later, thanks for chatting",goodbye
+88,2412.0,that would be true,yes
+89,2416.0,"yes, that's what i want",yes
+90,2433.0,"no, that is wrong",no
+91,2451.0,wassup,greeting
+92,2463.0,it's nice to see you,greeting
+93,2502.0,could be,maybe
+94,2506.0,i'm unaware of that,maybe
+95,2525.0,no that's wrong,no
+96,2532.0,that would be false,no
+97,2583.0,the answer is yes,yes
+98,2602.0,i'm uncertain,maybe
+99,2628.0,i'm unsure,maybe
+100,2638.0,maybe,maybe
+101,2820.0,i can't say for certain either way,maybe
+102,2848.0,invalid,no
+103,2922.0,"maybe, maybe not",maybe
+104,2934.0,see ya later,goodbye
+105,2966.0,i'm drawing a blank,maybe
+106,2973.0,"hmm, either",maybe
+107,2980.0,absolutely not,no
+108,3010.0,hey,greeting
+109,3023.0,how are things,greeting
+110,3073.0,"yep, that's true",yes
+111,3094.0,good speaking to you,goodbye
+112,3104.0,hi! are you doing okay,greeting
+113,3115.0,this was a nice chat,goodbye
+114,3162.0,i don't really know,maybe
+115,3170.0,have a good one,goodbye
+116,3196.0,that's completely false,no
+117,3210.0,i'm not sure what the answer is,maybe
+118,3284.0,"i do not think that is true, so i would say it is a false statement",no
+119,3313.0,sorry no idea,maybe
+120,3332.0,"how are you doing today, ai",greeting
+121,3386.0,hey what's up,greeting
+122,3391.0,hiya!,greeting
+123,3411.0,"hey there, how are you today",greeting
+124,3449.0,i have to get going,goodbye
+125,3460.0,that answer's above my pay scale,maybe
+126,3467.0,that's not what i want!,no
+127,3484.0,i'll have to think about it,maybe
+128,3545.0,how is your day,greeting
+129,3585.0,the answer is false,no
+130,3615.0,i would prefer not,no
+131,3633.0,how are things going for you,greeting
+132,3646.0,"this was fun, see you around bye",goodbye
+133,3649.0,that's not right,no
+134,3660.0,see you around,goodbye
+135,3712.0,i do not know the answer to that,maybe
+136,3737.0,that would be awesome,yes
+137,3793.0,that's not correct,no
+138,3795.0,"yes, this is true",yes
+139,3796.0,"ai, how are you doing",greeting
+140,3882.0,that is affirmative,yes
+141,3913.0,not at all,no
+142,3925.0,"that is true, yes",yes
+143,3942.0,i'm unsure of the proper answer,maybe
+144,3944.0,"how are you doing, ai",greeting
+145,3987.0,"maybe yes, maybe no",maybe
+146,4059.0,how's it hanging,greeting
+147,4125.0,hola,greeting
+148,4149.0,i'm not completely certain,maybe
+149,4152.0,"no, that is not correct",no
+150,4190.0,how ya been,greeting
+151,4243.0,it could be that one or the other one,maybe
+152,4289.0,"yes, i'd really like that alot",yes
+153,4313.0,either or should work,maybe
+154,4328.0,"yes, that is accurate",yes
+155,4402.0,that seems true,yes
+156,4408.0,good day,greeting
+157,4439.0,yes,yes
+158,4468.0,hello how's it going,greeting
+159,4570.0,that's wrong,no
+160,4587.0,"sorry, i do not know",maybe
+161,4596.0,i would say that the statement is definitely false,no
+162,4715.0,"why, hello bandit",greeting
+163,4728.0,yup,yes
+164,4768.0,it's indeed true,yes
+165,4802.0,regards,goodbye
+166,4818.0,maybe it does,maybe
+167,4941.0,that’s incorrect,no
+168,4948.0,"no, that's incorrect",no
+169,4986.0,buhbye,goodbye
+170,5037.0,can you tell me how you're doing today,greeting
+171,5046.0,how are things treating you,greeting
+172,5065.0,i don't have the answer,maybe
+173,5107.0,how is it going my friend,greeting
+174,5175.0,that is overwhelmingly false,no
+175,5209.0,the statement is true,yes
+176,5314.0,i'm not sure,maybe
+177,5323.0,i'm afraid i don't know how to answer that,maybe
+178,5399.0,"thanks for chatting, later",goodbye
+179,5423.0,"that would be ""no",no
+180,5445.0,heller,greeting
+181,5473.0,that will be all have a nice day!,goodbye
+182,5481.0,i can't answer yes or no right now,maybe
+183,5524.0,adios,goodbye
+184,5564.0,that is erroneous,no
+185,5576.0,"yes, please",yes
+186,5627.0,"i enjoyed our talk, goodbye",goodbye
+187,5710.0,i am not confident on that,maybe
+188,5711.0,yeap,yes
+189,5748.0,i will know later,maybe
+190,5766.0,aloha,greeting
+191,5774.0,i don't know anything about that,maybe
+192,5857.0,i do not think that is proper,no
+193,5858.0,ya,yes
+194,5877.0,that is most definitely false,no
+195,5896.0,i don't have that information,maybe
+196,5903.0,of course,yes
+197,5923.0,it was nice to get in touch,goodbye
+198,5949.0,"no, that is a falsehood",no
+199,5966.0,it's possible that it could be either,maybe
+200,6002.0,the answer is definitely no,no
+201,6042.0,i think it could be either one,maybe
+202,6140.0,hey there,greeting
+203,6221.0,it was pleasant conversing with you,goodbye
+204,6257.0,hell nah,no
+205,6258.0,nope not it,no
+206,6285.0,the answer to that is a resounding yes,yes
+207,6336.0,"it was a pleasure talking to you, goodbye now",goodbye
+208,6376.0,it was pleasant having a conversation with you,goodbye
+209,6418.0,hey there!,greeting
+210,6461.0,"no, that is inaccurate",no
+211,6486.0,uh huh,yes
+212,6504.0,what's up,greeting
+213,6537.0,"hey, what's up",greeting
+214,6603.0,until next time!,goodbye
+215,6629.0,"i don't believe that is possible, it is false",no
+216,6679.0,my response to that is yes,yes
+217,6693.0,tata for now,goodbye
+218,6697.0,i'm telling you this is a true statement,yes
+219,6712.0,both could be,maybe
+220,6756.0,ai goodbye,goodbye
+221,6765.0,"goodbye, helpful ai device!",goodbye
+222,6770.0,"no, that can't be right",no
+223,6791.0,"yeah, that's right",yes
+224,6819.0,it could be possible,maybe
+225,6822.0,"i enjoyed our talk, bye",goodbye
+226,6835.0,goodbye for now ai,goodbye
+227,6899.0,not happening,no
+228,6907.0,no!,no
+229,6926.0,hi,greeting
+230,6937.0,not sure,maybe
+231,6979.0,i have no earthly idea at all,maybe
+232,7019.0,"correct, that's true",yes
+233,7029.0,thanks for talking to me,goodbye
+234,7041.0,how is everything going,greeting
+235,7043.0,that's correct,yes
+236,7062.0,no way!,no
+237,7098.0,i want you to know it's a true statement,yes
+238,7100.0,this was a great conversation,goodbye
+239,7105.0,"yes, that happens to be correct",yes
+240,7116.0,i can't answer that,maybe
+241,7143.0,it was nice chatting with you,goodbye
+242,7147.0,that is wrong,no
+243,7207.0,i am thinking it is either,maybe
+244,7228.0,"one or the other, or both",maybe
+245,7269.0,i'm out of here,goodbye
+246,7305.0,it was nice to chat,goodbye
+247,7310.0,that is false,no
+248,7316.0,always nice to talk to you,goodbye
+249,7350.0,roger that,yes
+250,7422.0,it was enjoyable talking with you,goodbye
+251,7429.0,i gotta say no,no
+252,7479.0,"hi there, how are things",greeting
+253,7499.0,that makes sense as well,yes
+254,7507.0,i can't tell,maybe
+255,7587.0,no don't do that!,no
+256,7616.0,i think it is false,no
+257,7640.0,absolutely!,yes
+258,7651.0,that's right,yes
+259,7697.0,please let's do it,yes
+260,7712.0,i don't know for sure,maybe
+261,7756.0,goodbye,goodbye
+262,7771.0,"hello, friend",greeting
+263,7782.0,it's good to see you,greeting
+264,7792.0,"hello, anyone there",greeting
+265,7825.0,not quite sure how to respond,maybe
+266,7862.0,it was great chatting with you,goodbye
+267,7952.0,i'm glad i got to talk to you,goodbye
+268,8032.0,i would have to say yes as my answer,yes
+269,8065.0,i have to go ai goodbye,goodbye
+270,8113.0,that's a definite yes,yes
+271,8116.0,bonjour,greeting
+272,8135.0,hey how's it going,greeting
+273,8136.0,all right,yes
+274,8235.0,yes that's correct,yes
+275,8242.0,not right now,no
+276,8291.0,how've you been feeling,greeting
+277,8307.0,it was great talking to you,goodbye
+278,8327.0,maybe it is,maybe
+279,8357.0,no thanks,no
+280,8383.0,see you in a while,goodbye
+281,8389.0,you are not wrong about that,yes
+282,8423.0,how is everything going for you,greeting
+283,8446.0,"hi, how are you today",greeting
+284,8451.0,"yes, that is a fact",yes
+285,8510.0,are you okay right now,greeting
+286,8535.0,not true,no
+287,8585.0,"no, that's not right",no
+288,8640.0,bye,goodbye
+289,8663.0,hows are ya,greeting
+290,8682.0,hello there ai,greeting
+291,8704.0,negative,no
+292,8721.0,that's a yes,yes
+293,8744.0,how is the weather today,maybe
+294,8769.0,are you doing ok,greeting
+295,8775.0,what's up with you,greeting
+296,8806.0,glad we got to talk,goodbye
+297,8895.0,goodbye to you,goodbye
+298,8896.0,i think not,no
+299,8906.0,talk later,goodbye
+300,8916.0,"hello, what's up",greeting
+301,8941.0,it was nice to speak with you,goodbye
+302,8973.0,"it was great to see you again, see ya later!",goodbye
+303,8989.0,hi how are you,greeting
+304,9060.0,maybe is my answer,maybe
+305,9061.0,naw,no
+306,9090.0,"yes, that's accurate",yes
+307,9150.0,"thanks for your help, goodbye!",goodbye
+308,9154.0,"yes, that is true for sure",yes
+309,9238.0,that's a negative,no
+310,9279.0,"yep, that's right",yes
+311,9290.0,are you good,greeting
+312,9318.0,its a for sure true,yes
+313,9334.0,"yes, that is right",yes
+314,9342.0,i have no idea,maybe
+315,9482.0,nice to see you,goodbye
+316,9483.0,either or,maybe
+317,9520.0,that's incorrect,no
+318,9559.0,affirmitive,yes
+319,9629.0,no that isn't the case,no
+320,9647.0,"hello, how are you",greeting
+321,9662.0,see you later!,goodbye
+322,9704.0,see you again soon,goodbye
+323,9710.0,hell if i know,maybe
+324,9731.0,which one i don't know either i guess,maybe
+325,9799.0,how's it going with you,greeting
+326,9800.0,that is correct,yes
+327,9802.0,would you tell me how the ai is doing,greeting
+328,9906.0,i just don't know,maybe
+329,9908.0,i'm torn on how to answer,maybe
+330,9945.0,i can't give you an answer to that,maybe
+331,9954.0,"sorry, that is not true",no
+332,9960.0,"agreed, that's valid",yes
+333,10006.0,i don't have any idea,maybe
+334,10011.0,positive,yes
+335,10021.0,i'm pretty sure it could be either,maybe
+336,10056.0,either one might be,maybe
+337,10094.0,bye for now,goodbye
+338,10102.0,that turns out to be false,no
+339,10113.0,bye-bye,goodbye
+340,10133.0,that is totally true,yes
+341,10146.0,very true,yes
+342,10162.0,"yes, you got it",yes
+343,10181.0,that is a fact,yes
+344,10194.0,hey what's up,greeting
+345,10267.0,"um, i'm not totally sure",maybe
+346,10338.0,i agree with the truth of what you just said,yes
+347,10347.0,just wanted to say hi,greeting
+348,10352.0,i meant no,no
+349,10402.0,no that is wrong,no
+350,10403.0,i enjoyed speaking with you,goodbye
+351,10463.0,i can confirm it is affirmative,yes
+352,10486.0,good night,goodbye
+353,10556.0,okay,yes
+354,10560.0,yo,greeting
+355,10585.0,that is not the case,no
+356,10608.0,ai how are you doing today,greeting
+357,10637.0,whats up,greeting
+358,10650.0,don't have any idea,maybe
+359,10651.0,i don't have a clue,maybe
+360,10663.0,definitely,yes
+361,10687.0,"i am glad we got to talk again, see you soon",goodbye
+362,10705.0,"i enjoyed talking to you, bye",goodbye
+363,10733.0,that is so false,no
+364,10748.0,i enjoyed talking to you,goodbye
+365,10814.0,the answer is no,no
+366,10828.0,it depends,maybe
+367,10840.0,that is not false,yes
+368,10869.0,"hello, are you doing alright",greeting
+369,10883.0,that'd be a no,no
+370,10885.0,no good,no
+371,10899.0,i do not have that information,maybe
+372,10901.0,fairwell,goodbye
+373,10916.0,there is no way in heck that is true,no
+374,10952.0,indeed,yes
+375,10953.0,true is my response,yes
+376,10959.0,how is my ai doing,greeting
+377,10966.0,"yes, that's correct",yes
+378,10989.0,"yes, that's confirmed",yes
+379,10994.0,that would be yes,yes
+380,11012.0,yes i am,yes
+381,11013.0,"thank you for the chat, goodbye",goodbye
+382,11033.0,greetings to you,greeting
+383,11059.0,"yes, that is factual",yes
+384,11086.0,i'm not actually sure,maybe
+385,11087.0,it was lovely to speak with you,goodbye
+386,11124.0,"yes, that is correct",yes
+387,11127.0,nice to see you again,goodbye
+388,11142.0,it was very good to talk to you,goodbye
+389,11143.0,confirm,yes
+390,11169.0,"no, that is not right at all",no
+391,11191.0,it is false,no
+392,11199.0,uh-huh,yes
+393,11214.0,shit if i know,maybe
+394,11218.0,bye now,goodbye
+395,11274.0,i don't think so,no
+396,11280.0,i'm saying goodbye now,goodbye
+397,11299.0,that's incorrect!,no
+398,11353.0,couldn't tell you,maybe
+399,11383.0,salutations!,greeting
+400,11465.0,yes is my answer,yes
+401,11534.0,nice seeing you bye,goodbye
+402,11558.0,cya later,goodbye
+403,11582.0,maybe is what i am going to answer,maybe
+404,11610.0,that's a yes from me,yes
+405,11617.0,i had fun speaking with you,goodbye
+406,11626.0,are you okay,greeting
+407,11711.0,definitely not,no
+408,11721.0,"great talk, take it easy",goodbye
+409,11759.0,i really don't know,maybe
+410,11775.0,it was really nice to be able to chat with you,goodbye
+411,11786.0,what's happening,greeting
+412,11789.0,"that's all i need, i'm going now",goodbye
+413,11816.0,tootles,goodbye
+414,11825.0,no is the answer,no
+415,11832.0,"hello there, good morning",greeting
+416,11844.0,i'm outta here!,goodbye
+417,11867.0,that is not correct,no
+418,11887.0,what do you feel like doing,greeting
+419,11896.0,i disagree that is false,no
+420,11942.0,that's a negatory,no
+421,11954.0,talk to you later,goodbye
+422,11956.0,how's life,greeting
+423,11967.0,it was great to speak with you,goodbye
+424,11980.0,both would work,maybe
+425,12015.0,yes you are right,yes
+426,12025.0,either one would work,maybe
+427,12033.0,i think it's true,yes
+428,12054.0,"yeah that's right, so true",yes
+429,12094.0,"oh hell no, that'd be terrible!",no
+430,12106.0,"hey, what's new",greeting
+431,12111.0,adios ai,goodbye
+432,12113.0,good to see you,greeting
+433,12137.0,nope that's not it,no
+434,12149.0,"hey, how are you",greeting
+435,12169.0,possibly either one,maybe
+436,12171.0,it could go either way,maybe
+437,12201.0,see you soon,goodbye
+438,12204.0,that is a yes,yes
+439,12330.0,yes that's it,yes
+440,12448.0,that's definitely true,yes
+441,12469.0,i agree,yes
+442,12517.0,"incorrect, it is certainly a false statement",no
+443,12627.0,hi there,greeting
+444,12726.0,that's the truth,yes
+445,12768.0,are you doing alright,greeting
+446,12778.0,i am saying no,no
+447,12783.0,negatory,no
+448,12787.0,how're you doing,greeting
+449,12797.0,i've got to run now,goodbye
+450,12800.0,"um, i'm not sure",maybe
+451,12803.0,i dont have an answer for that,maybe
+452,12806.0,my answer would be maybe,maybe
+453,12822.0,that's false,no
+454,12831.0,that's a hard no from me,no
+455,12895.0,i need to go now,goodbye
+456,12912.0,perhaps either of them,maybe
+457,12919.0,that could maybe be it,maybe
+458,12928.0,hey how's life,greeting
+459,12934.0,how is life treating you,greeting
+460,13035.0,i'm not sure which it is,maybe
+461,13076.0,hey there fellow,greeting
+462,13087.0,i will say yes as my response,yes
+463,13166.0,adios!,goodbye
+464,13230.0,farewell!,goodbye
+465,13242.0,"no idea, sorry",maybe
+466,13282.0,i believe that to be false,no
+467,13296.0,well hello,greeting
+468,13335.0,no that isn't correct,no
+469,13357.0,who knows,maybe
+470,13422.0,"have a good day, bye",goodbye
+471,13430.0,i have to say goodbye,goodbye
+472,13446.0,what's going on,greeting
+473,13473.0,nada,no
+474,13504.0,goodnight,goodbye
+475,13536.0,no that is not right,no
+476,13636.0,i don't have an answer for that,maybe
+477,13694.0,hello there,greeting
+478,13703.0,good bye my friend,goodbye
+479,13728.0,i can't make up my mind,maybe
+480,13788.0,you're right,yes
+481,13800.0,that is right,yes
+482,13832.0,that isn't right,no
+483,13841.0,"hi there, how are you doing",greeting
+484,13934.0,not really,no
+485,13943.0,how are things for you,greeting
+486,13947.0,really dont know,maybe
+487,13970.0,that's a possibility,maybe
+488,14011.0,my answer to your question is yes,yes
+489,14028.0,i'd like to know how you are doing,greeting
+490,14047.0,goodbye!,goodbye
+491,14078.0,i'll talk to you later ai,goodbye
+492,14080.0,are you well,greeting
+493,14106.0,how you are,greeting
+494,14140.0,i don't know the anwser,maybe
+495,14200.0,catch you later,goodbye
+496,14236.0,so how is everything,greeting
+497,14247.0,what are you feeling today,greeting
+498,14312.0,im not certain,maybe
+499,14402.0,yes you are,yes
+500,14438.0,i do not believe that that is correct,no
+501,14496.0,are you doing well,greeting
+502,14546.0,i must say goodbye,goodbye
+503,14554.0,bye!,goodbye
+504,14581.0,"not sure, maybe",maybe
+505,14608.0,it may be either one,maybe
+506,14609.0,"no, that is not right",no
+507,14615.0,how are you today,greeting
+508,14661.0,i'm not sure of that,maybe
+509,14673.0,that is not factual,no
+510,14677.0,i think that's false,no
+511,14747.0,later gator!,goodbye
+512,14760.0,how are you doing,greeting
+513,14862.0,that is untrue,no
+514,14887.0,the statement is false,no
+515,14912.0,it was really awesome to talk to you,goodbye
+516,14944.0,it was good to talk to you today,goodbye
+517,15160.0,i am really not sure,maybe
+518,15249.0,have a good day,goodbye
+519,15349.0,that might be the case,maybe
+520,15391.0,i think maybe,maybe
+521,15460.0,no that isn't it,no
+522,15467.0,that will be true,yes
+523,15482.0,that's totally wrong!,no
+524,15524.0,"nice talking again, bye",goodbye
+525,15542.0,the answer to that is affirmative,yes
+526,15558.0,affirmative,yes
+527,15642.0,i am not to sure about that,maybe
+528,15729.0,catch you around,goodbye
+529,15761.0,not sure if that's a yes or a no,maybe
+530,15802.0,is everything ok today,greeting
+531,15820.0,that is a completely false statement,no
+532,15821.0,"no, that's wrong",no
+533,15845.0,peace out,goodbye
+534,15853.0,you are correct,yes
+535,15888.0,"hmmm, either could be a choice",maybe
+536,15892.0,10-4,yes
+537,15914.0,take it easy!,goodbye
+538,15919.0,true,yes
+539,15946.0,hi there alexa,greeting
+540,15962.0,i haven't a clue,maybe
+541,16007.0,whats up with you,greeting
+542,16039.0,it was a pleasure talking to you,goodbye
+543,16169.0,what you just said is true,yes
+544,16202.0,yes that is correct,yes
+545,16241.0,are things going well for you,greeting
+546,16266.0,no clue,maybe
+547,16304.0,heyo,greeting
+548,16324.0,i have to say affirmative on that one,yes
+549,16395.0,i do not know,maybe
+550,16432.0,"yes, that is true",yes
+551,16456.0,ok good chatting goodbye,goodbye
+552,16586.0,hey how's it hanging,greeting
+553,16642.0,idk,maybe
+554,16740.0,it was nice to catch up with you,goodbye
+555,16799.0,hello there!,greeting
+556,16800.0,how goes it,greeting
+557,16814.0,"wake up, ai",greeting
+558,16829.0,"it could be either, i think",maybe
+559,16917.0,"enjoy your day, goodbye",goodbye
+560,16928.0,how have you been,greeting
+561,16934.0,i'll pass,no
+562,16970.0,"hello, ai",greeting
+563,16981.0,i haven't the foggiest,maybe
+564,16989.0,yeah,yes
+565,16999.0,until next time,goodbye
+566,17017.0,how do you feel,greeting
+567,17117.0,"that's not right, so no",no
+568,17154.0,i'm not sure which one because it could be either of them,maybe
+569,17167.0,it is a true,yes
+570,17201.0,"yes, ai, that is correct",yes
+571,17273.0,is everything ok with you,greeting
+572,17281.0,"hello, how's your day",greeting
+573,17306.0,sure,yes
+574,17358.0,negative for sure,no
+575,17361.0,how are things with you,greeting
+576,17424.0,i believe that's true,yes
+577,17438.0,i’m leaving-goodbye!,goodbye
+578,17440.0,correct,yes
+579,17501.0,yes i do like that,yes
+580,17510.0,you got it,yes
+581,17512.0,i dunno,maybe
+582,17528.0,i’ll be leaving now,goodbye
+583,17529.0,i would have to say the answer to that is no,no
+584,17536.0,that has to be false,no
+585,17555.0,don't know,maybe
+586,17567.0,that would be correct,yes
+587,17581.0,it's a no,no
+588,17598.0,"see you later, alligator",goodbye
+589,17631.0,approved,yes
+590,17639.0,it was great to have this conversation with you,goodbye
+591,17650.0,i must say no,no
+592,17670.0,"no, that is incorrect",no
+593,17673.0,i'm unsure of the answer,maybe
+594,17678.0,i'm sure it could be either,maybe
+595,17689.0,that is not right,no
+596,17827.0,"yes, that's it",yes
+597,17863.0,ill pass,no
+598,17915.0,is everything going okay,greeting
+599,17951.0,i do not know that,maybe
+600,,My father passed away 2 1/2 years ago. We didn't know he had a life-threatening illness and it really traumatized our family. The unexpected loss was so agonizing and painful for us.,death
+601,,My girlfriend had a 17 year old Chihuahua. He ran away from a friends farm and died after being struck by a car.,death
+602,,After my granddad passed I kept his necklace it means so much to me even though I get emotional over it.,death
+603,,"I passed by my grandma's old house today, she passed last year. It really brought me down.",death
+604,,My cat I have had for the last 14 years got sick and passed away last month. I lost a great friend.,death
+605,,"I found my cat the other day. She had been missing for 3 days. I found her on the side of the road, guts in the gutter.",death
+606,,"A friend of mine was in a car accident. Unfortunately, he did not make it.",death
+607,,I was heartbroken when my dog died last month. He was always by my side as long as I remember.,death
+608,,I was feeling pretty reminiscent when we went on vacation. I starting thinking about the last vacation we had with my father before he passed away.,death
+609,,One morning my mother came to pick my daughter up for school and told me she saw my daughter's cat dead outside.,death
+610,,"My father recently passed suddenly, I was devastated.",death
+611,,My dad died of cancer in 2012.,death
+612,,I felt so alone after my dog trevor passed away. he was always by my side over these years.,death
+613,,"My dog, who had been with me for 13 years, died a few years ago. It was so difficult to wrap him in a blanket, and bury him. I was heartbroken.",death
+614,,I was devastated when my dog died.,death
+615,,Seeing a statue we made for a recently passed away pet made me really sad. It was such a fitting tribute to her life and the love we had for her.,death
+616,,I think about my mother and I getting really sad. She has been dead for 15 years now.,death
+617,,My goldfish died.,death
+618,,I was sad when my dad died.,death
+619,,Recently my grandma passed away. She lived far from us most of our lives but at the end she was sick so we moved her down here and I really had fun connecting with her as an adult again. It was a hard day when she died,death
+620,,My aunt recently passed away after a long battle with Alzheimer's disease. I'm so sad at the loss.,death
+621,,"When my sister passed away several years ago, I had such a hard time with the loss. I felt very much separate from others in dealing with my grief.",death
+622,,I learnt a few days ago my best friend passed away in a car accident. I am still in shock.,death
+623,,I got a call in the middle of the night during college that one of my best friends had been in a fatal car crash.,death
+624,,My dog just passed away two nights ago. She was 12 years old.,death
+625,,My father unexpected passed away around 2 1/2 years ago. We never thought he would be leaving us this soon and it was very traumatic to me.,death
+626,,My father was diagnosed with stage 4 brain cancer. It only took a few months for him to pass away because of it.,death
+627,,I was sad when my dog died.,death
+628,,I felt really alone when my dog passed away last month. He was always by my side all the time.,death
+629,,Memories of my dog always break my heart. She passed away last month.,death
+630,,I was sad when my dog died.,death
+631,,We have a doberman for over 8 years. He passed away last spring. It was a hard time for our family.,death
+632,,I found my cat dead on the side of the road. I was so hurt and distraught I couldn't even drive home.,death
+633,,My dog I had for five years just passed away. He was hit by a car last night.,death
+634,,Our family dog passed and my mom was so wrecked it hurt her really deep.,death
+635,,I was filled with despair when my grandma died. She was always the one I relied upon.,death
+636,,My 19 year old cat died recently. I was devastated. I still think about him a lot.,death
+637,,Our dog passed away after 8 years of having in the family.,death
+638,,I am upset that I have to tell my young daughter her hamster died today.,death
+639,,I recently remembered a sweet memory of my aunt who recently passed away. She would give hundreds of dollars of school supplies to kids in need each year.,death
+640,,The little kitten I rescued last Friday passed away.,death
+641,,"My dog died today. She had cancer and we weren't able to save her. My daughter is upset, and won't stop crying.",death
+642,,"When my grandparents died, I was extremely upset for a few months.",death
+643,,My 32 year-old son died of a sudden heart attack. I was with him the day before.,death
+644,,"A few months ago, a good friend of my girlfriend's passed away from a drug overdose. What's worse is, both his ex and his lover at the time kept using. I worry about them.",death
+645,,My father passed away when I was 33 years old.,death
+646,,My dog just died in my arms.,death
+647,,"A time that I was feeling a bit nostalgic, was this last vacation a few weeks ago. It made me think of the last vacation with my father, before he passed away.",death
+648,,I was really sad when my dog died last year.,death
+649,,I was so sad when I found out my pet horse died of cancer last week while I was over in vacation.,death
+650,,"My grandmother recently passed. We were close, so it's been hard.",death
+651,,"Years ago I found my beagle dead from kidney failure, he had not gone quietly.",death
+652,,I have this knife that I carry everyday. My dad gave it to me before he died.,death
+653,,My mom called me last week to let me know our childhood dog passed away.,death
+654,,I always get sad thinking about my mom. She passed away when i was 12.,death
+655,,I played poker against a friend who wasn't really good. I won and took over $100 from him. I felt bad about it the next day.,self-blame
+656,,"My wife has been out of the country for 2 months for school, and she was having a really bad day one day. I felt terrible that I couldn't help her.",self-blame
+657,,"We were over at our friend's house for a dinner and I was in the kitchen helping her cook. I had melted butter in a baking dish to make dessert, and I poured cold milk into it like the recipe said to do. It ended up cracking the dish. I felt bad. I offered to buy her a new one.",self-blame
+658,,"I cheated on my ex girlfriend, and I felt bad about it ever since.",self-blame
+659,,I feel guilty because I couldn't go to my friends party.,self-blame
+660,,A friend left some candy out and I took some. I feel like paying him back for what I took.,self-blame
+661,,I felt bad when I cheated on my partner.,self-blame
+662,,I needed lunch money for school because I had bought extra things during lunch. I wasn't supposed to do that. I stole money out of my dad's wallet to cover my negative account balance at school.,self-blame
+663,,"I was really mean to my sister as a child, and I still feel bad about it. She's sensitive and I know it probably still bothers her.",self-blame
+664,,I feel extremely terrible I did not invite my best friend to my wedding.,self-blame
+665,,I stole my mum's money when I was 4 years old. I felt bad about it though.,self-blame
+666,,"My friend's boyfriend had made sexual advances towards me, which I turned him away. But, I felt very bad for not telling my friend.",self-blame
+667,,I slacked off at the end of college semester and flunked the class I'm so much better then that I feel so regretful about not giving my all.,self-blame
+668,,I lost the book that my friend let me borrow. I feel so embarrassed.,self-blame
+669,,I cheated on a test at school. I really feel like I should come clean about it to my professor.,self-blame
+670,,My wife is out of the country for school. She was having a really bad day the other day and I couldn't really do anything to help.,self-blame
+671,,I borrowed a book from a friend and left it outside. It got ruined by the rain.,self-blame
+672,,I forgot that I had made plans with my mother over the weekend. We had been planning it for a few days I feel awful.,self-blame
+673,,One time I was playing basketball and I accidentally slapped a girl in the face. I felt so bad about it.,self-blame
+674,,When I almost got caught stealing I felt bad.,self-blame
+675,,I felt bad about sleeping in today.,self-blame
+676,,"Recently, I had an argument with a friend. I called her out on her behavior to her face, but my daughter overheard me discussing it with my husband and thought that I had talked behind my friend's back, so she thought that I was being two-faced and we had to have a whole conversation about it. I felt guilty even though I didn't do anything wrong.",self-blame
+677,,"My husband is going through the process of quitting smoking and he also has drama going on with his parents that isn't his fault. There is nothing that I can do to make the situation better for him, so it makes me sad.",self-blame
+678,,"I ran into my neighbor's mailbox but didn't stop to leave a note. When I saw him replacing it, I felt so bad that I had to confess. He was angry that I did it, but glad that I came forward.",self-blame
+679,,"I didn't tell my friend when her boyfriend hit on me. I felt very bad and wrong for that, even though I turned him down, of course.",self-blame
+680,,I feel guilty for eating my housemates last chocolate bar.,self-blame
+681,,I felt bad when I cut someone off in traffic this morning.,self-blame
+682,,I'm ashamed of always deceiving my family.,self-blame
+683,,I stole some candy from the grocery store. I wanted to see if I could get away with it.,self-blame
+684,,I was so embarrassed when I threw up in public one day. I was feeling really sick and I couldn't help it.,self-blame
+685,,"I forgot I had planned to pick up my brother from work the other day. He had to wait for me to get there, I felt like such a jerk.",self-blame
+686,,I felt upset about losing my friend's blu ray I borrowed.,self-blame
+687,,Once I overslept and was late picking up my child from school. I felt so horrible about that.,self-blame
+688,,"I felt pretty bad one time when I lied to my mother about where I was going. I don't like to be dishonest with her, so my conscience was feeling rough!",self-blame
+689,,"When I was a kid, my sister and I stole one of my moms checks from her checkbook and ordered a pizza. When she found out she was so mad! I felt terrible about it.",self-blame
+690,,I felt upset when I forgot to ask my friend to dinner.,self-blame
+691,,"I went out and came back late, so I lied to my mum, I really felt bad about it.",self-blame
+692,,The other day I got into an argument with my 19 year old son. I became so angry with his behavior that I called him names and said things i didnt mean. I still feel badly about it.,self-blame
+693,,My boss made me work overtime yesterday and I didn't even get paid for it!,injustice
+694,,I had a performance review at work where I was surprised by the presence of my least favorite person in the company. The account manager part of my position was effectively dissolved and I was forced to answer phones.,injustice
+695,,I was so furious when my coworker badmouthed me to my boss. He said that I was stealing the office supplies just for the fun of it.,injustice
+696,,At work a coworker of mine tried to take credit for a job I had completed. I went straight to my boss and got it lined out once I found out what had happened.,injustice
+697,,I worked so hard for the lead role in the play. I kinda got some type of frusteration from the person that got it since they didn't work hard like me.,injustice
+698,,A coworker mad me very mad one day. She slammed a large order of work on my desk and basically demanded that I do it! She has no right to do that.,injustice
+699,,I'm accused of a crime at work I didn't do.,injustice
+700,,In a class in college an older woman straight up stole my ideas and work for an assignment.,injustice
+701,,A coworker took credit for a work I had done. I had to go to my manager to get it straightened out.,injustice
+702,,I lost my job because my company didn't pay rent at our location.,injustice
+703,,"One of my coworkers took credit for a job I had done last month. They told our boss it was their idea, when they didn't even work on the project.",injustice
+704,,My old roommate didn't clean out his room or the kitchen when he left. The university charged me and the other roommates 100$.,injustice
+705,,Every day my boss is late to work. Today I was 1 minute late and got a write up.,injustice
+706,,End of semester one of my roommates left without cleaning out his share of the dorm room. Housing department fined me and the other two roommates 100$ each for his laziness.,injustice
+707,,I was one of three people in the running for a promotion at my job. I ended up not getting the job and a person with less experience got it.,injustice
+708,,"Last week at work, one of my coworkers took credit for a job that I had completed. I went straight to my manager to get it straightened out.",injustice
+709,,"One of my coworkers has been arguing with his supervisor frequently. Despite this, he hasn't been fired and he's even gotten extra hours--which I don't think is right at all!",injustice
+710,,An older woman in a class I took in college stole my ideas for a paper and presented them as her own.,injustice
+711,,One of my roommates left without cleaning his room and the school charged me and the other two roommates 100$.,injustice
+712,,I work for a company and we just found out the person who works in our accounting department has been stealing money from us for years. It is revolting.,injustice
+713,,"I couldn't believe when I woke up the other day and was about to go to work, I saw that someone had broken in to my car. I was so mad. I had heard there had been some problems with car break-ins but I didn't think it would happen to me because we live in a nice neighborhood.",abuse
+714,,This guy at school follows me around.,abuse
+715,,"Someone ran into my car while I was grocery shopping. I came out to a huge dent in my car, I was so mad.",abuse
+716,,"One time someone came to my door with a gun. He came to the house asking for money but I didn't have any, so he took some items from the house.",abuse
+717,,A co-worker stole my lunch I believe. I ended up having to skip a meal.,abuse
+718,,I woke up this morning with car damage that happened while I was sleeping.,abuse
+719,,"When I was in middle school there was this boy that sat in front of me in 8th, he was always trying to get me to kiss him before class started.",abuse
+720,,One time someone came to my door with a gun. He robbed my house.,abuse
+721,,I found out someone stole my identity. They completely cleared out my bank account and maxed out my credit cards. I am so mad.,abuse
+722,,I was appalled at the way my friend approached me last night.,abuse
+723,,"I was listening to old school rap in my car. The windows were down, and the car next to me started making fun of me.",abuse
+724,,I went shopping at the mall the other day. I was really tired and sat down for a few minutes. I placed the bags beside me and looked away for a second and the next thing I knew the bags were gone. I am still so mad.,abuse
+725,,One time someone came to my door with a gun. He wanted money but I didn't have any so he stole some items from the house.,abuse
+726,,"The other day I seen someone had broken into my car. They didn't take anything. I'm not sure if I should feel violated, or bad because I had nothing worth stealing.",abuse
+727,,"There was a guy at a place I worked at that was stalking me. He would write me creepy letters, come by to talk to me, and try to follow me home.",abuse
+728,,My husband's brother stole $500 from us let's talk about someone being beyond mad more like furious.,abuse
+729,,Someone side sideswiped my car last night while I was sleeping and I wasn't aware until I woke up. It was not a good thing to wake up to.,abuse
+730,,A guy cut in front of some people in a line at a store and I confronted him. He flipped me off and we exchanged very heated words. The confrontation almost got physically but finally he left.,abuse
+731,,"I got an phone call from someone I used to know. It was threatening in nature, and I am scared.",abuse
+732,,Someone stole my credit card information. They have been charging up my card like crazy. I'm scared about my identity.,abuse
+733,,Someone hit my car and fled the scene. I wish I could find the person.,abuse
+734,,"Recently a man tried to break into our house. It was late at night, and he was kicking the door. My entire family was scared as we waited for the police to show up.",abuse
+735,,The police officer tried to harass me.,abuse
+736,,Someone had pull a stick prank on me and slashed my car tires and bashed my windshield in at my apartment complex.,abuse
+737,,I am disgusted because of my friends pulling pranks on me.,abuse
+738,,"Walking home alone from school one day, three young adults jumped in front of me and yelled in my twelve-year old face. I cried the rest of the way back.",abuse
+739,,Someone ran over my mailbox this morning. They left it totally demolished.,abuse
+740,,"I was super irritated when my boss kept pulling my hair for ""fun"". He doesn't seem to realize how irritating it can be.",abuse
+741,,"Last week, someone during the night drove off the road and destroyed a large section of my fence. It is going to be expensive to have it replaced.",abuse
+742,,I am still fuming when I think about the person that keyed my car the other day while I was at the grocery store. I don't understand why someone would do that on purpose. I saw them as I was checking out and I didn't even know them.,abuse
+743,,I went out to my car one morning to go to work. Some kids in the condo complex had thrown food all over the top of my car.,abuse
+744,,"Once, I came home from a night out and my room was ransacked. My roommate was an alcoholic, and he had even thrown some of my belongings in the bathtub. Of course, he didn't remember doing it either.",abuse
+745,,When people try to control me,abuse
+746,,I am so upset she hit my car and left before the police came!,abuse
+747,,"When I was going through my old photo albums this morning, I came across a picture of my mother and me. It reminded me of a much simpler time, before she abandoned the family and joined a nudist colony. Ah, she was the best. I miss her.",missing
+748,,"A decade or so I designed an arcade machine for some friends of mine that owned a bar. They no longer own it, but I went back recently and our machine was still running. Playing it made me miss my buddy and all the good times we used to have.",missing
+749,,I always get down and blue whenever memories of my dad pops into my head. He passed away last year and I miss him so much.,missing
+750,,"My husband used to work out of town in a different state Sunday through Thursday. Even though my kids were with me and we kept to our usual routine, I still missed him very badly when he was gone. Every Sunday after he left, I would cry.",missing
+751,,"Today when I was home alone I was snuggling with a stuffed bunny my ex got me, because I missed him. I feel so pathetic.",missing
+752,,"When I went through one of my unpacked boxes, I found some of my ex-girlfriend's old clothes that she never picked up. I really missed her, and I started thinking about all the good times we enjoyed together.",missing
+753,,I miss being in high school. I still remember my old girlfriend fondly.,missing
+754,,I miss my dog who died last year.,missing
+755,,I went on a road trip to Utah a few months ago by myself and missed my friends.,missing
+756,,"Today when I went into my roommate's office to fix the internet, I noticed the collar of his old cat that passed away. I miss her.",missing
+757,,I miss my puppy. She passed away recently and it was really sudden and sad.,missing
+758,,My dog died about this time last year and I miss her.,missing
+759,,I miss my family.,missing
+760,,I am kind of glad the summer is coming to a end my kids was gone all summer I missed them and I was very isolated when they was away.,missing
+761,,"I was going through my photos today and I saw a picture of me and my ex together. It just made me feel odd, I miss him.",missing
+762,,"My boss has been a pain lately, he dosen't understand how long it takes to get certain tasks done. I am at my whitts end, thinking about quitting.",work
+763,,A co-worker mentioned that we were going to have a lot of work coming up. I hope it isn't too bad.,work
+764,,I am frightened that I will lose my job.,work
+765,,One time I was offered a job opportunity. I had to wait several days to hear if I got it.,work
+766,,"There's a woman at work that will not listen when you try to explain a work task to her and will end up making many mistakes, which causes the rest of us more work. It's very frustrating and aggravating!",work
+767,,"I have been working on a big proposal for weeks. Tomorrow, I have to give the presentation to the client and in-front of my team.",work
+768,,I lost a really important document at work. I'm afraid to tell my boss about it.,work
+769,,"When I applied for the job I have now, it took them almost a month to get back to me. I contacted them two or three times and they kept telling me they were working on it.",work
+770,,"I put in to get a promotion at work, and I should know something either way by tomorrow.",work
+771,,There are problems with our system at work and no one will take responsibility or fix it.,work
+772,,I lost out on a job promotion.,work
+773,,"I got turned down for a job I really wanted. I'd worked extremely hard to put myself in a position to have a decent chance of getting it, and I thought I interviewed really well. But when I found out someone else got the job I was extremely disappointed and demoralized.",work
+774,,I have this one co worker who is so lazy and it just makes me so irritate because I have to do extra work.,work
+775,,A co-worker of mine was late with work materials. I hope I can get the project done in time.,work
+776,,"Once, I was turned down for a job that I really wanted and I felt I would be a good fit at. It was really downing.",work
+777,,A co-worker I work with on a project has been late. It's been very irritating trying to get things done.,work
+778,,I thought I was going to get a promotion. I found out I did not get it.,work
+779,,I was recently hoping to get a promotion. They gave it to someone else.,work
+780,,I missed a chance to get a new job the other week. I really wish I had put my resume in sooner.,work
+781,,"I was in charge of moving a whole bunch of stuff at work from one building to another, and one of my co-workers bailed on us.",work
+782,,I really makes me jealous when I saw that my neighboor had a new BMW 2018.,jealousy
+783,,Close friend has an unlimited stream of money from her parents. Always wishing I was able to do the stuff she does and not work.,jealousy
+784,,"When I was a kid I wanted to be popular, so I was envious of the popular kids.",jealousy
+785,,My friend bought a house in a very cheap market town and 6 months later a very walthy company opened an enormous regional HQ there. His house has doubled in price and he has paid off all his debt and now is very well off. I'm pleased for him but envy a little luck.,jealousy
+786,,I envy my friend who is off work today.,jealousy
+787,,"My friend took early retirement recently and he and his wife are jetting all over the world, having a wonderful time. I wish I could do that!",jealousy
+788,,I envy everyone outside right now enjoying the weather.,jealousy
+789,,I always feel such envy when I see someone driving a red sports car. It has always been my dream to own one.,jealousy
+790,,My brother got my dream vehicle as his first car.,jealousy
+791,,I'm envious of my friends who are at the park right now while I'm stuck inside.,jealousy
+792,,My sister recently got an iphone 8 from the at&t store. I wish I had one!!,jealousy
+793,,I'm envious that my friends are off work all weekend.,jealousy
+794,,I was pretty envious when my best friend went on a 14 day cruise to Europe.,jealousy
+795,,"My neighbor bought a new Tesla, it's beautiful. I get a little mad every time I see it in the parking lot, especially as I'm riding past it on my beat up bicycle.",jealousy
+796,,I am so envious of all those guys who have a sports car. I have always loved sports cars while growing up.,jealousy
+797,,My friend whom I haven't seen in a long time came to visit. She drove up in a really nice car and was dressed really well. She married a very wealthy man and I just a bit envious.,jealousy
+798,,Sometimes I feel envious of those that have money than I do.,jealousy
+799,,"When I saw them together, I felt really jealous of him and that he had my girl.",jealousy
+800,,A friend of mine has a lot of money and seems to get anything she wants anytime she wants without working.,jealousy
+801,,My brother got a 4runner for this first car! I lowkey am pissed at him!,jealousy
+802,,I'm envious of everyone who is outside enjoying the sun right now.,jealousy
+803,,I saw my neighbor bought the car I have always wanted. I wish I was in a a better financial position to buy one. ,jealousy
+804,,My neighbor bought a new car. Now I really want one myself.,jealousy
+805,,"My cousin has the perfect life, a loving boyfriend and two beautiful kids. I wish I had that.",jealousy
+806,,"My friend is so lucky, he always seems to be winning lotteries and gambles of sorts. Just last week, he won over $400 playing slot machines, and I really wish that could've been me; I need it.",jealousy
+807,,"My younger brother always gets the best dates and beautiful girls to date, I hate it.",jealousy
+808,,My next door neighbor just bought a Mercedes. I wish I can have one.,jealousy
+809,,I get jealous when I see my friends earning more money then myself.,jealousy
+810,,"When I was a kid, my friends brought their BeyBlades to school to play. My parents could not afford one and so in that time I felt bitter towards my friends.",jealousy
+811,,"I was on a trip to a heavy metal festival in Las Vegas. While there, my girlfriend broke up with me, and we were still staying in the same room.",partner
+812,,I was so angry when I found out my girlfriend kissed a friend of mine. I felt like punching the wall.,partner
+813,,"I recently found out that my girlfriend has been cheating on me with another woman. She promised me that she wasn't that type of girl. Needless to say, I'm quite upset about it.",partner
+814,,When my ex boyfriend of over 4 years suddenly just up and left me for another woman I didnt know what to do with myself. I was so used to doing everything with him all the time and it was really hard for me.,partner
+815,,My long term boyfriend and I broke up recently. I'm so lost right now.,partner
+816,,"I was really sad when my girlfriend broke up with me, it was devastating but I managed to overcome it.",partner
+817,,When I found emails between my ex wife and the person she was sleeping with behind my back.,partner
+818,,My ex boyfriend of 4 years decided to start seeing someone else which made me so mad and hurt. He dropped me like I was nothing after 4 whole years of hell with him.,partner
+819,,Ex partner was being dishonest.,partner
+820,,"After being married to my first wife for 8 years, I found out she was having an affair behind my back. It was not a very good time for me.",partner
+821,,"My boyfriend has a female friend who he sometimes chooses to hang out with over me. We had a date planned last week, but he cancelled it to go to the movies with her. It's so frustrating.",partner
+822,,I was unhappy when my girlfriend broke up with me.,partner
+823,,"Many years ago, my husband was acting a bit too 'chivalrous' to a friend of mine, which I felt was a bit too friendly. He said he was just being nice, but I felt like he found her attractive.",partner
+824,,I am not sure how to tell my husband how it makes me feel when he is flirting with other women.,partner
+825,,My husband has been texting a woman he works with.,partner
+826,,I was so angry when I found out that my girlfriend cheated on me... dont know how I can forgive her.,partner
+827,,I just found out my husband is cheating on me. I am so disgusted not sure what to do next.,partner
+828,,My husband doesn't seem interested in me anymore. I think he may have eyes for someone else.,partner
+829,,"I broke up with my girlfriend last week and it was really hard, we where together for 2 years.",partner
+830,,"I broke up with my boyfriend last week, and nothing is the same without him",partner
+831,,"When I was very young, I was dating a guy for several months. He broke up with me and started seeing another girl in our class. I could not stand to see them together.",partner
+832,,"When my ex girlfriend cheated on me, I was so angry.",partner
+833,,My girlfriend broke up with me recently. Now I'm very lonely.,partner
+834,,"I felt betrayed when my girlfriend kissed another guy at a party. She was drunk, true. But still.",partner
+835,,I noticed my girlfriend was talking to other guys. She was spending a lot of time on the phone texting them as well.,partner
+836,,I was surprised when my wife left me.,partner
+837,,"I found out my wife was having an affair with one of her co-workers, I had him over at our house and was kind to him.",partner
+838,,I cannot believe that my wife cheated on me!,partner
+839,,My girlfriend broke up with me. She did this right before my birthday.,partner
+840,,"My ex and I broke up because he decided that he would no longer be willing to leave his job from overwork, like 70 plus hours a week.",partner
+841,,"One time my husband was acting a bit to helpful to a woman we know. He said he was only trying to be nice, but I felt he was being too friendly. Maybe I overreacted.",partner
+842,,I am terrified that my wife is going to leave me.,partner
+843,,I felt very lonely when my partner decided to leave me for someone else.,partner
+844,,"My wife has been out of the country for school for a month and a half. She gets back in a couple weeks, but it's starting to get tough being alone with just the dogs.",loneliness
+845,,I recently moved from California to North Carolina. It was ok while my friend (who drove me across the country) was here. But after he left I realized I knew absolutely nobody. It was not a good feeling.,loneliness
+846,,My husband works long hours. I hate being by myself specially at night.,loneliness
+847,,"When my wife left me a year ago I went a little stir crazy. It was so silent in the house, I had to get out and make new friends.",loneliness
+848,,I used to feel lonely a lot as a teenager.,loneliness
+849,,"After moving to Dallas from a small town I felt I would like it, but after a few weeks of not knowing anyone I got home sick.",loneliness
+850,,My roommate is gone for the week. I can't stand being alone in the apartment.,loneliness
+851,,My daughter went on vacation with her friends and the house feels really alone without her.,loneliness
+852,,One time I moved to a new city and didn't know anyone. I had to go out alone to do things.,loneliness
+853,,My two best friends are going on vacation next week and I won't have anyone else at work to goof off with.,loneliness
+854,,I work from home and sometimes it makes me a bit sad to know that I'm here alone.,loneliness
+855,,I have felt lonely recently because I never go out and have no friends.,loneliness
+856,,I was all alone when my family left for the weekend.,loneliness
+857,,My wife went out of town for a girls weekend and I sat at home with the dog for 3 days by myself.,loneliness
+858,,"I spent all weekend by myself, wish I was closer to my family.",loneliness
+859,,"My husband really is away from home quite often, due for his job. It can be hard at times, and make me feel a bit alone.",loneliness
+860,,"I used to work a flooring job, one time we had to remove the floor where a man died, there was bodily fluids and it was gross.",trauma
+861,,When I was little I got chased by a large dog and now that I'm much older the feeling is still the same. ,trauma
+862,,I was driving down the highway when I saw a car in an accident. It seems they hit a cow! Oh my!,trauma
+863,,"When I visited one of my friends' home recently , I encountered with their dog. It's a male rottweiler and it was so furious and tried to attack me and I got struck suddenly and felt lot of fear.",trauma
+864,,"I was driving on the highway in really thick rain, barely any visiblity. I had a bad feeling something bad was going to happen, and no more than 10 minutes I witness a car crash happen in front of me where a car flipped.",trauma
+865,,"When I was younger, my dad got into a motorcycle accident and it made me not want to drive.",trauma
+866,,Driving down the highway during a hevay thunderstorm and a car crash happens in front of me where a car flips over.,trauma
+867,,"When I went into labor with my youngest child, while I was at the hospital, the baby's heartbeat dropped and they told me that had to take me for an emergency C-Section. It was one of the scariest days of my life. She is a happy and healthy three year old now.",trauma
+868,,"We were at a wedding a few weeks ago and everyone was having a great time. My 3 year old niece was dancing to the music while eating a carrot and started to choke on the carrot. It was one of the scariest moments ever. She is ok though, someone was able to help her.",trauma
+869,,"One of the neighbors has a white husky dog. I was walking one day and it approached me and started growling, I thought it was going to bite me.",trauma
+870,,I was on my way to work when I witnessed a child hit by a vehicle.,trauma
+871,,My friend got in a car crash a few days ago while I was in the car. It was definitely a scary experience.,trauma
+872,,Several years ago one of my neighbors dogs attacked me and I had to go to the hospital to get stitches.,trauma
+873,,"I recently found out that I have been diagnosed HIV positive, and I'm at a complete loss for words. I don't even know how to go on anymore.",health
+874,,Sometimes at night I wake up and eat extremely unhealthy food. I put peanut butter and Nutella on chocolate chip cookies.,health
+875,,I went to the dentist for the first time in five years recently. I had a toothache and wanted to get it looked at.,health
+876,,"Our cat had to many health problems, so we had to put him down.",health
+877,,My cousin had a heart cath and the surgeon sent for me to come to the operating room.,health
+878,,I felt very sad when I found out that my mother had lung cancer 6 months ago.,health
+879,,My cat got cancer and had to be put to sleep.,health
+880,,Going to the dentist always worries me.,health
+881,,I'm upset that my neighbor's dog is sick.,health
+882,,I ate way too much today! Was suppose to be on a diet. Ate a cupcake and pizza.,health
+883,,I was very anxious when my son had his tonsils taken out.,health
+884,,I have a impacted wisdom tooth. I need to go to the dentist but I am apprehensive about it.,health
+885,,"My dog, Riley had to be put to sleep due to congestive heart failure. It was one of the hardest things I had to do.",health
+886,,Having a toothache is irritating.,health
+887,,I just gave up smoking cigarettes. It was pretty hard but the worst part is how everything puts you on edge and it is hard to relax.,health
+888,,We just adopted a dog from the shelter and I think she is sick with Parvo. We are taking her to the vet tomorrow to see.,health
+889,,I felt bad when I cheated on my diet. I found out I gained 2 pounds this past week!,health
+890,,I love Pirate peanut butter cookies. I'm really stressed today so I bought a box of those cookies and ate an entire sleeve of them. I feel pretty bad because I wrecked my dieting for at least two days.,health
+891,,My girlfriend's cat has cancer and we cannot afford the operation.,health
+892,,I sat in the waiting room last weekend and waited and waited to find out how my dad's neck surgery turned out. This was one of those last ditch effort to keep his cervical vertebrae from having to be fused.,health
+893,,My little grandson was admitted to the hospital a few days ago. He is still having testing and it's so hard to wait around to get the test results back to find out what is wrong.,health
+894,,I have a dentist appointment tomorrow and it's starting to make me a bit nervous. I have to get a filling replaced.,health
+895,,"Shortly after my nephew was born, I received a call from my sister informing me that he had a genetic disease.",health
+896,,When I moved into this apartment my next door neighbor had an old beagle. He was a lovely pooch. The poor dog had cancer and just before Thanksgiving he had to be put to sleep. I looked for that wee dog for weeks afterwards.,health
+897,,I started a diet today and as soon as I got home I ate a burger. ,health
+898,,I was sad to hear my mom is in the emergency room again.,health
+899,,My border collie had to be put down due to a neurological disorder that could not be treated.,health
+900,,"Last month I came home from work and noticed my cat wasn't feeling well, so I rushed her to the vet. I had to put her down.",health
+901,,A couple years ago I got hospitalized and diagnosed with MS. The whole experience was terrible.,health
+902,,I've got a pet hamster that hasn't been doing well. I'm scared that he might not live much longer.,health
+903,,I have been doing very well on my diet and last night I decided to eat a whole large pizza by myself!,health
+904,,About 6 years ago I was diagnosed with cancer.,health
+905,,I was very worried the they told me I needed heart surgery.,health
+906,,My daughter called and said they were taking my newborn grandson to the doctor to have a chest xray because he was having some breathing trouble. I worried all day long until I got the phone call telling me everything was ok. They live far away so I tend to worry even more since I can't be there.,health
+907,,I have a toothache. I need to go to the dentist but do not want to.,health
+908,,I am trying a new diet to treat my Lupus. I really am hoping it works b/c the next steps are some powerful meds that really make me nervous to take.,health
+909,,"Imagine, I started working out two months ago, only to weigh myself and I have gained some weight.",health
+910,,"My son had to have surgery to remove his tonsils last month. I know it's a routine procedure, but I could not sit down for the entire time and I was so relieved when they said everything went just fine.",health
+911,,"I should be eating healthier and working out, but instead I've been doing the opposite.",health
+912,,"I took my cat to the vet because he wasn't acting normal, and we found out he was going to have to be put down.",health
+913,,I hadn't been to the dentist in years but one day I made an appointment. One of my teeth had been bothering me a lot.,health
+914,,"My cat hasn't been feeling well this past week, I think there might be something really wrong.",health
+915,,I am feeling so nervous about my dad going to check his heart tomorrow. I really hope no bad news comes off it.,health
+916,,Our dog is getting older and she's just at that point. She's blind and can't walk well. We might have to put her down soon.,health
+917,,I went to the dentist yesterday to have a cavity filled. I was extremely nervous about going after being told that it was close to my nerve.,health
+918,,I was hesitant to go to the doctor for a cyst I found.,health
+919,,"I ate a whole cake by myself, I'm suppose to be on a diet. It's so hard!",health
+920,,I have many health problems that have prevented me from having children. I use to be so upset everytime I saw people with children but now I have learned to be content in my situtation.,health
+921,,I'm on a diet but I ate burger king for lunch I feel so ashamed I cheated.,health
+922,,I am on a new diet for my Lupus and it is critical that this work b/c the next steps to take care of my Lupus are very powerful drugs that I don't want to take.,health
+923,,My sister's cat got sick and had to be put down last week. Feels bad. I'd known the cat for 14 years and was always her favourite person.,health
+924,,"I have been diagnosed with psoriatic arthritis and the pain is horrible. The problem is, the medicine that my doctor wants me to take has side effects that are worse than the pain, so I don't want to take them. That means I have to suffer through the pain.",health
+925,,I'm so angry at myself. I was in my performance review today and I passed wind in front of my boss.,assessment
+926,,I have a job interview lined up for next week. I am feeling so nervous about it.,assessment
+927,,"I have a very hard time taking tests. When I know I have an important exam coming up, I worry for weeks in advance. ",assessment
+928,,"I have a big test on Monday. I am so nervous, I haven't been able to sleep at all.",assessment
+929,,I am worried about take my finals this week.,assessment
+930,,I am nervous for my college test.,assessment
+931,,I had a job interview and wanted to just get it over with.,assessment
+932,,I felt really anxious about my job interview back in September.,assessment
+933,,I'm running my first Marathon Sunday. I'm scared that maybe I did not train hard enough.,assessment
+934,,"I had gone on an interview for a job I wanted. I was waiting to hear back, but it was taking a really long time for them to contact me.",assessment
+935,,"I'm so nervous, have a big exam coming up. I hope I do good.",assessment
+936,,I am really nervous about my upcoming job interview. I am concerned I might screw it up.,assessment
+937,,I had a job interview and was anxious to get it over with.,assessment
+938,,"When I interviewed for the job I have now, I didn't hear back from them with a solid response for a month. I kept having to check with them to make sure I hadn't been forgotten.",assessment
+939,,I had an unprofessional job interview.,assessment
+940,,After having 4 interviews none of the employers had called me after 1 week which stressed me out.,assessment
+941,,I barely passed my finals.,assessment
+942,,I gotta go to this serious interview tomorrow.,assessment
+943,,School is starting up soon and I'm worried I may not be able to keep up with all of the homework.,assessment
+944,,I had a job interview.,assessment
+945,,I'm scared of this big test tomorrow.,assessment
+946,,I'm nervous about taking a test soon.,assessment
+947,,I'm nervous about taking a test soon.,assessment
+948,,I had a video job interview.,assessment
+949,,I'm a bit nervous - I have an upcoming certification exam to take for my teaching license and it's a big deal.,assessment

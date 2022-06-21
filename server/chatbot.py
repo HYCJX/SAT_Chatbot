@@ -112,7 +112,7 @@ class SATChatBot():
         return intent_label
 
     def _generate_response(self, utterance: str, intent: str) -> str:
-        if self.turn < 7:
+        if self.turn < 5:
             if intent == "greeting":
                 response = self.response_generator.infer(utterance)
                 response += " Do you have any concerns?"
@@ -151,9 +151,8 @@ class SATChatBot():
                         self.emotion_cause_answers[5] = 1
                         self.question_answered[5] = True
                     elif intent == "partner":
-                        if self.emotion_label_list[-1] != "neutral":
-                            self.emotion_cause_answers[7] = 1
-                            self.question_answered[7] = True
+                        self.emotion_cause_answers[7] = 1
+                        self.question_answered[7] = True
                     elif intent == "jealousy" or intent == "loneliness" or intent == "trauma":
                         if self.sentiment_label_list[-1] != "positive" and self.emotion_label_list[-1] != "joy":
                             self.emotion_cause_answers[1] = 1

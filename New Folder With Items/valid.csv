@@ -134,97 +134,61 @@
 132,2209.0,good bye then,goodbye
 133,2233.0,where's your place of birth,how_old_are_you
 134,2249.0,yes that is right,yes
-135,,I am highly upset that I'm the only one concerned with earning money for our bills.,financial_pressure
-136,,I caught my girlfriend kissing her ex at a party the other night. She seemed to really be in to it. I got pretty upset.,disloyalty
-137,,I was disgusted when my dad left me,disloyalty
-138,,"One time my husband was acting a bit to helpful to a woman we know. He said he was only trying to be nice, but I felt he was being too friendly. Maybe I overreacted.",disloyalty
-139,,I'm nervous about taking a test soon.,assessment_pressure
-140,,When I interviewed for this job I had to wait for a couple weeks to hear back about it. It was kinda rough.,assessment_pressure
-141,,I had a video job interview.,assessment_pressure
-142,,I just fell of my diet by eating a big bag of peanut M&Ms.,health
-143,,I am trying a new diet to treat my Lupus. I really am hoping it works b/c the next steps are some powerful meds that really make me nervous to take,health
-144,,I felt bad when I cheated on my diet. I found out I gained 2 pounds this past week!,health
-145,,I just ate a whole box of cookies.,health
-146,,I lost my job because my company didn't pay rent at our location.,injustice
-147,,At work a coworker of mine tried to take credit for a job I had completed. I went straight to my boss and got it lined out once I found out what had happened.,injustice
-148,,I think I might loose my job over something that wasn't my fault.,injustice
-149,,I'm devastated by my mother's death.,family_death
-150,,I was feeling pretty reminiscent when we went on vacation. I starting thinking about the last vacation we had with my father before he passed away.,family_death
-151,,I recently remembered a sweet memory of my aunt who recently passed away. She would give hundreds of dollars of school supplies to kids in need each year.,family_death
-152,,My mother died.,family_death
-153,,A friend of mine is moving away. It's a shame because we were close for a few years.,loneliness
-154,,My friends went to dinner without me. I thought they'd call for sure.,loneliness
-155,,i miss watching chiller theatre with my family on fridays,loneliness
-156,,My wife has been out of the country for a couple months for school. Dropping her off at the airport was really tough.,loneliness
-157,,"Half of my family didn't show up for my kids 6th birthday, it was upsetting to say the least. She was looking forward to seeing them.",loneliness
-158,,My roommate has been gone all week. I don't have anything to do without him here.,loneliness
-159,,I feel so bad I lied to my friend.,owe
-160,,"My friend's boyfriend had made sexual advances towards me, which I turned him away. But, I felt very bad for not telling my friend.",owe
-161,,I felt upset about losing my friend's blu ray I borrowed.,owe
-162,,I stole some candy from the grocery store. I wanted to see if I could get away with it.,owe
-163,,"We were over at our friend's house for a dinner and I was in the kitchen helping her cook. I had melted butter in a baking dish to make dessert, and I poured cold milk into it like the recipe said to do. It ended up cracking the dish. I felt bad. I offered to buy her a new one.",owe
-164,,I went to a restaurant my wife really likes with some friends while she was at work.,owe
-165,,My girlfriend and I were watching a series on netflix. She wasn't home and I ended up watching a couple episodes ahead of where we were at.,owe
-166,,"I broke up with my boyfriend last week, and nothing is the same without him",break-up
-167,,My long term boyfriend and I broke up recently. I'm so lost right now.,break-up
-168,,Someone side sideswiped my car last night while I was sleeping and I wasn't aware until I woke up. It was not a good thing to wake up to.,abuse
-169,,I went shopping at the mall the other day. I was really tired and sat down for a few minutes. I placed the bags beside me and looked away for a second and the next thing I knew the bags were gone. I am still so mad,abuse
-170,,"I was super irritated when my boss kept pulling my hair for ""fun"". He doesn't seem to realize how irritating it can be.",abuse
-171,,Someone packed into my car the other day at the supermarket and put a big dent in it. I've only had the car for 10 days.,abuse
-172,,I am so scared to live in my neighborhood. There is people that come around shooting their guns.,abuse
-173,,I heard a really loud bang in the middle of the night. the next morning I found out that it was gun shots. OMG,abuse
-174,,"When I was younger, my dad got into a motorcycle accident and it made me not want to drive.",trauma
-175,,I got in a car accident and now I have anxiety attacks every time I drive.,trauma
-176,,A friend of mine has a lot of money and seems to get anything she wants anytime she wants without working.,jealousy
-177,,My coworker got the promotion that I was trying for. I feel like I deserved it more.,jealousy
-178,,I get jealous when I see my friends earning more money then myself.,jealousy
-179,,My brother got a 4runner for this first car! I lowkey am pissed at him!,jealousy
-180,,My friend can eatanything and she is so skinny,jealousy
-181,,I envy my friend who is off work today.,jealousy
-182,,"When I applied for the job I have now, it took them almost a month to get back to me. I contacted them two or three times and they kept telling me they were working on it.",work_pressure
-183,,"There's a woman at work that will not listen when you try to explain a work task to her and will end up making many mistakes, which causes the rest of us more work. It's very frustrating and aggravating!",work_pressure
-184,,I was very anxious when my son had his tonsils taken out.,family_health
-185,,"i hate watching my parents smoke, it makes me really sad to think they could face cancer as a concequence",family_health
-186,,I tripped and fell in front of some people.,others
-187,,I found drugs in my son's room. I am beyond infuriated!,others
-188,,We are moving soon and I'm so ready to find out where to. I am ready to plan the move but hard to when you know nothing.,others
-189,,My sister threw up the other day and made a huge mess.,others
-190,,My cat last night wouldn't stop trying to get me to play with her. She kept jumping in the bed and meowing!,others
-191,,"I just went to get an oil change the other day, and after I dropped it off, the mechanic said I didn't need one for another 1,000 miles. Felt like such a fool.",others
-192,,I come home from work and my parents are always arguing. It frustrates me.,others
-193,,"When I was in second grade, I wet my pants in the middle of class.",others
-194,,"I feel so bad that I have to work so much and can't play with my grandchild as much as she would like me too. She would play 24 hours a day if she could, but there is always so many other responsibilities to take care of.",others
-195,,I felt very unpleasant last week when I fell to the ground my first time skateboarding.,others
-196,,I recently went to the pool. I lost my swim trunks and felt awkward!,others
-197,,It really bothers me that my son keeps putting dirty socks in his toy box. No matter what I have tried he still does it.,others
-198,,I am annoyed at my neighbor's loud lawnmower.,others
-199,,"I was walking to the park, I was wearing flip flops, I tripped over a log and smashed my toe.",others
-200,,I'm mad at my neighbor today.,others
-201,,I sat in something wet and didn't know it. Walked around all day with a wet rear.,others
-202,,"I got cut off in traffic the other day. There was noone behind me for a long way but no, they had to go right in front of me. Had to slam my breaks.",others
-203,,My girlfriend invited me to meet her parents.,others
-204,,I spent ten minutes looking for my car keys while my friends were waiting for me and they were in my pocket the whole time.,others
-205,,I'm getting very frustrated with how often my bank calls me. I prequalified for a mortgage on the website last week and they've called me 3 times a day ever since.,others
-206,,"I found out that my son got a B in one of his classes at the end of last year. I thought I had a truly exemplary, world-changing student on my hands. Now I know he's just...above average.",others
-207,,I bought iced coffee and my brother drank it. I was looking forward to drinking it in the morning.,others
-208,,I went to a really sketchy part of town once. Just being there put me on edge.,others
-209,,"One time when using the public restroom, I had toilet paper handing from my shoe.",others
-210,,I pooed my pants one day at work. I have MS and sometimes during flare ups i have bowel control problems.,others
-211,,I caught my neighbor letting his dog poop on my lawn.,others
-212,,"I was stopped at a red light and a woman in a truck scraped all along the side of my car. She seemed high or something, so I don't know what was wrong with her.",others
-213,,I was driving to work yesterday and a driver beside opened their door at a stop light and threw up everywhere. It was so nasty I almost threw up.,others
-214,,My parents always argue and it pisses me off!,others
-215,,I felt really nervous when cops pulled me over last week. I thought I was in trouble.,others
-216,,I have a big date coming up and I can't get these butterfly feelings to go away.,others
-217,,I fainted on a plane!,others
-218,,One time I saw my dog try to eat my nephew's dirty diaper. It was really gross.,others
-219,,"i recently burned my hair with my hair drier and it looks so bad, i wonder what people think when they see me with my hair like that.",others
-220,,It makes me angry when people never notice me.,others
-221,,I'm so frustrated with my husband. He dismantled the bathroom to do repairs and still hasn't completed them six months later!,others
-222,,"Our cat had to many health problems, so we had to put him down.",pet_loss
-223,,I was so sad when I found out my pet horse died of cancer last week while I was over in vacation.,pet_loss
-224,,My dog died about this time last year and I miss her.,pet_loss
-225,,We just adopted a dog from the shelter and I think she is sick with Parvo. We are taking her to the vet tomorrow to see.,pet_loss
-226,,"My dog died today. She had cancer and we weren't able to save her. My daughter is upset, and won't stop crying.",pet_loss
-227,,I left the front door unlocked this morning and our dog got out. I can't believe I would be so careless.,pet_loss
-228,,"Last month I came home from work and noticed my cat wasn't feeling well, so I rushed her to the vet. I had to put her down.",pet_loss
+135,,"All of my friends have moved away, when I still live and work in the place where I grew up. Many local people my age do drugs and stay out all night, so I just stay in and keep to myself.",loneliness
+136,,I am sad my cousin is moving away,loneliness
+137,,I went on a road trip to Utah a few months ago by myself and missed my friends.,loneliness
+138,,"I spent all weekend by myself, wish I was closer to my family.",loneliness
+139,,"I spent a Christmas working in a computer lab on a school project. My family were thousands of miles away celebrating together, but I had to work on my project by myself. It wasn't at all festive and I felt isolated.",loneliness
+140,,My two best friends are going on vacation next week and I won't have anyone else at work to goof off with.,loneliness
+141,,"The other day I seen someone had broken into my car. They didn't take anything. I'm not sure if I should feel violated, or bad because I had nothing worth stealing.",abuse
+142,,I was furious when my friend made fun of me in front of random strangers.,abuse
+143,,"I couldn't believe when I woke up the other day and was about to go to work, I saw that someone had broken in to my car. I was so mad. I had heard there had been some problems with car break-ins but I didn't think it would happen to me because we live in a nice neighborhood.",abuse
+144,,I almost lost my mind the other day when I heard gunshots right outside my house. I thought someone was going to come in and shoot me!,abuse
+145,,I am still fuming when I think about the person that keyed my car the other day while I was at the grocery store. I don't understand why someone would do that on purpose. I saw them as I was checking out and I didn't even know them.,abuse
+146,,I was so angry when i found out my dogwalker used to torchur my dog. I was so mad that i fired her then and there.,abuse
+147,,I am trying to stop drinking soda and I have prayed and asked God to help me with this. The problem is that I am addicted to soda so I am finding it hard to quit. This causes feelings of guilt.,health
+148,,I just gave up smoking cigarettes. It was pretty hard but the worst part is how everything puts you on edge and it is hard to relax.,health
+149,,I started a diet today and as soon as I got home I ate a burger. ,health
+150,,The other day I ate a large amount of Shepard's pie. It was at night right before I went to bed.,health
+151,,I was hesitant to go to the doctor for a cyst I found.,health
+152,,I was diagnosed with stage 4 cancer.,health
+153,,I'm scared of this big test tomorrow.,assessment
+154,,I had a job interview and wanted to just get it over with.,assessment
+155,,"I have a very hard time taking tests. When I know I have an important exam coming up, I worry for weeks in advance. ",assessment
+156,,Memories of my dog always break my heart. She passed away last month.,death
+157,,My cat got cancer and had to be put to sleep.,death
+158,,I was filled with despair when my grandma died. She was always the one i relied upon.,death
+159,,I was devastated when my dog died.,death
+160,,My cat I have had for the last 14 years got sick and passed away last month. I lost a great friend.,death
+161,,I was so heartbroken when my dog passed away last month. She was my childhood dog.,death
+162,,My roommate's cat passed away last week. There is a heavy air over the household.,death
+163,,I was sad when my dog died.,death
+164,,My 19 year old cat died recently. I was devastated. I still think about him a lot.,death
+165,,My dog died about this time last year and I miss her.,death
+166,,I was heartbroken when my dog trevor passed away last month. I shut myself off from the outside world for days.,death
+167,,I was so embarrassed when i threw up in public one day. I was feeling really sick and i couldnt help it.,owe
+168,,"My friend's boyfriend had made sexual advances towards me, which I turned him away. But, I felt very bad for not telling my friend.",owe
+169,,I was hungry and I took some of my co-workers food. I also didn't have much money on me at the time.,owe
+170,,I went to a restaurant my wife really likes with some friends while she was at work.,owe
+171,,I stole some candy from the grocery store. I wanted to see if I could get away with it.,owe
+172,,I had to get it off my chest that I have been cheating on my wife.,owe
+173,,I forgot it was my sisters birthday. I just saw on Facebook that it was yesterday. I feel so bad!,owe
+174,,I wanna sell my phone but i'm scared to meet people from craigslist,financial_pressure
+175,,A co-worker mentioned that we were going to have a lot of work coming up. I hope it isn't too bad.,work
+176,,A co-worker I work with on a project has been late. It's been very irritating trying to get things done,work
+177,,In a class in college an older woman straight up stole my ideas and work for an assignment.,injustice
+178,,Someone hit my car at Walmart and drove off! I'm so annoyed they didn't have the decency to leave a note or something.,injustice
+179,,I am so upset she hit my car and left before the police came!,injustice
+180,,"My friend is so lucky, he always seems to be winning lotteries and gambles of sorts. Just last week, he won over $400 playing slot machines, and I really wish that could've been me; I need it.",jealousy
+181,,My friend can eatanything and she is so skinny,jealousy
+182,,I met a guy that had recently purchased an Excursion. I want one of those vehicles!,jealousy
+183,,I'm envious of my friends who are off work today.,jealousy
+184,,I really makes me jealous when I saw that my neighboor had a new BMW 2018.,jealousy
+185,,My coworker got the promotion that I was trying for. I feel like I deserved it more.,jealousy
+186,,I got in my first bad car accident. The other person ran a red and slammed into the side of my car.,trauma
+187,,Several years ago one of my neighbors dogs attacked me and I had to go to the hospital to get stitches.,trauma
+188,,My girlfriend broke up with me and got married to an investment banker. ,partner
+189,,i caught my husband looking at another woman.,partner
+190,,Ex partner was being dishonest.,partner
+191,,I got so angry when a friend of mine tried to make a pass at my girlfriend. I am thinking about confronting him.,partner
+192,,"When I went through one of my unpacked boxes, I found some of my ex-girlfriend's old clothes that she never picked up. I really missed her, and I started thinking about all the good times we enjoyed together.",partner
