@@ -6,8 +6,7 @@ from torch.utils.data import Dataset
 from typing import List
 
 EMOTION_CAUSES = [
-    'loneliness', 'what_are_your_hobbies', 'are_you_a_bot', 'goodbye', 'how_old_are_you', 'owe', 'injustice', 'what_is_your_name', 'work', 'trauma', 'maybe', 'health', 'assessment', 'no', 'death', 'financial_pressure', 'yes', 'partner', 'abuse', 'jealousy', 'greeting'
-]
+    'maybe', 'no', 'death', 'self-blame', 'injustice', 'abuse', 'missing', 'work', 'jealousy', 'partner', 'loneliness', 'trauma', 'goodbye', 'health', 'assessment', 'greeting', 'yes']
 EMOCAUSE2ID = {emotion: idx for idx, emotion in enumerate(EMOTION_CAUSES)}
 ID2EMOCAUSE = {val: key for key, val in EMOCAUSE2ID.items()}
 
