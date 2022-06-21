@@ -1,29 +1,29 @@
 from logging import getLogger
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, TextClassificationPipeline
 
-EMOTION_CAUSES = [
-    'greeting', 'disloyalty', 'injustice', 'what_are_your_hobbies', 'jealousy', 'no', 'pet_loss', 'owe', 'goodbye', 'break-up', 'assessment_pressure', 'loneliness', 'yes', 'abuse', 'trauma', 'what_is_your_name', 'how_old_are_you', 'family_health', 'maybe', 'are_you_a_bot', 'financial_pressure', 'health', 'family_death', 'work_pressure', 'others'
+INTENTS = [
+    'loneliness', 'what_are_your_hobbies', 'are_you_a_bot', 'goodbye', 'how_old_are_you', 'owe', 'injustice', 'what_is_your_name', 'work', 'trauma', 'maybe', 'health', 'assessment', 'no', 'death', 'financial_pressure', 'yes', 'partner', 'abuse', 'jealousy', 'greeting'
 ]
-EMOCAUSE2ID = {emotion_cause: idx
-               for idx, emotion_cause
-               in enumerate(EMOTION_CAUSES)}
-ID2EMOCAUSE = {val: key for key, val in EMOCAUSE2ID.items()}
+INTENT2ID = {emotion_cause: idx
+             for idx, emotion_cause
+             in enumerate(INTENTS)}
+ID2INTENT = {val: key for key, val in INTENT2ID.items()}
 
-NUM_LABELS = len(EMOTION_CAUSES)
+NUM_LABELS = len(INTENTS)
 
 
-class EmotionCauseRecogniser():
+class IntentClassifier():
     def __init__(self,
                  model_type: str,
                  model_checkpoint: str) -> None:
-        self.logger = getLogger(f"Emotion Classifier")
-        self.logger.info("Setting up the emotion cause recogniser...")
+        self.logger = getLogger(f"Intent Classifier")
+        self.logger.info("Setting up the intent recogniser...")
         tokenizer = AutoTokenizer.from_pretrained(model_type,
                                                   use_fast=True)
         model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint,
                                                                    num_labels=NUM_LABELS,
-                                                                   id2label=ID2EMOCAUSE,
-                                                                   label2id=EMOCAUSE2ID)
+                                                                   id2label=ID2INTENT,
+                                                                   label2id=INTENT2ID)
         self.pipe = TextClassificationPipeline(tokenizer=tokenizer,
                                                model=model,
                                                return_all_scores=True)
@@ -36,8 +36,8 @@ class EmotionCauseRecogniser():
 
 
 if __name__ == "__main__":
-    e = EmotionCauseRecogniser("roberta-base", "results/roberta-base")
-    res = e.classify_utterance("My wife loves me.")
+    e = IntentClassifier("roberta-base", "results/roberta-base")
+    res = e.classify_utterance("I regret that I didn't do well.")
     highest_score = 0
     emotion_cause_label = ""
     for r in res[0]:

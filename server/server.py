@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from chatbot import SATChatBot
 from nlp_modules.emotion_classifier import EmotionClassifier
 from nlp_modules.response_generator import ResponseGenerator
-from nlp_modules.emotion_cause_recogniser import EmotionCauseRecogniser
+from nlp_modules.intent_classifier import IntentClassifier
 from type_model import BotResponse, UserResponse
 
 from nlp_modules.emotion_classifier import SentimentClassifer
@@ -22,14 +22,14 @@ sentiment_classifier = SentimentClassifer(model_type="facebook/muppet-roberta-ba
                                           model_checkpoint="results/emotion_classification_outputs/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
 emotion_classifier = EmotionClassifier(model_type="roberta-base",
                                        model_checkpoint="results/emotion_classification_outputs/emotion_classification_outputs/roberta-base_False")
-emotion_cause_recogniser = EmotionCauseRecogniser(model_type="roberta-base",
-                                                  model_checkpoint="results/roberta-base")
+intent_classifier = IntentClassifier(model_type="roberta-base",
+                                     model_checkpoint="results/roberta-base")
 response_generator = ResponseGenerator(
     model_path="results/response_generation_outputs/daily_on_em/daily_on_em_epoch=5"
 )
 chatbot = SATChatBot(sentiment_classifier=sentiment_classifier,
                      emotion_classifier=emotion_classifier,
-                     emotion_cause_recogniser=emotion_cause_recogniser,
+                     intent_classifier=intent_classifier,
                      response_generator=response_generator)
 app = FastAPI()
 origins = ["*"]

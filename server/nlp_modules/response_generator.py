@@ -22,7 +22,7 @@ class ResponseGenerator():
                  model_path: str,
                  max_length: Optional[int] = 512,
                  max_history: Optional[int] = 5,
-                 top_p: Optional[float] = 0.9) -> None:
+                 top_p: Optional[float] = 0.85) -> None:
         """
         Arguments:
             model: Transformer model.
@@ -62,13 +62,6 @@ class ResponseGenerator():
             self.model.resize_token_embeddings(new_num_tokens=new_num_tokens)
         # Input History:
         self.input_history = []
-        bos_id, eos_id, speaker1_id, speaker2_id = self.tokenizer.convert_tokens_to_ids(
-            SPECIAL_TOKEN_NAMES
-        )
-        start_utterance = "Hi, do you have any concerns?"
-        self.input_history.append(
-            [speaker2_id] + self.tokenizer.encode(start_utterance)
-        )
         # Set Maximum Length & Maximum History:
         self.max_length = min(max_length, self.model.config.n_ctx)
         self.max_history = max_history
