@@ -10,11 +10,9 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset
 from sklearn.metrics import confusion_matrix, f1_score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
-from typing import Optional
+from typing import Optional, Tuple
 
-from emotion_cause_datasets.emocause_cl import NUM_LABELS
-from emotion_cause_datasets.emocause_cl import EmocauseClDataset, EmocauseDataCollator
-from emotion_cause_datasets.emocause_cl import ID2EMOCAUSE
+from dataset.intent import ID2EMOCAUSE, NUM_LABELS, EmocauseClDataset, EmocauseDataCollator
 
 logging.basicConfig(
     filename="emotion_classification.log",
@@ -25,7 +23,7 @@ logging.basicConfig(
 )
 
 
-def compute_metrics(eval_predictions) -> dict:
+def compute_metrics(eval_predictions: Tuple) -> dict:
     """
     Return f1_weighted, f1_micro, and f1_macro scores.
     """
@@ -63,8 +61,8 @@ class EmocauseRecognitionTrainer():
         self.batch_size = batch_size
         self.output_dir = output_dir
 
-    def tune_hyperparameters(self):
-        def objective(trial: optuna.Trial):
+    def tune_hyperparameters(self) -> None:
+        def objective(trial: optuna.Trial) -> float:
             training_args = TrainingArguments(num_train_epochs=10,
                                               learning_rate=trial.suggest_loguniform("learning_rate",
                                                                                      low=5e-7,
@@ -99,7 +97,7 @@ class EmocauseRecognitionTrainer():
         logging.info(study.best_trial)
         self.best_params = study.best_params
 
-    def train(self):
+    def train(self) -> None:
         training_args = TrainingArguments(num_train_epochs=10,
                                           learning_rate=self.best_params["learning_rate"],
                                           warmup_ratio=self.best_params["warmup_ratio"],
@@ -139,7 +137,7 @@ class EmocauseRecognitionTrainer():
             "*"*10 + "Current best checkpoint is saved." + "*"*10
         )
 
-    def test(self):
+    def test(self) -> None:
         y_preds = []
         y_trues = []
         for index, val_text in enumerate(self.dataset_valid):
@@ -152,7 +150,6 @@ class EmocauseRecognitionTrainer():
                 input_ids=tokenized_val_text["input_ids"], attention_mask=tokenized_val_text["attention_mask"]).logits
             prediction = F.softmax(logits, dim=1)
             y_pred = torch.argmax(prediction).numpy()
-
             y_true = val_text[2]
             y_preds.append(ID2EMOCAUSE[int(y_pred)])
             y_trues.append(y_true)

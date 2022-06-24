@@ -7,27 +7,23 @@ from nlp_modules.intent_classifier import IntentClassifier
 
 
 INTENTS = [
-    'yes',
-    'no',
-    'maybe',
-    'greeting',
-    'goodbye',
-    'are_you_a_bot',
-    'how_old_are_you',
-    'what_are_your_hobbies',
-    'what_is_your_name',
-    'abuse',
-    'assessment',
-    'death',
-    'financial_pressure',
-    'health',
-    'injustice',
-    'jealousy',
-    'loneliness',
-    'owe',
-    'partner',
-    'trauma',
-    'work',
+    "maybe",
+    "no",
+    "death",
+    "self-blame",
+    "injustice",
+    "abuse",
+    "missing",
+    "work",
+    "jealousy",
+    "partner",
+    "loneliness",
+    "trauma",
+    "goodbye",
+    "health",
+    "assessment",
+    "greeting",
+    "yes"
 ]
 
 QUESTIONS = [
@@ -139,7 +135,7 @@ class SATChatBot():
                 response = self.response_generator.infer(utterance)
                 return response
             response = ""
-            if intent == 'abuse' or intent == "assessment" or intent == "death" or intent == "financial_pressure" or intent == "health" or intent == "injustice" or intent == "jealousy" or intent == 'loneliness' or intent == 'owe' or intent == 'partner' or intent == 'trauma' or intent == 'work':
+            if intent == "abuse" or intent == "assessment" or intent == "death" or intent == "health" or intent == "injustice" or intent == "jealousy" or intent == "loneliness" or intent == "missing" or intent == "partner" or intent == "self-blame" or intent == "trauma" or intent == "work":
                 if self.sentiment_label_list[-1] != "positive" and self.emotion_label_list[-1] != "joy":
                     if intent == "abuse":
                         self.emotion_cause_answers[3] = 1
@@ -147,16 +143,15 @@ class SATChatBot():
                     elif intent == "injustice":
                         self.emotion_cause_answers[3] = 1
                         self.question_answered[3] = True
-                    elif intent == "owe":
+                    elif intent == "self-blame":
                         self.emotion_cause_answers[5] = 1
                         self.question_answered[5] = True
                     elif intent == "partner":
                         self.emotion_cause_answers[7] = 1
                         self.question_answered[7] = True
                     elif intent == "jealousy" or intent == "loneliness" or intent == "trauma":
-                        if self.sentiment_label_list[-1] != "positive" and self.emotion_label_list[-1] != "joy":
-                            self.emotion_cause_answers[1] = 1
-                            self.question_answered[1] = True
+                        self.emotion_cause_answers[1] = 1
+                        self.question_answered[1] = True
             response_gen = self.response_generator.infer(utterance)
             response_gen += response
             return response_gen

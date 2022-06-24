@@ -77,7 +77,7 @@ class Meld_Dataset(Dataset):
         self._load_utterance_ordered()
         self._string2tokens()
 
-    def _load_emotions(self):
+    def _load_emotions(self) -> None:
         with open(os.path.join(ROOT_DIR, DATASET, "emotions.json"), "r") as stream:
             self.emotions = json.load(stream)[self.data_split]
 
@@ -212,7 +212,7 @@ class Meld_Dataset(Dataset):
         logging.info(f"Number of truncated utterances: {num_truncated}")
         return inputs
 
-    def _load_utterance_speaker_emotion(self, uttid, speaker_mode=None) -> dict:
+    def _load_utterance_speaker_emotion(self, uttid: str, speaker_mode: Optional[str] = None) -> dict:
         """
         Load an speaker-name prepended utterance and emotion label
         """
@@ -231,8 +231,8 @@ class Meld_Dataset(Dataset):
             utterance = speaker.title() + ": " + utterance
         return {"Utterance": utterance, "Emotion": emotion}
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.inputs_)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> dict:
         return self.inputs_[index]

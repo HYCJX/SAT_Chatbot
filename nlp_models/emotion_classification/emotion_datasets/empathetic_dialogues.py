@@ -3,7 +3,7 @@ import torch
 from datasets import load_dataset
 from tokenizers import Tokenizer
 from torch.utils.data import Dataset
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 NUM_CLASSES = 32
 
@@ -48,29 +48,28 @@ def get_emotionid_dict() -> Tuple[dict, dict]:
     ]
     emotion2id = {emotion: idx for idx, emotion in enumerate(emotions)}
     id2emotion = {val: key for key, val in emotion2id.items()}
-
     return emotion2id, id2emotion
 
 
 class EmpatheticDialoguesDataset(Dataset):
-    def __init__(self, split):
+    def __init__(self, split: str) -> None:
         super().__init__()
         self.raw_dataset = load_dataset("empathetic_dialogues")[split]
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.raw_dataset)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> dict:
         return self.raw_dataset[index]
 
 
 class EMDataCollator:
-    def __init__(self, tokenizer, max_len=128):
+    def __init__(self, tokenizer: Tokenizer, max_len: Optional[int] = 128) -> None:
         self.tokenizer = tokenizer
         self.max_len = max_len
         self.emotion2id, self.id2emotion = get_emotionid_dict()
 
-    def __call__(self, examples: List[dict]):
+    def __call__(self, examples: List[dict]) -> dict:
         contexts = [example["context"] for example in examples]
         labels = [self.emotion2id[context] for context in contexts]
         prompts = [example["prompt"] for example in examples]

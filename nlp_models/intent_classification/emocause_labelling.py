@@ -1,12 +1,13 @@
 import json
 import logging
+from typing import Tuple
 import numpy as np
 import os
 
 from datasets import Dataset, load_metric
 from transformers import AutoModelForTokenClassification, AutoTokenizer, DataCollatorForTokenClassification, Trainer, TrainingArguments
 
-from emotion_cause_datasets.emocause import EmoCauseDataset
+from dataset.emocause import EmoCauseDataset
 
 logging.basicConfig(
     level=logging.INFO,
@@ -19,7 +20,7 @@ id2label = {str(i): label for i, label in enumerate(label_names)}
 label2id = {v: k for k, v in id2label.items()}
 
 
-def compute_metrics(eval_predictions) -> dict:
+def compute_metrics(eval_predictions: Tuple) -> dict:
     logits, labels = eval_predictions
     predictions = np.argmax(logits, axis=-1)
     io_predictions = []
@@ -34,17 +35,15 @@ def compute_metrics(eval_predictions) -> dict:
     return metric.compute(predictions=[io_predictions], references=[io_labels])
 
 
-def finetune_roberta(
-    dataset_train: Dataset,
-    dataset_valid: Dataset,
-    dataset_test: Dataset,
-    batch_size: int,
-    learning_rate: float,
-    num_train_epoch: int,
-    output_dir: str,
-    warmup_ratio: float,
-    weight_decay: float,
-):
+def finetune_roberta(dataset_train: Dataset,
+                     dataset_valid: Dataset,
+                     dataset_test: Dataset,
+                     batch_size: int,
+                     learning_rate: float,
+                     num_train_epoch: int,
+                     output_dir: str,
+                     warmup_ratio: float,
+                     weight_decay: float) -> None:
 
     args = TrainingArguments(
         evaluation_strategy="epoch",
@@ -91,14 +90,13 @@ def finetune_roberta(
     logging.info(f"Test results: {test_results.metrics}")
 
 
-finetune_roberta(
-    EmoCauseDataset("train"),
-    EmoCauseDataset("test"),
-    EmoCauseDataset("test"),
-    16,
-    1e-5,
-    5,
-    "EmoCause_outputs",
-    0.2,
-    0.01,
-)
+if __name__ == "__main__":
+    finetune_roberta(EmoCauseDataset("train"),
+                     EmoCauseDataset("test"),
+                     EmoCauseDataset("test"),
+                     16,
+                     1e-5,
+                     5,
+                     "EmoCause_outputs",
+                     0.2,
+                     0.01)

@@ -1,3 +1,5 @@
+import numpy as np
+import random
 import torch
 import torch.nn.functional as F
 
@@ -22,7 +24,7 @@ class ResponseGenerator():
                  model_path: str,
                  max_length: Optional[int] = 512,
                  max_history: Optional[int] = 5,
-                 top_p: Optional[float] = 0.85) -> None:
+                 top_p: Optional[float] = 0.9) -> None:
         """
         Arguments:
             model: Transformer model.
@@ -69,6 +71,17 @@ class ResponseGenerator():
         self.top_p = top_p
         # Settings Completed:
         self.logger.info("The response generator is initialised.")
+
+        # Fix Seed for Random Generations:
+        seed = 0
+        if use_cuda:
+            torch.backends.cudnn.deterministic = True
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        random.seed(seed)
+        self.seed = seed
 
     def infer(self, utterance: str) -> str:
         self.logger.info("Generating response...")

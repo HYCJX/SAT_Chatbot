@@ -49,7 +49,7 @@ class Trainer():
                  warmup_ratio: Optional[float] = 0.1,
                  batch_size: Optional[int] = 8,
                  num_epochs: Optional[int] = 10,
-                 top_p: Optional[float] = 0.9):
+                 top_p: Optional[float] = 0.9) -> None:
         """
         Arguments:
             output_dir: Output directory.
@@ -404,6 +404,7 @@ if __name__ == "__main__":
                       checkpoint_path="results/response_generation_outputs/baseline/daily_dialog_epoch=7")
     trainer.infer()
 
+# Response Generation Survey:
 # seed = 0
 # results/response_generation_outputs/baseline/daily_dialog_epoch=7
 # results/response_generation_outputs/baseline/empathetic_dialogues_epoch=6

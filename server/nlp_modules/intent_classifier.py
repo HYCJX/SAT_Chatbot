@@ -2,7 +2,23 @@ from logging import getLogger
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, TextClassificationPipeline
 
 INTENTS = [
-    'loneliness', 'what_are_your_hobbies', 'are_you_a_bot', 'goodbye', 'how_old_are_you', 'owe', 'injustice', 'what_is_your_name', 'work', 'trauma', 'maybe', 'health', 'assessment', 'no', 'death', 'financial_pressure', 'yes', 'partner', 'abuse', 'jealousy', 'greeting'
+    "maybe",
+    "no",
+    "death",
+    "self-blame",
+    "injustice",
+    "abuse",
+    "missing",
+    "work",
+    "jealousy",
+    "partner",
+    "loneliness",
+    "trauma",
+    "goodbye",
+    "health",
+    "assessment",
+    "greeting",
+    "yes"
 ]
 INTENT2ID = {emotion_cause: idx
              for idx, emotion_cause
@@ -36,14 +52,15 @@ class IntentClassifier():
 
 
 if __name__ == "__main__":
-    e = IntentClassifier("roberta-base", "results/roberta-base")
-    res = e.classify_utterance("I regret that I didn't do well.")
+    e = IntentClassifier(model_type="facebook/muppet-roberta-base",
+                         model_checkpoint="results/intent_classification_outputs/facebookmuppet-roberta-base")
+    res = e.classify_utterance("I regret that I have't done better.")
     highest_score = 0
     emotion_cause_label = ""
     for r in res[0]:
         if r["score"] > highest_score:
             highest_score = r["score"]
             emotion_cause_label = r["label"]
-
+    print(res)
     print(highest_score)
     print(emotion_cause_label)

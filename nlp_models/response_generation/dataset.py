@@ -8,7 +8,7 @@ from tokenizers import Tokenizer
 from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import Dataset
 from tqdm import tqdm
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 SPACE = 'Ġ'
 END_MARKS = ['.', ',', '?', '!', '...']
@@ -102,10 +102,10 @@ class ResponseGenerationDataset(Dataset):
 
 
 class PadCollate():
-    def __init__(self, eos_id: str):
+    def __init__(self, eos_id: str) -> None:
         self.eos_id = eos_id
 
-    def __call__(self, batch):
+    def __call__(self, batch: list) -> Tuple:
         input_ids, token_type_ids, labels = [], [], []
         for _, sequence in enumerate(batch):
             input_ids.append(torch.LongTensor(sequence[0]))

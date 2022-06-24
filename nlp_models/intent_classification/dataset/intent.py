@@ -1,12 +1,29 @@
-import logging
 import pandas as pd
+from tokenizers import Tokenizer
 import torch
 
 from torch.utils.data import Dataset
-from typing import List
+from typing import List, Optional
 
 EMOTION_CAUSES = [
-    'maybe', 'no', 'death', 'self-blame', 'injustice', 'abuse', 'missing', 'work', 'jealousy', 'partner', 'loneliness', 'trauma', 'goodbye', 'health', 'assessment', 'greeting', 'yes']
+    "maybe",
+    "no",
+    "death",
+    "self-blame",
+    "injustice",
+    "abuse",
+    "missing",
+    "work",
+    "jealousy",
+    "partner",
+    "loneliness",
+    "trauma",
+    "goodbye",
+    "health",
+    "assessment",
+    "greeting",
+    "yes"
+]
 EMOCAUSE2ID = {emotion: idx for idx, emotion in enumerate(EMOTION_CAUSES)}
 ID2EMOCAUSE = {val: key for key, val in EMOCAUSE2ID.items()}
 
@@ -18,35 +35,22 @@ class EmocauseClDataset(Dataset):
                  split: str) -> None:
         super().__init__()
         self.dataset = pd.read_csv(
-            f"{split}.csv"
+            f"nlp_models/intent_classification/dataset/intent/{split}.csv"
         ).values
-        # # random state is a seed value
-        # train = df.sample(frac=0.8, random_state=0)
-        # test = df.drop(train.index)
-        # valid = test.sample(frac=0.5, random_state=0)
-        # test = test.drop(valid.index)
-        # if split == "train":
-        #     self.dataset = train.values
-        # elif split == "valid":
-        #     self.dataset = valid.values
-        # elif split == "test":
-        #     self.dataset = test.values
-        # else:
-        #     logging.error(f"Split {split} is invalid.")
 
-    def __len__(self):
+    def __len__(self) -> None:
         return len(self.dataset)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> dict:
         return self.dataset[index]
 
 
 class EmocauseDataCollator:
-    def __init__(self, tokenizer, max_len=128):
+    def __init__(self, tokenizer: Tokenizer, max_len: Optional[int] = 128) -> None:
         self.tokenizer = tokenizer
         self.max_len = max_len
 
-    def __call__(self, examples: List[dict]):
+    def __call__(self, examples: List[dict]) -> dict:
         utterances = [example[2] for example in examples]
         labels = [EMOCAUSE2ID[example[3]] for example in examples]
         tokens = self.tokenizer(utterances,

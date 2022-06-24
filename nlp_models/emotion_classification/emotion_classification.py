@@ -7,7 +7,7 @@ import os
 from sklearn.metrics import f1_score
 from torch.utils.data import Dataset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
-from typing import Optional
+from typing import Optional, Tuple
 
 from emotion_datasets.meld_dataset import Meld_Dataset, NUM_CLASSES
 
@@ -20,7 +20,7 @@ logging.basicConfig(
 )
 
 
-def compute_metrics(eval_predictions) -> dict:
+def compute_metrics(eval_predictions: Tuple) -> dict:
     """
     Return f1_weighted, f1_micro, and f1_macro scores.
     """
@@ -59,8 +59,8 @@ class EmotionClassifierTrainer():
         self.batch_size = batch_size
         self.output_dir = output_dir
 
-    def tune_hyperparameters(self):
-        def objective(trial: optuna.Trial):
+    def tune_hyperparameters(self) -> None:
+        def objective(trial: optuna.Trial) -> float:
             training_args = TrainingArguments(num_train_epochs=trial.suggest_int("num_train_epochs",
                                                                                  low=5,
                                                                                  high=15),
@@ -96,7 +96,7 @@ class EmotionClassifierTrainer():
         logging.info(study.best_trial)
         self.best_params = study.best_params
 
-    def train(self):
+    def train(self) -> None:
         training_args = TrainingArguments(num_train_epochs=15,
                                           learning_rate=self.best_params["learning_rate"],
                                           warmup_ratio=self.best_params["warmup_ratio"],

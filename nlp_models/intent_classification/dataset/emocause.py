@@ -13,14 +13,11 @@ logging.basicConfig(
 
 
 class EmoCauseDataset(Dataset):
-    def __init__(
-        self,
-        data_split,
-    ):
+    def __init__(self, data_split: str) -> None:
         self.data_split = data_split
         self.inputs = self._create_inputs()
 
-    def _create_inputs(self):
+    def _create_inputs(self) -> list:
         logging.info("Creating inputs...")
         # Load Data:
         raw_data = None
@@ -78,8 +75,8 @@ class EmoCauseDataset(Dataset):
         logging.info("Completed...")
         return inputs
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.inputs)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> dict:
         return self.inputs[index]

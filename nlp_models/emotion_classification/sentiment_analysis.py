@@ -7,7 +7,7 @@ import os
 from sklearn.metrics import mean_squared_error, f1_score
 from torch.utils.data import Dataset, Subset
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollator, Trainer, TrainingArguments
-from typing import Optional
+from typing import Optional, Tuple
 
 from emotion_datasets.sst import SSTDataCollator, SST2DataCollator, StanfordSentimentTreebank, StanfordSentimentTreebankV2
 
@@ -20,13 +20,13 @@ logging.basicConfig(
 )
 
 
-def compute_metrics(evaluation_predictions) -> dict:
+def compute_metrics(evaluation_predictions: Tuple) -> dict:
     predictions, labels = evaluation_predictions
     mse = mean_squared_error(labels, predictions)
     return {"MSE": mse}
 
 
-def compute_classification_metrics(evaluation_predictions) -> dict:
+def compute_classification_metrics(evaluation_predictions: Tuple) -> dict:
     predictions, labels = evaluation_predictions
     preds = np.argmax(predictions, axis=1)
     f1_weighted = f1_score(labels, preds, average="weighted")
@@ -61,8 +61,8 @@ class SentimentModelTrainer():
         self.dataset_test = dataset_test
         self.output_dir = output_dir
 
-    def tune_hyperparameters(self):
-        def objective(trial: optuna.Trial):
+    def tune_hyperparameters(self) -> None:
+        def objective(trial: optuna.Trial) -> float:
             training_args = TrainingArguments(num_train_epochs=10,
                                               learning_rate=trial.suggest_uniform("learning_rate",
                                                                                   low=1e-5,
@@ -111,7 +111,7 @@ class SentimentModelTrainer():
         logging.info(study.best_trial)
         self.best_params = study.best_params
 
-    def train(self):
+    def train(self) -> None:
         training_args = TrainingArguments(num_train_epochs=10,
                                           learning_rate=self.best_params["learning_rate"],
                                           warmup_ratio=self.best_params["warmup_ratio"],

@@ -5,7 +5,7 @@ import torch
 from datasets import load_dataset
 from tokenizers import Tokenizer
 from torch.utils.data import Dataset
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 logging.basicConfig(
     filename="sentiment_analysis.log",
@@ -23,10 +23,10 @@ class StanfordSentimentTreebank(Dataset):
         logging.info("Loading SST dataset.")
         self.dataset = load_dataset("sst")[split]
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.dataset)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> dict:
         return self.dataset[index]
 
 
@@ -67,10 +67,10 @@ class StanfordSentimentTreebankV2(Dataset):
         logging.info("Loading SSTv2 dataset.")
         self.dataset = load_dataset("gpt3mix/sst2")[split]
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.dataset)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> dict:
         return self.dataset[index]
 
 

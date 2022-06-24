@@ -22,8 +22,8 @@ sentiment_classifier = SentimentClassifer(model_type="facebook/muppet-roberta-ba
                                           model_checkpoint="results/emotion_classification_outputs/sentiment_analysis_outputs/classification/facebookmuppet-roberta-base")
 emotion_classifier = EmotionClassifier(model_type="roberta-base",
                                        model_checkpoint="results/emotion_classification_outputs/emotion_classification_outputs/roberta-base_False")
-intent_classifier = IntentClassifier(model_type="roberta-base",
-                                     model_checkpoint="results/roberta-base")
+intent_classifier = IntentClassifier(model_type="facebook/muppet-roberta-base",
+                                     model_checkpoint="results/intent_classification_outputs/facebookmuppet-roberta-base")
 response_generator = ResponseGenerator(
     model_path="results/response_generation_outputs/daily_on_em/daily_on_em_epoch=5"
 )
