@@ -1,9 +1,3 @@
 [submodule "multimodal-datasets"]
 	path = multimodal-datasets
 	url = https://github.com/tae898/multimodal-datasets.git
-[submodule "TEXTOIR"]
-	path = TEXTOIR
-	url = https://github.com/thuiar/TEXTOIR.git
-[submodule "CASA-Dialogue-Act-Classifier"]
-	path = CASA-Dialogue-Act-Classifier
-	url = https://github.com/macabdul9/CASA-Dialogue-Act-Classifier.git
