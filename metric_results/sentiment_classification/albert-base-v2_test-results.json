@@ -1,0 +1,9 @@
+{
+    "test_loss": 0.4107794463634491,
+    "test_f1_weighted": 0.9231155947466932,
+    "test_f1_micro": 0.9231191652937946,
+    "test_f1_macro": 0.9231163598639291,
+    "test_runtime": 6.5829,
+    "test_samples_per_second": 276.625,
+    "test_steps_per_second": 8.659
+}
